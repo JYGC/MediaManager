@@ -3,12 +3,12 @@ using System;
 
 namespace OPMF.Tests.TestData
 {
-    public class ChannelMetadata
+    public class ChannelTestData
     {
         private static readonly Channel[] __channelList1 = new Channel[]
         {
             /* 1 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC__Oy3QdB3d9_FHO_XG1PZg",
               Url = "https://www.youtube.com/channel/UC__Oy3QdB3d9_FHO_XG1PZg",
               Name = "ReviewTechUSA",
@@ -21,7 +21,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:13:07.0000000Z")
             },
             /* 2 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_08RQ4dn_CQ8E1IyQyP_iQ",
               Url = "https://www.youtube.com/channel/UC_08RQ4dn_CQ8E1IyQyP_iQ",
               Name = "Lizz Reptile",
@@ -34,7 +34,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-28T22:27:24.0000000Z")
             },
             /* 3 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_cd4oF2phaIBD3WsU3f7Xg",
               Url = "https://www.youtube.com/channel/UC_cd4oF2phaIBD3WsU3f7Xg",
               Name = "Modern-Day Debate",
@@ -47,7 +47,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T20:27:38.0000000Z")
             },
             /* 4 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_cznB5YZZmvAmeq7Y3EriQ",
               Url = "https://www.youtube.com/channel/UC_cznB5YZZmvAmeq7Y3EriQ",
               Name = "Stated Clearly",
@@ -60,7 +60,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-12T11:00:16.0000000Z")
             },
             /* 5 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_DO3GwiKhy-Z6XtmnxhfRA",
               Url = "https://www.youtube.com/channel/UC_DO3GwiKhy-Z6XtmnxhfRA",
               Name = "The Violin Channel",
@@ -73,7 +73,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-07T07:44:09.0000000Z")
             },
             /* 6 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_H_lI-9qWdCiAq4AciqE4A",
               Url = "https://www.youtube.com/channel/UC_H_lI-9qWdCiAq4AciqE4A",
               Name = "Abdullah Sameer",
@@ -86,7 +86,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-21T16:38:33.0000000Z")
             },
             /* 7 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_Kuw4Ny3LdIik0l36Oojbg",
               Url = "https://www.youtube.com/channel/UC_Kuw4Ny3LdIik0l36Oojbg",
               Name = "Anja Melissa",
@@ -99,7 +99,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-07T09:00:07.0000000Z")
             },
             /* 8 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_qM07dUtRS5iV-ppigKi4g",
               Url = "https://www.youtube.com/channel/UC_qM07dUtRS5iV-ppigKi4g",
               Name = "Birchie Rants",
@@ -111,7 +111,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:18.6170000Z")
             },
             /* 9 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_rJVuy78JWJh4_ZFMPsOzA",
               Url = "https://www.youtube.com/channel/UC_rJVuy78JWJh4_ZFMPsOzA",
               Name = "TheMedsPeds",
@@ -124,7 +124,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-07T15:53:56.0000000Z")
             },
             /* 10 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_xYMXx_-mAzheKyEtwtCAQ",
               Url = "https://www.youtube.com/channel/UC_xYMXx_-mAzheKyEtwtCAQ",
               Name = "Scientific American",
@@ -137,7 +137,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T16:50:37.0000000Z")
             },
             /* 11 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC03A7S5CqhPqa2_H1s5UI1w",
               Url = "https://www.youtube.com/channel/UC03A7S5CqhPqa2_H1s5UI1w",
               Name = "Jackson Wheat",
@@ -149,7 +149,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T02:23:05.0000000Z")
             },
             /* 12 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0aanx5rpr7D1M7KCFYzrLQ",
               Url = "https://www.youtube.com/channel/UC0aanx5rpr7D1M7KCFYzrLQ",
               Name = "Shoe0nHead",
@@ -162,7 +162,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:26:02.0000000Z")
             },
             /* 13 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0ArlFuFYMpEewyRBzdLHiw",
               Url = "https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw",
               Name = "The Cyber Mentor",
@@ -175,7 +175,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T01:26:28.0000000Z")
             },
             /* 14 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0aVoboXBUx2-tVIWHc3W2Q",
               Url = "https://www.youtube.com/channel/UC0aVoboXBUx2-tVIWHc3W2Q",
               Name = "MILO",
@@ -188,7 +188,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-19T03:28:04.0000000Z")
             },
             /* 15 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0cd_-e49hZpWLH3UIwoWRA",
               Url = "https://www.youtube.com/channel/UC0cd_-e49hZpWLH3UIwoWRA",
               Name = "Professor Dave Explains",
@@ -201,7 +201,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:20:17.0000000Z")
             },
             /* 16 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0gdSRU1EBmBoRFSG9UypHg",
               Url = "https://www.youtube.com/channel/UC0gdSRU1EBmBoRFSG9UypHg",
               Name = "Marijke Violin",
@@ -214,7 +214,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-21T14:03:16.0000000Z")
             },
             /* 17 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0hAeUHHaqdFUNdWAmeI5kA",
               Url = "https://www.youtube.com/channel/UC0hAeUHHaqdFUNdWAmeI5kA",
               Name = "JLC Viola",
@@ -226,7 +226,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:41:54.9980000Z")
             },
             /* 18 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0hwSUgu98_uX_xuTELSKSg",
               Url = "https://www.youtube.com/channel/UC0hwSUgu98_uX_xuTELSKSg",
               Name = "Margaret MacLennan",
@@ -238,7 +238,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:41:55.1330000Z")
             },
             /* 19 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0MAi67khv-LcaAepPQCsDg",
               Url = "https://www.youtube.com/channel/UC0MAi67khv-LcaAepPQCsDg",
               Name = "Excultbaby",
@@ -251,7 +251,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-01T18:30:09.0000000Z")
             },
             /* 20 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0n9pcWWhf8BzJ9zFakcA0g",
               Url = "https://www.youtube.com/channel/UC0n9pcWWhf8BzJ9zFakcA0g",
               Name = "Zarathustra's Serpent",
@@ -264,7 +264,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T15:35:19.0000000Z")
             },
             /* 21 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0p7O4CDGlAv-6reZ1TTYRg",
               Url = "https://www.youtube.com/channel/UC0p7O4CDGlAv-6reZ1TTYRg",
               Name = "Mens Rights Australia",
@@ -275,7 +275,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:20.8640000Z")
             },
             /* 22 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0pIykaV6QVw26edNRaPcUg",
               Url = "https://www.youtube.com/channel/UC0pIykaV6QVw26edNRaPcUg",
               Name = "Mariko Barra",
@@ -287,7 +287,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:07.8060000Z")
             },
             /* 23 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0qhPJh8DeoR-3JhMrIvw0g",
               Url = "https://www.youtube.com/channel/UC0qhPJh8DeoR-3JhMrIvw0g",
               Name = "Shannon Q",
@@ -300,7 +300,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-18T01:50:48.0000000Z")
             },
             /* 24 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0rZoXAD5lxgBHMsjrGwWWQ",
               Url = "https://www.youtube.com/channel/UC0rZoXAD5lxgBHMsjrGwWWQ",
               Name = "Styxhexenhammer666",
@@ -313,7 +313,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T07:25:57.0000000Z")
             },
             /* 25 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0y414Hpxvf-yFKPQGYrg0A",
               Url = "https://www.youtube.com/channel/UC0y414Hpxvf-yFKPQGYrg0A",
               Name = "American Atheists",
@@ -326,7 +326,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-21T22:45:12.0000000Z")
             },
             /* 26 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0ZTPkdxlAKf-V33tqXwi3Q",
               Url = "https://www.youtube.com/channel/UC0ZTPkdxlAKf-V33tqXwi3Q",
               Name = "HackerSploit",
@@ -339,7 +339,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T03:42:45.0000000Z")
             },
             /* 27 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1-7mA0mKsCTyCMG4JNO3EQ",
               Url = "https://www.youtube.com/channel/UC1-7mA0mKsCTyCMG4JNO3EQ",
               Name = "space and astronomy",
@@ -352,7 +352,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-26T17:00:20.0000000Z")
             },
             /* 28 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC19J83LCkBL2KFPEtifwfJQ",
               Url = "https://www.youtube.com/channel/UC19J83LCkBL2KFPEtifwfJQ",
               Name = "The Pharaoh",
@@ -364,7 +364,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:12.2030000Z")
             },
             /* 29 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1bwliGvJogr7cWK0nT2Eag",
               Url = "https://www.youtube.com/channel/UC1bwliGvJogr7cWK0nT2Eag",
               Name = "MKIceAndFire",
@@ -377,7 +377,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:06:30.0000000Z")
             },
             /* 30 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1BWMtZbNLVMSFgwSukjqCw",
               Url = "https://www.youtube.com/channel/UC1BWMtZbNLVMSFgwSukjqCw",
               Name = "Armoured Skeptic",
@@ -390,7 +390,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T01:10:25.0000000Z")
             },
             /* 31 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1D3yD4wlPMico0dss264XA",
               Url = "https://www.youtube.com/channel/UC1D3yD4wlPMico0dss264XA",
               Name = "NileBlue",
@@ -402,7 +402,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-05T18:00:38.0000000Z")
             },
             /* 32 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1dlscdSGohl2FWQqCq_mBg",
               Url = "https://www.youtube.com/channel/UC1dlscdSGohl2FWQqCq_mBg",
               Name = "NOTA Livestreams",
@@ -413,7 +413,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:13.6450000Z")
             },
             /* 33 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1FIQPDF4XoFRyd_uA5z5eg",
               Url = "https://www.youtube.com/channel/UC1FIQPDF4XoFRyd_uA5z5eg",
               Name = "steelmonkay",
@@ -425,7 +425,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:13.9860000Z")
             },
             /* 34 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1gSxXwxoIxIt9doAapuueg",
               Url = "https://www.youtube.com/channel/UC1gSxXwxoIxIt9doAapuueg",
               Name = "The Quran Reloaded",
@@ -437,7 +437,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:14.8610000Z")
             },
             /* 35 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1Ir4nwAB_2NDSBmeaq7zOw",
               Url = "https://www.youtube.com/channel/UC1Ir4nwAB_2NDSBmeaq7zOw",
               Name = "GirlDoesRant",
@@ -450,7 +450,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-02T19:56:59.0000000Z")
             },
             /* 36 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1kO3oz_6dvWBF5o-BBpA6w",
               Url = "https://www.youtube.com/channel/UC1kO3oz_6dvWBF5o-BBpA6w",
               Name = "Finntronaut 2",
@@ -462,7 +462,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:23.2990000Z")
             },
             /* 37 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1lw_fo-eHfVZ1zQuYM4lAA",
               Url = "https://www.youtube.com/channel/UC1lw_fo-eHfVZ1zQuYM4lAA",
               Name = "ScienceAlert",
@@ -475,7 +475,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-30T05:42:48.0000000Z")
             },
             /* 38 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1SzlwfeQ_4-9LuV_00Efuw",
               Url = "https://www.youtube.com/channel/UC1SzlwfeQ_4-9LuV_00Efuw",
               Name = "Steve McRae",
@@ -488,7 +488,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T01:21:39.0000000Z")
             },
             /* 39 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1Xf6ScN9riYhTOUsvhkhaw",
               Url = "https://www.youtube.com/channel/UC1Xf6ScN9riYhTOUsvhkhaw",
               Name = "God is Grey",
@@ -501,7 +501,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T18:00:06.0000000Z")
             },
             /* 40 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1yBKRuGpC1tSM73A0ZjYjQ",
               Url = "https://www.youtube.com/channel/UC1yBKRuGpC1tSM73A0ZjYjQ",
               Name = "The Young Turks",
@@ -514,7 +514,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T03:45:01.0000000Z")
             },
             /* 41 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1yNl2E66ZzKApQdRuTQ4tw",
               Url = "https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw",
               Name = "Sabine Hossenfelder",
@@ -532,7 +532,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T12:00:25.0000000Z")
             },
             /* 42 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1ZBQ-F-yktYD4m5AzM6pww",
               Url = "https://www.youtube.com/channel/UC1ZBQ-F-yktYD4m5AzM6pww",
               Name = "Mustard",
@@ -545,7 +545,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T17:04:53.0000000Z")
             },
             /* 43 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2_a05o1pW4fr9SzlyMv8OA",
               Url = "https://www.youtube.com/channel/UC2_a05o1pW4fr9SzlyMv8OA",
               Name = "invisible i",
@@ -558,7 +558,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-20T17:01:53.0000000Z")
             },
             /* 44 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2_KC8lshtCyiLApy27raYw",
               Url = "https://www.youtube.com/channel/UC2_KC8lshtCyiLApy27raYw",
               Name = "KnowledgeHub",
@@ -571,7 +571,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:00:08.0000000Z")
             },
             /* 45 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC228Y4vvOMPieeT_XYTbe-A",
               Url = "https://www.youtube.com/channel/UC228Y4vvOMPieeT_XYTbe-A",
               Name = "Repzion",
@@ -583,7 +583,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-03T01:52:57.0000000Z")
             },
             /* 46 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC22vjKa2BoJ_xyESQeRYixA",
               Url = "https://www.youtube.com/channel/UC22vjKa2BoJ_xyESQeRYixA",
               Name = "Bearingcab",
@@ -595,7 +595,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:30.6580000Z")
             },
             /* 47 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC22Ww9SlqutdlxyoKAbNsLQ",
               Url = "https://www.youtube.com/channel/UC22Ww9SlqutdlxyoKAbNsLQ",
               Name = "isethoriginal",
@@ -608,7 +608,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-05T05:09:55.0000000Z")
             },
             /* 48 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2bLCMrLb_bjiGx0GykOoMA",
               Url = "https://www.youtube.com/channel/UC2bLCMrLb_bjiGx0GykOoMA",
               Name = "GoombaFish",
@@ -621,7 +621,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-12T19:16:42.0000000Z")
             },
             /* 49 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2Cl2g2xFTZoAEldxYVzQFg",
               Url = "https://www.youtube.com/channel/UC2Cl2g2xFTZoAEldxYVzQFg",
               Name = "Geo History",
@@ -634,7 +634,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T11:00:12.0000000Z")
             },
             /* 50 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2GQUFrpB1BMBqaRYiL3SyA",
               Url = "https://www.youtube.com/channel/UC2GQUFrpB1BMBqaRYiL3SyA",
               Name = "Deconverted Man",
@@ -647,7 +647,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T05:58:38.0000000Z")
             },
             /* 51 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2h3CQPQJB35k6R6yzqOwew",
               Url = "https://www.youtube.com/channel/UC2h3CQPQJB35k6R6yzqOwew",
               Name = "Anna Moomin",
@@ -660,7 +660,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-02-12T16:35:39.0000000Z")
             },
             /* 52 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2h3yPmh9TfQv2z3aTDTHHA",
               Url = "https://www.youtube.com/channel/UC2h3yPmh9TfQv2z3aTDTHHA",
               Name = "Andywarski",
@@ -671,7 +671,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:26.5600000Z")
             },
             /* 53 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2iZAkx68UTXqMnuDeww6JA",
               Url = "https://www.youtube.com/channel/UC2iZAkx68UTXqMnuDeww6JA",
               Name = "MykeruMedia",
@@ -684,7 +684,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T15:42:21.0000000Z")
             },
             /* 54 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2MrtVb1dT4FhcbOlW736kA",
               Url = "https://www.youtube.com/channel/UC2MrtVb1dT4FhcbOlW736kA",
               Name = "Redline Reviews",
@@ -697,7 +697,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T13:00:19.0000000Z")
             },
             /* 55 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2nthqnh9lbFRBkcZh_VBQQ",
               Url = "https://www.youtube.com/channel/UC2nthqnh9lbFRBkcZh_VBQQ",
               Name = "Godless",
@@ -708,7 +708,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:45.6800000Z")
             },
             /* 56 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2OdMVzzL6SaOKyP0dTcllQ",
               Url = "https://www.youtube.com/channel/UC2OdMVzzL6SaOKyP0dTcllQ",
               Name = "Willow Hope",
@@ -721,7 +721,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-15T01:19:14.0000000Z")
             },
             /* 57 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2OhDIizaK4hv72X3uLvY-g",
               Url = "https://www.youtube.com/channel/UC2OhDIizaK4hv72X3uLvY-g",
               Name = "Brett Segmento",
@@ -733,7 +733,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:46.0710000Z")
             },
             /* 58 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2UIXt4VQnhQ-VZM4P1bUMQ",
               Url = "https://www.youtube.com/channel/UC2UIXt4VQnhQ-VZM4P1bUMQ",
               Name = "AVROTROS Klassiek",
@@ -746,7 +746,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T07:40:34.0000000Z")
             },
             /* 59 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2w1CQqPli4w94-PCg2UvJQ",
               Url = "https://www.youtube.com/channel/UC2w1CQqPli4w94-PCg2UvJQ",
               Name = "The Alternative Hypothesis",
@@ -758,7 +758,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:27.7940000Z")
             },
             /* 60 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2yh-MfL2LamSVqb76fEPCg",
               Url = "https://www.youtube.com/channel/UC2yh-MfL2LamSVqb76fEPCg",
               Name = "Mauritian Struggle",
@@ -770,7 +770,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:27.9490000Z")
             },
             /* 61 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC31xCpsCXbAJlg-az1FTJfg",
               Url = "https://www.youtube.com/channel/UC31xCpsCXbAJlg-az1FTJfg",
               Name = "AutiSIMSara",
@@ -783,7 +783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-20T18:00:14.0000000Z")
             },
             /* 62 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3AVRhyuThyOYLepHuBQ66w",
               Url = "https://www.youtube.com/channel/UC3AVRhyuThyOYLepHuBQ66w",
               Name = "Miss London",
@@ -796,7 +796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-17T20:02:05.0000000Z")
             },
             /* 63 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3HZj_ebQWk90iaczhSvuCA",
               Url = "https://www.youtube.com/channel/UC3HZj_ebQWk90iaczhSvuCA",
               Name = "Zara Kay",
@@ -809,7 +809,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-01T15:54:37.0000000Z")
             },
             /* 64 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3nwqsNcML5oJeWRHBmxabQ",
               Url = "https://www.youtube.com/channel/UC3nwqsNcML5oJeWRHBmxabQ",
               Name = "Lushia Gaming",
@@ -822,7 +822,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T13:00:13.0000000Z")
             },
             /* 65 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3s0BtrBJpwNDaflRSoiieQ",
               Url = "https://www.youtube.com/channel/UC3s0BtrBJpwNDaflRSoiieQ",
               Name = "Hak5",
@@ -835,7 +835,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T00:11:17.0000000Z")
             },
             /* 66 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3TbT_taTdB5_pxcHnNNHAg",
               Url = "https://www.youtube.com/channel/UC3TbT_taTdB5_pxcHnNNHAg",
               Name = "Kristi Winters",
@@ -848,7 +848,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T11:12:21.0000000Z")
             },
             /* 67 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3V4bmR7EXvPh-ryJW1fSCA",
               Url = "https://www.youtube.com/channel/UC3V4bmR7EXvPh-ryJW1fSCA",
               Name = "DP Clips",
@@ -860,7 +860,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:20.9390000Z")
             },
             /* 68 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3VDnzwOEwpcOwcjIUeReww",
               Url = "https://www.youtube.com/channel/UC3VDnzwOEwpcOwcjIUeReww",
               Name = "VC3 Productions",
@@ -873,7 +873,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-18T18:45:32.0000000Z")
             },
             /* 69 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3z4aVMh7r4TLBI64c773Qg",
               Url = "https://www.youtube.com/channel/UC3z4aVMh7r4TLBI64c773Qg",
               Name = "Elizabeth Yu 伊利沙伯",
@@ -886,7 +886,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-03T14:31:01.0000000Z")
             },
             /* 70 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4_bwov47DseacR1-ttTdOg",
               Url = "https://www.youtube.com/channel/UC4_bwov47DseacR1-ttTdOg",
               Name = "boogie2988",
@@ -899,7 +899,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T22:04:35.0000000Z")
             },
             /* 71 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC43HKnaw7cSPUXPM4rmNBNw",
               Url = "https://www.youtube.com/channel/UC43HKnaw7cSPUXPM4rmNBNw",
               Name = "Michael Rowlands",
@@ -911,7 +911,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:29.7090000Z")
             },
             /* 72 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4CBAoKliFGQZ7YsTiDrRTg",
               Url = "https://www.youtube.com/channel/UC4CBAoKliFGQZ7YsTiDrRTg",
               Name = "Violin Viola Masterclass",
@@ -924,7 +924,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T14:00:23.0000000Z")
             },
             /* 73 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4eMTV5t1TfKYxmKvXBR4jg",
               Url = "https://www.youtube.com/channel/UC4eMTV5t1TfKYxmKvXBR4jg",
               Name = "Drunken Peasants Archive",
@@ -936,7 +936,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:29.1570000Z")
             },
             /* 74 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4eYXhJI4-7wSWc8UNRwD4A",
               Url = "https://www.youtube.com/channel/UC4eYXhJI4-7wSWc8UNRwD4A",
               Name = "NPR Music",
@@ -949,7 +949,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-04T20:45:14.0000000Z")
             },
             /* 75 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4fYb-ziHaNtbd0NKo-0q7A",
               Url = "https://www.youtube.com/channel/UC4fYb-ziHaNtbd0NKo-0q7A",
               Name = "SyeTen",
@@ -961,7 +961,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:29.3010000Z")
             },
             /* 76 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4IgEVgl6t18-89GPekZtAw",
               Url = "https://www.youtube.com/channel/UC4IgEVgl6t18-89GPekZtAw",
               Name = "Strawburry17Plays",
@@ -974,7 +974,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T23:45:05.0000000Z")
             },
             /* 77 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4ihNhN8iN9QPg2XTxiiPJw",
               Url = "https://www.youtube.com/channel/UC4ihNhN8iN9QPg2XTxiiPJw",
               Name = "Inside the Score",
@@ -987,7 +987,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T18:19:11.0000000Z")
             },
             /* 78 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4k3HO5n3aSq_bayF-UHiGg",
               Url = "https://www.youtube.com/channel/UC4k3HO5n3aSq_bayF-UHiGg",
               Name = "Louis Le Vau",
@@ -1000,7 +1000,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-27T19:01:49.0000000Z")
             },
             /* 79 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4NpbPE75Cb1xkbDLWq8WuA",
               Url = "https://www.youtube.com/channel/UC4NpbPE75Cb1xkbDLWq8WuA",
               Name = "DEEP FAT FRIED",
@@ -1013,7 +1013,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-02T18:00:11.0000000Z")
             },
             /* 80 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4unV5BVmWubfAF0Al_AVdw",
               Url = "https://www.youtube.com/channel/UC4unV5BVmWubfAF0Al_AVdw",
               Name = "SyrianGirlpartisan",
@@ -1026,7 +1026,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-19T02:46:47.0000000Z")
             },
             /* 81 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4vH0t0LXo8b8Yc_hf0N3FA",
               Url = "https://www.youtube.com/channel/UC4vH0t0LXo8b8Yc_hf0N3FA",
               Name = "EllieJayden",
@@ -1038,7 +1038,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-05T18:26:11.0000000Z")
             },
             /* 82 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4w_tMnHl6sw5VD93tVymGw",
               Url = "https://www.youtube.com/channel/UC4w_tMnHl6sw5VD93tVymGw",
               Name = "Inside Gaming",
@@ -1051,7 +1051,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:09:39.0000000Z")
             },
             /* 83 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4YU4J4Pbc8RTvMGoPevWmQ",
               Url = "https://www.youtube.com/channel/UC4YU4J4Pbc8RTvMGoPevWmQ",
               Name = "Religion, Atheism, Science",
@@ -1064,7 +1064,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-17T17:51:09.0000000Z")
             },
             /* 84 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC52kszkc08-acFOuogFl5jw",
               Url = "https://www.youtube.com/channel/UC52kszkc08-acFOuogFl5jw",
               Name = "Tibees",
@@ -1077,7 +1077,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-15T10:49:48.0000000Z")
             },
             /* 85 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC554eY5jNUfDq3yDOJYirOQ",
               Url = "https://www.youtube.com/channel/UC554eY5jNUfDq3yDOJYirOQ",
               Name = "Destiny",
@@ -1090,7 +1090,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T15:10:09.0000000Z")
             },
             /* 86 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC56QkVc9NiAd58nx6nbr1Zg",
               Url = "https://www.youtube.com/channel/UC56QkVc9NiAd58nx6nbr1Zg",
               Name = "Logicked Livestreams",
@@ -1102,7 +1102,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:32.8680000Z")
             },
             /* 87 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC595wqznMGuY2mi6DKx-qnQ",
               Url = "https://www.youtube.com/channel/UC595wqznMGuY2mi6DKx-qnQ",
               Name = "HoneyBadgerRadio",
@@ -1114,7 +1114,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:32.1180000Z")
             },
             /* 88 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5970RJMoEcRNZl0MNp8tlQ",
               Url = "https://www.youtube.com/channel/UC5970RJMoEcRNZl0MNp8tlQ",
               Name = "LiliaTV",
@@ -1127,7 +1127,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:35:05.0000000Z")
             },
             /* 89 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5aT3baqQh2eeN_mpVxVicA",
               Url = "https://www.youtube.com/channel/UC5aT3baqQh2eeN_mpVxVicA",
               Name = "Shannon Gibbs",
@@ -1139,7 +1139,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:34.2270000Z")
             },
             /* 90 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5Cn_NoDBFkuZnLm2I2Ibcg",
               Url = "https://www.youtube.com/channel/UC5Cn_NoDBFkuZnLm2I2Ibcg",
               Name = "Yu-Pei Hsiao",
@@ -1152,7 +1152,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-21T17:45:01.0000000Z")
             },
             /* 91 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5G1ThclVYLp2YFQUodTNnA",
               Url = "https://www.youtube.com/channel/UC5G1ThclVYLp2YFQUodTNnA",
               Name = "Timbah.On.Toast",
@@ -1165,7 +1165,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T11:07:36.0000000Z")
             },
             /* 92 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5gvIiMoRlkV-_DayXT8YFw",
               Url = "https://www.youtube.com/channel/UC5gvIiMoRlkV-_DayXT8YFw",
               Name = "Amos Yee",
@@ -1176,7 +1176,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:32.8960000Z")
             },
             /* 93 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5kZ57QTWfErOmzo2tMnV8g",
               Url = "https://www.youtube.com/channel/UC5kZ57QTWfErOmzo2tMnV8g",
               Name = "Bad Grammar",
@@ -1188,7 +1188,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:33.0550000Z")
             },
             /* 94 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5lGiOFcpCIsAvDU0UNyXhQ",
               Url = "https://www.youtube.com/channel/UC5lGiOFcpCIsAvDU0UNyXhQ",
               Name = "Ponderful",
@@ -1201,7 +1201,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-02T20:00:09.0000000Z")
             },
             /* 95 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5qXeV_7YyRsmv2uP8kvKMA",
               Url = "https://www.youtube.com/channel/UC5qXeV_7YyRsmv2uP8kvKMA",
               Name = "Giulia Wechsler",
@@ -1213,7 +1213,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:43.4690000Z")
             },
             /* 96 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5reJ2KzRrVg6_062oQNH0Q",
               Url = "https://www.youtube.com/channel/UC5reJ2KzRrVg6_062oQNH0Q",
               Name = "Steven Anderson",
@@ -1224,7 +1224,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:33.5200000Z")
             },
             /* 97 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5tEELgWBfKbA9fVPRzBzPQ",
               Url = "https://www.youtube.com/channel/UC5tEELgWBfKbA9fVPRzBzPQ",
               Name = "Coach Red Pill",
@@ -1237,7 +1237,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-04T15:00:09.0000000Z")
             },
             /* 98 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5Wi_NYysX-LfcqT3Hq9Faw",
               Url = "https://www.youtube.com/channel/UC5Wi_NYysX-LfcqT3Hq9Faw",
               Name = "Dylan Israel",
@@ -1250,7 +1250,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-16T05:38:23.0000000Z")
             },
             /* 99 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5YKivGUTTQmhSuaXbxfZSg",
               Url = "https://www.youtube.com/channel/UC5YKivGUTTQmhSuaXbxfZSg",
               Name = "Proactive Thinker",
@@ -1263,7 +1263,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T12:05:17.0000000Z")
             },
             /* 100 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC64x_rKHxY113KMWmprLBPA",
               Url = "https://www.youtube.com/channel/UC64x_rKHxY113KMWmprLBPA",
               Name = "JackkTutorials",
@@ -1275,7 +1275,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:58.7950000Z")
             },
             /* 101 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC66YetHAcxLA6dRGdsmwTPw",
               Url = "https://www.youtube.com/channel/UC66YetHAcxLA6dRGdsmwTPw",
               Name = "Flutecookies",
@@ -1288,7 +1288,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T13:39:04.0000000Z")
             },
             /* 102 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6cMYsKMx6XicFcFm7mTsmA",
               Url = "https://www.youtube.com/channel/UC6cMYsKMx6XicFcFm7mTsmA",
               Name = "Sargon of Akkad Live",
@@ -1300,7 +1300,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2021-08-16T00:00:34.9170000Z")
             },
             /* 103 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6dLr5oeX7plZa5FKwHeL9w",
               Url = "https://www.youtube.com/channel/UC6dLr5oeX7plZa5FKwHeL9w",
               Name = "EiE Network",
@@ -1313,7 +1313,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-08T03:25:53.0000000Z")
             },
             /* 104 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6IijBsVf2PlWo_uq6P9wQw",
               Url = "https://www.youtube.com/channel/UC6IijBsVf2PlWo_uq6P9wQw",
               Name = "Gloom",
@@ -1326,7 +1326,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-08T20:36:07.0000000Z")
             },
             /* 105 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6JmDMC2x3vafwH5QRB1khA",
               Url = "https://www.youtube.com/channel/UC6JmDMC2x3vafwH5QRB1khA",
               Name = "thecreaturehub",
@@ -1338,7 +1338,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:59.6330000Z")
             },
             /* 106 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6Ng7E90sfbulXGY2oCUlkw",
               Url = "https://www.youtube.com/channel/UC6Ng7E90sfbulXGY2oCUlkw",
               Name = "taftaj",
@@ -1353,7 +1353,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 107 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6vEgUAUC6ti47YsczNNoRQ",
               Url = "https://www.youtube.com/channel/UC6vEgUAUC6ti47YsczNNoRQ",
               Name = "BionicDance",
@@ -1366,7 +1366,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T13:00:17.0000000Z")
             },
             /* 108 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6ypc7SOVr5-InXLzpOPbXQ",
               Url = "https://www.youtube.com/channel/UC6ypc7SOVr5-InXLzpOPbXQ",
               Name = "Secular TeeJay",
@@ -1379,7 +1379,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-11T23:58:51.0000000Z")
             },
             /* 109 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6ZFN9Tx6xh-skXCuRHCDpQ",
               Url = "https://www.youtube.com/channel/UC6ZFN9Tx6xh-skXCuRHCDpQ",
               Name = "PBS NewsHour",
@@ -1392,7 +1392,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T02:03:23.0000000Z")
             },
             /* 110 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7_gcs09iThXybpVgjHZ_7g",
               Url = "https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g",
               Name = "PBS Space Time",
@@ -1405,7 +1405,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T20:15:01.0000000Z")
             },
             /* 111 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7_vO81MUvzncixr3TqbX9g",
               Url = "https://www.youtube.com/channel/UC7_vO81MUvzncixr3TqbX9g",
               Name = "Paget Kagy",
@@ -1418,7 +1418,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-12T02:36:26.0000000Z")
             },
             /* 112 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC72vWiZdUN_Y2OC2RgJ-dvA",
               Url = "https://www.youtube.com/channel/UC72vWiZdUN_Y2OC2RgJ-dvA",
               Name = "DoctorRandomercam",
@@ -1431,7 +1431,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-06T21:30:31.0000000Z")
             },
             /* 113 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC764VuoDeKiOyhTw8ZMjQFA",
               Url = "https://www.youtube.com/channel/UC764VuoDeKiOyhTw8ZMjQFA",
               Name = "SJW101, the political gamer",
@@ -1443,7 +1443,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:35.7390000Z")
             },
             /* 114 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC77VmMDPloF0FGN4RIqfsVA",
               Url = "https://www.youtube.com/channel/UC77VmMDPloF0FGN4RIqfsVA",
               Name = "Countryballs Explained",
@@ -1456,7 +1456,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T23:33:26.0000000Z")
             },
             /* 115 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7c8mE90qCtu11z47U0KErg",
               Url = "https://www.youtube.com/channel/UC7c8mE90qCtu11z47U0KErg",
               Name = "nature video",
@@ -1469,7 +1469,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T15:07:09.0000000Z")
             },
             /* 116 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7DdEm33SyaTDtWYGO2CwdA",
               Url = "https://www.youtube.com/channel/UC7DdEm33SyaTDtWYGO2CwdA",
               Name = "Physics Girl",
@@ -1482,7 +1482,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T03:59:25.0000000Z")
             },
             /* 117 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7e57qWIEAZTQAaFwHpKdlw",
               Url = "https://www.youtube.com/channel/UC7e57qWIEAZTQAaFwHpKdlw",
               Name = "SomeBlackGuy",
@@ -1495,7 +1495,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-14T20:50:31.0000000Z")
             },
             /* 118 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7edjYPNhTm5LYJMT7UMt0Q",
               Url = "https://www.youtube.com/channel/UC7edjYPNhTm5LYJMT7UMt0Q",
               Name = "The Podcast of the Lotus Eaters",
@@ -1508,7 +1508,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-13T21:00:33.0000000Z")
             },
             /* 119 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7EPW5gLbslAKOvmSWZ3POg",
               Url = "https://www.youtube.com/channel/UC7EPW5gLbslAKOvmSWZ3POg",
               Name = "Steve Talon",
@@ -1519,7 +1519,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:36.3830000Z")
             },
             /* 120 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7eWyDzJ5uqNbnKB2StcsWg",
               Url = "https://www.youtube.com/channel/UC7eWyDzJ5uqNbnKB2StcsWg",
               Name = "Braving Ruin Live",
@@ -1530,7 +1530,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:36.5620000Z")
             },
             /* 121 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7IcJI8PUf5Z3zKxnZvTBog",
               Url = "https://www.youtube.com/channel/UC7IcJI8PUf5Z3zKxnZvTBog",
               Name = "The School of Life",
@@ -1543,7 +1543,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:00:11.0000000Z")
             },
             /* 122 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7IdYqaJ6eDkbX6JtKYcv6A",
               Url = "https://www.youtube.com/channel/UC7IdYqaJ6eDkbX6JtKYcv6A",
               Name = "Jim Majors",
@@ -1555,7 +1555,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-24T22:48:15.0000000Z")
             },
             /* 123 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7kIy8fZavEni8Gzl8NLjOQ",
               Url = "https://www.youtube.com/channel/UC7kIy8fZavEni8Gzl8NLjOQ",
               Name = "CosmicSkeptic",
@@ -1568,7 +1568,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-23T19:05:08.0000000Z")
             },
             /* 124 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7Q4rvzJDbHeBHYk5rnvZeA",
               Url = "https://www.youtube.com/channel/UC7Q4rvzJDbHeBHYk5rnvZeA",
               Name = "The Humanist Report",
@@ -1581,7 +1581,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T22:12:36.0000000Z")
             },
             /* 125 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7tc3pAxbnVzdgeBWw-yQeA",
               Url = "https://www.youtube.com/channel/UC7tc3pAxbnVzdgeBWw-yQeA",
               Name = "MissesMae",
@@ -1594,7 +1594,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-22T22:00:11.0000000Z")
             },
             /* 126 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7UiChjgT_LDKcr_8NEEbMA",
               Url = "https://www.youtube.com/channel/UC7UiChjgT_LDKcr_8NEEbMA",
               Name = "Brainlet",
@@ -1607,7 +1607,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-25T02:33:22.0000000Z")
             },
             /* 127 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7vMzUZ0JxX5vpiMQ19az6A",
               Url = "https://www.youtube.com/channel/UC7vMzUZ0JxX5vpiMQ19az6A",
               Name = "Peach Balie",
@@ -1619,7 +1619,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:22.4660000Z")
             },
             /* 128 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7xJftLtg3YJGgClZRr7hbg",
               Url = "https://www.youtube.com/channel/UC7xJftLtg3YJGgClZRr7hbg",
               Name = "The Symposium",
@@ -1631,7 +1631,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:22.8130000Z")
             },
             /* 129 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7XqVxGm5Kg8-PSrO2MA_Yw",
               Url = "https://www.youtube.com/channel/UC7XqVxGm5Kg8-PSrO2MA_Yw",
               Name = "Cristina & Patricia",
@@ -1644,7 +1644,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T18:00:12.0000000Z")
             },
             /* 130 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC88lvyJe7aHZmcvzvubDFRg",
               Url = "https://www.youtube.com/channel/UC88lvyJe7aHZmcvzvubDFRg",
               Name = "Timeline - World History Documentaries",
@@ -1657,7 +1657,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:24:45.0000000Z")
             },
             /* 131 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC89QtIAIY6xQgOhMYxMWXFA",
               Url = "https://www.youtube.com/channel/UC89QtIAIY6xQgOhMYxMWXFA",
               Name = "MyNameIsJosephine",
@@ -1669,7 +1669,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-21T18:00:08.0000000Z")
             },
             /* 132 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8butISFwT-Wl7EV0hUK0BQ",
               Url = "https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ",
               Name = "freeCodeCamp.org",
@@ -1682,7 +1682,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T13:11:30.0000000Z")
             },
             /* 133 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8JT2m0mKEgvEtie3JNKwew",
               Url = "https://www.youtube.com/channel/UC8JT2m0mKEgvEtie3JNKwew",
               Name = "Naked Science",
@@ -1695,7 +1695,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T17:00:21.0000000Z")
             },
             /* 134 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8MX9ECowgDMTOnFTE8EUJw",
               Url = "https://www.youtube.com/channel/UC8MX9ECowgDMTOnFTE8EUJw",
               Name = "HistoryMarche",
@@ -1708,7 +1708,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T16:45:12.0000000Z")
             },
             /* 135 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8RJExf7iNpV6tp6hvNtwww",
               Url = "https://www.youtube.com/channel/UC8RJExf7iNpV6tp6hvNtwww",
               Name = "Romanian TVee",
@@ -1721,7 +1721,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-29T18:00:10.0000000Z")
             },
             /* 136 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8sZtJe922N8UIHmWVQmX4g",
               Url = "https://www.youtube.com/channel/UC8sZtJe922N8UIHmWVQmX4g",
               Name = "Heifetz International Music Institute",
@@ -1734,7 +1734,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:46:56.0000000Z")
             },
             /* 137 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC958L6D_3vjB83R1uvUfXVw",
               Url = "https://www.youtube.com/channel/UC958L6D_3vjB83R1uvUfXVw",
               Name = "Bane Speaks",
@@ -1745,7 +1745,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:39.3870000Z")
             },
             /* 138 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC95LF0f3HNtVYxnLYAPlwaw",
               Url = "https://www.youtube.com/channel/UC95LF0f3HNtVYxnLYAPlwaw",
               Name = "emilyplayscello",
@@ -1758,7 +1758,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-05T17:41:57.0000000Z")
             },
             /* 139 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9Bk0GbW8xgvTgQlheNG5uw",
               Url = "https://www.youtube.com/channel/UC9Bk0GbW8xgvTgQlheNG5uw",
               Name = "Amythest Schaber",
@@ -1770,7 +1770,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:41.6500000Z")
             },
             /* 140 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9FlqOcryiFK6ADScw7zswQ",
               Url = "https://www.youtube.com/channel/UC9FlqOcryiFK6ADScw7zswQ",
               Name = "Bill Ludlow",
@@ -1782,7 +1782,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:41.8050000Z")
             },
             /* 141 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9KybnxK7frCt2AbwThaW_g",
               Url = "https://www.youtube.com/channel/UC9KybnxK7frCt2AbwThaW_g",
               Name = "Medium Rare",
@@ -1795,7 +1795,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-11T12:13:45.0000000Z")
             },
             /* 142 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9LIQ1_csOAXTHOjQ_G11SA",
               Url = "https://www.youtube.com/channel/UC9LIQ1_csOAXTHOjQ_G11SA",
               Name = "The Antibot",
@@ -1808,7 +1808,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-24T16:00:23.0000000Z")
             },
             /* 143 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9lztld5qPi-6WZ9_QIVR6g",
               Url = "https://www.youtube.com/channel/UC9lztld5qPi-6WZ9_QIVR6g",
               Name = "Parth G",
@@ -1825,7 +1825,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T15:30:07.0000000Z")
             },
             /* 144 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9MAhZQQd9egwWCxrwSIsJQ",
               Url = "https://www.youtube.com/channel/UC9MAhZQQd9egwWCxrwSIsJQ",
               Name = "HISTORY",
@@ -1838,7 +1838,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T01:59:47.0000000Z")
             },
             /* 145 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9MKC0Yxbf8ULpOYvzzcQKQ",
               Url = "https://www.youtube.com/channel/UC9MKC0Yxbf8ULpOYvzzcQKQ",
               Name = "Scientist Mel",
@@ -1851,7 +1851,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T02:27:00.0000000Z")
             },
             /* 146 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9nw1ojNmCsW9McgUYuk93w",
               Url = "https://www.youtube.com/channel/UC9nw1ojNmCsW9McgUYuk93w",
               Name = "Science Magic Show",
@@ -1863,7 +1863,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:42.4440000Z")
             },
             /* 147 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9pY5ktM9SncpAt_bgWXdiw",
               Url = "https://www.youtube.com/channel/UC9pY5ktM9SncpAt_bgWXdiw",
               Name = "Projicked",
@@ -1875,7 +1875,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:42.7900000Z")
             },
             /* 148 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9pYOJPB5UYlMlGKKZWo-Bw",
               Url = "https://www.youtube.com/channel/UC9pYOJPB5UYlMlGKKZWo-Bw",
               Name = "Space & The Universe HD",
@@ -1888,7 +1888,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-14T12:45:47.0000000Z")
             },
             /* 149 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9U3o8C7KUzauwbEMtzyLWQ",
               Url = "https://www.youtube.com/channel/UC9U3o8C7KUzauwbEMtzyLWQ",
               Name = "Jaclyn & David Vlogs",
@@ -1901,7 +1901,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T15:00:11.0000000Z")
             },
             /* 150 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9uD-W5zQHQuAVT2GdcLCvg",
               Url = "https://www.youtube.com/channel/UC9uD-W5zQHQuAVT2GdcLCvg",
               Name = "Science Insider",
@@ -1914,7 +1914,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:00:23.0000000Z")
             },
             /* 151 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9vwJXx7DR-3zSub4mwQNFg",
               Url = "https://www.youtube.com/channel/UC9vwJXx7DR-3zSub4mwQNFg",
               Name = "Tara McCarthy",
@@ -1925,7 +1925,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:44.3100000Z")
             },
             /* 152 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9woec5S4CA4q0tcxtJDzsA",
               Url = "https://www.youtube.com/channel/UC9woec5S4CA4q0tcxtJDzsA",
               Name = "Miss Misa",
@@ -1937,7 +1937,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:44.4500000Z")
             },
             /* 153 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9x5EJOBBvdu1gwewzxBX7Q",
               Url = "https://www.youtube.com/channel/UC9x5EJOBBvdu1gwewzxBX7Q",
               Name = "DalibanHQ Highlights",
@@ -1952,7 +1952,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 154 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9-y-6csu5WGm29I7JiwpnA",
               Url = "https://www.youtube.com/channel/UC9-y-6csu5WGm29I7JiwpnA",
               Name = "Computerphile",
@@ -1965,7 +1965,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T13:53:06.0000000Z")
             },
             /* 155 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA_EUxErCYiD4SZXRfaZnIg",
               Url = "https://www.youtube.com/channel/UCA_EUxErCYiD4SZXRfaZnIg",
               Name = "Rose of Dawn",
@@ -1977,7 +1977,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-13T18:00:11.0000000Z")
             },
             /* 156 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA1tk_Wa3Lm4hMZ4ssPEuLw",
               Url = "https://www.youtube.com/channel/UCA1tk_Wa3Lm4hMZ4ssPEuLw",
               Name = "TheMediaCows",
@@ -1989,7 +1989,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:46.5830000Z")
             },
             /* 157 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa35qyNpnlZ_u8n9qoAZbMQ",
               Url = "https://www.youtube.com/channel/UCa35qyNpnlZ_u8n9qoAZbMQ",
               Name = "HowStuffWorks",
@@ -2002,7 +2002,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-10T16:00:33.0000000Z")
             },
             /* 158 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa38X3NJPVlVIYlOg9R7FYw",
               Url = "https://www.youtube.com/channel/UCa38X3NJPVlVIYlOg9R7FYw",
               Name = "Blaire Black",
@@ -2014,7 +2014,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:00:09.0000000Z")
             },
             /* 159 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa3meRxRwQrXg__x--Goxrg",
               Url = "https://www.youtube.com/channel/UCa3meRxRwQrXg__x--Goxrg",
               Name = "50 Shades",
@@ -2026,7 +2026,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:49.4850000Z")
             },
             /* 160 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA4X3KvEjXLVv5qpw9FPKcg",
               Url = "https://www.youtube.com/channel/UCA4X3KvEjXLVv5qpw9FPKcg",
               Name = "Dave S",
@@ -2039,7 +2039,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-11T06:26:25.0000000Z")
             },
             /* 161 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA63aMA5BmoqNtJUWL4QW-w",
               Url = "https://www.youtube.com/channel/UCA63aMA5BmoqNtJUWL4QW-w",
               Name = "Melonie Mac Go Boom",
@@ -2054,7 +2054,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 162 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaB5Bb5FU7XWbCbPJ_CiIFA",
               Url = "https://www.youtube.com/channel/UCaB5Bb5FU7XWbCbPJ_CiIFA",
               Name = "CharmingMan",
@@ -2066,7 +2066,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:40.8150000Z")
             },
             /* 163 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-AC9QO9x5EbxFdi5g2pvXg",
               Url = "https://www.youtube.com/channel/UC-AC9QO9x5EbxFdi5g2pvXg",
               Name = "Celebrity Universe",
@@ -2077,7 +2077,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:41.1740000Z")
             },
             /* 164 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaDquBkHKvsurdpObeWH9zg",
               Url = "https://www.youtube.com/channel/UCaDquBkHKvsurdpObeWH9zg",
               Name = "Nema Lass",
@@ -2090,7 +2090,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:04:34.0000000Z")
             },
             /* 165 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAeaXwYN65NdLQ1aLzRLlTg",
               Url = "https://www.youtube.com/channel/UCAeaXwYN65NdLQ1aLzRLlTg",
               Name = "The GT Special",
@@ -2102,7 +2102,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:48.7290000Z")
             },
             /* 166 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaFNs3ETMvkmy0JahAS6WJA",
               Url = "https://www.youtube.com/channel/UCaFNs3ETMvkmy0JahAS6WJA",
               Name = "Logicked",
@@ -2115,7 +2115,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T04:58:40.0000000Z")
             },
             /* 167 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAgBUlIpzlJaE0693J3s97w",
               Url = "https://www.youtube.com/channel/UCAgBUlIpzlJaE0693J3s97w",
               Name = "Baked Alaska",
@@ -2127,7 +2127,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:43.3370000Z")
             },
             /* 168 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCahFEEQJdFCtuE3IkDFK3mw",
               Url = "https://www.youtube.com/channel/UCahFEEQJdFCtuE3IkDFK3mw",
               Name = "iHeart Media",
@@ -2139,7 +2139,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:49.3860000Z")
             },
             /* 169 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAJfDidJyukTekgSRZrjadw",
               Url = "https://www.youtube.com/channel/UCAJfDidJyukTekgSRZrjadw",
               Name = "AronRa",
@@ -2151,7 +2151,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T03:40:45.0000000Z")
             },
             /* 170 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCak3NZxjNnWip327vYL8RLA",
               Url = "https://www.youtube.com/channel/UCak3NZxjNnWip327vYL8RLA",
               Name = "CSIRO",
@@ -2164,7 +2164,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T23:26:03.0000000Z")
             },
             /* 171 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCakgsb0w7QB0VHdnCc-OVEA",
               Url = "https://www.youtube.com/channel/UCakgsb0w7QB0VHdnCc-OVEA",
               Name = "Space Videos",
@@ -2177,7 +2177,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T15:29:29.0000000Z")
             },
             /* 172 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAldq8BAAGdsX9UyK_09-ZA",
               Url = "https://www.youtube.com/channel/UCAldq8BAAGdsX9UyK_09-ZA",
               Name = "Jeff Holiday",
@@ -2190,7 +2190,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T21:44:10.0000000Z")
             },
             /* 173 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCANk4DCsImDX3wlXQ6M1Jdg",
               Url = "https://www.youtube.com/channel/UCANk4DCsImDX3wlXQ6M1Jdg",
               Name = "RedEffect",
@@ -2203,7 +2203,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T16:20:16.0000000Z")
             },
             /* 174 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCarOqR87zwSNXHDmbtJVV0A",
               Url = "https://www.youtube.com/channel/UCarOqR87zwSNXHDmbtJVV0A",
               Name = "Meg Turney",
@@ -2216,7 +2216,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T20:00:06.0000000Z")
             },
             /* 175 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCasGLcO75IgsUU9XxXFig9A",
               Url = "https://www.youtube.com/channel/UCasGLcO75IgsUU9XxXFig9A",
               Name = "TheMagicSandwichShow",
@@ -2227,7 +2227,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:46:47.0320000Z")
             },
             /* 176 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA-SZX2Xzl0p7pJy2fHeN-Q",
               Url = "https://www.youtube.com/channel/UCA-SZX2Xzl0p7pJy2fHeN-Q",
               Name = "Man Made Mead",
@@ -2240,7 +2240,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:09.0000000Z")
             },
             /* 177 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAuK58_8EFT4ztv5gPyRf1A",
               Url = "https://www.youtube.com/channel/UCAuK58_8EFT4ztv5gPyRf1A",
               Name = "Shinobi Yaka",
@@ -2252,7 +2252,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:44.6940000Z")
             },
             /* 178 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaWf6VC6vmZcGdI_I0XYeRw",
               Url = "https://www.youtube.com/channel/UCaWf6VC6vmZcGdI_I0XYeRw",
               Name = "Milo Stewart",
@@ -2265,7 +2265,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-05T08:00:01.0000000Z")
             },
             /* 179 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAY-SMFNfynqz1bdoaV8BeQ",
               Url = "https://www.youtube.com/channel/UCAY-SMFNfynqz1bdoaV8BeQ",
               Name = "NASA Goddard",
@@ -2278,7 +2278,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T18:07:49.0000000Z")
             },
             /* 180 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAzKFALPuF_EPe-AEI0WFFw",
               Url = "https://www.youtube.com/channel/UCAzKFALPuF_EPe-AEI0WFFw",
               Name = "TwoSetViolin",
@@ -2291,7 +2291,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T14:31:37.0000000Z")
             },
             /* 181 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb0QTecumjAA5lNai9y5nng",
               Url = "https://www.youtube.com/channel/UCb0QTecumjAA5lNai9y5nng",
               Name = "Memorie Holiday",
@@ -2304,7 +2304,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-11T15:29:45.0000000Z")
             },
             /* 182 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb3KY97ICfIkDJY_p6d7yig",
               Url = "https://www.youtube.com/channel/UCb3KY97ICfIkDJY_p6d7yig",
               Name = "SaveAFox",
@@ -2317,7 +2317,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:09:51.0000000Z")
             },
             /* 183 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb9DL5O8lBJpplCOqYJEJWg",
               Url = "https://www.youtube.com/channel/UCb9DL5O8lBJpplCOqYJEJWg",
               Name = "BASSFZz",
@@ -2330,7 +2330,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-25T18:11:36.0000000Z")
             },
             /* 184 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbaz7oKyecXe_OvdTbLKhKQ",
               Url = "https://www.youtube.com/channel/UCbaz7oKyecXe_OvdTbLKhKQ",
               Name = "Dogbytes",
@@ -2343,7 +2343,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T18:00:09.0000000Z")
             },
             /* 185 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbb0GW1BqPP2woGaGrOuSqQ",
               Url = "https://www.youtube.com/channel/UCbb0GW1BqPP2woGaGrOuSqQ",
               Name = "Gutenburg",
@@ -2354,7 +2354,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:46:52.3490000Z")
             },
             /* 186 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBdmOR7wkey98CHapw3xESQ",
               Url = "https://www.youtube.com/channel/UCBdmOR7wkey98CHapw3xESQ",
               Name = "Sarah Michel",
@@ -2367,7 +2367,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-15T13:27:30.0000000Z")
             },
             /* 187 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBELcxCMIUBhP7lgWspKn0Q",
               Url = "https://www.youtube.com/channel/UCBELcxCMIUBhP7lgWspKn0Q",
               Name = "The Geek Room",
@@ -2380,7 +2380,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T03:24:50.0000000Z")
             },
             /* 188 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBgQzXEjfeAlb8GtvuIsLQA",
               Url = "https://www.youtube.com/channel/UCBgQzXEjfeAlb8GtvuIsLQA",
               Name = "Wizard Of Cause",
@@ -2393,7 +2393,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-22T04:20:30.0000000Z")
             },
             /* 189 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBhuX1yNlQ3dssQDXA7czNg",
               Url = "https://www.youtube.com/channel/UCBhuX1yNlQ3dssQDXA7czNg",
               Name = "Astronomy Live",
@@ -2406,7 +2406,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-18T19:35:06.0000000Z")
             },
             /* 190 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbjw7dE_hxJT-VGLTqCjlJA",
               Url = "https://www.youtube.com/channel/UCbjw7dE_hxJT-VGLTqCjlJA",
               Name = "Professor Stick",
@@ -2419,7 +2419,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T23:40:09.0000000Z")
             },
             /* 191 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbJx13WCQq8mpbaIwz6Oanw",
               Url = "https://www.youtube.com/channel/UCbJx13WCQq8mpbaIwz6Oanw",
               Name = "Misandry Today",
@@ -2432,7 +2432,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-14T22:26:12.0000000Z")
             },
             /* 192 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBNovtjbnHeABUSVO0im3jA",
               Url = "https://www.youtube.com/channel/UCBNovtjbnHeABUSVO0im3jA",
               Name = "The Here and How Podcast",
@@ -2444,7 +2444,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:05.7350000Z")
             },
             /* 193 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbo5uoBJxrPgikkOUDtflaw",
               Url = "https://www.youtube.com/channel/UCbo5uoBJxrPgikkOUDtflaw",
               Name = "Flowerprincess",
@@ -2456,7 +2456,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:05.9410000Z")
             },
             /* 194 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCboMX_UNgaPBsUOIgasn3-Q",
               Url = "https://www.youtube.com/channel/UCboMX_UNgaPBsUOIgasn3-Q",
               Name = "Funhaus",
@@ -2469,7 +2469,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T17:00:26.0000000Z")
             },
             /* 195 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBPd85xN3HS0tpF-DHeBLNw",
               Url = "https://www.youtube.com/channel/UCBPd85xN3HS0tpF-DHeBLNw",
               Name = "ThePaultergeist",
@@ -2480,7 +2480,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:07.9520000Z")
             },
             /* 196 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBQo27DbqeB-xG17-kekrdQ",
               Url = "https://www.youtube.com/channel/UCBQo27DbqeB-xG17-kekrdQ",
               Name = "Digital Hammurabi",
@@ -2493,7 +2493,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-18T14:45:23.0000000Z")
             },
             /* 197 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBVYmXSIzHq_gXMZpsfd9kg",
               Url = "https://www.youtube.com/channel/UCBVYmXSIzHq_gXMZpsfd9kg",
               Name = "6oodfella",
@@ -2506,7 +2506,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T23:29:55.0000000Z")
             },
             /* 198 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbWnaGDPYVAAwg9DQR3HHFQ",
               Url = "https://www.youtube.com/channel/UCbWnaGDPYVAAwg9DQR3HHFQ",
               Name = "Babbling Brooke",
@@ -2519,7 +2519,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T07:41:34.0000000Z")
             },
             /* 199 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBYO1gzzi-K6at2JDJBDlUg",
               Url = "https://www.youtube.com/channel/UCBYO1gzzi-K6at2JDJBDlUg",
               Name = "Latrodectus",
@@ -2531,7 +2531,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.1880000Z")
             },
             /* 200 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbzlkgBh8dcvTlreNC1hGig",
               Url = "https://www.youtube.com/channel/UCbzlkgBh8dcvTlreNC1hGig",
               Name = "Roaming Media",
@@ -2543,7 +2543,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.5320000Z")
             },
             /* 201 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCc3e9XOO_neg3mnb9yDTklg",
               Url = "https://www.youtube.com/channel/UCc3e9XOO_neg3mnb9yDTklg",
               Name = "Visual Capitalist",
@@ -2555,7 +2555,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.6810000Z")
             },
             /* 202 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCC3L8QaxqEGUiBC252GHy3w",
               Url = "https://www.youtube.com/channel/UCC3L8QaxqEGUiBC252GHy3w",
               Name = "Stefan Molyneux",
@@ -2566,7 +2566,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.8230000Z")
             },
             /* 203 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCC6ue7UYt1yeS621xmTMKrQ",
               Url = "https://www.youtube.com/channel/UCC6ue7UYt1yeS621xmTMKrQ",
               Name = "Rachel Oates",
@@ -2583,7 +2583,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-21T17:30:01.0000000Z")
             },
             /* 204 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcc_zG4pMLpuefQQs25e4bg",
               Url = "https://www.youtube.com/channel/UCcc_zG4pMLpuefQQs25e4bg",
               Name = "TheAtheistGamer",
@@ -2595,7 +2595,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:48.7100000Z")
             },
             /* 205 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCd1Cwjp3hK1tTxevgnHD3g",
               Url = "https://www.youtube.com/channel/UCCd1Cwjp3hK1tTxevgnHD3g",
               Name = "Alina Gingertail",
@@ -2608,7 +2608,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-27T12:46:45.0000000Z")
             },
             /* 206 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCGvq-qmjFmmMD4e-PLQqGg",
               Url = "https://www.youtube.com/channel/UCCGvq-qmjFmmMD4e-PLQqGg",
               Name = "The Cold War",
@@ -2620,7 +2620,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T13:34:05.0000000Z")
             },
             /* 207 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCchZAQbtHEcyvRZphDNmNhA",
               Url = "https://www.youtube.com/channel/UCchZAQbtHEcyvRZphDNmNhA",
               Name = "AtheistMinority",
@@ -2632,7 +2632,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:19.1790000Z")
             },
             /* 208 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCciQ8wFcVoIIMi-lfu8-cjQ",
               Url = "https://www.youtube.com/channel/UCciQ8wFcVoIIMi-lfu8-cjQ",
               Name = "Anton Petrov",
@@ -2645,7 +2645,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:00:13.0000000Z")
             },
             /* 209 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCkVMojdBWS-JtH7TliWkVg",
               Url = "https://www.youtube.com/channel/UCCkVMojdBWS-JtH7TliWkVg",
               Name = "GynvaelEN",
@@ -2658,7 +2658,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-01T23:34:27.0000000Z")
             },
             /* 210 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCMi6F5Ac3kQDfffWXQGZDw",
               Url = "https://www.youtube.com/channel/UCCMi6F5Ac3kQDfffWXQGZDw",
               Name = "Guided Hacking",
@@ -2671,7 +2671,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-12T18:02:24.0000000Z")
             },
             /* 211 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcmnLu5cGUGeLy744WS-fsg",
               Url = "https://www.youtube.com/channel/UCcmnLu5cGUGeLy744WS-fsg",
               Name = "karen straughan",
@@ -2683,7 +2683,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:49.8090000Z")
             },
             /* 212 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcnwwOJqzBrQNqVmgWjEY_w",
               Url = "https://www.youtube.com/channel/UCcnwwOJqzBrQNqVmgWjEY_w",
               Name = "Highdeology",
@@ -2696,7 +2696,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-06T08:31:12.0000000Z")
             },
             /* 213 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcnyjTK4IheQN2ycsE7NZTQ",
               Url = "https://www.youtube.com/channel/UCcnyjTK4IheQN2ycsE7NZTQ",
               Name = "BeatTheBush",
@@ -2709,7 +2709,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:36.0000000Z")
             },
             /* 214 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCOCu3T6InzOZ826l8ryFzA",
               Url = "https://www.youtube.com/channel/UCCOCu3T6InzOZ826l8ryFzA",
               Name = "GeneticJulia",
@@ -2721,7 +2721,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:37.7680000Z")
             },
             /* 215 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcOdk8_n1ce7NUvFCtvLKXw",
               Url = "https://www.youtube.com/channel/UCcOdk8_n1ce7NUvFCtvLKXw",
               Name = "The Documentary Channel",
@@ -2732,7 +2732,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:37.9280000Z")
             },
             /* 216 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcOtHMt1S9Nl4Pycp-FWd8Q",
               Url = "https://www.youtube.com/channel/UCcOtHMt1S9Nl4Pycp-FWd8Q",
               Name = "Badger Live Streams",
@@ -2745,7 +2745,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T00:05:31.0000000Z")
             },
             /* 217 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcp1LHMsXeeursAa_ffnL3g",
               Url = "https://www.youtube.com/channel/UCcp1LHMsXeeursAa_ffnL3g",
               Name = "i moved channels lol",
@@ -2757,7 +2757,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:43.7100000Z")
             },
             /* 218 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCR0sGyrQN800DkQbhCbLDA",
               Url = "https://www.youtube.com/channel/UCCR0sGyrQN800DkQbhCbLDA",
               Name = "Connor Ward",
@@ -2770,7 +2770,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-01T14:58:39.0000000Z")
             },
             /* 219 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcrXOqPJU1uaXJLlH2ZYvtQ",
               Url = "https://www.youtube.com/channel/UCcrXOqPJU1uaXJLlH2ZYvtQ",
               Name = "Dark Titan Enterprises - Vara Dark",
@@ -2783,7 +2783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:04:36.0000000Z")
             },
             /* 220 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCct9aR7HC79Cv2g-9oDOTLw",
               Url = "https://www.youtube.com/channel/UCct9aR7HC79Cv2g-9oDOTLw",
               Name = "ReligionForBreakfast",
@@ -2796,7 +2796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-10T17:50:34.0000000Z")
             },
             /* 221 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCctjGdm2NlMNzIlxz02IsXA",
               Url = "https://www.youtube.com/channel/UCctjGdm2NlMNzIlxz02IsXA",
               Name = "Chris Ray Gun",
@@ -2809,7 +2809,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-26T18:01:00.0000000Z")
             },
             /* 222 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCVafG-j-O0q1s6Hk98od4Q",
               Url = "https://www.youtube.com/channel/UCCVafG-j-O0q1s6Hk98od4Q",
               Name = "Purpandorange Media",
@@ -2821,7 +2821,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:45.5790000Z")
             },
             /* 223 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcX9nxdblc19kfm5hqVfRBA",
               Url = "https://www.youtube.com/channel/UCcX9nxdblc19kfm5hqVfRBA",
               Name = "K",
@@ -2833,7 +2833,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:45.9260000Z")
             },
             /* 224 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcygdrZy-YxcOiLM-delp3A",
               Url = "https://www.youtube.com/channel/UCcygdrZy-YxcOiLM-delp3A",
               Name = "Milwaukee Atheists",
@@ -2846,7 +2846,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T07:31:33.0000000Z")
             },
             /* 225 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD_19bqcd4C503VTIQS9vNg",
               Url = "https://www.youtube.com/channel/UCD_19bqcd4C503VTIQS9vNg",
               Name = "IndividualSituation",
@@ -2858,7 +2858,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-12T11:00:10.0000000Z")
             },
             /* 226 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd2xKD82vb-LbFEgE6MPsGw",
               Url = "https://www.youtube.com/channel/UCd2xKD82vb-LbFEgE6MPsGw",
               Name = "Exclusively Games",
@@ -2870,7 +2870,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:00.3190000Z")
             },
             /* 227 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd3QsPIFbz0y5kZ2frrzIHA",
               Url = "https://www.youtube.com/channel/UCd3QsPIFbz0y5kZ2frrzIHA",
               Name = "Godless",
@@ -2882,7 +2882,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:52.6580000Z")
             },
             /* 228 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD41uXZy_Wq3pvrbhGQo5TQ",
               Url = "https://www.youtube.com/channel/UCD41uXZy_Wq3pvrbhGQo5TQ",
               Name = "That Girl",
@@ -2894,7 +2894,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:16.1590000Z")
             },
             /* 229 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4EOyXKjfDUhCI6jlOZZYQ",
               Url = "https://www.youtube.com/channel/UCD4EOyXKjfDUhCI6jlOZZYQ",
               Name = "Eli the Computer Guy",
@@ -2906,7 +2906,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T14:00:09.0000000Z")
             },
             /* 230 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4NnnbISbr4dvmmzQxC2bA",
               Url = "https://www.youtube.com/channel/UCD4NnnbISbr4dvmmzQxC2bA",
               Name = "TheTopher",
@@ -2919,7 +2919,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:56:02.0000000Z")
             },
             /* 231 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4qMoFPUEzSn4CurFLJkIQ",
               Url = "https://www.youtube.com/channel/UCD4qMoFPUEzSn4CurFLJkIQ",
               Name = "Steve Shives",
@@ -2932,7 +2932,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T23:33:33.0000000Z")
             },
             /* 232 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD5B6VoXv41fJ-IW8Wrhz9A",
               Url = "https://www.youtube.com/channel/UCD5B6VoXv41fJ-IW8Wrhz9A",
               Name = "Fermilab",
@@ -2945,7 +2945,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-21T14:39:54.0000000Z")
             },
             /* 233 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd61c95-yJqQejWI3LGmP0Q",
               Url = "https://www.youtube.com/channel/UCd61c95-yJqQejWI3LGmP0Q",
               Name = "Hayang Park Violist",
@@ -2957,7 +2957,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-24T01:37:08.0000000Z")
             },
             /* 234 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdBaHin6PDzS4V7EaNLS2-A",
               Url = "https://www.youtube.com/channel/UCdBaHin6PDzS4V7EaNLS2-A",
               Name = "The Satiratician",
@@ -2970,7 +2970,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T09:31:11.0000000Z")
             },
             /* 235 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdBiq2pBwL0e0d_hm1TVVhA",
               Url = "https://www.youtube.com/channel/UCdBiq2pBwL0e0d_hm1TVVhA",
               Name = "SchizophrenicQueen",
@@ -2982,7 +2982,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:27.6730000Z")
             },
             /* 236 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDc_MCu3ZstNXmAqqT36SNA",
               Url = "https://www.youtube.com/channel/UCDc_MCu3ZstNXmAqqT36SNA",
               Name = "SugarTits",
@@ -2995,7 +2995,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-08T03:03:08.0000000Z")
             },
             /* 237 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdDS4j318UpKjNcpe_LeQxQ",
               Url = "https://www.youtube.com/channel/UCdDS4j318UpKjNcpe_LeQxQ",
               Name = "The Exoplanets Channel",
@@ -3008,7 +3008,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T14:00:01.0000000Z")
             },
             /* 238 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDdvY2ntkRKaul_OQT89jAQ",
               Url = "https://www.youtube.com/channel/UCDdvY2ntkRKaul_OQT89jAQ",
               Name = "Jenny Yun",
@@ -3021,7 +3021,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T06:05:31.0000000Z")
             },
             /* 239 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDgchsbJnrX604K-xWsd-fQ",
               Url = "https://www.youtube.com/channel/UCDgchsbJnrX604K-xWsd-fQ",
               Name = "Hunter Avallone",
@@ -3034,7 +3034,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-02T21:26:52.0000000Z")
             },
             /* 240 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdGkmb5zEDXnPSmQlV43t0Q",
               Url = "https://www.youtube.com/channel/UCdGkmb5zEDXnPSmQlV43t0Q",
               Name = "JamesRandiFoundation",
@@ -3046,7 +3046,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:39.2050000Z")
             },
             /* 241 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDG-Sd71Hm1hVeoQnSD0HRw",
               Url = "https://www.youtube.com/channel/UCDG-Sd71Hm1hVeoQnSD0HRw",
               Name = "Bennehh",
@@ -3059,7 +3059,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T09:49:13.0000000Z")
             },
             /* 242 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdhES1DtY9klIfJsjGKs3gQ",
               Url = "https://www.youtube.com/channel/UCdhES1DtY9klIfJsjGKs3gQ",
               Name = "Astroathens",
@@ -3072,7 +3072,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T16:22:58.0000000Z")
             },
             /* 243 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDI3YRBbQdyWoGOqvDUnv_g",
               Url = "https://www.youtube.com/channel/UCDI3YRBbQdyWoGOqvDUnv_g",
               Name = "Nataleo",
@@ -3085,7 +3085,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-19T17:47:33.0000000Z")
             },
             /* 244 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDkxbimP81Pl8uCvpADam6w",
               Url = "https://www.youtube.com/channel/UCDkxbimP81Pl8uCvpADam6w",
               Name = "BNY",
@@ -3098,7 +3098,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-22T21:52:56.0000000Z")
             },
             /* 245 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDmCBKaKOtOrEqgsL4-3C8Q",
               Url = "https://www.youtube.com/channel/UCDmCBKaKOtOrEqgsL4-3C8Q",
               Name = "Blaire White",
@@ -3111,7 +3111,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T21:00:09.0000000Z")
             },
             /* 246 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDMqSuOZpXgfLpTu8RxZRuA",
               Url = "https://www.youtube.com/channel/UCDMqSuOZpXgfLpTu8RxZRuA",
               Name = "Claudia Boleyn Music",
@@ -3123,7 +3123,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:55.7160000Z")
             },
             /* 247 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdoPCtKATcd9HBDp_vhauRA",
               Url = "https://www.youtube.com/channel/UCdoPCtKATcd9HBDp_vhauRA",
               Name = "LaurenzLIVEside",
@@ -3136,7 +3136,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T19:15:01.0000000Z")
             },
             /* 248 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdQLSbeCkAk-G8J-jb5JICA",
               Url = "https://www.youtube.com/channel/UCdQLSbeCkAk-G8J-jb5JICA",
               Name = "Tina Narvaez Jr",
@@ -3148,7 +3148,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-16T15:04:10.0000000Z")
             },
             /* 249 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDrf81P2Z6imhHbJ8xf7P-g",
               Url = "https://www.youtube.com/channel/UCDrf81P2Z6imhHbJ8xf7P-g",
               Name = "Mr Silhouette",
@@ -3160,7 +3160,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:44.6360000Z")
             },
             /* 250 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdSXHRRp_LPaHNEHJgc6izw",
               Url = "https://www.youtube.com/channel/UCdSXHRRp_LPaHNEHJgc6izw",
               Name = "Lawrence Krauss",
@@ -3171,7 +3171,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:44.7590000Z")
             },
             /* 251 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDVb4m_5QHhZElT47E1oODg",
               Url = "https://www.youtube.com/channel/UCDVb4m_5QHhZElT47E1oODg",
               Name = "The Dave Cullen Show",
@@ -3184,7 +3184,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-18T11:18:19.0000000Z")
             },
             /* 252 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDWmp9u3xBGwFR1iEIeEyOg",
               Url = "https://www.youtube.com/channel/UCDWmp9u3xBGwFR1iEIeEyOg",
               Name = "SkepTorr",
@@ -3196,7 +3196,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:50.9140000Z")
             },
             /* 253 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDXr2cbK7WlfeYEtJxC9i3w",
               Url = "https://www.youtube.com/channel/UCDXr2cbK7WlfeYEtJxC9i3w",
               Name = "Soundly",
@@ -3208,7 +3208,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:51.2750000Z")
             },
             /* 254 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDXTQ8nWmx_EhZ2v-kp7QxA",
               Url = "https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA",
               Name = "Ben Felix",
@@ -3221,7 +3221,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T15:00:31.0000000Z")
             },
             /* 255 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdZ0V89JCjTV7_OagiJ3mJw",
               Url = "https://www.youtube.com/channel/UCdZ0V89JCjTV7_OagiJ3mJw",
               Name = "ED DocumentaryTV",
@@ -3233,7 +3233,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:52.0750000Z")
             },
             /* 256 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDz996l_rUM4Euut3-3a6xw",
               Url = "https://www.youtube.com/channel/UCDz996l_rUM4Euut3-3a6xw",
               Name = "Autistamatic",
@@ -3246,7 +3246,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-20T20:00:08.0000000Z")
             },
             /* 257 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-E_nLi_776jj2gvKVgs0EQ",
               Url = "https://www.youtube.com/channel/UC-E_nLi_776jj2gvKVgs0EQ",
               Name = "Violineest",
@@ -3259,7 +3259,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-29T05:15:25.0000000Z")
             },
             /* 258 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe17o0PQX4LK7AvAaARxqwQ",
               Url = "https://www.youtube.com/channel/UCe17o0PQX4LK7AvAaARxqwQ",
               Name = "TheLivingDinosaur",
@@ -3272,7 +3272,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-06T22:56:28.0000000Z")
             },
             /* 259 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCE31MqUy6nIMJ_f8y4R3_AA",
               Url = "https://www.youtube.com/channel/UCE31MqUy6nIMJ_f8y4R3_AA",
               Name = "Gavin Webber",
@@ -3285,7 +3285,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:51:28.0000000Z")
             },
             /* 260 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCE6acMV3m35znLcf0JGNn7Q",
               Url = "https://www.youtube.com/channel/UCE6acMV3m35znLcf0JGNn7Q",
               Name = "Gibi ASMR",
@@ -3298,7 +3298,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T02:25:18.0000000Z")
             },
             /* 261 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe8Cl5vsMrCBT128OkzZhEQ",
               Url = "https://www.youtube.com/channel/UCe8Cl5vsMrCBT128OkzZhEQ",
               Name = "Our Watch",
@@ -3311,7 +3311,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-27T22:37:50.0000000Z")
             },
             /* 262 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe9g_wsVXN17qmw8kPk4hRw",
               Url = "https://www.youtube.com/channel/UCe9g_wsVXN17qmw8kPk4hRw",
               Name = "Zahinsky",
@@ -3323,7 +3323,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:53.7520000Z")
             },
             /* 263 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe9Wf70NeHSXg2hwxZQJOIA",
               Url = "https://www.youtube.com/channel/UCe9Wf70NeHSXg2hwxZQJOIA",
               Name = "Josh O'Brien",
@@ -3335,7 +3335,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:59.8340000Z")
             },
             /* 264 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeBnbqt4VRhotq2TQjkIi2A",
               Url = "https://www.youtube.com/channel/UCeBnbqt4VRhotq2TQjkIi2A",
               Name = "LaurenzSide",
@@ -3348,7 +3348,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T18:05:47.0000000Z")
             },
             /* 265 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeFlOi54kYIgbJHt_1ApDpg",
               Url = "https://www.youtube.com/channel/UCeFlOi54kYIgbJHt_1ApDpg",
               Name = "The Justicar",
@@ -3360,7 +3360,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:54.8380000Z")
             },
             /* 266 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCegeYNZdLvPQWQktawxYfUA",
               Url = "https://www.youtube.com/channel/UCegeYNZdLvPQWQktawxYfUA",
               Name = "TheBritisher",
@@ -3372,7 +3372,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-15T19:39:04.0000000Z")
             },
             /* 267 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCegU7jX7WASluuwSPhU0PsA",
               Url = "https://www.youtube.com/channel/UCegU7jX7WASluuwSPhU0PsA",
               Name = "Zoe Does Life",
@@ -3384,7 +3384,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:54.9810000Z")
             },
             /* 268 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeiBi8gptAwNoIHrZ3OUUbw",
               Url = "https://www.youtube.com/channel/UCeiBi8gptAwNoIHrZ3OUUbw",
               Name = "Winding Road Magazine",
@@ -3397,7 +3397,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:22.0000000Z")
             },
             /* 269 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeivs1tenYht7iE7d4l11IA",
               Url = "https://www.youtube.com/channel/UCeivs1tenYht7iE7d4l11IA",
               Name = "The Shameless Fujoshi",
@@ -3409,7 +3409,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:00.5000000Z")
             },
             /* 270 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeiYXex_fwgYDonaTcSIk6w",
               Url = "https://www.youtube.com/channel/UCeiYXex_fwgYDonaTcSIk6w",
               Name = "MinuteEarth",
@@ -3422,7 +3422,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-29T16:15:59.0000000Z")
             },
             /* 271 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCElybFZ60Hk1NSjgCf7I2sg",
               Url = "https://www.youtube.com/channel/UCElybFZ60Hk1NSjgCf7I2sg",
               Name = "Eastory",
@@ -3435,7 +3435,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-20T11:25:20.0000000Z")
             },
             /* 272 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCENqBB_xNax3mLX_WGLf2Lg",
               Url = "https://www.youtube.com/channel/UCENqBB_xNax3mLX_WGLf2Lg",
               Name = "Living Well with Schizophrenia",
@@ -3448,7 +3448,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-12T19:49:00.0000000Z")
             },
             /* 273 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeQYemGBA3zkt2WY5dpRxsw",
               Url = "https://www.youtube.com/channel/UCeQYemGBA3zkt2WY5dpRxsw",
               Name = "TMRO",
@@ -3461,7 +3461,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:00:16.0000000Z")
             },
             /* 274 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEr1gqvDTO68wBZANbkhDOA",
               Url = "https://www.youtube.com/channel/UCEr1gqvDTO68wBZANbkhDOA",
               Name = "Otterface",
@@ -3473,7 +3473,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:08.2130000Z")
             },
             /* 275 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-EREEErQQqgYNyNB4YGQnQ",
               Url = "https://www.youtube.com/channel/UC-EREEErQQqgYNyNB4YGQnQ",
               Name = "Patrick",
@@ -3485,7 +3485,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:10.6670000Z")
             },
             /* 276 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCesrUK_dMDBZAf7cnjQPdgQ",
               Url = "https://www.youtube.com/channel/UCesrUK_dMDBZAf7cnjQPdgQ",
               Name = "Brittany Sellner",
@@ -3497,7 +3497,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-05T15:33:07.0000000Z")
             },
             /* 277 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEsywmxARiHoWOIPVQjopKw",
               Url = "https://www.youtube.com/channel/UCEsywmxARiHoWOIPVQjopKw",
               Name = "Crocoduck Vlogs",
@@ -3509,7 +3509,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-17T07:33:38.0000000Z")
             },
             /* 278 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEszlI8-W79IsU8LSAiRbDg",
               Url = "https://www.youtube.com/channel/UCEszlI8-W79IsU8LSAiRbDg",
               Name = "John Michael Godier",
@@ -3522,7 +3522,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T01:09:30.0000000Z")
             },
             /* 279 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-etSr9FDR-7XphnHr-hYqA",
               Url = "https://www.youtube.com/channel/UC-etSr9FDR-7XphnHr-hYqA",
               Name = "Kimera",
@@ -3534,7 +3534,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:13.2520000Z")
             },
             /* 280 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeUJFQ0D9qs6aVNyUt9fkeQ",
               Url = "https://www.youtube.com/channel/UCeUJFQ0D9qs6aVNyUt9fkeQ",
               Name = "The Armchair Historian",
@@ -3547,7 +3547,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T15:52:48.0000000Z")
             },
             /* 281 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeuzuTtrysr153y-ovNkWwg",
               Url = "https://www.youtube.com/channel/UCeuzuTtrysr153y-ovNkWwg",
               Name = "Violinspiration - Violin Lessons",
@@ -3560,7 +3560,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:02.0000000Z")
             },
             /* 282 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCewUkuIHNuwuMNWMa96q9ZQ",
               Url = "https://www.youtube.com/channel/UCewUkuIHNuwuMNWMa96q9ZQ",
               Name = "Godless Cranium",
@@ -3573,7 +3573,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T05:04:09.0000000Z")
             },
             /* 283 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeX5HCl8o2QIxmlA2-iF2OQ",
               Url = "https://www.youtube.com/channel/UCeX5HCl8o2QIxmlA2-iF2OQ",
               Name = "Brooklyn Classical",
@@ -3586,7 +3586,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-03T14:15:10.0000000Z")
             },
             /* 284 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCexksLsyKnBllF0RrMQj1uw",
               Url = "https://www.youtube.com/channel/UCexksLsyKnBllF0RrMQj1uw",
               Name = "Alex",
@@ -3597,7 +3597,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:17.5150000Z")
             },
             /* 285 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeYP27qLtfUMY1b1Cyy3WdQ",
               Url = "https://www.youtube.com/channel/UCeYP27qLtfUMY1b1Cyy3WdQ",
               Name = "TheThinkingAtheist",
@@ -3610,7 +3610,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:51:55.0000000Z")
             },
             /* 286 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF_1Z-b65bDAon3W94_ZWmw",
               Url = "https://www.youtube.com/channel/UCF_1Z-b65bDAon3W94_ZWmw",
               Name = "StephRants",
@@ -3623,7 +3623,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-03T21:34:37.0000000Z")
             },
             /* 287 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf0CRezZYOUcvqrdMmozowQ",
               Url = "https://www.youtube.com/channel/UCf0CRezZYOUcvqrdMmozowQ",
               Name = "Maya Henry",
@@ -3636,7 +3636,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-25T17:00:12.0000000Z")
             },
             /* 288 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF11HxoU9YF3vhehVn3edjQ",
               Url = "https://www.youtube.com/channel/UCF11HxoU9YF3vhehVn3edjQ",
               Name = "Gaming University",
@@ -3648,7 +3648,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T10:15:45.0000000Z")
             },
             /* 289 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf1iroepad-o5w2il-06Gjg",
               Url = "https://www.youtube.com/channel/UCf1iroepad-o5w2il-06Gjg",
               Name = "Armoured Skeptic More",
@@ -3660,7 +3660,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:03.3150000Z")
             },
             /* 290 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf25l5VFL3N20nH7L2gZeqQ",
               Url = "https://www.youtube.com/channel/UCf25l5VFL3N20nH7L2gZeqQ",
               Name = "ThatViolaKid",
@@ -3673,7 +3673,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-15T00:46:42.0000000Z")
             },
             /* 291 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf6G3eRxTfWAgrg5053Iaeg",
               Url = "https://www.youtube.com/channel/UCf6G3eRxTfWAgrg5053Iaeg",
               Name = "The Kraut",
@@ -3684,7 +3684,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:23.4090000Z")
             },
             /* 292 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf7CnR563xpJR7TIbUgOaQA",
               Url = "https://www.youtube.com/channel/UCf7CnR563xpJR7TIbUgOaQA",
               Name = "Aerin Blair",
@@ -3695,7 +3695,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:26.6580000Z")
             },
             /* 293 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf8m35ouq4dXhCcN12IkaYQ",
               Url = "https://www.youtube.com/channel/UCf8m35ouq4dXhCcN12IkaYQ",
               Name = "purpandorange",
@@ -3707,7 +3707,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-07T17:01:22.0000000Z")
             },
             /* 294 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFB0UCodO5DjcLxLBRzkG-g",
               Url = "https://www.youtube.com/channel/UCFB0UCodO5DjcLxLBRzkG-g",
               Name = "Joy Lee",
@@ -3720,7 +3720,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-02T12:00:35.0000000Z")
             },
             /* 295 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFbgt4fSBvjT9rKjE8qfSjw",
               Url = "https://www.youtube.com/channel/UCFbgt4fSBvjT9rKjE8qfSjw",
               Name = "Ray Narvaez Jr",
@@ -3733,7 +3733,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:17.0000000Z")
             },
             /* 296 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdeu9Einc18AogCmcRz0GQ",
               Url = "https://www.youtube.com/channel/UCfdeu9Einc18AogCmcRz0GQ",
               Name = "Secular Brownie",
@@ -3744,7 +3744,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:40.8190000Z")
             },
             /* 297 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdNM3NAhaBOXCafH7krzrA",
               Url = "https://www.youtube.com/channel/UCfdNM3NAhaBOXCafH7krzrA",
               Name = "The Infographics Show",
@@ -3757,7 +3757,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T19:15:01.0000000Z")
             },
             /* 298 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFEjRe-s0tO-1YxZ4tdNJIg",
               Url = "https://www.youtube.com/channel/UCFEjRe-s0tO-1YxZ4tdNJIg",
               Name = "Cheshire Viq",
@@ -3770,7 +3770,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:20:09.0000000Z")
             },
             /* 299 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFhXFikryT4aFcLkLw2LBLA",
               Url = "https://www.youtube.com/channel/UCFhXFikryT4aFcLkLw2LBLA",
               Name = "NileRed",
@@ -3783,7 +3783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-26T17:37:53.0000000Z")
             },
             /* 300 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFJNcE0iHj7P6dhp5iCZRLg",
               Url = "https://www.youtube.com/channel/UCFJNcE0iHj7P6dhp5iCZRLg",
               Name = "Learn Liberty",
@@ -3796,7 +3796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-02T18:00:08.0000000Z")
             },
             /* 301 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFk__1iexL3T5gvGcMpeHNA",
               Url = "https://www.youtube.com/channel/UCFk__1iexL3T5gvGcMpeHNA",
               Name = "Looking Glass Universe",
@@ -3809,7 +3809,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T20:12:33.0000000Z")
             },
             /* 302 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfl1fku1XDoTi9NYPINxwpg",
               Url = "https://www.youtube.com/channel/UCfl1fku1XDoTi9NYPINxwpg",
               Name = "Discovery VR",
@@ -3821,7 +3821,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.5350000Z")
             },
             /* 303 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfLJNQxwK81nPhyZZibDiQA",
               Url = "https://www.youtube.com/channel/UCfLJNQxwK81nPhyZZibDiQA",
               Name = "UNpopular Culture",
@@ -3834,7 +3834,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-21T18:00:03.0000000Z")
             },
             /* 304 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFLJweCjLLnWOFxM6ETJ2Ow",
               Url = "https://www.youtube.com/channel/UCFLJweCjLLnWOFxM6ETJ2Ow",
               Name = "The Cynical Jerks",
@@ -3845,7 +3845,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.9230000Z")
             },
             /* 305 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfLTDfjO6_y_SVOBKqfffKg",
               Url = "https://www.youtube.com/channel/UCfLTDfjO6_y_SVOBKqfffKg",
               Name = "Autism Spectrum Australia",
@@ -3858,7 +3858,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T01:30:29.0000000Z")
             },
             /* 306 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFmFlC3ljBb7WlRdzOh3TeQ",
               Url = "https://www.youtube.com/channel/UCFmFlC3ljBb7WlRdzOh3TeQ",
               Name = "Billy Bong",
@@ -3870,7 +3870,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:15.0800000Z")
             },
             /* 307 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfoIn_41GlLsHSe8rePo78w",
               Url = "https://www.youtube.com/channel/UCfoIn_41GlLsHSe8rePo78w",
               Name = "Banned From THE NEW IFB",
@@ -3881,7 +3881,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:15.2210000Z")
             },
             /* 308 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-FpBZR7DbpvNj5UrFN8qUA",
               Url = "https://www.youtube.com/channel/UC-FpBZR7DbpvNj5UrFN8qUA",
               Name = "Aspergers from the Inside",
@@ -3894,7 +3894,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:30:10.0000000Z")
             },
             /* 309 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFQPIMzJ6wD8nYv7vCdE-MQ",
               Url = "https://www.youtube.com/channel/UCFQPIMzJ6wD8nYv7vCdE-MQ",
               Name = "uzalu",
@@ -3907,7 +3907,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-11T02:15:43.0000000Z")
             },
             /* 310 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfsuI3-92QNO3DVy06PO9wg",
               Url = "https://www.youtube.com/channel/UCfsuI3-92QNO3DVy06PO9wg",
               Name = "Skeptic",
@@ -3920,7 +3920,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T17:53:07.0000000Z")
             },
             /* 311 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfsX0iFWcdefP78zQpYRnvQ",
               Url = "https://www.youtube.com/channel/UCfsX0iFWcdefP78zQpYRnvQ",
               Name = "43alley",
@@ -3932,7 +3932,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:35.8170000Z")
             },
             /* 312 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfV36TX5AejfAGIbtwTc7Zw",
               Url = "https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw",
               Name = "Chris Hawkes",
@@ -3947,7 +3947,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 313 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfWQuGYMfhZk9qq5x00sb9w",
               Url = "https://www.youtube.com/channel/UCfWQuGYMfhZk9qq5x00sb9w",
               Name = "Trading 212",
@@ -3960,7 +3960,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T18:22:35.0000000Z")
             },
             /* 314 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfYbb7nga6-icsFWWgS-kWw",
               Url = "https://www.youtube.com/channel/UCfYbb7nga6-icsFWWgS-kWw",
               Name = "Mister Metokur",
@@ -3972,7 +3972,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:36.3580000Z")
             },
             /* 315 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG_xCloLaV2TvXtKOCH-lSA",
               Url = "https://www.youtube.com/channel/UCG_xCloLaV2TvXtKOCH-lSA",
               Name = "Concertgebouworkest",
@@ -3985,7 +3985,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-29T10:40:15.0000000Z")
             },
             /* 316 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG1uayRlzz3ahT8ISRdyw7Q",
               Url = "https://www.youtube.com/channel/UCG1uayRlzz3ahT8ISRdyw7Q",
               Name = "Genetically Modified Skeptic",
@@ -3998,7 +3998,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T16:00:44.0000000Z")
             },
             /* 317 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg57OqktnnvRc3HRPGnXKTg",
               Url = "https://www.youtube.com/channel/UCg57OqktnnvRc3HRPGnXKTg",
               Name = "The New Memedia",
@@ -4009,7 +4009,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:38.9430000Z")
             },
             /* 318 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-g5SsjkGw4wLV8k6O-N0Kw",
               Url = "https://www.youtube.com/channel/UC-g5SsjkGw4wLV8k6O-N0Kw",
               Name = "the Lala",
@@ -4021,7 +4021,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:39.3500000Z")
             },
             /* 319 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg6MuFVugHwWCp1YDQDAy1w",
               Url = "https://www.youtube.com/channel/UCg6MuFVugHwWCp1YDQDAy1w",
               Name = "Atheism-is-Unstoppable",
@@ -4032,7 +4032,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:57.8530000Z")
             },
             /* 320 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG749Dj4V2fKa143f8sE60Q",
               Url = "https://www.youtube.com/channel/UCG749Dj4V2fKa143f8sE60Q",
               Name = "Tim Pool",
@@ -4045,7 +4045,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T20:00:07.0000000Z")
             },
             /* 321 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg7TaxaMn6eP721toaV33Lg",
               Url = "https://www.youtube.com/channel/UCg7TaxaMn6eP721toaV33Lg",
               Name = "Skylar Fiction",
@@ -4058,7 +4058,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-27T04:00:10.0000000Z")
             },
             /* 322 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG8uh6dJkvSDfv3GiWwuooA",
               Url = "https://www.youtube.com/channel/UCG8uh6dJkvSDfv3GiWwuooA",
               Name = "Asteroid Day",
@@ -4071,7 +4071,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-03T14:50:29.0000000Z")
             },
             /* 323 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG9ShGbASoiwHwFcLcAh9EA",
               Url = "https://www.youtube.com/channel/UCG9ShGbASoiwHwFcLcAh9EA",
               Name = "SEA",
@@ -4084,7 +4084,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T20:00:28.0000000Z")
             },
             /* 324 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgEV0L6OzYFBMKib8RYwiDQ",
               Url = "https://www.youtube.com/channel/UCgEV0L6OzYFBMKib8RYwiDQ",
               Name = "John Smith",
@@ -4096,7 +4096,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:18.2010000Z")
             },
             /* 325 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgeV3tFiU2Xg0PD1dAQbBHA",
               Url = "https://www.youtube.com/channel/UCgeV3tFiU2Xg0PD1dAQbBHA",
               Name = "Jimmy Snow",
@@ -4109,7 +4109,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-27T16:00:11.0000000Z")
             },
             /* 326 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgGgkVyadk0TdxmVzYcAM-Q",
               Url = "https://www.youtube.com/channel/UCgGgkVyadk0TdxmVzYcAM-Q",
               Name = "Hannah and Jake",
@@ -4122,7 +4122,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T18:00:00.0000000Z")
             },
             /* 327 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGGJi4n5Lq-_NcYN105tbCA",
               Url = "https://www.youtube.com/channel/UCGGJi4n5Lq-_NcYN105tbCA",
               Name = "Ausyarr",
@@ -4134,7 +4134,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:09.3010000Z")
             },
             /* 328 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgGQ6uU8qQO4A-_x3GVP1Yg",
               Url = "https://www.youtube.com/channel/UCgGQ6uU8qQO4A-_x3GVP1Yg",
               Name = "DEEK",
@@ -4146,7 +4146,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:18.3710000Z")
             },
             /* 329 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGHZpIpAWJQ-Jy_CeCdXhMA",
               Url = "https://www.youtube.com/channel/UCGHZpIpAWJQ-Jy_CeCdXhMA",
               Name = "Cool Worlds",
@@ -4159,7 +4159,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T19:00:02.0000000Z")
             },
             /* 330 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGIELCcWZo9XHCUw395Xotw",
               Url = "https://www.youtube.com/channel/UCGIELCcWZo9XHCUw395Xotw",
               Name = "Claire Kane Viola",
@@ -4172,7 +4172,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-14T03:14:03.0000000Z")
             },
             /* 331 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgIi12EA6BQ8HKL8QUccsOQ",
               Url = "https://www.youtube.com/channel/UCgIi12EA6BQ8HKL8QUccsOQ",
               Name = "Telltale",
@@ -4185,7 +4185,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-14T14:19:52.0000000Z")
             },
             /* 332 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGLgYaW3TYYnxRjZT_JPWTg",
               Url = "https://www.youtube.com/channel/UCGLgYaW3TYYnxRjZT_JPWTg",
               Name = "Kevin Logan",
@@ -4198,7 +4198,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T19:36:55.0000000Z")
             },
             /* 333 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGLTvOqJOcbIwBtX0Rou2gw",
               Url = "https://www.youtube.com/channel/UCGLTvOqJOcbIwBtX0Rou2gw",
               Name = "Rags",
@@ -4211,7 +4211,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-25T17:02:28.0000000Z")
             },
             /* 334 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgnIsA-D3PX6g6gi6Nyuewg",
               Url = "https://www.youtube.com/channel/UCgnIsA-D3PX6g6gi6Nyuewg",
               Name = "Great Debate Community",
@@ -4224,7 +4224,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-06T00:17:06.0000000Z")
             },
             /* 335 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGOA_DW3sgXO_c9hDc92SZw",
               Url = "https://www.youtube.com/channel/UCGOA_DW3sgXO_c9hDc92SZw",
               Name = "DiscordSpies",
@@ -4236,7 +4236,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:10.5710000Z")
             },
             /* 336 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGP7Obfm6Z1TFg_Pwx4ctxg",
               Url = "https://www.youtube.com/channel/UCGP7Obfm6Z1TFg_Pwx4ctxg",
               Name = "ABitOfBritt",
@@ -4247,7 +4247,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:32.8920000Z")
             },
             /* 337 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGQ78cJiMcJhMbpKhjunAxg",
               Url = "https://www.youtube.com/channel/UCGQ78cJiMcJhMbpKhjunAxg",
               Name = "Autistic Tyla",
@@ -4260,7 +4260,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:35:45.0000000Z")
             },
             /* 338 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgTNupxATBfWmfehv21ym-g",
               Url = "https://www.youtube.com/channel/UCgTNupxATBfWmfehv21ym-g",
               Name = "Null Byte",
@@ -4273,7 +4273,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-08T16:40:22.0000000Z")
             },
             /* 339 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgUzZAhJkUtYDFGbPowrR0w",
               Url = "https://www.youtube.com/channel/UCgUzZAhJkUtYDFGbPowrR0w",
               Name = "Lawrence Sonntag",
@@ -4286,7 +4286,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:30:01.0000000Z")
             },
             /* 340 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGy6uV7yqGWDeUWTZzT3ZEg",
               Url = "https://www.youtube.com/channel/UCGy6uV7yqGWDeUWTZzT3ZEg",
               Name = "Rebel News",
@@ -4303,7 +4303,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T23:11:28.0000000Z")
             },
             /* 341 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGy7SkBjcIAgTiwkXEtPnYg",
               Url = "https://www.youtube.com/channel/UCGy7SkBjcIAgTiwkXEtPnYg",
               Name = "Andrei Jikh",
@@ -4316,7 +4316,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-25T23:15:00.0000000Z")
             },
             /* 342 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGZ_MTrDJPFKAz522i2rYkg",
               Url = "https://www.youtube.com/channel/UCGZ_MTrDJPFKAz522i2rYkg",
               Name = "Sceptic Llama",
@@ -4327,7 +4327,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:43.7640000Z")
             },
             /* 343 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgzKCeDYLRzPhQ64R6AKyBQ",
               Url = "https://www.youtube.com/channel/UCgzKCeDYLRzPhQ64R6AKyBQ",
               Name = "Life of Luba",
@@ -4340,7 +4340,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-10T19:56:00.0000000Z")
             },
             /* 344 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh_ugKacslKhsGGdXP0cRRA",
               Url = "https://www.youtube.com/channel/UCh_ugKacslKhsGGdXP0cRRA",
               Name = "Naomi 'SexyCyborg' Wu",
@@ -4353,7 +4353,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-24T16:19:58.0000000Z")
             },
             /* 345 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH_zYYXkJpULueOVZTkY4Bw",
               Url = "https://www.youtube.com/channel/UCH_zYYXkJpULueOVZTkY4Bw",
               Name = "Richard Dawkins Foundation for Reason & Science",
@@ -4366,7 +4366,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-22T15:37:30.0000000Z")
             },
             /* 346 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH1dpzjCEiGAt8CXkryhkZg",
               Url = "https://www.youtube.com/channel/UCH1dpzjCEiGAt8CXkryhkZg",
               Name = "Bernie Sanders",
@@ -4379,7 +4379,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:12:22.0000000Z")
             },
             /* 347 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH4BNI0-FOK2dMXoFtViWHw",
               Url = "https://www.youtube.com/channel/UCH4BNI0-FOK2dMXoFtViWHw",
               Name = "It's Okay To Be Smart",
@@ -4392,7 +4392,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-06T16:16:20.0000000Z")
             },
             /* 348 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh51tkZhO4aTwpS4sA2CQ3A",
               Url = "https://www.youtube.com/channel/UCh51tkZhO4aTwpS4sA2CQ3A",
               Name = "Unfiltered Love Podcast Highlights",
@@ -4404,7 +4404,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:59.9040000Z")
             },
             /* 349 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHdluULl5c7bilx1x1TGzJQ",
               Url = "https://www.youtube.com/channel/UCHdluULl5c7bilx1x1TGzJQ",
               Name = "Feature History",
@@ -4417,7 +4417,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-22T10:11:30.0000000Z")
             },
             /* 350 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHhM8HWQ-Z8rSMLrafaYVHQ",
               Url = "https://www.youtube.com/channel/UCHhM8HWQ-Z8rSMLrafaYVHQ",
               Name = "Creation Science Fiction",
@@ -4429,7 +4429,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:01.4620000Z")
             },
             /* 351 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHH-ybUwH1CfJrXxnqw6Ljw",
               Url = "https://www.youtube.com/channel/UCHH-ybUwH1CfJrXxnqw6Ljw",
               Name = "MooLer",
@@ -4441,7 +4441,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:30:15.0000000Z")
             },
             /* 352 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChi7XVIZZ-8k1Ambfy7vN9w",
               Url = "https://www.youtube.com/channel/UChi7XVIZZ-8k1Ambfy7vN9w",
               Name = "michaelsaikuen",
@@ -4453,7 +4453,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-01T04:00:00.0000000Z")
             },
             /* 353 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChj_gNaRCdtkrrVx8e1l4oQ",
               Url = "https://www.youtube.com/channel/UChj_gNaRCdtkrrVx8e1l4oQ",
               Name = "Kempt Shevelled",
@@ -4465,7 +4465,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:13.6460000Z")
             },
             /* 354 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHknMQi_5YD4vF6lW2s8_6Q",
               Url = "https://www.youtube.com/channel/UCHknMQi_5YD4vF6lW2s8_6Q",
               Name = "SunBunz",
@@ -4478,7 +4478,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-27T02:48:54.0000000Z")
             },
             /* 355 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHm79tMFFZjYFjAS5kgMnlA",
               Url = "https://www.youtube.com/channel/UCHm79tMFFZjYFjAS5kgMnlA",
               Name = "Nightmare Fuel Podcast",
@@ -4490,7 +4490,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:05.7180000Z")
             },
             /* 356 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChn6NrzXWfT-j0g35P_HZ9A",
               Url = "https://www.youtube.com/channel/UChn6NrzXWfT-j0g35P_HZ9A",
               Name = "Nepsa96",
@@ -4501,7 +4501,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:05.8600000Z")
             },
             /* 357 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHnpjH4EfWj_Bas8bMM1LZg",
               Url = "https://www.youtube.com/channel/UCHnpjH4EfWj_Bas8bMM1LZg",
               Name = "Cringe Only",
@@ -4512,7 +4512,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:06.2290000Z")
             },
             /* 358 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHnyfMqiRRG1u-2MsSQLbXA",
               Url = "https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA",
               Name = "Veritasium",
@@ -4525,7 +4525,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T12:20:58.0000000Z")
             },
             /* 359 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChplNp1FQZASHN0dUOnqggQ",
               Url = "https://www.youtube.com/channel/UChplNp1FQZASHN0dUOnqggQ",
               Name = "MS Reminders",
@@ -4538,7 +4538,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-20T18:00:03.0000000Z")
             },
             /* 360 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHugE6eRhqB9_AZQh4DDbIw",
               Url = "https://www.youtube.com/channel/UCHugE6eRhqB9_AZQh4DDbIw",
               Name = "Jupiter Broadcasting",
@@ -4551,7 +4551,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T10:00:22.0000000Z")
             },
             /* 361 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHvUTfxL_9bNQgqzekPWHtg",
               Url = "https://www.youtube.com/channel/UCHvUTfxL_9bNQgqzekPWHtg",
               Name = "SSTec Tutorials",
@@ -4564,7 +4564,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T09:12:38.0000000Z")
             },
             /* 362 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHXn1QCWDeb2qNGtMFWEmaw",
               Url = "https://www.youtube.com/channel/UCHXn1QCWDeb2qNGtMFWEmaw",
               Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
@@ -4574,7 +4574,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:08.5250000Z")
             },
             /* 363 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh-YXgnF0tmBxCsh4w_4svw",
               Url = "https://www.youtube.com/channel/UCh-YXgnF0tmBxCsh4w_4svw",
               Name = "Suris",
@@ -4587,7 +4587,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T15:00:09.0000000Z")
             },
             /* 364 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi0TZmFfgS4oQPcRQ6-KRXg",
               Url = "https://www.youtube.com/channel/UCi0TZmFfgS4oQPcRQ6-KRXg",
               Name = "The Planetary Society",
@@ -4600,7 +4600,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T18:53:21.0000000Z")
             },
             /* 365 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi-6mxpmAHS1uARlX1grObQ",
               Url = "https://www.youtube.com/channel/UCi-6mxpmAHS1uARlX1grObQ",
               Name = "Prince of Queens",
@@ -4612,7 +4612,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:25.2530000Z")
             },
             /* 366 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCI9pm8WplvpIN8uKpoxcXaQ",
               Url = "https://www.youtube.com/channel/UCI9pm8WplvpIN8uKpoxcXaQ",
               Name = "Hilary Hahn",
@@ -4625,7 +4625,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-18T18:00:09.0000000Z")
             },
             /* 367 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCialsmUlTRABKPw31VDx1eQ",
               Url = "https://www.youtube.com/channel/UCialsmUlTRABKPw31VDx1eQ",
               Name = "Foundation for Economic Education",
@@ -4638,7 +4638,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-07T15:43:12.0000000Z")
             },
             /* 368 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIbBCEj2Zrc5KkyzLEQMZCw",
               Url = "https://www.youtube.com/channel/UCIbBCEj2Zrc5KkyzLEQMZCw",
               Name = "AntiCitizenX",
@@ -4651,7 +4651,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-26T20:50:22.0000000Z")
             },
             /* 369 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiBdZjk2xAXlSeDSYqTaR2A",
               Url = "https://www.youtube.com/channel/UCiBdZjk2xAXlSeDSYqTaR2A",
               Name = "Jenna Bowyer",
@@ -4663,7 +4663,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-22T15:29:00.0000000Z")
             },
             /* 370 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIbslwukNCyVp-XMz_2-gmw",
               Url = "https://www.youtube.com/channel/UCIbslwukNCyVp-XMz_2-gmw",
               Name = "Investing With Rose",
@@ -4676,7 +4676,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T03:17:53.0000000Z")
             },
             /* 371 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCICMrU9Jv7dmwzeT7438XRg",
               Url = "https://www.youtube.com/channel/UCICMrU9Jv7dmwzeT7438XRg",
               Name = "High Quality Gaming",
@@ -4689,7 +4689,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T16:37:08.0000000Z")
             },
             /* 372 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCidRD01KNkG4fb9dpvqBmlQ",
               Url = "https://www.youtube.com/channel/UCidRD01KNkG4fb9dpvqBmlQ",
               Name = "Queeny",
@@ -4702,7 +4702,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-24T02:34:32.0000000Z")
             },
             /* 373 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIFtADcWrOApqrsinzPoOfA",
               Url = "https://www.youtube.com/channel/UCIFtADcWrOApqrsinzPoOfA",
               Name = "Destiny",
@@ -4715,7 +4715,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T17:00:06.0000000Z")
             },
             /* 374 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIibK0GTXCaQCAamJAepm1g",
               Url = "https://www.youtube.com/channel/UCIibK0GTXCaQCAamJAepm1g",
               Name = "ramzpaul",
@@ -4728,7 +4728,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T13:18:49.0000000Z")
             },
             /* 375 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIjuLiLHdFxYtFmWlbTGQRQ",
               Url = "https://www.youtube.com/channel/UCIjuLiLHdFxYtFmWlbTGQRQ",
               Name = "Peter Schiff",
@@ -4741,7 +4741,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T02:34:06.0000000Z")
             },
             /* 376 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCINeoE-0pcNh-Q3MR-y5Z-w",
               Url = "https://www.youtube.com/channel/UCINeoE-0pcNh-Q3MR-y5Z-w",
               Name = "Westward Thought",
@@ -4753,7 +4753,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:17.6470000Z")
             },
             /* 377 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCInnWzBrSzi5V5zPxEe75TA",
               Url = "https://www.youtube.com/channel/UCInnWzBrSzi5V5zPxEe75TA",
               Name = "Mir Mirw",
@@ -4764,7 +4764,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:41.8460000Z")
             },
             /* 378 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi-nUi67HVFEtpaFsjRj_NA",
               Url = "https://www.youtube.com/channel/UCi-nUi67HVFEtpaFsjRj_NA",
               Name = "The Age & Sydney Morning Herald",
@@ -4777,7 +4777,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T12:31:25.0000000Z")
             },
             /* 379 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIOEiCUe61w47MzBfMHlziQ",
               Url = "https://www.youtube.com/channel/UCIOEiCUe61w47MzBfMHlziQ",
               Name = "Sydney Symphony Orchestra",
@@ -4790,7 +4790,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T09:00:16.0000000Z")
             },
             /* 380 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCioZY1p0bZ4Xt-yodw8_cBQ",
               Url = "https://www.youtube.com/channel/UCioZY1p0bZ4Xt-yodw8_cBQ",
               Name = "How To Drink",
@@ -4803,7 +4803,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T17:32:40.0000000Z")
             },
             /* 381 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiPYZkZeNbYTQZKNMlB0Gsw",
               Url = "https://www.youtube.com/channel/UCiPYZkZeNbYTQZKNMlB0Gsw",
               Name = "France Musique",
@@ -4816,7 +4816,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:00:35.0000000Z")
             },
             /* 382 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiQ2pjcoPI-Jpo1GER7-iUA",
               Url = "https://www.youtube.com/channel/UCiQ2pjcoPI-Jpo1GER7-iUA",
               Name = "King Crocoduck",
@@ -4829,7 +4829,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T17:00:11.0000000Z")
             },
             /* 383 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIS4cWaXgWpznjwovFYQBJQ",
               Url = "https://www.youtube.com/channel/UCIS4cWaXgWpznjwovFYQBJQ",
               Name = "Paulogia",
@@ -4842,7 +4842,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:30:13.0000000Z")
             },
             /* 384 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCItlpUIsfPld3E0QQ20oNsA",
               Url = "https://www.youtube.com/channel/UCItlpUIsfPld3E0QQ20oNsA",
               Name = "SatisFactory TV",
@@ -4854,7 +4854,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:02.9260000Z")
             },
             /* 385 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCittVh8imKanO_5KohzDbpg",
               Url = "https://www.youtube.com/channel/UCittVh8imKanO_5KohzDbpg",
               Name = "Paul Joseph Watson",
@@ -4867,7 +4867,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-04T21:10:59.0000000Z")
             },
             /* 386 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCitU2-w3XE8ujvUZjcAnhIg",
               Url = "https://www.youtube.com/channel/UCitU2-w3XE8ujvUZjcAnhIg",
               Name = "Akkad Daily",
@@ -4880,7 +4880,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-02-21T00:18:11.0000000Z")
             },
             /* 387 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiyuYC0D4-AO0AonCfMifPQ",
               Url = "https://www.youtube.com/channel/UCiyuYC0D4-AO0AonCfMifPQ",
               Name = "hr-Sinfonieorchester – Frankfurt Radio Symphony",
@@ -4893,7 +4893,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T13:00:26.0000000Z")
             },
             /* 388 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ_bsH6ZZZ5xL0S7n7TQO4Q",
               Url = "https://www.youtube.com/channel/UCJ_bsH6ZZZ5xL0S7n7TQO4Q",
               Name = "Space Monkey",
@@ -4904,7 +4904,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:04.9730000Z")
             },
             /* 389 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ0yBou72Lz9fqeMXh9mkog",
               Url = "https://www.youtube.com/channel/UCJ0yBou72Lz9fqeMXh9mkog",
               Name = "Physics Videos by Eugene Khutoryansky",
@@ -4917,7 +4917,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T15:34:39.0000000Z")
             },
             /* 390 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ2yCFYUDiBJajga4tXRdNA",
               Url = "https://www.youtube.com/channel/UCJ2yCFYUDiBJajga4tXRdNA",
               Name = "marinashutup",
@@ -4929,7 +4929,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:19.7920000Z")
             },
             /* 391 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ2ZDzMRgSrxmwphstrm8Ww",
               Url = "https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww",
               Name = "Smosh Games",
@@ -4942,7 +4942,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T16:00:14.0000000Z")
             },
             /* 392 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCj6F_9NkjVp-rGvIoY5Acdw",
               Url = "https://www.youtube.com/channel/UCj6F_9NkjVp-rGvIoY5Acdw",
               Name = "Yobyaxes The Anti-MGTOW",
@@ -4953,7 +4953,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:39.0010000Z")
             },
             /* 393 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCj8orMezFWVcoN-4S545Wtw",
               Url = "https://www.youtube.com/channel/UCj8orMezFWVcoN-4S545Wtw",
               Name = "Max Derrat",
@@ -4966,7 +4966,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T20:00:32.0000000Z")
             },
             /* 394 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJb97OZlSX8rFRm9C4zWYzQ",
               Url = "https://www.youtube.com/channel/UCJb97OZlSX8rFRm9C4zWYzQ",
               Name = "Jeremy Green",
@@ -4979,7 +4979,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-15T17:00:14.0000000Z")
             },
             /* 395 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjbgKUcTjpxmuW-8U0LR80Q",
               Url = "https://www.youtube.com/channel/UCjbgKUcTjpxmuW-8U0LR80Q",
               Name = "Independent Man",
@@ -4992,7 +4992,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-28T03:11:48.0000000Z")
             },
             /* 396 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJbPGzawDH1njbqV-D5HqKw",
               Url = "https://www.youtube.com/channel/UCJbPGzawDH1njbqV-D5HqKw",
               Name = "thenewboston",
@@ -5005,7 +5005,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-13T22:18:40.0000000Z")
             },
             /* 397 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjBR-WwNgkb6fwpx9gvLBfw",
               Url = "https://www.youtube.com/channel/UCjBR-WwNgkb6fwpx9gvLBfw",
               Name = "The fella formerly known as Fifn",
@@ -5017,7 +5017,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-24T15:16:42.0000000Z")
             },
             /* 398 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJdKr0Bgd_5saZYqLCa9mng",
               Url = "https://www.youtube.com/channel/UCJdKr0Bgd_5saZYqLCa9mng",
               Name = "The Rubin Report",
@@ -5030,7 +5030,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T18:59:26.0000000Z")
             },
             /* 399 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjHz5SVHeMT0AViCYZvsGDA",
               Url = "https://www.youtube.com/channel/UCjHz5SVHeMT0AViCYZvsGDA",
               Name = "NOVA PBS Official",
@@ -5043,7 +5043,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:46:19.0000000Z")
             },
             /* 400 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjjjJ462XehUUKDXR7gRPoA",
               Url = "https://www.youtube.com/channel/UCjjjJ462XehUUKDXR7gRPoA",
               Name = "SJW meltdowns",
@@ -5054,7 +5054,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:21.4490000Z")
             },
             /* 401 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-jjYbFILVe9B6ab-RGOxpw",
               Url = "https://www.youtube.com/channel/UC-jjYbFILVe9B6ab-RGOxpw",
               Name = "Ann Lieven",
@@ -5065,7 +5065,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:53.2040000Z")
             },
             /* 402 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-jlxuVAVEl2PXTaGno7gSA",
               Url = "https://www.youtube.com/channel/UC-jlxuVAVEl2PXTaGno7gSA",
               Name = "SJWCentral",
@@ -5078,7 +5078,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T18:09:21.0000000Z")
             },
             /* 403 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJm2TgUqtK1_NLBrjNQ1P-w",
               Url = "https://www.youtube.com/channel/UCJm2TgUqtK1_NLBrjNQ1P-w",
               Name = "Second Thought",
@@ -5091,7 +5091,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-18T15:00:07.0000000Z")
             },
             /* 404 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJm5yR1KFcysl_0I3x-iReg",
               Url = "https://www.youtube.com/channel/UCJm5yR1KFcysl_0I3x-iReg",
               Name = "lacigreen",
@@ -5104,7 +5104,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-14T19:49:23.0000000Z")
             },
             /* 405 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJNcAH2yzV3VAMYIGxCZ8_w",
               Url = "https://www.youtube.com/channel/UCJNcAH2yzV3VAMYIGxCZ8_w",
               Name = "Gutsick Gibbon",
@@ -5117,7 +5117,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T16:00:02.0000000Z")
             },
             /* 406 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjNxszyFPasDdRoD9J6X-sw",
               Url = "https://www.youtube.com/channel/UCjNxszyFPasDdRoD9J6X-sw",
               Name = "Amazing Atheist",
@@ -5130,7 +5130,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-25T20:15:10.0000000Z")
             },
             /* 407 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjOl2AUblVmg2rA_cRgZkFg",
               Url = "https://www.youtube.com/channel/UCjOl2AUblVmg2rA_cRgZkFg",
               Name = "Top Gear",
@@ -5145,7 +5145,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 408 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjtUS7-SZTi6pXjUbzGHQCg",
               Url = "https://www.youtube.com/channel/UCjtUS7-SZTi6pXjUbzGHQCg",
               Name = "Undecided with Matt Ferrell",
@@ -5158,7 +5158,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:17:10.0000000Z")
             },
             /* 409 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjVSsc9zYKBsbNsREWegceA",
               Url = "https://www.youtube.com/channel/UCjVSsc9zYKBsbNsREWegceA",
               Name = "Stephanie Speaks",
@@ -5171,7 +5171,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-30T18:26:52.0000000Z")
             },
             /* 410 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK09g6gYGMvU-0x1VCF1hgA",
               Url = "https://www.youtube.com/channel/UCK09g6gYGMvU-0x1VCF1hgA",
               Name = "Military History Visualized",
@@ -5184,7 +5184,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T19:00:07.0000000Z")
             },
             /* 411 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK1XzxcKXB_v_dcw_tflC1A",
               Url = "https://www.youtube.com/channel/UCK1XzxcKXB_v_dcw_tflC1A",
               Name = "OBF",
@@ -5199,7 +5199,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 412 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK27j4moB9Nhbadp0PTkydw",
               Url = "https://www.youtube.com/channel/UCK27j4moB9Nhbadp0PTkydw",
               Name = "Sarah's Wildlife Encounters",
@@ -5212,7 +5212,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T19:26:47.0000000Z")
             },
             /* 413 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk2FZi3N0h8APcVBOisQCMQ",
               Url = "https://www.youtube.com/channel/UCk2FZi3N0h8APcVBOisQCMQ",
               Name = "HuffPost Politics",
@@ -5224,7 +5224,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:23.1060000Z")
             },
             /* 414 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk40qSGYnVdFFBNXRjrvdpQ",
               Url = "https://www.youtube.com/channel/UCk40qSGYnVdFFBNXRjrvdpQ",
               Name = "Taylor Davis",
@@ -5237,7 +5237,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-26T18:04:31.0000000Z")
             },
             /* 415 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk5aCrQAppGZ8atiOpgYZ1A",
               Url = "https://www.youtube.com/channel/UCk5aCrQAppGZ8atiOpgYZ1A",
               Name = "Yo Samdy Sam",
@@ -5250,7 +5250,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T17:29:55.0000000Z")
             },
             /* 416 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK6sIU1Sb0jaIXzNWmcDmnQ",
               Url = "https://www.youtube.com/channel/UCK6sIU1Sb0jaIXzNWmcDmnQ",
               Name = "Syntagma",
@@ -5263,7 +5263,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-29T23:32:06.0000000Z")
             },
             /* 417 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCka_dz0F1gYuvN8LTefNcJQ",
               Url = "https://www.youtube.com/channel/UCka_dz0F1gYuvN8LTefNcJQ",
               Name = "Bunty King",
@@ -5276,7 +5276,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-18T17:19:50.0000000Z")
             },
             /* 418 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkb3FEKaByibEx0n_ReXLUA",
               Url = "https://www.youtube.com/channel/UCkb3FEKaByibEx0n_ReXLUA",
               Name = "NoneOfTheAbove",
@@ -5288,7 +5288,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:11.5670000Z")
             },
             /* 419 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKCR6qdqH2u2-DLULL6L6pg",
               Url = "https://www.youtube.com/channel/UCKCR6qdqH2u2-DLULL6L6pg",
               Name = "Katie Ionita",
@@ -5301,7 +5301,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-02T17:00:04.0000000Z")
             },
             /* 420 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKEt1xKVBLuL175dkk8rqLg",
               Url = "https://www.youtube.com/channel/UCKEt1xKVBLuL175dkk8rqLg",
               Name = "Mouthy Buddha",
@@ -5313,7 +5313,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:11.8700000Z")
             },
             /* 421 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKHi7M_11VJmLZSq4WNHSkg",
               Url = "https://www.youtube.com/channel/UCKHi7M_11VJmLZSq4WNHSkg",
               Name = "communitychannel",
@@ -5326,7 +5326,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-02T03:08:51.0000000Z")
             },
             /* 422 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKi52SDIwr5ysHX_ROF7A1g",
               Url = "https://www.youtube.com/channel/UCKi52SDIwr5ysHX_ROF7A1g",
               Name = "OMGitsfirefoxx",
@@ -5338,7 +5338,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.4150000Z")
             },
             /* 423 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkIop2RmHx0WMMRYCUoVBJw",
               Url = "https://www.youtube.com/channel/UCkIop2RmHx0WMMRYCUoVBJw",
               Name = "The Big Stack Podcast",
@@ -5350,7 +5350,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.5580000Z")
             },
             /* 424 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKIXs2YxQoS3e7Sdkrnqz_w",
               Url = "https://www.youtube.com/channel/UCKIXs2YxQoS3e7Sdkrnqz_w",
               Name = "Rachel Edwards",
@@ -5361,7 +5361,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.9420000Z")
             },
             /* 425 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkK9UDm_ZNrq_rIXCz3xCGA",
               Url = "https://www.youtube.com/channel/UCkK9UDm_ZNrq_rIXCz3xCGA",
               Name = "Bryan Lunduke",
@@ -5374,7 +5374,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-31T13:46:06.0000000Z")
             },
             /* 426 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKpBmnEfSy20al-Fk_2YzVA",
               Url = "https://www.youtube.com/channel/UCKpBmnEfSy20al-Fk_2YzVA",
               Name = "Alanah Pearce",
@@ -5387,7 +5387,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T16:00:14.0000000Z")
             },
             /* 427 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkrgMThbHZ3pzthqLnnEhKA",
               Url = "https://www.youtube.com/channel/UCkrgMThbHZ3pzthqLnnEhKA",
               Name = "Detroit Symphony Orchestra",
@@ -5400,7 +5400,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T20:39:55.0000000Z")
             },
             /* 428 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkur3mn9-0n1ForYl5bJaGA",
               Url = "https://www.youtube.com/channel/UCkur3mn9-0n1ForYl5bJaGA",
               Name = "Noel Hand Grenade",
@@ -5412,7 +5412,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-18T00:12:02.0000000Z")
             },
             /* 429 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKw8kdkYfmuNSVehGoDw8Mg",
               Url = "https://www.youtube.com/channel/UCKw8kdkYfmuNSVehGoDw8Mg",
               Name = "TYT's The Conversation",
@@ -5425,7 +5425,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T20:30:01.0000000Z")
             },
             /* 430 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkxctb0jr8vwa4Do6c6su0Q",
               Url = "https://www.youtube.com/channel/UCkxctb0jr8vwa4Do6c6su0Q",
               Name = "LetsPlay",
@@ -5442,7 +5442,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T18:00:27.0000000Z")
             },
             /* 431 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKzx92ZqX1PKYTC-FC-CZRQ",
               Url = "https://www.youtube.com/channel/UCKzx92ZqX1PKYTC-FC-CZRQ",
               Name = "Philharmonia Orchestra (London, UK)",
@@ -5455,7 +5455,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T16:33:15.0000000Z")
             },
             /* 432 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl_dlV_7ofr4qeP1drJQ-qg",
               Url = "https://www.youtube.com/channel/UCl_dlV_7ofr4qeP1drJQ-qg",
               Name = "Tantacrul",
@@ -5468,7 +5468,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-08T13:00:01.0000000Z")
             },
             /* 433 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL_f53ZEJxp8TtlOkHwMV9Q",
               Url = "https://www.youtube.com/channel/UCL_f53ZEJxp8TtlOkHwMV9Q",
               Name = "Jordan B Peterson",
@@ -5480,7 +5480,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:26.1280000Z")
             },
             /* 434 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl2mFZoRqjw_ELax4Yisf6w",
               Url = "https://www.youtube.com/channel/UCl2mFZoRqjw_ELax4Yisf6w",
               Name = "Louis Rossmann",
@@ -5493,7 +5493,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T10:34:06.0000000Z")
             },
             /* 435 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl3RCEtooHD5bhPCHJw3btA",
               Url = "https://www.youtube.com/channel/UCl3RCEtooHD5bhPCHJw3btA",
               Name = "Tree Of Logic",
@@ -5506,7 +5506,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:43:53.0000000Z")
             },
             /* 436 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl48e7KB5tVmQZ3avTixaNw",
               Url = "https://www.youtube.com/channel/UCl48e7KB5tVmQZ3avTixaNw",
               Name = "Kilmers Garage",
@@ -5519,7 +5519,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-27T22:46:24.0000000Z")
             },
             /* 437 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL8w_A8p8P1HWI3k6PR5Z6w",
               Url = "https://www.youtube.com/channel/UCL8w_A8p8P1HWI3k6PR5Z6w",
               Name = "Two Cents",
@@ -5532,7 +5532,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:57:17.0000000Z")
             },
             /* 438 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl9roQQwv4o4OuBj3FhQdDQ",
               Url = "https://www.youtube.com/channel/UCl9roQQwv4o4OuBj3FhQdDQ",
               Name = "The Damage Report",
@@ -5545,7 +5545,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T21:45:00.0000000Z")
             },
             /* 439 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl9s0VpZwQuvTCyZj_VtCwg",
               Url = "https://www.youtube.com/channel/UCl9s0VpZwQuvTCyZj_VtCwg",
               Name = "Sinatra_Says",
@@ -5558,7 +5558,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T13:22:09.0000000Z")
             },
             /* 440 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLA_DiR1FfKNvjuUpBHmylQ",
               Url = "https://www.youtube.com/channel/UCLA_DiR1FfKNvjuUpBHmylQ",
               Name = "NASA",
@@ -5571,7 +5571,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T01:11:27.0000000Z")
             },
             /* 441 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCla6APLHX6W3FeNLc8PYuvg",
               Url = "https://www.youtube.com/channel/UCla6APLHX6W3FeNLc8PYuvg",
               Name = "Lauren Southern",
@@ -5583,7 +5583,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:18:01.0000000Z")
             },
             /* 442 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLbyMUSR3-V6D3tXU4i4uug",
               Url = "https://www.youtube.com/channel/UCLbyMUSR3-V6D3tXU4i4uug",
               Name = "ScienceNET",
@@ -5594,7 +5594,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:44.3790000Z")
             },
             /* 443 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClcE-kVhqyiHCcjYwcpfj9w",
               Url = "https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w",
               Name = "LiveOverflow",
@@ -5607,7 +5607,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-12T18:54:33.0000000Z")
             },
             /* 444 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCldfgbzNILYZA4dmDt4Cd6A",
               Url = "https://www.youtube.com/channel/UCldfgbzNILYZA4dmDt4Cd6A",
               Name = "Secular Talk",
@@ -5624,7 +5624,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-21T22:01:30.0000000Z")
             },
             /* 445 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLDpkehb2IRq_0F_EXyqhPA",
               Url = "https://www.youtube.com/channel/UCLDpkehb2IRq_0F_EXyqhPA",
               Name = "Sushi Mom",
@@ -5637,7 +5637,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-15T23:35:46.0000000Z")
             },
             /* 446 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClfEht64_NrzHf8Y0slKEjw",
               Url = "https://www.youtube.com/channel/UClfEht64_NrzHf8Y0slKEjw",
               Name = "AlternateHistoryHub",
@@ -5650,7 +5650,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T16:44:54.0000000Z")
             },
             /* 447 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLfhh63n0fWn0gXXKQ5NWvw",
               Url = "https://www.youtube.com/channel/UCLfhh63n0fWn0gXXKQ5NWvw",
               Name = "Millennial Woes",
@@ -5662,7 +5662,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:28.9040000Z")
             },
             /* 448 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClFLXO6ecX-ucJp9gGJYiDw",
               Url = "https://www.youtube.com/channel/UClFLXO6ecX-ucJp9gGJYiDw",
               Name = "Counter Arguments",
@@ -5674,7 +5674,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:50.3810000Z")
             },
             /* 449 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClfqxOGWFlOMQWpIhbhzL2w",
               Url = "https://www.youtube.com/channel/UClfqxOGWFlOMQWpIhbhzL2w",
               Name = "bane666au",
@@ -5686,7 +5686,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-06T13:00:14.0000000Z")
             },
             /* 450 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClFSU9_bUb4Rc6OYfTt5SPw",
               Url = "https://www.youtube.com/channel/UClFSU9_bUb4Rc6OYfTt5SPw",
               Name = "Philip DeFranco",
@@ -5699,7 +5699,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T21:56:43.0000000Z")
             },
             /* 451 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL-gBPCqCZQnoaj8TEVrQ_w",
               Url = "https://www.youtube.com/channel/UCL-gBPCqCZQnoaj8TEVrQ_w",
               Name = "VIOLIN PART of Orchestra Pieces",
@@ -5711,7 +5711,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T05:58:53.0000000Z")
             },
             /* 452 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClGh7QkXnUikoRUo6RSVlMA",
               Url = "https://www.youtube.com/channel/UClGh7QkXnUikoRUo6RSVlMA",
               Name = "Social Justice Fails",
@@ -5724,7 +5724,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-20T17:36:14.0000000Z")
             },
             /* 453 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLGRZ0xSaBMIUmtn8wkPP3w",
               Url = "https://www.youtube.com/channel/UCLGRZ0xSaBMIUmtn8wkPP3w",
               Name = "Brittany Venti",
@@ -5737,7 +5737,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T11:00:10.0000000Z")
             },
             /* 454 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLH7qUqM0PLieCVaHA7RegA",
               Url = "https://www.youtube.com/channel/UCLH7qUqM0PLieCVaHA7RegA",
               Name = "Gad Saad",
@@ -5750,7 +5750,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T18:32:45.0000000Z")
             },
             /* 455 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
               Url = "https://www.youtube.com/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw",
               Name = "PewDiePie",
@@ -5763,7 +5763,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T17:27:38.0000000Z")
             },
             /* 456 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClHofEiTcGYPMA9jqaFbmGA",
               Url = "https://www.youtube.com/channel/UClHofEiTcGYPMA9jqaFbmGA",
               Name = "TehMimi",
@@ -5776,7 +5776,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T17:00:17.0000000Z")
             },
             /* 457 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLhtZqdkjshgq8TqwIjMdCQ",
               Url = "https://www.youtube.com/channel/UCLhtZqdkjshgq8TqwIjMdCQ",
               Name = "DarkMatter2525",
@@ -5789,7 +5789,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T20:36:06.0000000Z")
             },
             /* 458 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLIgnE32n3IYRyY5vtu2_dQ",
               Url = "https://www.youtube.com/channel/UCLIgnE32n3IYRyY5vtu2_dQ",
               Name = "Atheism-is-Unstoppable-3",
@@ -5800,7 +5800,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:43.1700000Z")
             },
             /* 459 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCljE1ODdSF7LS9xx9eWq0GQ",
               Url = "https://www.youtube.com/channel/UCljE1ODdSF7LS9xx9eWq0GQ",
               Name = "potholer54",
@@ -5813,7 +5813,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-19T08:10:00.0000000Z")
             },
             /* 460 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLjfw7KwVA2GpBbgE3oMJlg",
               Url = "https://www.youtube.com/channel/UCLjfw7KwVA2GpBbgE3oMJlg",
               Name = "Mariatozzz",
@@ -5824,7 +5824,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:43.6970000Z")
             },
             /* 461 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL-KWzX_hw7yfVR7WPQxIeA",
               Url = "https://www.youtube.com/channel/UCL-KWzX_hw7yfVR7WPQxIeA",
               Name = "Neuroposter",
@@ -5837,7 +5837,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-16T09:37:11.0000000Z")
             },
             /* 462 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLLxyaKSNav9f9Vqvp99npQ",
               Url = "https://www.youtube.com/channel/UCLLxyaKSNav9f9Vqvp99npQ",
               Name = "The Online Piano & Violin Tutor",
@@ -5850,7 +5850,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T15:00:03.0000000Z")
             },
             /* 463 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClMLaP99_AGVcJ-E9lvW5kw",
               Url = "https://www.youtube.com/channel/UClMLaP99_AGVcJ-E9lvW5kw",
               Name = "Little Miss Anonymous",
@@ -5863,7 +5863,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-03T22:41:38.0000000Z")
             },
             /* 464 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLMSv1UJp9sfoHyo-9s6sdw",
               Url = "https://www.youtube.com/channel/UCLMSv1UJp9sfoHyo-9s6sdw",
               Name = "SCNR",
@@ -5876,7 +5876,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-24T21:00:10.0000000Z")
             },
             /* 465 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClMWnUHbxJKJLUgloN1mPUA",
               Url = "https://www.youtube.com/channel/UClMWnUHbxJKJLUgloN1mPUA",
               Name = "Faith J Goldy",
@@ -5888,7 +5888,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:31.8870000Z")
             },
             /* 466 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClnDI2sdehVm1zm_LmUHsjQ",
               Url = "https://www.youtube.com/channel/UClnDI2sdehVm1zm_LmUHsjQ",
               Name = "Biographics",
@@ -5901,7 +5901,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:31.0000000Z")
             },
             /* 467 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClNfsm91UCJ55KIJ9zHCvhA",
               Url = "https://www.youtube.com/channel/UClNfsm91UCJ55KIJ9zHCvhA",
               Name = "Soi Girl",
@@ -5912,7 +5912,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:45.5400000Z")
             },
             /* 468 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLozp2Y1hFXSA-fHpsFv23A",
               Url = "https://www.youtube.com/channel/UCLozp2Y1hFXSA-fHpsFv23A",
               Name = "Becoming Autism",
@@ -5925,7 +5925,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-23T11:20:12.0000000Z")
             },
             /* 469 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLPMbl6z7UiLFTXNvoXShEg",
               Url = "https://www.youtube.com/channel/UCLPMbl6z7UiLFTXNvoXShEg",
               Name = "CivilizationEx",
@@ -5938,7 +5938,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T15:00:38.0000000Z")
             },
             /* 470 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLQus_O2x7asBrH_EqI36vw",
               Url = "https://www.youtube.com/channel/UCLQus_O2x7asBrH_EqI36vw",
               Name = "Robin Gething",
@@ -5950,7 +5950,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:52.9060000Z")
             },
             /* 471 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLrVxw4H4ZJ3LovpdbzF7bw",
               Url = "https://www.youtube.com/channel/UCLrVxw4H4ZJ3LovpdbzF7bw",
               Name = "The Fallen State",
@@ -5963,7 +5963,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T12:00:27.0000000Z")
             },
             /* 472 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLUrVTVTA3PnUFpYvpfMcpg",
               Url = "https://www.youtube.com/channel/UCLUrVTVTA3PnUFpYvpfMcpg",
               Name = "Lauren Chen",
@@ -5976,7 +5976,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-26T14:00:06.0000000Z")
             },
             /* 473 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClVOcdn1LNV8A98yZHYIDhQ",
               Url = "https://www.youtube.com/channel/UClVOcdn1LNV8A98yZHYIDhQ",
               Name = "The TreeHouse News",
@@ -5989,7 +5989,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:53:25.0000000Z")
             },
             /* 474 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLXI4EiN5EoKb61Gg2KjIZQ",
               Url = "https://www.youtube.com/channel/UCLXI4EiN5EoKb61Gg2KjIZQ",
               Name = "CinemaForCynics",
@@ -6002,7 +6002,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T22:00:11.0000000Z")
             },
             /* 475 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClY3NEKINpC_fwJks2ZNItQ",
               Url = "https://www.youtube.com/channel/UClY3NEKINpC_fwJks2ZNItQ",
               Name = "51-49 with James Li",
@@ -6017,7 +6017,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 476 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLYcOeMcoFI5LYPfqR2PW8g",
               Url = "https://www.youtube.com/channel/UCLYcOeMcoFI5LYPfqR2PW8g",
               Name = "Morally Gray",
@@ -6030,7 +6030,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T11:55:07.0000000Z")
             },
             /* 477 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLyGS26tPDRfgxRL_0ilwKQ",
               Url = "https://www.youtube.com/channel/UCLyGS26tPDRfgxRL_0ilwKQ",
               Name = "Bruce Greene",
@@ -6043,7 +6043,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:00:30.0000000Z")
             },
             /* 478 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl-Zrl0QhF66lu1aGXaTbfw",
               Url = "https://www.youtube.com/channel/UCl-Zrl0QhF66lu1aGXaTbfw",
               Name = "Neil Patel",
@@ -6056,7 +6056,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:03.0000000Z")
             },
             /* 479 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm045YWibxYLuNU1cz6rrrQ",
               Url = "https://www.youtube.com/channel/UCm045YWibxYLuNU1cz6rrrQ",
               Name = "black chad",
@@ -6069,7 +6069,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-21T19:34:19.0000000Z")
             },
             /* 480 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm0VjekR-4a-sUftCHzAAvg",
               Url = "https://www.youtube.com/channel/UCm0VjekR-4a-sUftCHzAAvg",
               Name = "Prophet of Zod",
@@ -6082,7 +6082,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T20:00:11.0000000Z")
             },
             /* 481 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCM3b1Egf3PNvAE_ut3d-Ngw",
               Url = "https://www.youtube.com/channel/UCM3b1Egf3PNvAE_ut3d-Ngw",
               Name = "YYviola",
@@ -6094,7 +6094,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:59:37.8090000Z")
             },
             /* 482 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm4WlDrdOOSbht-NKQ0uTeg",
               Url = "https://www.youtube.com/channel/UCm4WlDrdOOSbht-NKQ0uTeg",
               Name = "RabidRetrospectGames",
@@ -6107,7 +6107,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T14:00:09.0000000Z")
             },
             /* 483 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm9bKnREObr96Uf3iv7mWXQ",
               Url = "https://www.youtube.com/channel/UCm9bKnREObr96Uf3iv7mWXQ",
               Name = "The Bible and Other Fairy Tales",
@@ -6119,7 +6119,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:59:39.0610000Z")
             },
             /* 484 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMA0sXXIo64FvnOq9Iho16A",
               Url = "https://www.youtube.com/channel/UCMA0sXXIo64FvnOq9Iho16A",
               Name = "Winding Road Racing",
@@ -6132,7 +6132,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-21T17:14:01.0000000Z")
             },
             /* 485 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmb8hO2ilV9vRa8cilis88A",
               Url = "https://www.youtube.com/channel/UCmb8hO2ilV9vRa8cilis88A",
               Name = "Thunderf00t",
@@ -6145,7 +6145,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T08:50:56.0000000Z")
             },
             /* 486 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMc7w9VO8VKsEc98q_kndMA",
               Url = "https://www.youtube.com/channel/UCMc7w9VO8VKsEc98q_kndMA",
               Name = "Sᴜɪᴛ Yᴏᴜʀsᴇʟғ",
@@ -6156,7 +6156,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:25.4720000Z")
             },
             /* 487 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMCxBLg9Y8oA-EINGyFtwVQ",
               Url = "https://www.youtube.com/channel/UCMCxBLg9Y8oA-EINGyFtwVQ",
               Name = "Purple Dan",
@@ -6169,7 +6169,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-21T21:18:41.0000000Z")
             },
             /* 488 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMd0eMqGcfhtT4bYnaXeygQ",
               Url = "https://www.youtube.com/channel/UCMd0eMqGcfhtT4bYnaXeygQ",
               Name = "Sactown Violist",
@@ -6181,7 +6181,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:26.7550000Z")
             },
             /* 489 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmE1jdnqM-CUv8tyfaQICFw",
               Url = "https://www.youtube.com/channel/UCmE1jdnqM-CUv8tyfaQICFw",
               Name = "Hsin-Yun Huang, Violist",
@@ -6194,7 +6194,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T13:54:26.0000000Z")
             },
             /* 490 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMFSV8Q-T1OK_cK-6nFVtdw",
               Url = "https://www.youtube.com/channel/UCMFSV8Q-T1OK_cK-6nFVtdw",
               Name = "8 Bit Thoughts",
@@ -6206,7 +6206,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:51.1090000Z")
             },
             /* 491 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmfUulybEj8go-bXdfUUUxA",
               Url = "https://www.youtube.com/channel/UCmfUulybEj8go-bXdfUUUxA",
               Name = "Dragnauct Sylvas",
@@ -6219,7 +6219,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-03T23:00:20.0000000Z")
             },
             /* 492 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMGf-4TZDqNG97yqY5WPTCA",
               Url = "https://www.youtube.com/channel/UCMGf-4TZDqNG97yqY5WPTCA",
               Name = "Violin Noobie",
@@ -6232,7 +6232,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-10T20:33:38.0000000Z")
             },
             /* 493 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmHm0w-JJfC2Ll1Of_WObAQ",
               Url = "https://www.youtube.com/channel/UCmHm0w-JJfC2Ll1Of_WObAQ",
               Name = "Cooper Academy - Investing",
@@ -6245,7 +6245,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-25T03:24:40.0000000Z")
             },
             /* 494 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMhruZ35281kDEuANjXYcpA",
               Url = "https://www.youtube.com/channel/UCMhruZ35281kDEuANjXYcpA",
               Name = "IntrovertedSmiles",
@@ -6258,7 +6258,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T14:24:29.0000000Z")
             },
             /* 495 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMIj-wEiKIcGAcLoBO2ciQQ",
               Url = "https://www.youtube.com/channel/UCMIj-wEiKIcGAcLoBO2ciQQ",
               Name = "TL;DR",
@@ -6271,7 +6271,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-06T11:17:35.0000000Z")
             },
             /* 496 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmKPx9XRLx_z_qJeUcbZ5EA",
               Url = "https://www.youtube.com/channel/UCmKPx9XRLx_z_qJeUcbZ5EA",
               Name = "Quant Channel",
@@ -6284,7 +6284,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T13:08:25.0000000Z")
             },
             /* 497 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMlORSJPK0zLLGU9EVni-EA",
               Url = "https://www.youtube.com/channel/UCMlORSJPK0zLLGU9EVni-EA",
               Name = "brain4breakfast",
@@ -6295,7 +6295,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:01:30.6840000Z")
             },
             /* 498 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMmaBzfCCwZ2KqaBJjkj0fw",
               Url = "https://www.youtube.com/channel/UCMmaBzfCCwZ2KqaBJjkj0fw",
               Name = "Kings and Generals",
@@ -6308,7 +6308,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T12:59:47.0000000Z")
             },
             /* 499 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmpahmxWXajV0-tuMMzSzAg",
               Url = "https://www.youtube.com/channel/UCmpahmxWXajV0-tuMMzSzAg",
               Name = "Military Aviation History",
@@ -6320,7 +6320,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T18:01:43.0000000Z")
             },
             /* 500 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmRB15NbH71v5LYx7HccO5A",
               Url = "https://www.youtube.com/channel/UCmRB15NbH71v5LYx7HccO5A",
               Name = "Focusbreak Habeeb",
@@ -6331,7 +6331,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:01.0280000Z")
             },
             /* 501 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMRbVkqlh90dMKGLJZEcNZA",
               Url = "https://www.youtube.com/channel/UCMRbVkqlh90dMKGLJZEcNZA",
               Name = "No Idea Animation",
@@ -6344,7 +6344,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-13T17:30:11.0000000Z")
             },
             /* 502 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmthjMiFTIQnkGyZvfQKBdA",
               Url = "https://www.youtube.com/channel/UCmthjMiFTIQnkGyZvfQKBdA",
               Name = "Ozymandias Ramses II",
@@ -6356,7 +6356,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:01.6790000Z")
             },
             /* 503 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmtwkpnEQxiym2ueahm5DWw",
               Url = "https://www.youtube.com/channel/UCmtwkpnEQxiym2ueahm5DWw",
               Name = "kelcey lynn",
@@ -6367,7 +6367,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.0130000Z")
             },
             /* 504 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmuccm2PUMlyIyvD6EOh_qA",
               Url = "https://www.youtube.com/channel/UCmuccm2PUMlyIyvD6EOh_qA",
               Name = "MTV Impact",
@@ -6380,7 +6380,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T16:14:27.0000000Z")
             },
             /* 505 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMWs7S9109tuuq2B4JqCuTg",
               Url = "https://www.youtube.com/channel/UCMWs7S9109tuuq2B4JqCuTg",
               Name = "Perception Check",
@@ -6393,7 +6393,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-09T13:30:33.0000000Z")
             },
             /* 506 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn1bhOC69Z4TplynafVv7ng",
               Url = "https://www.youtube.com/channel/UCn1bhOC69Z4TplynafVv7ng",
               Name = "chrisiousity",
@@ -6405,7 +6405,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:37.8380000Z")
             },
             /* 507 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn28f-SPeRDjx8CDaYgDGsA",
               Url = "https://www.youtube.com/channel/UCn28f-SPeRDjx8CDaYgDGsA",
               Name = "Amy Lee",
@@ -6418,7 +6418,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-15T19:53:49.0000000Z")
             },
             /* 508 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn2GOQq6qctTQWZfFKK2ojg",
               Url = "https://www.youtube.com/channel/UCn2GOQq6qctTQWZfFKK2ojg",
               Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
@@ -6428,7 +6428,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.6680000Z")
             },
             /* 509 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCN429bxOimdpUbDxYcZV7sA",
               Url = "https://www.youtube.com/channel/UCN429bxOimdpUbDxYcZV7sA",
               Name = "Brett 'The Situation' Keane",
@@ -6439,7 +6439,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.8440000Z")
             },
             /* 510 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn7qUcIncw0pOlyRMBc__qQ",
               Url = "https://www.youtube.com/channel/UCn7qUcIncw0pOlyRMBc__qQ",
               Name = "Cookie And Cars",
@@ -6452,7 +6452,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-09T15:39:48.0000000Z")
             },
             /* 511 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn8mAXIRVniC4Y9zvk_yMWQ",
               Url = "https://www.youtube.com/channel/UCn8mAXIRVniC4Y9zvk_yMWQ",
               Name = "Sitch & Adam Show",
@@ -6467,7 +6467,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 512 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNaGXxDBmCNQGpwm3hxK9sw",
               Url = "https://www.youtube.com/channel/UCNaGXxDBmCNQGpwm3hxK9sw",
               Name = "WQXR",
@@ -6480,7 +6480,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:57:23.0000000Z")
             },
             /* 513 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNAxrHudMfdzNi6NxruKPLw",
               Url = "https://www.youtube.com/channel/UCNAxrHudMfdzNi6NxruKPLw",
               Name = "Sam Harris",
@@ -6493,7 +6493,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-06T06:13:08.0000000Z")
             },
             /* 514 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCND4xEWs0jK2VfnFf61TxgA",
               Url = "https://www.youtube.com/channel/UCND4xEWs0jK2VfnFf61TxgA",
               Name = "Iceland Symphony Orchestra",
@@ -6506,7 +6506,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-24T21:49:44.0000000Z")
             },
             /* 515 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnDRvVJh7BVVvDKtcmdxrHw",
               Url = "https://www.youtube.com/channel/UCnDRvVJh7BVVvDKtcmdxrHw",
               Name = "ScotchOikos",
@@ -6518,7 +6518,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-17T04:48:17.0000000Z")
             },
             /* 516 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNEdJjUqKvcVmZAa2VbH0tg",
               Url = "https://www.youtube.com/channel/UCNEdJjUqKvcVmZAa2VbH0tg",
               Name = "SPACETV",
@@ -6531,7 +6531,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T00:00:25.0000000Z")
             },
             /* 517 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNf3BSkOY0w8NHzc1nV7LZg",
               Url = "https://www.youtube.com/channel/UCNf3BSkOY0w8NHzc1nV7LZg",
               Name = "FisherOfMen",
@@ -6543,7 +6543,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:39.2580000Z")
             },
             /* 518 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNfnpSAXFKeJe3t9AFUq_2Q",
               Url = "https://www.youtube.com/channel/UCNfnpSAXFKeJe3t9AFUq_2Q",
               Name = "Anti-Feminism Australia",
@@ -6554,7 +6554,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:39.4060000Z")
             },
             /* 519 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCngcXcEVpn46JD-zArAclFA",
               Url = "https://www.youtube.com/channel/UCngcXcEVpn46JD-zArAclFA",
               Name = "Fiona Robertson",
@@ -6566,7 +6566,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-06T02:52:55.0000000Z")
             },
             /* 520 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNIuvl7V8zACPpTmmNIqP2A",
               Url = "https://www.youtube.com/channel/UCNIuvl7V8zACPpTmmNIqP2A",
               Name = "OverSimplified",
@@ -6579,7 +6579,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-06T23:30:10.0000000Z")
             },
             /* 521 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCN-Klifn9C7kINwpIA0uOHw",
               Url = "https://www.youtube.com/channel/UCN-Klifn9C7kINwpIA0uOHw",
               Name = "GaLm",
@@ -6592,7 +6592,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T00:00:08.0000000Z")
             },
             /* 522 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNKMpngJmzAIOyA4RVxkX-g",
               Url = "https://www.youtube.com/channel/UCNKMpngJmzAIOyA4RVxkX-g",
               Name = "Cr1TiKaL Full Streams - Random Videos",
@@ -6605,7 +6605,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T00:15:00.0000000Z")
             },
             /* 523 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNN5uQ07z4-PpcBJVmPHAlw",
               Url = "https://www.youtube.com/channel/UCNN5uQ07z4-PpcBJVmPHAlw",
               Name = "Jackie Kay Violin",
@@ -6617,7 +6617,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:16.1040000Z")
             },
             /* 524 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNo4F3mz70-UqRbKwjRmRWg",
               Url = "https://www.youtube.com/channel/UCNo4F3mz70-UqRbKwjRmRWg",
               Name = "Talk Heathen",
@@ -6630,7 +6630,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:00:02.0000000Z")
             },
             /* 525 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNOlLwBZQLUPYUs31hVFeSA",
               Url = "https://www.youtube.com/channel/UCNOlLwBZQLUPYUs31hVFeSA",
               Name = "Bureau of Meteorology",
@@ -6643,7 +6643,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T06:24:43.0000000Z")
             },
             /* 526 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnoPePb7a4_jFpSfwEFNuQA",
               Url = "https://www.youtube.com/channel/UCnoPePb7a4_jFpSfwEFNuQA",
               Name = "Hydro Nova",
@@ -6655,7 +6655,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:20.0900000Z")
             },
             /* 527 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNoqnbYl5frzSLxiNLq1Abw",
               Url = "https://www.youtube.com/channel/UCNoqnbYl5frzSLxiNLq1Abw",
               Name = "xclassicalcatx - Joanna",
@@ -6668,7 +6668,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-19T02:30:13.0000000Z")
             },
             /* 528 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-nPM1_kSZf91ZGkcgy_95Q",
               Url = "https://www.youtube.com/channel/UC-nPM1_kSZf91ZGkcgy_95Q",
               Name = "How to ADHD",
@@ -6681,7 +6681,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T17:02:17.0000000Z")
             },
             /* 529 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnQ5ubO2pULtTKAZqRuZxRg",
               Url = "https://www.youtube.com/channel/UCnQ5ubO2pULtTKAZqRuZxRg",
               Name = "Times Infinity",
@@ -6694,7 +6694,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-08T03:31:45.0000000Z")
             },
             /* 530 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNqNkZ7kKfqimqHkgbWMNYA",
               Url = "https://www.youtube.com/channel/UCNqNkZ7kKfqimqHkgbWMNYA",
               Name = "Launch Pad Astronomy",
@@ -6707,7 +6707,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T17:50:26.0000000Z")
             },
             /* 531 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNuGLUzYdOivYLBIzgRacfA",
               Url = "https://www.youtube.com/channel/UCNuGLUzYdOivYLBIzgRacfA",
               Name = "Livinginthego Green",
@@ -6719,7 +6719,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-06T11:30:20.0000000Z")
             },
             /* 532 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnvl7P4B9Yy8h7JI4ZOO8yw",
               Url = "https://www.youtube.com/channel/UCnvl7P4B9Yy8h7JI4ZOO8yw",
               Name = "Caeruleus Valentinius",
@@ -6732,7 +6732,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-10T15:03:39.0000000Z")
             },
             /* 533 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnw5I-wliudW8YO1vr5O4IQ",
               Url = "https://www.youtube.com/channel/UCnw5I-wliudW8YO1vr5O4IQ",
               Name = "The Lotus Eaters",
@@ -6744,7 +6744,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-13T18:00:25.0000000Z")
             },
             /* 534 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnwZZHboukKCsMSXYUVRCwA",
               Url = "https://www.youtube.com/channel/UCnwZZHboukKCsMSXYUVRCwA",
               Name = "TheBlueDragon",
@@ -6757,7 +6757,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T17:34:17.0000000Z")
             },
             /* 535 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNxUlD83KmJEXjZWrH9J7dw",
               Url = "https://www.youtube.com/channel/UCNxUlD83KmJEXjZWrH9J7dw",
               Name = "Anastasia Soina",
@@ -6770,7 +6770,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-20T14:05:55.0000000Z")
             },
             /* 536 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCNYfJevfB9MidOOhObFJh1g",
               Url = "https://www.youtube.com/channel/UCNYfJevfB9MidOOhObFJh1g",
               Name = "Ana Duke",
@@ -6783,7 +6783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-04-26T02:10:56.0000000Z")
             },
             /* 537 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCnZVqZOZGaJPK-dodWSAIoA",
               Url = "https://www.youtube.com/channel/UCnZVqZOZGaJPK-dodWSAIoA",
               Name = "nukedpixels",
@@ -6796,7 +6796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-15T21:34:07.0000000Z")
             },
             /* 538 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO0akufu9MOzyz3nvGIXAAw",
               Url = "https://www.youtube.com/channel/UCO0akufu9MOzyz3nvGIXAAw",
               Name = "Sky News Australia",
@@ -6811,7 +6811,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 539 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO16QxEXKv2XiKXASa1A6ZA",
               Url = "https://www.youtube.com/channel/UCO16QxEXKv2XiKXASa1A6ZA",
               Name = "Ranting Monkey",
@@ -6830,7 +6830,7 @@ namespace OPMF.Tests.TestData
         private static readonly Channel[] __channelList2 = new Channel[]
         {
             /* 2 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_08RQ4dn_CQ8E1IyQyP_iQ",
               Url = "https://www.youtube.com/channel/UC_08RQ4dn_CQ8E1IyQyP_iQ",
               Name = "Lizz Reptile",
@@ -6843,7 +6843,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-28T22:27:24.0000000Z")
             },
             /* 3 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_cd4oF2phaIBD3WsU3f7Xg",
               Url = "https://www.youtube.com/channel/UC_cd4oF2phaIBD3WsU3f7Xg",
               Name = "Modern-Day Debate",
@@ -6856,7 +6856,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T20:27:38.0000000Z")
             },
             /* 4 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_cznB5YZZmvAmeq7Y3EriQ",
               Url = "https://www.youtube.com/channel/UC_cznB5YZZmvAmeq7Y3EriQ",
               Name = "Stated Clearly",
@@ -6869,7 +6869,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-12T11:00:16.0000000Z")
             },
             /* 5 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_DO3GwiKhy-Z6XtmnxhfRA",
               Url = "https://www.youtube.com/channel/UC_DO3GwiKhy-Z6XtmnxhfRA",
               Name = "The Violin Channel",
@@ -6882,7 +6882,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-07T07:44:09.0000000Z")
             },
             /* 6 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_H_lI-9qWdCiAq4AciqE4A",
               Url = "https://www.youtube.com/channel/UC_H_lI-9qWdCiAq4AciqE4A",
               Name = "Abdullah Sameer",
@@ -6895,7 +6895,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-21T16:38:33.0000000Z")
             },
             /* 7 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_Kuw4Ny3LdIik0l36Oojbg",
               Url = "https://www.youtube.com/channel/UC_Kuw4Ny3LdIik0l36Oojbg",
               Name = "Anja Melissa",
@@ -6908,7 +6908,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-07T09:00:07.0000000Z")
             },
             /* 8 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_qM07dUtRS5iV-ppigKi4g",
               Url = "https://www.youtube.com/channel/UC_qM07dUtRS5iV-ppigKi4g",
               Name = "Birchie Rants",
@@ -6920,7 +6920,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:18.6170000Z")
             },
             /* 9 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_rJVuy78JWJh4_ZFMPsOzA",
               Url = "https://www.youtube.com/channel/UC_rJVuy78JWJh4_ZFMPsOzA",
               Name = "TheMedsPeds",
@@ -6933,7 +6933,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-07T15:53:56.0000000Z")
             },
             /* 10 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC_xYMXx_-mAzheKyEtwtCAQ",
               Url = "https://www.youtube.com/channel/UC_xYMXx_-mAzheKyEtwtCAQ",
               Name = "Scientific American",
@@ -6946,7 +6946,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T16:50:37.0000000Z")
             },
             /* 11 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC03A7S5CqhPqa2_H1s5UI1w",
               Url = "https://www.youtube.com/channel/UC03A7S5CqhPqa2_H1s5UI1w",
               Name = "Jackson Wheat",
@@ -6958,7 +6958,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T02:23:05.0000000Z")
             },
             /* 12 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0aanx5rpr7D1M7KCFYzrLQ",
               Url = "https://www.youtube.com/channel/UC0aanx5rpr7D1M7KCFYzrLQ",
               Name = "Shoe0nHead",
@@ -6971,7 +6971,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:26:02.0000000Z")
             },
             /* 13 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0ArlFuFYMpEewyRBzdLHiw",
               Url = "https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw",
               Name = "The Cyber Mentor",
@@ -6984,7 +6984,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T01:26:28.0000000Z")
             },
             /* 14 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0aVoboXBUx2-tVIWHc3W2Q",
               Url = "https://www.youtube.com/channel/UC0aVoboXBUx2-tVIWHc3W2Q",
               Name = "MILO",
@@ -6997,7 +6997,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-19T03:28:04.0000000Z")
             },
             /* 15 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0cd_-e49hZpWLH3UIwoWRA",
               Url = "https://www.youtube.com/channel/UC0cd_-e49hZpWLH3UIwoWRA",
               Name = "Professor Dave Explains",
@@ -7010,7 +7010,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:20:17.0000000Z")
             },
             /* 16 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0gdSRU1EBmBoRFSG9UypHg",
               Url = "https://www.youtube.com/channel/UC0gdSRU1EBmBoRFSG9UypHg",
               Name = "Marijke Violin",
@@ -7023,7 +7023,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-21T14:03:16.0000000Z")
             },
             /* 17 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0hAeUHHaqdFUNdWAmeI5kA",
               Url = "https://www.youtube.com/channel/UC0hAeUHHaqdFUNdWAmeI5kA",
               Name = "JLC Viola",
@@ -7035,7 +7035,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:41:54.9980000Z")
             },
             /* 18 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0hwSUgu98_uX_xuTELSKSg",
               Url = "https://www.youtube.com/channel/UC0hwSUgu98_uX_xuTELSKSg",
               Name = "Margaret MacLennan",
@@ -7047,7 +7047,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:41:55.1330000Z")
             },
             /* 19 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0MAi67khv-LcaAepPQCsDg",
               Url = "https://www.youtube.com/channel/UC0MAi67khv-LcaAepPQCsDg",
               Name = "Excultbaby",
@@ -7060,7 +7060,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-01T18:30:09.0000000Z")
             },
             /* 20 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0n9pcWWhf8BzJ9zFakcA0g",
               Url = "https://www.youtube.com/channel/UC0n9pcWWhf8BzJ9zFakcA0g",
               Name = "Zarathustra's Serpent",
@@ -7073,7 +7073,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T15:35:19.0000000Z")
             },
             /* 21 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0p7O4CDGlAv-6reZ1TTYRg",
               Url = "https://www.youtube.com/channel/UC0p7O4CDGlAv-6reZ1TTYRg",
               Name = "Mens Rights Australia",
@@ -7084,7 +7084,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:20.8640000Z")
             },
             /* 22 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0pIykaV6QVw26edNRaPcUg",
               Url = "https://www.youtube.com/channel/UC0pIykaV6QVw26edNRaPcUg",
               Name = "Mariko Barra",
@@ -7096,7 +7096,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:07.8060000Z")
             },
             /* 23 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0qhPJh8DeoR-3JhMrIvw0g",
               Url = "https://www.youtube.com/channel/UC0qhPJh8DeoR-3JhMrIvw0g",
               Name = "Shannon Q",
@@ -7109,7 +7109,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-18T01:50:48.0000000Z")
             },
             /* 24 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0rZoXAD5lxgBHMsjrGwWWQ",
               Url = "https://www.youtube.com/channel/UC0rZoXAD5lxgBHMsjrGwWWQ",
               Name = "Styxhexenhammer666",
@@ -7122,7 +7122,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T07:25:57.0000000Z")
             },
             /* 25 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0y414Hpxvf-yFKPQGYrg0A",
               Url = "https://www.youtube.com/channel/UC0y414Hpxvf-yFKPQGYrg0A",
               Name = "American Atheists",
@@ -7135,7 +7135,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-21T22:45:12.0000000Z")
             },
             /* 26 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC0ZTPkdxlAKf-V33tqXwi3Q",
               Url = "https://www.youtube.com/channel/UC0ZTPkdxlAKf-V33tqXwi3Q",
               Name = "HackerSploit",
@@ -7148,7 +7148,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T03:42:45.0000000Z")
             },
             /* 27 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1-7mA0mKsCTyCMG4JNO3EQ",
               Url = "https://www.youtube.com/channel/UC1-7mA0mKsCTyCMG4JNO3EQ",
               Name = "space and astronomy",
@@ -7161,7 +7161,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-26T17:00:20.0000000Z")
             },
             /* 28 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC19J83LCkBL2KFPEtifwfJQ",
               Url = "https://www.youtube.com/channel/UC19J83LCkBL2KFPEtifwfJQ",
               Name = "The Pharaoh",
@@ -7173,7 +7173,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:12.2030000Z")
             },
             /* 29 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1bwliGvJogr7cWK0nT2Eag",
               Url = "https://www.youtube.com/channel/UC1bwliGvJogr7cWK0nT2Eag",
               Name = "MKIceAndFire",
@@ -7186,7 +7186,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:06:30.0000000Z")
             },
             /* 30 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1BWMtZbNLVMSFgwSukjqCw",
               Url = "https://www.youtube.com/channel/UC1BWMtZbNLVMSFgwSukjqCw",
               Name = "Armoured Skeptic",
@@ -7199,7 +7199,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T01:10:25.0000000Z")
             },
             /* 31 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1D3yD4wlPMico0dss264XA",
               Url = "https://www.youtube.com/channel/UC1D3yD4wlPMico0dss264XA",
               Name = "NileBlue",
@@ -7211,7 +7211,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-05T18:00:38.0000000Z")
             },
             /* 32 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1dlscdSGohl2FWQqCq_mBg",
               Url = "https://www.youtube.com/channel/UC1dlscdSGohl2FWQqCq_mBg",
               Name = "NOTA Livestreams",
@@ -7222,7 +7222,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:13.6450000Z")
             },
             /* 33 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1FIQPDF4XoFRyd_uA5z5eg",
               Url = "https://www.youtube.com/channel/UC1FIQPDF4XoFRyd_uA5z5eg",
               Name = "steelmonkay",
@@ -7234,7 +7234,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:13.9860000Z")
             },
             /* 34 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1gSxXwxoIxIt9doAapuueg",
               Url = "https://www.youtube.com/channel/UC1gSxXwxoIxIt9doAapuueg",
               Name = "The Quran Reloaded",
@@ -7246,7 +7246,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:14.8610000Z")
             },
             /* 35 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1Ir4nwAB_2NDSBmeaq7zOw",
               Url = "https://www.youtube.com/channel/UC1Ir4nwAB_2NDSBmeaq7zOw",
               Name = "GirlDoesRant",
@@ -7259,7 +7259,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-02T19:56:59.0000000Z")
             },
             /* 36 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1kO3oz_6dvWBF5o-BBpA6w",
               Url = "https://www.youtube.com/channel/UC1kO3oz_6dvWBF5o-BBpA6w",
               Name = "Finntronaut 2",
@@ -7271,7 +7271,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:23.2990000Z")
             },
             /* 37 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1lw_fo-eHfVZ1zQuYM4lAA",
               Url = "https://www.youtube.com/channel/UC1lw_fo-eHfVZ1zQuYM4lAA",
               Name = "ScienceAlert",
@@ -7284,7 +7284,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-30T05:42:48.0000000Z")
             },
             /* 38 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1SzlwfeQ_4-9LuV_00Efuw",
               Url = "https://www.youtube.com/channel/UC1SzlwfeQ_4-9LuV_00Efuw",
               Name = "Steve McRae",
@@ -7297,7 +7297,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T01:21:39.0000000Z")
             },
             /* 39 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1Xf6ScN9riYhTOUsvhkhaw",
               Url = "https://www.youtube.com/channel/UC1Xf6ScN9riYhTOUsvhkhaw",
               Name = "God is Grey",
@@ -7310,7 +7310,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T18:00:06.0000000Z")
             },
             /* 40 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1yBKRuGpC1tSM73A0ZjYjQ",
               Url = "https://www.youtube.com/channel/UC1yBKRuGpC1tSM73A0ZjYjQ",
               Name = "The Young Turks",
@@ -7323,7 +7323,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T03:45:01.0000000Z")
             },
             /* 41 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1yNl2E66ZzKApQdRuTQ4tw",
               Url = "https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw",
               Name = "Sabine Hossenfelder",
@@ -7341,7 +7341,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T12:00:25.0000000Z")
             },
             /* 42 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC1ZBQ-F-yktYD4m5AzM6pww",
               Url = "https://www.youtube.com/channel/UC1ZBQ-F-yktYD4m5AzM6pww",
               Name = "Mustard",
@@ -7354,7 +7354,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T17:04:53.0000000Z")
             },
             /* 43 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2_a05o1pW4fr9SzlyMv8OA",
               Url = "https://www.youtube.com/channel/UC2_a05o1pW4fr9SzlyMv8OA",
               Name = "invisible i",
@@ -7367,7 +7367,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-20T17:01:53.0000000Z")
             },
             /* 44 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2_KC8lshtCyiLApy27raYw",
               Url = "https://www.youtube.com/channel/UC2_KC8lshtCyiLApy27raYw",
               Name = "KnowledgeHub",
@@ -7380,7 +7380,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:00:08.0000000Z")
             },
             /* 45 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC228Y4vvOMPieeT_XYTbe-A",
               Url = "https://www.youtube.com/channel/UC228Y4vvOMPieeT_XYTbe-A",
               Name = "Repzion",
@@ -7392,7 +7392,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-03T01:52:57.0000000Z")
             },
             /* 46 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC22vjKa2BoJ_xyESQeRYixA",
               Url = "https://www.youtube.com/channel/UC22vjKa2BoJ_xyESQeRYixA",
               Name = "Bearingcab",
@@ -7404,7 +7404,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:30.6580000Z")
             },
             /* 47 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC22Ww9SlqutdlxyoKAbNsLQ",
               Url = "https://www.youtube.com/channel/UC22Ww9SlqutdlxyoKAbNsLQ",
               Name = "isethoriginal",
@@ -7417,7 +7417,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-05T05:09:55.0000000Z")
             },
             /* 48 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2bLCMrLb_bjiGx0GykOoMA",
               Url = "https://www.youtube.com/channel/UC2bLCMrLb_bjiGx0GykOoMA",
               Name = "GoombaFish",
@@ -7430,7 +7430,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-12T19:16:42.0000000Z")
             },
             /* 49 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2Cl2g2xFTZoAEldxYVzQFg",
               Url = "https://www.youtube.com/channel/UC2Cl2g2xFTZoAEldxYVzQFg",
               Name = "Geo History",
@@ -7443,7 +7443,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T11:00:12.0000000Z")
             },
             /* 50 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2GQUFrpB1BMBqaRYiL3SyA",
               Url = "https://www.youtube.com/channel/UC2GQUFrpB1BMBqaRYiL3SyA",
               Name = "Deconverted Man",
@@ -7456,7 +7456,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T05:58:38.0000000Z")
             },
             /* 51 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2h3CQPQJB35k6R6yzqOwew",
               Url = "https://www.youtube.com/channel/UC2h3CQPQJB35k6R6yzqOwew",
               Name = "Anna Moomin",
@@ -7469,7 +7469,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-02-12T16:35:39.0000000Z")
             },
             /* 52 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2h3yPmh9TfQv2z3aTDTHHA",
               Url = "https://www.youtube.com/channel/UC2h3yPmh9TfQv2z3aTDTHHA",
               Name = "Andywarski",
@@ -7480,7 +7480,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:26.5600000Z")
             },
             /* 53 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2iZAkx68UTXqMnuDeww6JA",
               Url = "https://www.youtube.com/channel/UC2iZAkx68UTXqMnuDeww6JA",
               Name = "MykeruMedia",
@@ -7493,7 +7493,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T15:42:21.0000000Z")
             },
             /* 54 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2MrtVb1dT4FhcbOlW736kA",
               Url = "https://www.youtube.com/channel/UC2MrtVb1dT4FhcbOlW736kA",
               Name = "Redline Reviews",
@@ -7506,7 +7506,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T13:00:19.0000000Z")
             },
             /* 55 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2nthqnh9lbFRBkcZh_VBQQ",
               Url = "https://www.youtube.com/channel/UC2nthqnh9lbFRBkcZh_VBQQ",
               Name = "Godless",
@@ -7517,7 +7517,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:45.6800000Z")
             },
             /* 56 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2OdMVzzL6SaOKyP0dTcllQ",
               Url = "https://www.youtube.com/channel/UC2OdMVzzL6SaOKyP0dTcllQ",
               Name = "Willow Hope",
@@ -7530,7 +7530,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-15T01:19:14.0000000Z")
             },
             /* 57 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2OhDIizaK4hv72X3uLvY-g",
               Url = "https://www.youtube.com/channel/UC2OhDIizaK4hv72X3uLvY-g",
               Name = "Brett Segmento",
@@ -7542,7 +7542,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:42:46.0710000Z")
             },
             /* 58 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2UIXt4VQnhQ-VZM4P1bUMQ",
               Url = "https://www.youtube.com/channel/UC2UIXt4VQnhQ-VZM4P1bUMQ",
               Name = "AVROTROS Klassiek",
@@ -7555,7 +7555,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T07:40:34.0000000Z")
             },
             /* 59 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2w1CQqPli4w94-PCg2UvJQ",
               Url = "https://www.youtube.com/channel/UC2w1CQqPli4w94-PCg2UvJQ",
               Name = "The Alternative Hypothesis",
@@ -7567,7 +7567,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:27.7940000Z")
             },
             /* 60 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC2yh-MfL2LamSVqb76fEPCg",
               Url = "https://www.youtube.com/channel/UC2yh-MfL2LamSVqb76fEPCg",
               Name = "Mauritian Struggle",
@@ -7579,7 +7579,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:27.9490000Z")
             },
             /* 61 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC31xCpsCXbAJlg-az1FTJfg",
               Url = "https://www.youtube.com/channel/UC31xCpsCXbAJlg-az1FTJfg",
               Name = "AutiSIMSara",
@@ -7592,7 +7592,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-20T18:00:14.0000000Z")
             },
             /* 62 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3AVRhyuThyOYLepHuBQ66w",
               Url = "https://www.youtube.com/channel/UC3AVRhyuThyOYLepHuBQ66w",
               Name = "Miss London",
@@ -7605,7 +7605,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-17T20:02:05.0000000Z")
             },
             /* 63 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3HZj_ebQWk90iaczhSvuCA",
               Url = "https://www.youtube.com/channel/UC3HZj_ebQWk90iaczhSvuCA",
               Name = "Zara Kay",
@@ -7618,7 +7618,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-01T15:54:37.0000000Z")
             },
             /* 64 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3nwqsNcML5oJeWRHBmxabQ",
               Url = "https://www.youtube.com/channel/UC3nwqsNcML5oJeWRHBmxabQ",
               Name = "Lushia Gaming",
@@ -7631,7 +7631,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T13:00:13.0000000Z")
             },
             /* 65 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3s0BtrBJpwNDaflRSoiieQ",
               Url = "https://www.youtube.com/channel/UC3s0BtrBJpwNDaflRSoiieQ",
               Name = "Hak5",
@@ -7644,7 +7644,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T00:11:17.0000000Z")
             },
             /* 66 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3TbT_taTdB5_pxcHnNNHAg",
               Url = "https://www.youtube.com/channel/UC3TbT_taTdB5_pxcHnNNHAg",
               Name = "Kristi Winters",
@@ -7657,7 +7657,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T11:12:21.0000000Z")
             },
             /* 67 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3V4bmR7EXvPh-ryJW1fSCA",
               Url = "https://www.youtube.com/channel/UC3V4bmR7EXvPh-ryJW1fSCA",
               Name = "DP Clips",
@@ -7669,7 +7669,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:20.9390000Z")
             },
             /* 68 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3VDnzwOEwpcOwcjIUeReww",
               Url = "https://www.youtube.com/channel/UC3VDnzwOEwpcOwcjIUeReww",
               Name = "VC3 Productions",
@@ -7682,7 +7682,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-18T18:45:32.0000000Z")
             },
             /* 69 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC3z4aVMh7r4TLBI64c773Qg",
               Url = "https://www.youtube.com/channel/UC3z4aVMh7r4TLBI64c773Qg",
               Name = "Elizabeth Yu 伊利沙伯",
@@ -7695,7 +7695,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-03T14:31:01.0000000Z")
             },
             /* 70 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4_bwov47DseacR1-ttTdOg",
               Url = "https://www.youtube.com/channel/UC4_bwov47DseacR1-ttTdOg",
               Name = "boogie2988",
@@ -7708,7 +7708,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T22:04:35.0000000Z")
             },
             /* 71 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC43HKnaw7cSPUXPM4rmNBNw",
               Url = "https://www.youtube.com/channel/UC43HKnaw7cSPUXPM4rmNBNw",
               Name = "Michael Rowlands",
@@ -7720,7 +7720,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:29.7090000Z")
             },
             /* 72 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4CBAoKliFGQZ7YsTiDrRTg",
               Url = "https://www.youtube.com/channel/UC4CBAoKliFGQZ7YsTiDrRTg",
               Name = "Violin Viola Masterclass",
@@ -7733,7 +7733,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T14:00:23.0000000Z")
             },
             /* 73 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4eMTV5t1TfKYxmKvXBR4jg",
               Url = "https://www.youtube.com/channel/UC4eMTV5t1TfKYxmKvXBR4jg",
               Name = "Drunken Peasants Archive",
@@ -7745,7 +7745,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:29.1570000Z")
             },
             /* 74 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4eYXhJI4-7wSWc8UNRwD4A",
               Url = "https://www.youtube.com/channel/UC4eYXhJI4-7wSWc8UNRwD4A",
               Name = "NPR Music",
@@ -7758,7 +7758,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-04T20:45:14.0000000Z")
             },
             /* 75 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4fYb-ziHaNtbd0NKo-0q7A",
               Url = "https://www.youtube.com/channel/UC4fYb-ziHaNtbd0NKo-0q7A",
               Name = "SyeTen",
@@ -7770,7 +7770,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:29.3010000Z")
             },
             /* 76 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4IgEVgl6t18-89GPekZtAw",
               Url = "https://www.youtube.com/channel/UC4IgEVgl6t18-89GPekZtAw",
               Name = "Strawburry17Plays",
@@ -7783,7 +7783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T23:45:05.0000000Z")
             },
             /* 77 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4ihNhN8iN9QPg2XTxiiPJw",
               Url = "https://www.youtube.com/channel/UC4ihNhN8iN9QPg2XTxiiPJw",
               Name = "Inside the Score",
@@ -7796,7 +7796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T18:19:11.0000000Z")
             },
             /* 78 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4k3HO5n3aSq_bayF-UHiGg",
               Url = "https://www.youtube.com/channel/UC4k3HO5n3aSq_bayF-UHiGg",
               Name = "Louis Le Vau",
@@ -7809,7 +7809,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-27T19:01:49.0000000Z")
             },
             /* 79 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4NpbPE75Cb1xkbDLWq8WuA",
               Url = "https://www.youtube.com/channel/UC4NpbPE75Cb1xkbDLWq8WuA",
               Name = "DEEP FAT FRIED",
@@ -7822,7 +7822,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-02T18:00:11.0000000Z")
             },
             /* 80 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4unV5BVmWubfAF0Al_AVdw",
               Url = "https://www.youtube.com/channel/UC4unV5BVmWubfAF0Al_AVdw",
               Name = "SyrianGirlpartisan",
@@ -7835,7 +7835,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-19T02:46:47.0000000Z")
             },
             /* 81 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4vH0t0LXo8b8Yc_hf0N3FA",
               Url = "https://www.youtube.com/channel/UC4vH0t0LXo8b8Yc_hf0N3FA",
               Name = "EllieJayden",
@@ -7847,7 +7847,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-05T18:26:11.0000000Z")
             },
             /* 82 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4w_tMnHl6sw5VD93tVymGw",
               Url = "https://www.youtube.com/channel/UC4w_tMnHl6sw5VD93tVymGw",
               Name = "Inside Gaming",
@@ -7860,7 +7860,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:09:39.0000000Z")
             },
             /* 83 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC4YU4J4Pbc8RTvMGoPevWmQ",
               Url = "https://www.youtube.com/channel/UC4YU4J4Pbc8RTvMGoPevWmQ",
               Name = "Religion, Atheism, Science",
@@ -7873,7 +7873,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-17T17:51:09.0000000Z")
             },
             /* 84 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC52kszkc08-acFOuogFl5jw",
               Url = "https://www.youtube.com/channel/UC52kszkc08-acFOuogFl5jw",
               Name = "Tibees",
@@ -7886,7 +7886,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-15T10:49:48.0000000Z")
             },
             /* 85 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC554eY5jNUfDq3yDOJYirOQ",
               Url = "https://www.youtube.com/channel/UC554eY5jNUfDq3yDOJYirOQ",
               Name = "Destiny",
@@ -7899,7 +7899,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T15:10:09.0000000Z")
             },
             /* 86 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC56QkVc9NiAd58nx6nbr1Zg",
               Url = "https://www.youtube.com/channel/UC56QkVc9NiAd58nx6nbr1Zg",
               Name = "Logicked Livestreams",
@@ -7911,7 +7911,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:32.8680000Z")
             },
             /* 87 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC595wqznMGuY2mi6DKx-qnQ",
               Url = "https://www.youtube.com/channel/UC595wqznMGuY2mi6DKx-qnQ",
               Name = "HoneyBadgerRadio",
@@ -7923,7 +7923,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:32.1180000Z")
             },
             /* 88 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5970RJMoEcRNZl0MNp8tlQ",
               Url = "https://www.youtube.com/channel/UC5970RJMoEcRNZl0MNp8tlQ",
               Name = "LiliaTV",
@@ -7936,7 +7936,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:35:05.0000000Z")
             },
             /* 89 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5aT3baqQh2eeN_mpVxVicA",
               Url = "https://www.youtube.com/channel/UC5aT3baqQh2eeN_mpVxVicA",
               Name = "Shannon Gibbs",
@@ -7948,7 +7948,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:34.2270000Z")
             },
             /* 90 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5Cn_NoDBFkuZnLm2I2Ibcg",
               Url = "https://www.youtube.com/channel/UC5Cn_NoDBFkuZnLm2I2Ibcg",
               Name = "Yu-Pei Hsiao",
@@ -7961,7 +7961,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-21T17:45:01.0000000Z")
             },
             /* 91 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5G1ThclVYLp2YFQUodTNnA",
               Url = "https://www.youtube.com/channel/UC5G1ThclVYLp2YFQUodTNnA",
               Name = "Timbah.On.Toast",
@@ -7974,7 +7974,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T11:07:36.0000000Z")
             },
             /* 92 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5gvIiMoRlkV-_DayXT8YFw",
               Url = "https://www.youtube.com/channel/UC5gvIiMoRlkV-_DayXT8YFw",
               Name = "Amos Yee",
@@ -7985,7 +7985,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:32.8960000Z")
             },
             /* 93 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5kZ57QTWfErOmzo2tMnV8g",
               Url = "https://www.youtube.com/channel/UC5kZ57QTWfErOmzo2tMnV8g",
               Name = "Bad Grammar",
@@ -7997,7 +7997,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:33.0550000Z")
             },
             /* 94 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5lGiOFcpCIsAvDU0UNyXhQ",
               Url = "https://www.youtube.com/channel/UC5lGiOFcpCIsAvDU0UNyXhQ",
               Name = "Ponderful",
@@ -8010,7 +8010,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-02T20:00:09.0000000Z")
             },
             /* 95 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5qXeV_7YyRsmv2uP8kvKMA",
               Url = "https://www.youtube.com/channel/UC5qXeV_7YyRsmv2uP8kvKMA",
               Name = "Giulia Wechsler",
@@ -8022,7 +8022,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:43.4690000Z")
             },
             /* 96 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5reJ2KzRrVg6_062oQNH0Q",
               Url = "https://www.youtube.com/channel/UC5reJ2KzRrVg6_062oQNH0Q",
               Name = "Steven Anderson",
@@ -8033,7 +8033,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:33.5200000Z")
             },
             /* 97 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5tEELgWBfKbA9fVPRzBzPQ",
               Url = "https://www.youtube.com/channel/UC5tEELgWBfKbA9fVPRzBzPQ",
               Name = "Coach Red Pill",
@@ -8046,7 +8046,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-04T15:00:09.0000000Z")
             },
             /* 98 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5Wi_NYysX-LfcqT3Hq9Faw",
               Url = "https://www.youtube.com/channel/UC5Wi_NYysX-LfcqT3Hq9Faw",
               Name = "Dylan Israel",
@@ -8059,7 +8059,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-16T05:38:23.0000000Z")
             },
             /* 99 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC5YKivGUTTQmhSuaXbxfZSg",
               Url = "https://www.youtube.com/channel/UC5YKivGUTTQmhSuaXbxfZSg",
               Name = "Proactive Thinker",
@@ -8072,7 +8072,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T12:05:17.0000000Z")
             },
             /* 100 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC64x_rKHxY113KMWmprLBPA",
               Url = "https://www.youtube.com/channel/UC64x_rKHxY113KMWmprLBPA",
               Name = "JackkTutorials",
@@ -8084,7 +8084,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:58.7950000Z")
             },
             /* 101 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC66YetHAcxLA6dRGdsmwTPw",
               Url = "https://www.youtube.com/channel/UC66YetHAcxLA6dRGdsmwTPw",
               Name = "Flutecookies",
@@ -8097,7 +8097,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T13:39:04.0000000Z")
             },
             /* 102 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6cMYsKMx6XicFcFm7mTsmA",
               Url = "https://www.youtube.com/channel/UC6cMYsKMx6XicFcFm7mTsmA",
               Name = "Sargon of Akkad Live",
@@ -8109,7 +8109,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2021-08-16T00:00:34.9170000Z")
             },
             /* 103 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6dLr5oeX7plZa5FKwHeL9w",
               Url = "https://www.youtube.com/channel/UC6dLr5oeX7plZa5FKwHeL9w",
               Name = "EiE Network",
@@ -8122,7 +8122,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-08T03:25:53.0000000Z")
             },
             /* 104 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6IijBsVf2PlWo_uq6P9wQw",
               Url = "https://www.youtube.com/channel/UC6IijBsVf2PlWo_uq6P9wQw",
               Name = "Gloom",
@@ -8135,7 +8135,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-08T20:36:07.0000000Z")
             },
             /* 105 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6JmDMC2x3vafwH5QRB1khA",
               Url = "https://www.youtube.com/channel/UC6JmDMC2x3vafwH5QRB1khA",
               Name = "thecreaturehub",
@@ -8147,7 +8147,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:43:59.6330000Z")
             },
             /* 106 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6Ng7E90sfbulXGY2oCUlkw",
               Url = "https://www.youtube.com/channel/UC6Ng7E90sfbulXGY2oCUlkw",
               Name = "taftaj",
@@ -8162,7 +8162,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 107 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6vEgUAUC6ti47YsczNNoRQ",
               Url = "https://www.youtube.com/channel/UC6vEgUAUC6ti47YsczNNoRQ",
               Name = "BionicDance",
@@ -8175,7 +8175,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T13:00:17.0000000Z")
             },
             /* 108 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6ypc7SOVr5-InXLzpOPbXQ",
               Url = "https://www.youtube.com/channel/UC6ypc7SOVr5-InXLzpOPbXQ",
               Name = "Secular TeeJay",
@@ -8188,7 +8188,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-11T23:58:51.0000000Z")
             },
             /* 109 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC6ZFN9Tx6xh-skXCuRHCDpQ",
               Url = "https://www.youtube.com/channel/UC6ZFN9Tx6xh-skXCuRHCDpQ",
               Name = "PBS NewsHour",
@@ -8201,7 +8201,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T02:03:23.0000000Z")
             },
             /* 110 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7_gcs09iThXybpVgjHZ_7g",
               Url = "https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g",
               Name = "PBS Space Time",
@@ -8214,7 +8214,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T20:15:01.0000000Z")
             },
             /* 111 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7_vO81MUvzncixr3TqbX9g",
               Url = "https://www.youtube.com/channel/UC7_vO81MUvzncixr3TqbX9g",
               Name = "Paget Kagy",
@@ -8227,7 +8227,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-12T02:36:26.0000000Z")
             },
             /* 112 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC72vWiZdUN_Y2OC2RgJ-dvA",
               Url = "https://www.youtube.com/channel/UC72vWiZdUN_Y2OC2RgJ-dvA",
               Name = "DoctorRandomercam",
@@ -8240,7 +8240,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-06T21:30:31.0000000Z")
             },
             /* 113 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC764VuoDeKiOyhTw8ZMjQFA",
               Url = "https://www.youtube.com/channel/UC764VuoDeKiOyhTw8ZMjQFA",
               Name = "SJW101, the political gamer",
@@ -8252,7 +8252,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:35.7390000Z")
             },
             /* 114 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC77VmMDPloF0FGN4RIqfsVA",
               Url = "https://www.youtube.com/channel/UC77VmMDPloF0FGN4RIqfsVA",
               Name = "Countryballs Explained",
@@ -8265,7 +8265,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T23:33:26.0000000Z")
             },
             /* 115 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7c8mE90qCtu11z47U0KErg",
               Url = "https://www.youtube.com/channel/UC7c8mE90qCtu11z47U0KErg",
               Name = "nature video",
@@ -8278,7 +8278,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T15:07:09.0000000Z")
             },
             /* 116 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7DdEm33SyaTDtWYGO2CwdA",
               Url = "https://www.youtube.com/channel/UC7DdEm33SyaTDtWYGO2CwdA",
               Name = "Physics Girl",
@@ -8291,7 +8291,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T03:59:25.0000000Z")
             },
             /* 117 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7e57qWIEAZTQAaFwHpKdlw",
               Url = "https://www.youtube.com/channel/UC7e57qWIEAZTQAaFwHpKdlw",
               Name = "SomeBlackGuy",
@@ -8304,7 +8304,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-14T20:50:31.0000000Z")
             },
             /* 118 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7edjYPNhTm5LYJMT7UMt0Q",
               Url = "https://www.youtube.com/channel/UC7edjYPNhTm5LYJMT7UMt0Q",
               Name = "The Podcast of the Lotus Eaters",
@@ -8317,7 +8317,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-13T21:00:33.0000000Z")
             },
             /* 119 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7EPW5gLbslAKOvmSWZ3POg",
               Url = "https://www.youtube.com/channel/UC7EPW5gLbslAKOvmSWZ3POg",
               Name = "Steve Talon",
@@ -8328,7 +8328,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:36.3830000Z")
             },
             /* 120 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7eWyDzJ5uqNbnKB2StcsWg",
               Url = "https://www.youtube.com/channel/UC7eWyDzJ5uqNbnKB2StcsWg",
               Name = "Braving Ruin Live",
@@ -8339,7 +8339,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:36.5620000Z")
             },
             /* 121 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7IcJI8PUf5Z3zKxnZvTBog",
               Url = "https://www.youtube.com/channel/UC7IcJI8PUf5Z3zKxnZvTBog",
               Name = "The School of Life",
@@ -8352,7 +8352,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:00:11.0000000Z")
             },
             /* 122 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7IdYqaJ6eDkbX6JtKYcv6A",
               Url = "https://www.youtube.com/channel/UC7IdYqaJ6eDkbX6JtKYcv6A",
               Name = "Jim Majors",
@@ -8364,7 +8364,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-24T22:48:15.0000000Z")
             },
             /* 123 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7kIy8fZavEni8Gzl8NLjOQ",
               Url = "https://www.youtube.com/channel/UC7kIy8fZavEni8Gzl8NLjOQ",
               Name = "CosmicSkeptic",
@@ -8377,7 +8377,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-23T19:05:08.0000000Z")
             },
             /* 124 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7Q4rvzJDbHeBHYk5rnvZeA",
               Url = "https://www.youtube.com/channel/UC7Q4rvzJDbHeBHYk5rnvZeA",
               Name = "The Humanist Report",
@@ -8390,7 +8390,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T22:12:36.0000000Z")
             },
             /* 125 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7tc3pAxbnVzdgeBWw-yQeA",
               Url = "https://www.youtube.com/channel/UC7tc3pAxbnVzdgeBWw-yQeA",
               Name = "MissesMae",
@@ -8403,7 +8403,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-22T22:00:11.0000000Z")
             },
             /* 126 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7UiChjgT_LDKcr_8NEEbMA",
               Url = "https://www.youtube.com/channel/UC7UiChjgT_LDKcr_8NEEbMA",
               Name = "Brainlet",
@@ -8416,7 +8416,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-25T02:33:22.0000000Z")
             },
             /* 127 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7vMzUZ0JxX5vpiMQ19az6A",
               Url = "https://www.youtube.com/channel/UC7vMzUZ0JxX5vpiMQ19az6A",
               Name = "Peach Balie",
@@ -8428,7 +8428,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:22.4660000Z")
             },
             /* 128 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7xJftLtg3YJGgClZRr7hbg",
               Url = "https://www.youtube.com/channel/UC7xJftLtg3YJGgClZRr7hbg",
               Name = "The Symposium",
@@ -8440,7 +8440,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:22.8130000Z")
             },
             /* 129 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC7XqVxGm5Kg8-PSrO2MA_Yw",
               Url = "https://www.youtube.com/channel/UC7XqVxGm5Kg8-PSrO2MA_Yw",
               Name = "Cristina & Patricia",
@@ -8453,7 +8453,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-12T18:00:12.0000000Z")
             },
             /* 130 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC88lvyJe7aHZmcvzvubDFRg",
               Url = "https://www.youtube.com/channel/UC88lvyJe7aHZmcvzvubDFRg",
               Name = "Timeline - World History Documentaries",
@@ -8466,7 +8466,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:24:45.0000000Z")
             },
             /* 131 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC89QtIAIY6xQgOhMYxMWXFA",
               Url = "https://www.youtube.com/channel/UC89QtIAIY6xQgOhMYxMWXFA",
               Name = "MyNameIsJosephine",
@@ -8478,7 +8478,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-21T18:00:08.0000000Z")
             },
             /* 132 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8butISFwT-Wl7EV0hUK0BQ",
               Url = "https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ",
               Name = "freeCodeCamp.org",
@@ -8491,7 +8491,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T13:11:30.0000000Z")
             },
             /* 133 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8JT2m0mKEgvEtie3JNKwew",
               Url = "https://www.youtube.com/channel/UC8JT2m0mKEgvEtie3JNKwew",
               Name = "Naked Science",
@@ -8504,7 +8504,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T17:00:21.0000000Z")
             },
             /* 134 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8MX9ECowgDMTOnFTE8EUJw",
               Url = "https://www.youtube.com/channel/UC8MX9ECowgDMTOnFTE8EUJw",
               Name = "HistoryMarche",
@@ -8517,7 +8517,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T16:45:12.0000000Z")
             },
             /* 135 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8RJExf7iNpV6tp6hvNtwww",
               Url = "https://www.youtube.com/channel/UC8RJExf7iNpV6tp6hvNtwww",
               Name = "Romanian TVee",
@@ -8530,7 +8530,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-29T18:00:10.0000000Z")
             },
             /* 136 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC8sZtJe922N8UIHmWVQmX4g",
               Url = "https://www.youtube.com/channel/UC8sZtJe922N8UIHmWVQmX4g",
               Name = "Heifetz International Music Institute",
@@ -8543,7 +8543,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:46:56.0000000Z")
             },
             /* 137 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC958L6D_3vjB83R1uvUfXVw",
               Url = "https://www.youtube.com/channel/UC958L6D_3vjB83R1uvUfXVw",
               Name = "Bane Speaks",
@@ -8554,7 +8554,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:39.3870000Z")
             },
             /* 138 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC95LF0f3HNtVYxnLYAPlwaw",
               Url = "https://www.youtube.com/channel/UC95LF0f3HNtVYxnLYAPlwaw",
               Name = "emilyplayscello",
@@ -8567,7 +8567,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-05T17:41:57.0000000Z")
             },
             /* 139 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9Bk0GbW8xgvTgQlheNG5uw",
               Url = "https://www.youtube.com/channel/UC9Bk0GbW8xgvTgQlheNG5uw",
               Name = "Amythest Schaber",
@@ -8579,7 +8579,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:41.6500000Z")
             },
             /* 140 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9FlqOcryiFK6ADScw7zswQ",
               Url = "https://www.youtube.com/channel/UC9FlqOcryiFK6ADScw7zswQ",
               Name = "Bill Ludlow",
@@ -8591,7 +8591,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:41.8050000Z")
             },
             /* 141 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9KybnxK7frCt2AbwThaW_g",
               Url = "https://www.youtube.com/channel/UC9KybnxK7frCt2AbwThaW_g",
               Name = "Medium Rare",
@@ -8604,7 +8604,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-11T12:13:45.0000000Z")
             },
             /* 142 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9LIQ1_csOAXTHOjQ_G11SA",
               Url = "https://www.youtube.com/channel/UC9LIQ1_csOAXTHOjQ_G11SA",
               Name = "The Antibot",
@@ -8617,7 +8617,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-24T16:00:23.0000000Z")
             },
             /* 143 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9lztld5qPi-6WZ9_QIVR6g",
               Url = "https://www.youtube.com/channel/UC9lztld5qPi-6WZ9_QIVR6g",
               Name = "Parth G",
@@ -8634,7 +8634,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T15:30:07.0000000Z")
             },
             /* 144 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9MAhZQQd9egwWCxrwSIsJQ",
               Url = "https://www.youtube.com/channel/UC9MAhZQQd9egwWCxrwSIsJQ",
               Name = "HISTORY",
@@ -8647,7 +8647,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T01:59:47.0000000Z")
             },
             /* 145 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9MKC0Yxbf8ULpOYvzzcQKQ",
               Url = "https://www.youtube.com/channel/UC9MKC0Yxbf8ULpOYvzzcQKQ",
               Name = "Scientist Mel",
@@ -8660,7 +8660,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T02:27:00.0000000Z")
             },
             /* 146 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9nw1ojNmCsW9McgUYuk93w",
               Url = "https://www.youtube.com/channel/UC9nw1ojNmCsW9McgUYuk93w",
               Name = "Science Magic Show",
@@ -8672,7 +8672,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:42.4440000Z")
             },
             /* 147 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9pY5ktM9SncpAt_bgWXdiw",
               Url = "https://www.youtube.com/channel/UC9pY5ktM9SncpAt_bgWXdiw",
               Name = "Projicked",
@@ -8684,7 +8684,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:42.7900000Z")
             },
             /* 148 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9pYOJPB5UYlMlGKKZWo-Bw",
               Url = "https://www.youtube.com/channel/UC9pYOJPB5UYlMlGKKZWo-Bw",
               Name = "Space & The Universe HD",
@@ -8697,7 +8697,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-14T12:45:47.0000000Z")
             },
             /* 149 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9U3o8C7KUzauwbEMtzyLWQ",
               Url = "https://www.youtube.com/channel/UC9U3o8C7KUzauwbEMtzyLWQ",
               Name = "Jaclyn & David Vlogs",
@@ -8710,7 +8710,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T15:00:11.0000000Z")
             },
             /* 150 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9uD-W5zQHQuAVT2GdcLCvg",
               Url = "https://www.youtube.com/channel/UC9uD-W5zQHQuAVT2GdcLCvg",
               Name = "Science Insider",
@@ -8723,7 +8723,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:00:23.0000000Z")
             },
             /* 151 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9vwJXx7DR-3zSub4mwQNFg",
               Url = "https://www.youtube.com/channel/UC9vwJXx7DR-3zSub4mwQNFg",
               Name = "Tara McCarthy",
@@ -8734,7 +8734,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:44.3100000Z")
             },
             /* 152 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9woec5S4CA4q0tcxtJDzsA",
               Url = "https://www.youtube.com/channel/UC9woec5S4CA4q0tcxtJDzsA",
               Name = "Miss Misa",
@@ -8746,7 +8746,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:44.4500000Z")
             },
             /* 153 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9x5EJOBBvdu1gwewzxBX7Q",
               Url = "https://www.youtube.com/channel/UC9x5EJOBBvdu1gwewzxBX7Q",
               Name = "DalibanHQ Highlights",
@@ -8761,7 +8761,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 154 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC9-y-6csu5WGm29I7JiwpnA",
               Url = "https://www.youtube.com/channel/UC9-y-6csu5WGm29I7JiwpnA",
               Name = "Computerphile",
@@ -8774,7 +8774,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T13:53:06.0000000Z")
             },
             /* 155 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA_EUxErCYiD4SZXRfaZnIg",
               Url = "https://www.youtube.com/channel/UCA_EUxErCYiD4SZXRfaZnIg",
               Name = "Rose of Dawn",
@@ -8786,7 +8786,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-13T18:00:11.0000000Z")
             },
             /* 156 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA1tk_Wa3Lm4hMZ4ssPEuLw",
               Url = "https://www.youtube.com/channel/UCA1tk_Wa3Lm4hMZ4ssPEuLw",
               Name = "TheMediaCows",
@@ -8798,7 +8798,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:46.5830000Z")
             },
             /* 157 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa35qyNpnlZ_u8n9qoAZbMQ",
               Url = "https://www.youtube.com/channel/UCa35qyNpnlZ_u8n9qoAZbMQ",
               Name = "HowStuffWorks",
@@ -8811,7 +8811,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-10T16:00:33.0000000Z")
             },
             /* 158 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa38X3NJPVlVIYlOg9R7FYw",
               Url = "https://www.youtube.com/channel/UCa38X3NJPVlVIYlOg9R7FYw",
               Name = "Blaire Black",
@@ -8823,7 +8823,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:00:09.0000000Z")
             },
             /* 159 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCa3meRxRwQrXg__x--Goxrg",
               Url = "https://www.youtube.com/channel/UCa3meRxRwQrXg__x--Goxrg",
               Name = "50 Shades",
@@ -8835,7 +8835,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:44:49.4850000Z")
             },
             /* 160 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA4X3KvEjXLVv5qpw9FPKcg",
               Url = "https://www.youtube.com/channel/UCA4X3KvEjXLVv5qpw9FPKcg",
               Name = "Dave S",
@@ -8848,7 +8848,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-11T06:26:25.0000000Z")
             },
             /* 161 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA63aMA5BmoqNtJUWL4QW-w",
               Url = "https://www.youtube.com/channel/UCA63aMA5BmoqNtJUWL4QW-w",
               Name = "Melonie Mac Go Boom",
@@ -8863,7 +8863,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 162 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaB5Bb5FU7XWbCbPJ_CiIFA",
               Url = "https://www.youtube.com/channel/UCaB5Bb5FU7XWbCbPJ_CiIFA",
               Name = "CharmingMan",
@@ -8875,7 +8875,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:40.8150000Z")
             },
             /* 163 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-AC9QO9x5EbxFdi5g2pvXg",
               Url = "https://www.youtube.com/channel/UC-AC9QO9x5EbxFdi5g2pvXg",
               Name = "Celebrity Universe",
@@ -8886,7 +8886,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:41.1740000Z")
             },
             /* 164 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaDquBkHKvsurdpObeWH9zg",
               Url = "https://www.youtube.com/channel/UCaDquBkHKvsurdpObeWH9zg",
               Name = "Nema Lass",
@@ -8899,7 +8899,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:04:34.0000000Z")
             },
             /* 165 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAeaXwYN65NdLQ1aLzRLlTg",
               Url = "https://www.youtube.com/channel/UCAeaXwYN65NdLQ1aLzRLlTg",
               Name = "The GT Special",
@@ -8911,7 +8911,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:48.7290000Z")
             },
             /* 166 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaFNs3ETMvkmy0JahAS6WJA",
               Url = "https://www.youtube.com/channel/UCaFNs3ETMvkmy0JahAS6WJA",
               Name = "Logicked",
@@ -8924,7 +8924,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T04:58:40.0000000Z")
             },
             /* 167 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAgBUlIpzlJaE0693J3s97w",
               Url = "https://www.youtube.com/channel/UCAgBUlIpzlJaE0693J3s97w",
               Name = "Baked Alaska",
@@ -8936,7 +8936,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:43.3370000Z")
             },
             /* 168 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCahFEEQJdFCtuE3IkDFK3mw",
               Url = "https://www.youtube.com/channel/UCahFEEQJdFCtuE3IkDFK3mw",
               Name = "iHeart Media",
@@ -8948,7 +8948,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:45:49.3860000Z")
             },
             /* 169 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAJfDidJyukTekgSRZrjadw",
               Url = "https://www.youtube.com/channel/UCAJfDidJyukTekgSRZrjadw",
               Name = "AronRa",
@@ -8960,7 +8960,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T03:40:45.0000000Z")
             },
             /* 170 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCak3NZxjNnWip327vYL8RLA",
               Url = "https://www.youtube.com/channel/UCak3NZxjNnWip327vYL8RLA",
               Name = "CSIRO",
@@ -8973,7 +8973,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T23:26:03.0000000Z")
             },
             /* 171 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCakgsb0w7QB0VHdnCc-OVEA",
               Url = "https://www.youtube.com/channel/UCakgsb0w7QB0VHdnCc-OVEA",
               Name = "Space Videos",
@@ -8986,7 +8986,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T15:29:29.0000000Z")
             },
             /* 172 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAldq8BAAGdsX9UyK_09-ZA",
               Url = "https://www.youtube.com/channel/UCAldq8BAAGdsX9UyK_09-ZA",
               Name = "Jeff Holiday",
@@ -8999,7 +8999,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T21:44:10.0000000Z")
             },
             /* 173 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCANk4DCsImDX3wlXQ6M1Jdg",
               Url = "https://www.youtube.com/channel/UCANk4DCsImDX3wlXQ6M1Jdg",
               Name = "RedEffect",
@@ -9012,7 +9012,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T16:20:16.0000000Z")
             },
             /* 174 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCarOqR87zwSNXHDmbtJVV0A",
               Url = "https://www.youtube.com/channel/UCarOqR87zwSNXHDmbtJVV0A",
               Name = "Meg Turney",
@@ -9025,7 +9025,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T20:00:06.0000000Z")
             },
             /* 175 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCasGLcO75IgsUU9XxXFig9A",
               Url = "https://www.youtube.com/channel/UCasGLcO75IgsUU9XxXFig9A",
               Name = "TheMagicSandwichShow",
@@ -9036,7 +9036,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:46:47.0320000Z")
             },
             /* 176 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCA-SZX2Xzl0p7pJy2fHeN-Q",
               Url = "https://www.youtube.com/channel/UCA-SZX2Xzl0p7pJy2fHeN-Q",
               Name = "Man Made Mead",
@@ -9049,7 +9049,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:09.0000000Z")
             },
             /* 177 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAuK58_8EFT4ztv5gPyRf1A",
               Url = "https://www.youtube.com/channel/UCAuK58_8EFT4ztv5gPyRf1A",
               Name = "Shinobi Yaka",
@@ -9061,7 +9061,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:44.6940000Z")
             },
             /* 178 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCaWf6VC6vmZcGdI_I0XYeRw",
               Url = "https://www.youtube.com/channel/UCaWf6VC6vmZcGdI_I0XYeRw",
               Name = "Milo Stewart",
@@ -9074,7 +9074,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-05T08:00:01.0000000Z")
             },
             /* 179 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAY-SMFNfynqz1bdoaV8BeQ",
               Url = "https://www.youtube.com/channel/UCAY-SMFNfynqz1bdoaV8BeQ",
               Name = "NASA Goddard",
@@ -9087,7 +9087,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T18:07:49.0000000Z")
             },
             /* 180 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCAzKFALPuF_EPe-AEI0WFFw",
               Url = "https://www.youtube.com/channel/UCAzKFALPuF_EPe-AEI0WFFw",
               Name = "TwoSetViolin",
@@ -9100,7 +9100,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T14:31:37.0000000Z")
             },
             /* 181 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb0QTecumjAA5lNai9y5nng",
               Url = "https://www.youtube.com/channel/UCb0QTecumjAA5lNai9y5nng",
               Name = "Memorie Holiday",
@@ -9113,7 +9113,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-11T15:29:45.0000000Z")
             },
             /* 182 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb3KY97ICfIkDJY_p6d7yig",
               Url = "https://www.youtube.com/channel/UCb3KY97ICfIkDJY_p6d7yig",
               Name = "SaveAFox",
@@ -9126,7 +9126,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:09:51.0000000Z")
             },
             /* 183 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCb9DL5O8lBJpplCOqYJEJWg",
               Url = "https://www.youtube.com/channel/UCb9DL5O8lBJpplCOqYJEJWg",
               Name = "BASSFZz",
@@ -9139,7 +9139,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-25T18:11:36.0000000Z")
             },
             /* 184 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbaz7oKyecXe_OvdTbLKhKQ",
               Url = "https://www.youtube.com/channel/UCbaz7oKyecXe_OvdTbLKhKQ",
               Name = "Dogbytes",
@@ -9152,7 +9152,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T18:00:09.0000000Z")
             },
             /* 185 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbb0GW1BqPP2woGaGrOuSqQ",
               Url = "https://www.youtube.com/channel/UCbb0GW1BqPP2woGaGrOuSqQ",
               Name = "Gutenburg",
@@ -9163,7 +9163,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:46:52.3490000Z")
             },
             /* 186 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBdmOR7wkey98CHapw3xESQ",
               Url = "https://www.youtube.com/channel/UCBdmOR7wkey98CHapw3xESQ",
               Name = "Sarah Michel",
@@ -9176,7 +9176,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-15T13:27:30.0000000Z")
             },
             /* 187 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBELcxCMIUBhP7lgWspKn0Q",
               Url = "https://www.youtube.com/channel/UCBELcxCMIUBhP7lgWspKn0Q",
               Name = "The Geek Room",
@@ -9189,7 +9189,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T03:24:50.0000000Z")
             },
             /* 188 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBgQzXEjfeAlb8GtvuIsLQA",
               Url = "https://www.youtube.com/channel/UCBgQzXEjfeAlb8GtvuIsLQA",
               Name = "Wizard Of Cause",
@@ -9202,7 +9202,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-22T04:20:30.0000000Z")
             },
             /* 189 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBhuX1yNlQ3dssQDXA7czNg",
               Url = "https://www.youtube.com/channel/UCBhuX1yNlQ3dssQDXA7czNg",
               Name = "Astronomy Live",
@@ -9215,7 +9215,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-18T19:35:06.0000000Z")
             },
             /* 190 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbjw7dE_hxJT-VGLTqCjlJA",
               Url = "https://www.youtube.com/channel/UCbjw7dE_hxJT-VGLTqCjlJA",
               Name = "Professor Stick",
@@ -9228,7 +9228,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T23:40:09.0000000Z")
             },
             /* 191 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbJx13WCQq8mpbaIwz6Oanw",
               Url = "https://www.youtube.com/channel/UCbJx13WCQq8mpbaIwz6Oanw",
               Name = "Misandry Today",
@@ -9241,7 +9241,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-14T22:26:12.0000000Z")
             },
             /* 192 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBNovtjbnHeABUSVO0im3jA",
               Url = "https://www.youtube.com/channel/UCBNovtjbnHeABUSVO0im3jA",
               Name = "The Here and How Podcast",
@@ -9253,7 +9253,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:05.7350000Z")
             },
             /* 193 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbo5uoBJxrPgikkOUDtflaw",
               Url = "https://www.youtube.com/channel/UCbo5uoBJxrPgikkOUDtflaw",
               Name = "Flowerprincess",
@@ -9265,7 +9265,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:05.9410000Z")
             },
             /* 194 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCboMX_UNgaPBsUOIgasn3-Q",
               Url = "https://www.youtube.com/channel/UCboMX_UNgaPBsUOIgasn3-Q",
               Name = "Funhaus",
@@ -9278,7 +9278,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T17:00:26.0000000Z")
             },
             /* 195 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBPd85xN3HS0tpF-DHeBLNw",
               Url = "https://www.youtube.com/channel/UCBPd85xN3HS0tpF-DHeBLNw",
               Name = "ThePaultergeist",
@@ -9289,7 +9289,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:07.9520000Z")
             },
             /* 196 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBQo27DbqeB-xG17-kekrdQ",
               Url = "https://www.youtube.com/channel/UCBQo27DbqeB-xG17-kekrdQ",
               Name = "Digital Hammurabi",
@@ -9302,7 +9302,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-18T14:45:23.0000000Z")
             },
             /* 197 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBVYmXSIzHq_gXMZpsfd9kg",
               Url = "https://www.youtube.com/channel/UCBVYmXSIzHq_gXMZpsfd9kg",
               Name = "6oodfella",
@@ -9315,7 +9315,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T23:29:55.0000000Z")
             },
             /* 198 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbWnaGDPYVAAwg9DQR3HHFQ",
               Url = "https://www.youtube.com/channel/UCbWnaGDPYVAAwg9DQR3HHFQ",
               Name = "Babbling Brooke",
@@ -9328,7 +9328,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T07:41:34.0000000Z")
             },
             /* 199 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCBYO1gzzi-K6at2JDJBDlUg",
               Url = "https://www.youtube.com/channel/UCBYO1gzzi-K6at2JDJBDlUg",
               Name = "Latrodectus",
@@ -9340,7 +9340,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.1880000Z")
             },
             /* 200 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCbzlkgBh8dcvTlreNC1hGig",
               Url = "https://www.youtube.com/channel/UCbzlkgBh8dcvTlreNC1hGig",
               Name = "Roaming Media",
@@ -9352,7 +9352,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.5320000Z")
             },
             /* 201 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCc3e9XOO_neg3mnb9yDTklg",
               Url = "https://www.youtube.com/channel/UCc3e9XOO_neg3mnb9yDTklg",
               Name = "Visual Capitalist",
@@ -9364,7 +9364,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.6810000Z")
             },
             /* 202 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCC3L8QaxqEGUiBC252GHy3w",
               Url = "https://www.youtube.com/channel/UCC3L8QaxqEGUiBC252GHy3w",
               Name = "Stefan Molyneux",
@@ -9375,7 +9375,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:17.8230000Z")
             },
             /* 203 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCC6ue7UYt1yeS621xmTMKrQ",
               Url = "https://www.youtube.com/channel/UCC6ue7UYt1yeS621xmTMKrQ",
               Name = "Rachel Oates",
@@ -9392,7 +9392,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-05-21T17:30:01.0000000Z")
             },
             /* 204 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcc_zG4pMLpuefQQs25e4bg",
               Url = "https://www.youtube.com/channel/UCcc_zG4pMLpuefQQs25e4bg",
               Name = "TheAtheistGamer",
@@ -9404,7 +9404,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:48.7100000Z")
             },
             /* 205 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCd1Cwjp3hK1tTxevgnHD3g",
               Url = "https://www.youtube.com/channel/UCCd1Cwjp3hK1tTxevgnHD3g",
               Name = "Alina Gingertail",
@@ -9417,7 +9417,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-27T12:46:45.0000000Z")
             },
             /* 206 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCGvq-qmjFmmMD4e-PLQqGg",
               Url = "https://www.youtube.com/channel/UCCGvq-qmjFmmMD4e-PLQqGg",
               Name = "The Cold War",
@@ -9429,7 +9429,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T13:34:05.0000000Z")
             },
             /* 207 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCchZAQbtHEcyvRZphDNmNhA",
               Url = "https://www.youtube.com/channel/UCchZAQbtHEcyvRZphDNmNhA",
               Name = "AtheistMinority",
@@ -9441,7 +9441,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:47:19.1790000Z")
             },
             /* 208 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCciQ8wFcVoIIMi-lfu8-cjQ",
               Url = "https://www.youtube.com/channel/UCciQ8wFcVoIIMi-lfu8-cjQ",
               Name = "Anton Petrov",
@@ -9454,7 +9454,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:00:13.0000000Z")
             },
             /* 209 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCkVMojdBWS-JtH7TliWkVg",
               Url = "https://www.youtube.com/channel/UCCkVMojdBWS-JtH7TliWkVg",
               Name = "GynvaelEN",
@@ -9467,7 +9467,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-01T23:34:27.0000000Z")
             },
             /* 210 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCMi6F5Ac3kQDfffWXQGZDw",
               Url = "https://www.youtube.com/channel/UCCMi6F5Ac3kQDfffWXQGZDw",
               Name = "Guided Hacking",
@@ -9480,7 +9480,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-12T18:02:24.0000000Z")
             },
             /* 211 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcmnLu5cGUGeLy744WS-fsg",
               Url = "https://www.youtube.com/channel/UCcmnLu5cGUGeLy744WS-fsg",
               Name = "karen straughan",
@@ -9492,7 +9492,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:49.8090000Z")
             },
             /* 212 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcnwwOJqzBrQNqVmgWjEY_w",
               Url = "https://www.youtube.com/channel/UCcnwwOJqzBrQNqVmgWjEY_w",
               Name = "Highdeology",
@@ -9505,7 +9505,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-06T08:31:12.0000000Z")
             },
             /* 213 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcnyjTK4IheQN2ycsE7NZTQ",
               Url = "https://www.youtube.com/channel/UCcnyjTK4IheQN2ycsE7NZTQ",
               Name = "BeatTheBush",
@@ -9518,7 +9518,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:36.0000000Z")
             },
             /* 214 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCOCu3T6InzOZ826l8ryFzA",
               Url = "https://www.youtube.com/channel/UCCOCu3T6InzOZ826l8ryFzA",
               Name = "GeneticJulia",
@@ -9530,7 +9530,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:37.7680000Z")
             },
             /* 215 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcOdk8_n1ce7NUvFCtvLKXw",
               Url = "https://www.youtube.com/channel/UCcOdk8_n1ce7NUvFCtvLKXw",
               Name = "The Documentary Channel",
@@ -9541,7 +9541,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:37.9280000Z")
             },
             /* 216 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcOtHMt1S9Nl4Pycp-FWd8Q",
               Url = "https://www.youtube.com/channel/UCcOtHMt1S9Nl4Pycp-FWd8Q",
               Name = "Badger Live Streams",
@@ -9554,7 +9554,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T00:05:31.0000000Z")
             },
             /* 217 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcp1LHMsXeeursAa_ffnL3g",
               Url = "https://www.youtube.com/channel/UCcp1LHMsXeeursAa_ffnL3g",
               Name = "i moved channels lol",
@@ -9566,7 +9566,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:43.7100000Z")
             },
             /* 218 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCR0sGyrQN800DkQbhCbLDA",
               Url = "https://www.youtube.com/channel/UCCR0sGyrQN800DkQbhCbLDA",
               Name = "Connor Ward",
@@ -9579,7 +9579,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-01T14:58:39.0000000Z")
             },
             /* 219 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcrXOqPJU1uaXJLlH2ZYvtQ",
               Url = "https://www.youtube.com/channel/UCcrXOqPJU1uaXJLlH2ZYvtQ",
               Name = "Dark Titan Enterprises - Vara Dark",
@@ -9592,7 +9592,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:04:36.0000000Z")
             },
             /* 220 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCct9aR7HC79Cv2g-9oDOTLw",
               Url = "https://www.youtube.com/channel/UCct9aR7HC79Cv2g-9oDOTLw",
               Name = "ReligionForBreakfast",
@@ -9605,7 +9605,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-10T17:50:34.0000000Z")
             },
             /* 221 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCctjGdm2NlMNzIlxz02IsXA",
               Url = "https://www.youtube.com/channel/UCctjGdm2NlMNzIlxz02IsXA",
               Name = "Chris Ray Gun",
@@ -9618,7 +9618,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-26T18:01:00.0000000Z")
             },
             /* 222 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCCVafG-j-O0q1s6Hk98od4Q",
               Url = "https://www.youtube.com/channel/UCCVafG-j-O0q1s6Hk98od4Q",
               Name = "Purpandorange Media",
@@ -9630,7 +9630,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:45.5790000Z")
             },
             /* 223 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcX9nxdblc19kfm5hqVfRBA",
               Url = "https://www.youtube.com/channel/UCcX9nxdblc19kfm5hqVfRBA",
               Name = "K",
@@ -9642,7 +9642,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:48:45.9260000Z")
             },
             /* 224 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCcygdrZy-YxcOiLM-delp3A",
               Url = "https://www.youtube.com/channel/UCcygdrZy-YxcOiLM-delp3A",
               Name = "Milwaukee Atheists",
@@ -9655,7 +9655,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T07:31:33.0000000Z")
             },
             /* 225 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD_19bqcd4C503VTIQS9vNg",
               Url = "https://www.youtube.com/channel/UCD_19bqcd4C503VTIQS9vNg",
               Name = "IndividualSituation",
@@ -9667,7 +9667,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-12T11:00:10.0000000Z")
             },
             /* 226 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd2xKD82vb-LbFEgE6MPsGw",
               Url = "https://www.youtube.com/channel/UCd2xKD82vb-LbFEgE6MPsGw",
               Name = "Exclusively Games",
@@ -9679,7 +9679,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:00.3190000Z")
             },
             /* 227 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd3QsPIFbz0y5kZ2frrzIHA",
               Url = "https://www.youtube.com/channel/UCd3QsPIFbz0y5kZ2frrzIHA",
               Name = "Godless",
@@ -9691,7 +9691,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:52.6580000Z")
             },
             /* 228 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD41uXZy_Wq3pvrbhGQo5TQ",
               Url = "https://www.youtube.com/channel/UCD41uXZy_Wq3pvrbhGQo5TQ",
               Name = "That Girl",
@@ -9703,7 +9703,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:16.1590000Z")
             },
             /* 229 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4EOyXKjfDUhCI6jlOZZYQ",
               Url = "https://www.youtube.com/channel/UCD4EOyXKjfDUhCI6jlOZZYQ",
               Name = "Eli the Computer Guy",
@@ -9715,7 +9715,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T14:00:09.0000000Z")
             },
             /* 230 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4NnnbISbr4dvmmzQxC2bA",
               Url = "https://www.youtube.com/channel/UCD4NnnbISbr4dvmmzQxC2bA",
               Name = "TheTopher",
@@ -9728,7 +9728,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:56:02.0000000Z")
             },
             /* 231 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD4qMoFPUEzSn4CurFLJkIQ",
               Url = "https://www.youtube.com/channel/UCD4qMoFPUEzSn4CurFLJkIQ",
               Name = "Steve Shives",
@@ -9741,7 +9741,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T23:33:33.0000000Z")
             },
             /* 232 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCD5B6VoXv41fJ-IW8Wrhz9A",
               Url = "https://www.youtube.com/channel/UCD5B6VoXv41fJ-IW8Wrhz9A",
               Name = "Fermilab",
@@ -9754,7 +9754,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-21T14:39:54.0000000Z")
             },
             /* 233 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCd61c95-yJqQejWI3LGmP0Q",
               Url = "https://www.youtube.com/channel/UCd61c95-yJqQejWI3LGmP0Q",
               Name = "Hayang Park Violist",
@@ -9766,7 +9766,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-24T01:37:08.0000000Z")
             },
             /* 234 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdBaHin6PDzS4V7EaNLS2-A",
               Url = "https://www.youtube.com/channel/UCdBaHin6PDzS4V7EaNLS2-A",
               Name = "The Satiratician",
@@ -9779,7 +9779,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T09:31:11.0000000Z")
             },
             /* 235 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdBiq2pBwL0e0d_hm1TVVhA",
               Url = "https://www.youtube.com/channel/UCdBiq2pBwL0e0d_hm1TVVhA",
               Name = "SchizophrenicQueen",
@@ -9791,7 +9791,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:49:27.6730000Z")
             },
             /* 236 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDc_MCu3ZstNXmAqqT36SNA",
               Url = "https://www.youtube.com/channel/UCDc_MCu3ZstNXmAqqT36SNA",
               Name = "SugarTits",
@@ -9804,7 +9804,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-08T03:03:08.0000000Z")
             },
             /* 237 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdDS4j318UpKjNcpe_LeQxQ",
               Url = "https://www.youtube.com/channel/UCdDS4j318UpKjNcpe_LeQxQ",
               Name = "The Exoplanets Channel",
@@ -9817,7 +9817,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T14:00:01.0000000Z")
             },
             /* 238 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDdvY2ntkRKaul_OQT89jAQ",
               Url = "https://www.youtube.com/channel/UCDdvY2ntkRKaul_OQT89jAQ",
               Name = "Jenny Yun",
@@ -9830,7 +9830,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T06:05:31.0000000Z")
             },
             /* 239 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDgchsbJnrX604K-xWsd-fQ",
               Url = "https://www.youtube.com/channel/UCDgchsbJnrX604K-xWsd-fQ",
               Name = "Hunter Avallone",
@@ -9843,7 +9843,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-02T21:26:52.0000000Z")
             },
             /* 240 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdGkmb5zEDXnPSmQlV43t0Q",
               Url = "https://www.youtube.com/channel/UCdGkmb5zEDXnPSmQlV43t0Q",
               Name = "JamesRandiFoundation",
@@ -9855,7 +9855,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:39.2050000Z")
             },
             /* 241 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDG-Sd71Hm1hVeoQnSD0HRw",
               Url = "https://www.youtube.com/channel/UCDG-Sd71Hm1hVeoQnSD0HRw",
               Name = "Bennehh",
@@ -9868,7 +9868,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T09:49:13.0000000Z")
             },
             /* 242 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdhES1DtY9klIfJsjGKs3gQ",
               Url = "https://www.youtube.com/channel/UCdhES1DtY9klIfJsjGKs3gQ",
               Name = "Astroathens",
@@ -9881,7 +9881,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T16:22:58.0000000Z")
             },
             /* 243 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDI3YRBbQdyWoGOqvDUnv_g",
               Url = "https://www.youtube.com/channel/UCDI3YRBbQdyWoGOqvDUnv_g",
               Name = "Nataleo",
@@ -9894,7 +9894,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-19T17:47:33.0000000Z")
             },
             /* 244 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDkxbimP81Pl8uCvpADam6w",
               Url = "https://www.youtube.com/channel/UCDkxbimP81Pl8uCvpADam6w",
               Name = "BNY",
@@ -9907,7 +9907,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-22T21:52:56.0000000Z")
             },
             /* 245 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDmCBKaKOtOrEqgsL4-3C8Q",
               Url = "https://www.youtube.com/channel/UCDmCBKaKOtOrEqgsL4-3C8Q",
               Name = "Blaire White",
@@ -9920,7 +9920,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T21:00:09.0000000Z")
             },
             /* 246 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDMqSuOZpXgfLpTu8RxZRuA",
               Url = "https://www.youtube.com/channel/UCDMqSuOZpXgfLpTu8RxZRuA",
               Name = "Claudia Boleyn Music",
@@ -9932,7 +9932,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:55.7160000Z")
             },
             /* 247 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdoPCtKATcd9HBDp_vhauRA",
               Url = "https://www.youtube.com/channel/UCdoPCtKATcd9HBDp_vhauRA",
               Name = "LaurenzLIVEside",
@@ -9945,7 +9945,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T19:15:01.0000000Z")
             },
             /* 248 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdQLSbeCkAk-G8J-jb5JICA",
               Url = "https://www.youtube.com/channel/UCdQLSbeCkAk-G8J-jb5JICA",
               Name = "Tina Narvaez Jr",
@@ -9957,7 +9957,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-16T15:04:10.0000000Z")
             },
             /* 249 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDrf81P2Z6imhHbJ8xf7P-g",
               Url = "https://www.youtube.com/channel/UCDrf81P2Z6imhHbJ8xf7P-g",
               Name = "Mr Silhouette",
@@ -9969,7 +9969,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:44.6360000Z")
             },
             /* 250 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdSXHRRp_LPaHNEHJgc6izw",
               Url = "https://www.youtube.com/channel/UCdSXHRRp_LPaHNEHJgc6izw",
               Name = "Lawrence Krauss",
@@ -9980,7 +9980,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:44.7590000Z")
             },
             /* 251 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDVb4m_5QHhZElT47E1oODg",
               Url = "https://www.youtube.com/channel/UCDVb4m_5QHhZElT47E1oODg",
               Name = "The Dave Cullen Show",
@@ -9993,7 +9993,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-18T11:18:19.0000000Z")
             },
             /* 252 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDWmp9u3xBGwFR1iEIeEyOg",
               Url = "https://www.youtube.com/channel/UCDWmp9u3xBGwFR1iEIeEyOg",
               Name = "SkepTorr",
@@ -10005,7 +10005,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:50.9140000Z")
             },
             /* 253 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDXr2cbK7WlfeYEtJxC9i3w",
               Url = "https://www.youtube.com/channel/UCDXr2cbK7WlfeYEtJxC9i3w",
               Name = "Soundly",
@@ -10017,7 +10017,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:51.2750000Z")
             },
             /* 254 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDXTQ8nWmx_EhZ2v-kp7QxA",
               Url = "https://www.youtube.com/channel/UCDXTQ8nWmx_EhZ2v-kp7QxA",
               Name = "Ben Felix",
@@ -10030,7 +10030,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T15:00:31.0000000Z")
             },
             /* 255 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCdZ0V89JCjTV7_OagiJ3mJw",
               Url = "https://www.youtube.com/channel/UCdZ0V89JCjTV7_OagiJ3mJw",
               Name = "ED DocumentaryTV",
@@ -10042,7 +10042,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:52.0750000Z")
             },
             /* 256 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCDz996l_rUM4Euut3-3a6xw",
               Url = "https://www.youtube.com/channel/UCDz996l_rUM4Euut3-3a6xw",
               Name = "Autistamatic",
@@ -10055,7 +10055,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-20T20:00:08.0000000Z")
             },
             /* 257 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-E_nLi_776jj2gvKVgs0EQ",
               Url = "https://www.youtube.com/channel/UC-E_nLi_776jj2gvKVgs0EQ",
               Name = "Violineest",
@@ -10068,7 +10068,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-29T05:15:25.0000000Z")
             },
             /* 258 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe17o0PQX4LK7AvAaARxqwQ",
               Url = "https://www.youtube.com/channel/UCe17o0PQX4LK7AvAaARxqwQ",
               Name = "TheLivingDinosaur",
@@ -10081,7 +10081,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-06T22:56:28.0000000Z")
             },
             /* 259 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCE31MqUy6nIMJ_f8y4R3_AA",
               Url = "https://www.youtube.com/channel/UCE31MqUy6nIMJ_f8y4R3_AA",
               Name = "Gavin Webber",
@@ -10094,7 +10094,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:51:28.0000000Z")
             },
             /* 260 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCE6acMV3m35znLcf0JGNn7Q",
               Url = "https://www.youtube.com/channel/UCE6acMV3m35znLcf0JGNn7Q",
               Name = "Gibi ASMR",
@@ -10107,7 +10107,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T02:25:18.0000000Z")
             },
             /* 261 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe8Cl5vsMrCBT128OkzZhEQ",
               Url = "https://www.youtube.com/channel/UCe8Cl5vsMrCBT128OkzZhEQ",
               Name = "Our Watch",
@@ -10120,7 +10120,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-27T22:37:50.0000000Z")
             },
             /* 262 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe9g_wsVXN17qmw8kPk4hRw",
               Url = "https://www.youtube.com/channel/UCe9g_wsVXN17qmw8kPk4hRw",
               Name = "Zahinsky",
@@ -10132,7 +10132,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:53.7520000Z")
             },
             /* 263 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCe9Wf70NeHSXg2hwxZQJOIA",
               Url = "https://www.youtube.com/channel/UCe9Wf70NeHSXg2hwxZQJOIA",
               Name = "Josh O'Brien",
@@ -10144,7 +10144,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:14:59.8340000Z")
             },
             /* 264 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeBnbqt4VRhotq2TQjkIi2A",
               Url = "https://www.youtube.com/channel/UCeBnbqt4VRhotq2TQjkIi2A",
               Name = "LaurenzSide",
@@ -10157,7 +10157,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T18:05:47.0000000Z")
             },
             /* 265 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeFlOi54kYIgbJHt_1ApDpg",
               Url = "https://www.youtube.com/channel/UCeFlOi54kYIgbJHt_1ApDpg",
               Name = "The Justicar",
@@ -10169,7 +10169,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:54.8380000Z")
             },
             /* 266 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCegeYNZdLvPQWQktawxYfUA",
               Url = "https://www.youtube.com/channel/UCegeYNZdLvPQWQktawxYfUA",
               Name = "TheBritisher",
@@ -10181,7 +10181,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-15T19:39:04.0000000Z")
             },
             /* 267 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCegU7jX7WASluuwSPhU0PsA",
               Url = "https://www.youtube.com/channel/UCegU7jX7WASluuwSPhU0PsA",
               Name = "Zoe Does Life",
@@ -10193,7 +10193,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:50:54.9810000Z")
             },
             /* 268 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeiBi8gptAwNoIHrZ3OUUbw",
               Url = "https://www.youtube.com/channel/UCeiBi8gptAwNoIHrZ3OUUbw",
               Name = "Winding Road Magazine",
@@ -10206,7 +10206,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:22.0000000Z")
             },
             /* 269 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeivs1tenYht7iE7d4l11IA",
               Url = "https://www.youtube.com/channel/UCeivs1tenYht7iE7d4l11IA",
               Name = "The Shameless Fujoshi",
@@ -10218,7 +10218,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:00.5000000Z")
             },
             /* 270 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeiYXex_fwgYDonaTcSIk6w",
               Url = "https://www.youtube.com/channel/UCeiYXex_fwgYDonaTcSIk6w",
               Name = "MinuteEarth",
@@ -10231,7 +10231,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-29T16:15:59.0000000Z")
             },
             /* 271 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCElybFZ60Hk1NSjgCf7I2sg",
               Url = "https://www.youtube.com/channel/UCElybFZ60Hk1NSjgCf7I2sg",
               Name = "Eastory",
@@ -10244,7 +10244,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-20T11:25:20.0000000Z")
             },
             /* 272 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCENqBB_xNax3mLX_WGLf2Lg",
               Url = "https://www.youtube.com/channel/UCENqBB_xNax3mLX_WGLf2Lg",
               Name = "Living Well with Schizophrenia",
@@ -10257,7 +10257,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-12T19:49:00.0000000Z")
             },
             /* 273 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeQYemGBA3zkt2WY5dpRxsw",
               Url = "https://www.youtube.com/channel/UCeQYemGBA3zkt2WY5dpRxsw",
               Name = "TMRO",
@@ -10270,7 +10270,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:00:16.0000000Z")
             },
             /* 274 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEr1gqvDTO68wBZANbkhDOA",
               Url = "https://www.youtube.com/channel/UCEr1gqvDTO68wBZANbkhDOA",
               Name = "Otterface",
@@ -10282,7 +10282,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:08.2130000Z")
             },
             /* 275 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-EREEErQQqgYNyNB4YGQnQ",
               Url = "https://www.youtube.com/channel/UC-EREEErQQqgYNyNB4YGQnQ",
               Name = "Patrick",
@@ -10294,7 +10294,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:10.6670000Z")
             },
             /* 276 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCesrUK_dMDBZAf7cnjQPdgQ",
               Url = "https://www.youtube.com/channel/UCesrUK_dMDBZAf7cnjQPdgQ",
               Name = "Brittany Sellner",
@@ -10306,7 +10306,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-05T15:33:07.0000000Z")
             },
             /* 277 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEsywmxARiHoWOIPVQjopKw",
               Url = "https://www.youtube.com/channel/UCEsywmxARiHoWOIPVQjopKw",
               Name = "Crocoduck Vlogs",
@@ -10318,7 +10318,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-17T07:33:38.0000000Z")
             },
             /* 278 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCEszlI8-W79IsU8LSAiRbDg",
               Url = "https://www.youtube.com/channel/UCEszlI8-W79IsU8LSAiRbDg",
               Name = "John Michael Godier",
@@ -10331,7 +10331,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T01:09:30.0000000Z")
             },
             /* 279 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-etSr9FDR-7XphnHr-hYqA",
               Url = "https://www.youtube.com/channel/UC-etSr9FDR-7XphnHr-hYqA",
               Name = "Kimera",
@@ -10343,7 +10343,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:13.2520000Z")
             },
             /* 280 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeUJFQ0D9qs6aVNyUt9fkeQ",
               Url = "https://www.youtube.com/channel/UCeUJFQ0D9qs6aVNyUt9fkeQ",
               Name = "The Armchair Historian",
@@ -10356,7 +10356,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-10T15:52:48.0000000Z")
             },
             /* 281 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeuzuTtrysr153y-ovNkWwg",
               Url = "https://www.youtube.com/channel/UCeuzuTtrysr153y-ovNkWwg",
               Name = "Violinspiration - Violin Lessons",
@@ -10369,7 +10369,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:02.0000000Z")
             },
             /* 282 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCewUkuIHNuwuMNWMa96q9ZQ",
               Url = "https://www.youtube.com/channel/UCewUkuIHNuwuMNWMa96q9ZQ",
               Name = "Godless Cranium",
@@ -10382,7 +10382,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T05:04:09.0000000Z")
             },
             /* 283 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeX5HCl8o2QIxmlA2-iF2OQ",
               Url = "https://www.youtube.com/channel/UCeX5HCl8o2QIxmlA2-iF2OQ",
               Name = "Brooklyn Classical",
@@ -10395,7 +10395,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-03T14:15:10.0000000Z")
             },
             /* 284 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCexksLsyKnBllF0RrMQj1uw",
               Url = "https://www.youtube.com/channel/UCexksLsyKnBllF0RrMQj1uw",
               Name = "Alex",
@@ -10406,7 +10406,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:17.5150000Z")
             },
             /* 285 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeYP27qLtfUMY1b1Cyy3WdQ",
               Url = "https://www.youtube.com/channel/UCeYP27qLtfUMY1b1Cyy3WdQ",
               Name = "TheThinkingAtheist",
@@ -10419,7 +10419,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:51:55.0000000Z")
             },
             /* 286 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF_1Z-b65bDAon3W94_ZWmw",
               Url = "https://www.youtube.com/channel/UCF_1Z-b65bDAon3W94_ZWmw",
               Name = "StephRants",
@@ -10432,7 +10432,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-03T21:34:37.0000000Z")
             },
             /* 287 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf0CRezZYOUcvqrdMmozowQ",
               Url = "https://www.youtube.com/channel/UCf0CRezZYOUcvqrdMmozowQ",
               Name = "Maya Henry",
@@ -10445,7 +10445,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-25T17:00:12.0000000Z")
             },
             /* 288 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF11HxoU9YF3vhehVn3edjQ",
               Url = "https://www.youtube.com/channel/UCF11HxoU9YF3vhehVn3edjQ",
               Name = "Gaming University",
@@ -10457,7 +10457,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T10:15:45.0000000Z")
             },
             /* 289 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf1iroepad-o5w2il-06Gjg",
               Url = "https://www.youtube.com/channel/UCf1iroepad-o5w2il-06Gjg",
               Name = "Armoured Skeptic More",
@@ -10469,7 +10469,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:03.3150000Z")
             },
             /* 290 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf25l5VFL3N20nH7L2gZeqQ",
               Url = "https://www.youtube.com/channel/UCf25l5VFL3N20nH7L2gZeqQ",
               Name = "ThatViolaKid",
@@ -10482,7 +10482,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-15T00:46:42.0000000Z")
             },
             /* 291 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf6G3eRxTfWAgrg5053Iaeg",
               Url = "https://www.youtube.com/channel/UCf6G3eRxTfWAgrg5053Iaeg",
               Name = "The Kraut",
@@ -10493,7 +10493,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:23.4090000Z")
             },
             /* 292 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf7CnR563xpJR7TIbUgOaQA",
               Url = "https://www.youtube.com/channel/UCf7CnR563xpJR7TIbUgOaQA",
               Name = "Aerin Blair",
@@ -10504,7 +10504,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:26.6580000Z")
             },
             /* 293 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf8m35ouq4dXhCcN12IkaYQ",
               Url = "https://www.youtube.com/channel/UCf8m35ouq4dXhCcN12IkaYQ",
               Name = "purpandorange",
@@ -10516,7 +10516,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-07T17:01:22.0000000Z")
             },
             /* 294 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFB0UCodO5DjcLxLBRzkG-g",
               Url = "https://www.youtube.com/channel/UCFB0UCodO5DjcLxLBRzkG-g",
               Name = "Joy Lee",
@@ -10529,7 +10529,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-02T12:00:35.0000000Z")
             },
             /* 295 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFbgt4fSBvjT9rKjE8qfSjw",
               Url = "https://www.youtube.com/channel/UCFbgt4fSBvjT9rKjE8qfSjw",
               Name = "Ray Narvaez Jr",
@@ -10542,7 +10542,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:17.0000000Z")
             },
             /* 296 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdeu9Einc18AogCmcRz0GQ",
               Url = "https://www.youtube.com/channel/UCfdeu9Einc18AogCmcRz0GQ",
               Name = "Secular Brownie",
@@ -10553,7 +10553,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:40.8190000Z")
             },
             /* 297 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdNM3NAhaBOXCafH7krzrA",
               Url = "https://www.youtube.com/channel/UCfdNM3NAhaBOXCafH7krzrA",
               Name = "The Infographics Show",
@@ -10566,7 +10566,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T19:15:01.0000000Z")
             },
             /* 298 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFEjRe-s0tO-1YxZ4tdNJIg",
               Url = "https://www.youtube.com/channel/UCFEjRe-s0tO-1YxZ4tdNJIg",
               Name = "Cheshire Viq",
@@ -10579,7 +10579,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:20:09.0000000Z")
             },
             /* 299 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFhXFikryT4aFcLkLw2LBLA",
               Url = "https://www.youtube.com/channel/UCFhXFikryT4aFcLkLw2LBLA",
               Name = "NileRed",
@@ -10592,7 +10592,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-26T17:37:53.0000000Z")
             },
             /* 300 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFJNcE0iHj7P6dhp5iCZRLg",
               Url = "https://www.youtube.com/channel/UCFJNcE0iHj7P6dhp5iCZRLg",
               Name = "Learn Liberty",
@@ -10605,7 +10605,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-02T18:00:08.0000000Z")
             },
             /* 301 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFk__1iexL3T5gvGcMpeHNA",
               Url = "https://www.youtube.com/channel/UCFk__1iexL3T5gvGcMpeHNA",
               Name = "Looking Glass Universe",
@@ -10618,7 +10618,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T20:12:33.0000000Z")
             },
             /* 302 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfl1fku1XDoTi9NYPINxwpg",
               Url = "https://www.youtube.com/channel/UCfl1fku1XDoTi9NYPINxwpg",
               Name = "Discovery VR",
@@ -10630,7 +10630,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.5350000Z")
             },
             /* 303 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfLJNQxwK81nPhyZZibDiQA",
               Url = "https://www.youtube.com/channel/UCfLJNQxwK81nPhyZZibDiQA",
               Name = "UNpopular Culture",
@@ -10643,7 +10643,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-21T18:00:03.0000000Z")
             },
             /* 304 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFLJweCjLLnWOFxM6ETJ2Ow",
               Url = "https://www.youtube.com/channel/UCFLJweCjLLnWOFxM6ETJ2Ow",
               Name = "The Cynical Jerks",
@@ -10654,7 +10654,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.9230000Z")
             },
             /* 284 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCexksLsyKnBllF0RrMQj1uw",
               Url = "https://www.youtube.com/channel/UCexksLsyKnBllF0RrMQj1uw",
               Name = "Alex",
@@ -10665,7 +10665,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:51:17.5150000Z")
             },
             /* 285 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCeYP27qLtfUMY1b1Cyy3WdQ",
               Url = "https://www.youtube.com/channel/UCeYP27qLtfUMY1b1Cyy3WdQ",
               Name = "TheThinkingAtheist",
@@ -10678,7 +10678,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:51:55.0000000Z")
             },
             /* 286 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF_1Z-b65bDAon3W94_ZWmw",
               Url = "https://www.youtube.com/channel/UCF_1Z-b65bDAon3W94_ZWmw",
               Name = "StephRants",
@@ -10691,7 +10691,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-03T21:34:37.0000000Z")
             },
             /* 287 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf0CRezZYOUcvqrdMmozowQ",
               Url = "https://www.youtube.com/channel/UCf0CRezZYOUcvqrdMmozowQ",
               Name = "Maya Henry",
@@ -10704,7 +10704,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-25T17:00:12.0000000Z")
             },
             /* 288 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCF11HxoU9YF3vhehVn3edjQ",
               Url = "https://www.youtube.com/channel/UCF11HxoU9YF3vhehVn3edjQ",
               Name = "Gaming University",
@@ -10716,7 +10716,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T10:15:45.0000000Z")
             },
             /* 289 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf1iroepad-o5w2il-06Gjg",
               Url = "https://www.youtube.com/channel/UCf1iroepad-o5w2il-06Gjg",
               Name = "Armoured Skeptic More",
@@ -10728,7 +10728,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:03.3150000Z")
             },
             /* 290 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf25l5VFL3N20nH7L2gZeqQ",
               Url = "https://www.youtube.com/channel/UCf25l5VFL3N20nH7L2gZeqQ",
               Name = "ThatViolaKid",
@@ -10741,7 +10741,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-15T00:46:42.0000000Z")
             },
             /* 291 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf6G3eRxTfWAgrg5053Iaeg",
               Url = "https://www.youtube.com/channel/UCf6G3eRxTfWAgrg5053Iaeg",
               Name = "The Kraut",
@@ -10752,7 +10752,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:23.4090000Z")
             },
             /* 292 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf7CnR563xpJR7TIbUgOaQA",
               Url = "https://www.youtube.com/channel/UCf7CnR563xpJR7TIbUgOaQA",
               Name = "Aerin Blair",
@@ -10763,7 +10763,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:26.6580000Z")
             },
             /* 293 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCf8m35ouq4dXhCcN12IkaYQ",
               Url = "https://www.youtube.com/channel/UCf8m35ouq4dXhCcN12IkaYQ",
               Name = "purpandorange",
@@ -10775,7 +10775,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-07T17:01:22.0000000Z")
             },
             /* 294 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFB0UCodO5DjcLxLBRzkG-g",
               Url = "https://www.youtube.com/channel/UCFB0UCodO5DjcLxLBRzkG-g",
               Name = "Joy Lee",
@@ -10788,7 +10788,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-02T12:00:35.0000000Z")
             },
             /* 295 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFbgt4fSBvjT9rKjE8qfSjw",
               Url = "https://www.youtube.com/channel/UCFbgt4fSBvjT9rKjE8qfSjw",
               Name = "Ray Narvaez Jr",
@@ -10801,7 +10801,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:00:17.0000000Z")
             },
             /* 296 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdeu9Einc18AogCmcRz0GQ",
               Url = "https://www.youtube.com/channel/UCfdeu9Einc18AogCmcRz0GQ",
               Name = "Secular Brownie",
@@ -10812,7 +10812,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:40.8190000Z")
             },
             /* 297 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfdNM3NAhaBOXCafH7krzrA",
               Url = "https://www.youtube.com/channel/UCfdNM3NAhaBOXCafH7krzrA",
               Name = "The Infographics Show",
@@ -10825,7 +10825,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T19:15:01.0000000Z")
             },
             /* 298 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFEjRe-s0tO-1YxZ4tdNJIg",
               Url = "https://www.youtube.com/channel/UCFEjRe-s0tO-1YxZ4tdNJIg",
               Name = "Cheshire Viq",
@@ -10838,7 +10838,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:20:09.0000000Z")
             },
             /* 299 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFhXFikryT4aFcLkLw2LBLA",
               Url = "https://www.youtube.com/channel/UCFhXFikryT4aFcLkLw2LBLA",
               Name = "NileRed",
@@ -10851,7 +10851,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-26T17:37:53.0000000Z")
             },
             /* 300 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFJNcE0iHj7P6dhp5iCZRLg",
               Url = "https://www.youtube.com/channel/UCFJNcE0iHj7P6dhp5iCZRLg",
               Name = "Learn Liberty",
@@ -10864,7 +10864,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-02T18:00:08.0000000Z")
             },
             /* 301 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFk__1iexL3T5gvGcMpeHNA",
               Url = "https://www.youtube.com/channel/UCFk__1iexL3T5gvGcMpeHNA",
               Name = "Looking Glass Universe",
@@ -10877,7 +10877,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T20:12:33.0000000Z")
             },
             /* 302 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfl1fku1XDoTi9NYPINxwpg",
               Url = "https://www.youtube.com/channel/UCfl1fku1XDoTi9NYPINxwpg",
               Name = "Discovery VR",
@@ -10889,7 +10889,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.5350000Z")
             },
             /* 303 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfLJNQxwK81nPhyZZibDiQA",
               Url = "https://www.youtube.com/channel/UCfLJNQxwK81nPhyZZibDiQA",
               Name = "UNpopular Culture",
@@ -10902,7 +10902,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-21T18:00:03.0000000Z")
             },
             /* 304 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFLJweCjLLnWOFxM6ETJ2Ow",
               Url = "https://www.youtube.com/channel/UCFLJweCjLLnWOFxM6ETJ2Ow",
               Name = "The Cynical Jerks",
@@ -10913,7 +10913,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:52:46.9230000Z")
             },
             /* 305 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfLTDfjO6_y_SVOBKqfffKg",
               Url = "https://www.youtube.com/channel/UCfLTDfjO6_y_SVOBKqfffKg",
               Name = "Autism Spectrum Australia",
@@ -10926,7 +10926,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T01:30:29.0000000Z")
             },
             /* 306 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFmFlC3ljBb7WlRdzOh3TeQ",
               Url = "https://www.youtube.com/channel/UCFmFlC3ljBb7WlRdzOh3TeQ",
               Name = "Billy Bong",
@@ -10938,7 +10938,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:15.0800000Z")
             },
             /* 307 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfoIn_41GlLsHSe8rePo78w",
               Url = "https://www.youtube.com/channel/UCfoIn_41GlLsHSe8rePo78w",
               Name = "Banned From THE NEW IFB",
@@ -10949,7 +10949,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:15.2210000Z")
             },
             /* 308 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-FpBZR7DbpvNj5UrFN8qUA",
               Url = "https://www.youtube.com/channel/UC-FpBZR7DbpvNj5UrFN8qUA",
               Name = "Aspergers from the Inside",
@@ -10962,7 +10962,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T22:30:10.0000000Z")
             },
             /* 309 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCFQPIMzJ6wD8nYv7vCdE-MQ",
               Url = "https://www.youtube.com/channel/UCFQPIMzJ6wD8nYv7vCdE-MQ",
               Name = "uzalu",
@@ -10975,7 +10975,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-11T02:15:43.0000000Z")
             },
             /* 310 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfsuI3-92QNO3DVy06PO9wg",
               Url = "https://www.youtube.com/channel/UCfsuI3-92QNO3DVy06PO9wg",
               Name = "Skeptic",
@@ -10988,7 +10988,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T17:53:07.0000000Z")
             },
             /* 311 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfsX0iFWcdefP78zQpYRnvQ",
               Url = "https://www.youtube.com/channel/UCfsX0iFWcdefP78zQpYRnvQ",
               Name = "43alley",
@@ -11000,7 +11000,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:35.8170000Z")
             },
             /* 312 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfV36TX5AejfAGIbtwTc7Zw",
               Url = "https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw",
               Name = "Chris Hawkes",
@@ -11015,7 +11015,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 313 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfWQuGYMfhZk9qq5x00sb9w",
               Url = "https://www.youtube.com/channel/UCfWQuGYMfhZk9qq5x00sb9w",
               Name = "Trading 212",
@@ -11028,7 +11028,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T18:22:35.0000000Z")
             },
             /* 314 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCfYbb7nga6-icsFWWgS-kWw",
               Url = "https://www.youtube.com/channel/UCfYbb7nga6-icsFWWgS-kWw",
               Name = "Mister Metokur",
@@ -11040,7 +11040,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:36.3580000Z")
             },
             /* 315 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG_xCloLaV2TvXtKOCH-lSA",
               Url = "https://www.youtube.com/channel/UCG_xCloLaV2TvXtKOCH-lSA",
               Name = "Concertgebouworkest",
@@ -11053,7 +11053,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-29T10:40:15.0000000Z")
             },
             /* 316 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG1uayRlzz3ahT8ISRdyw7Q",
               Url = "https://www.youtube.com/channel/UCG1uayRlzz3ahT8ISRdyw7Q",
               Name = "Genetically Modified Skeptic",
@@ -11066,7 +11066,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T16:00:44.0000000Z")
             },
             /* 317 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg57OqktnnvRc3HRPGnXKTg",
               Url = "https://www.youtube.com/channel/UCg57OqktnnvRc3HRPGnXKTg",
               Name = "The New Memedia",
@@ -11077,7 +11077,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:38.9430000Z")
             },
             /* 318 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-g5SsjkGw4wLV8k6O-N0Kw",
               Url = "https://www.youtube.com/channel/UC-g5SsjkGw4wLV8k6O-N0Kw",
               Name = "the Lala",
@@ -11089,7 +11089,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:39.3500000Z")
             },
             /* 319 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg6MuFVugHwWCp1YDQDAy1w",
               Url = "https://www.youtube.com/channel/UCg6MuFVugHwWCp1YDQDAy1w",
               Name = "Atheism-is-Unstoppable",
@@ -11100,7 +11100,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:53:57.8530000Z")
             },
             /* 320 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG749Dj4V2fKa143f8sE60Q",
               Url = "https://www.youtube.com/channel/UCG749Dj4V2fKa143f8sE60Q",
               Name = "Tim Pool",
@@ -11113,7 +11113,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T20:00:07.0000000Z")
             },
             /* 321 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCg7TaxaMn6eP721toaV33Lg",
               Url = "https://www.youtube.com/channel/UCg7TaxaMn6eP721toaV33Lg",
               Name = "Skylar Fiction",
@@ -11126,7 +11126,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-27T04:00:10.0000000Z")
             },
             /* 322 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG8uh6dJkvSDfv3GiWwuooA",
               Url = "https://www.youtube.com/channel/UCG8uh6dJkvSDfv3GiWwuooA",
               Name = "Asteroid Day",
@@ -11139,7 +11139,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-03T14:50:29.0000000Z")
             },
             /* 323 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCG9ShGbASoiwHwFcLcAh9EA",
               Url = "https://www.youtube.com/channel/UCG9ShGbASoiwHwFcLcAh9EA",
               Name = "SEA",
@@ -11152,7 +11152,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T20:00:28.0000000Z")
             },
             /* 324 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgEV0L6OzYFBMKib8RYwiDQ",
               Url = "https://www.youtube.com/channel/UCgEV0L6OzYFBMKib8RYwiDQ",
               Name = "John Smith",
@@ -11164,7 +11164,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:18.2010000Z")
             },
             /* 325 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgeV3tFiU2Xg0PD1dAQbBHA",
               Url = "https://www.youtube.com/channel/UCgeV3tFiU2Xg0PD1dAQbBHA",
               Name = "Jimmy Snow",
@@ -11177,7 +11177,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-27T16:00:11.0000000Z")
             },
             /* 326 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgGgkVyadk0TdxmVzYcAM-Q",
               Url = "https://www.youtube.com/channel/UCgGgkVyadk0TdxmVzYcAM-Q",
               Name = "Hannah and Jake",
@@ -11190,7 +11190,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T18:00:00.0000000Z")
             },
             /* 327 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGGJi4n5Lq-_NcYN105tbCA",
               Url = "https://www.youtube.com/channel/UCGGJi4n5Lq-_NcYN105tbCA",
               Name = "Ausyarr",
@@ -11202,7 +11202,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:09.3010000Z")
             },
             /* 328 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgGQ6uU8qQO4A-_x3GVP1Yg",
               Url = "https://www.youtube.com/channel/UCgGQ6uU8qQO4A-_x3GVP1Yg",
               Name = "DEEK",
@@ -11214,7 +11214,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:18.3710000Z")
             },
             /* 329 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGHZpIpAWJQ-Jy_CeCdXhMA",
               Url = "https://www.youtube.com/channel/UCGHZpIpAWJQ-Jy_CeCdXhMA",
               Name = "Cool Worlds",
@@ -11227,7 +11227,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T19:00:02.0000000Z")
             },
             /* 330 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGIELCcWZo9XHCUw395Xotw",
               Url = "https://www.youtube.com/channel/UCGIELCcWZo9XHCUw395Xotw",
               Name = "Claire Kane Viola",
@@ -11240,7 +11240,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-14T03:14:03.0000000Z")
             },
             /* 331 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgIi12EA6BQ8HKL8QUccsOQ",
               Url = "https://www.youtube.com/channel/UCgIi12EA6BQ8HKL8QUccsOQ",
               Name = "Telltale",
@@ -11253,7 +11253,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-14T14:19:52.0000000Z")
             },
             /* 332 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGLgYaW3TYYnxRjZT_JPWTg",
               Url = "https://www.youtube.com/channel/UCGLgYaW3TYYnxRjZT_JPWTg",
               Name = "Kevin Logan",
@@ -11266,7 +11266,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T19:36:55.0000000Z")
             },
             /* 333 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGLTvOqJOcbIwBtX0Rou2gw",
               Url = "https://www.youtube.com/channel/UCGLTvOqJOcbIwBtX0Rou2gw",
               Name = "Rags",
@@ -11279,7 +11279,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-25T17:02:28.0000000Z")
             },
             /* 334 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgnIsA-D3PX6g6gi6Nyuewg",
               Url = "https://www.youtube.com/channel/UCgnIsA-D3PX6g6gi6Nyuewg",
               Name = "Great Debate Community",
@@ -11292,7 +11292,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-01-06T00:17:06.0000000Z")
             },
             /* 335 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGOA_DW3sgXO_c9hDc92SZw",
               Url = "https://www.youtube.com/channel/UCGOA_DW3sgXO_c9hDc92SZw",
               Name = "DiscordSpies",
@@ -11304,7 +11304,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:10.5710000Z")
             },
             /* 336 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGP7Obfm6Z1TFg_Pwx4ctxg",
               Url = "https://www.youtube.com/channel/UCGP7Obfm6Z1TFg_Pwx4ctxg",
               Name = "ABitOfBritt",
@@ -11315,7 +11315,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:32.8920000Z")
             },
             /* 337 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGQ78cJiMcJhMbpKhjunAxg",
               Url = "https://www.youtube.com/channel/UCGQ78cJiMcJhMbpKhjunAxg",
               Name = "Autistic Tyla",
@@ -11328,7 +11328,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T21:35:45.0000000Z")
             },
             /* 338 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgTNupxATBfWmfehv21ym-g",
               Url = "https://www.youtube.com/channel/UCgTNupxATBfWmfehv21ym-g",
               Name = "Null Byte",
@@ -11341,7 +11341,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-08T16:40:22.0000000Z")
             },
             /* 339 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgUzZAhJkUtYDFGbPowrR0w",
               Url = "https://www.youtube.com/channel/UCgUzZAhJkUtYDFGbPowrR0w",
               Name = "Lawrence Sonntag",
@@ -11354,7 +11354,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T21:30:01.0000000Z")
             },
             /* 340 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGy6uV7yqGWDeUWTZzT3ZEg",
               Url = "https://www.youtube.com/channel/UCGy6uV7yqGWDeUWTZzT3ZEg",
               Name = "Rebel News",
@@ -11371,7 +11371,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T23:11:28.0000000Z")
             },
             /* 341 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGy7SkBjcIAgTiwkXEtPnYg",
               Url = "https://www.youtube.com/channel/UCGy7SkBjcIAgTiwkXEtPnYg",
               Name = "Andrei Jikh",
@@ -11384,7 +11384,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-25T23:15:00.0000000Z")
             },
             /* 342 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCGZ_MTrDJPFKAz522i2rYkg",
               Url = "https://www.youtube.com/channel/UCGZ_MTrDJPFKAz522i2rYkg",
               Name = "Sceptic Llama",
@@ -11395,7 +11395,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:43.7640000Z")
             },
             /* 343 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCgzKCeDYLRzPhQ64R6AKyBQ",
               Url = "https://www.youtube.com/channel/UCgzKCeDYLRzPhQ64R6AKyBQ",
               Name = "Life of Luba",
@@ -11408,7 +11408,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-10T19:56:00.0000000Z")
             },
             /* 344 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh_ugKacslKhsGGdXP0cRRA",
               Url = "https://www.youtube.com/channel/UCh_ugKacslKhsGGdXP0cRRA",
               Name = "Naomi 'SexyCyborg' Wu",
@@ -11421,7 +11421,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-24T16:19:58.0000000Z")
             },
             /* 345 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH_zYYXkJpULueOVZTkY4Bw",
               Url = "https://www.youtube.com/channel/UCH_zYYXkJpULueOVZTkY4Bw",
               Name = "Richard Dawkins Foundation for Reason & Science",
@@ -11434,7 +11434,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-22T15:37:30.0000000Z")
             },
             /* 346 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH1dpzjCEiGAt8CXkryhkZg",
               Url = "https://www.youtube.com/channel/UCH1dpzjCEiGAt8CXkryhkZg",
               Name = "Bernie Sanders",
@@ -11447,7 +11447,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T01:12:22.0000000Z")
             },
             /* 347 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCH4BNI0-FOK2dMXoFtViWHw",
               Url = "https://www.youtube.com/channel/UCH4BNI0-FOK2dMXoFtViWHw",
               Name = "It's Okay To Be Smart",
@@ -11460,7 +11460,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-06T16:16:20.0000000Z")
             },
             /* 348 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh51tkZhO4aTwpS4sA2CQ3A",
               Url = "https://www.youtube.com/channel/UCh51tkZhO4aTwpS4sA2CQ3A",
               Name = "Unfiltered Love Podcast Highlights",
@@ -11472,7 +11472,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:54:59.9040000Z")
             },
             /* 349 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHdluULl5c7bilx1x1TGzJQ",
               Url = "https://www.youtube.com/channel/UCHdluULl5c7bilx1x1TGzJQ",
               Name = "Feature History",
@@ -11485,7 +11485,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-22T10:11:30.0000000Z")
             },
             /* 350 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHhM8HWQ-Z8rSMLrafaYVHQ",
               Url = "https://www.youtube.com/channel/UCHhM8HWQ-Z8rSMLrafaYVHQ",
               Name = "Creation Science Fiction",
@@ -11497,7 +11497,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:01.4620000Z")
             },
             /* 351 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHH-ybUwH1CfJrXxnqw6Ljw",
               Url = "https://www.youtube.com/channel/UCHH-ybUwH1CfJrXxnqw6Ljw",
               Name = "MooLer",
@@ -11509,7 +11509,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T15:30:15.0000000Z")
             },
             /* 352 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChi7XVIZZ-8k1Ambfy7vN9w",
               Url = "https://www.youtube.com/channel/UChi7XVIZZ-8k1Ambfy7vN9w",
               Name = "michaelsaikuen",
@@ -11521,7 +11521,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-01T04:00:00.0000000Z")
             },
             /* 353 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChj_gNaRCdtkrrVx8e1l4oQ",
               Url = "https://www.youtube.com/channel/UChj_gNaRCdtkrrVx8e1l4oQ",
               Name = "Kempt Shevelled",
@@ -11533,7 +11533,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:13.6460000Z")
             },
             /* 354 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHknMQi_5YD4vF6lW2s8_6Q",
               Url = "https://www.youtube.com/channel/UCHknMQi_5YD4vF6lW2s8_6Q",
               Name = "SunBunz",
@@ -11546,7 +11546,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-27T02:48:54.0000000Z")
             },
             /* 355 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHm79tMFFZjYFjAS5kgMnlA",
               Url = "https://www.youtube.com/channel/UCHm79tMFFZjYFjAS5kgMnlA",
               Name = "Nightmare Fuel Podcast",
@@ -11558,7 +11558,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:05.7180000Z")
             },
             /* 356 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChn6NrzXWfT-j0g35P_HZ9A",
               Url = "https://www.youtube.com/channel/UChn6NrzXWfT-j0g35P_HZ9A",
               Name = "Nepsa96",
@@ -11569,7 +11569,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:05.8600000Z")
             },
             /* 357 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHnpjH4EfWj_Bas8bMM1LZg",
               Url = "https://www.youtube.com/channel/UCHnpjH4EfWj_Bas8bMM1LZg",
               Name = "Cringe Only",
@@ -11580,7 +11580,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:06.2290000Z")
             },
             /* 358 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHnyfMqiRRG1u-2MsSQLbXA",
               Url = "https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA",
               Name = "Veritasium",
@@ -11593,7 +11593,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-30T12:20:58.0000000Z")
             },
             /* 359 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UChplNp1FQZASHN0dUOnqggQ",
               Url = "https://www.youtube.com/channel/UChplNp1FQZASHN0dUOnqggQ",
               Name = "MS Reminders",
@@ -11606,7 +11606,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-20T18:00:03.0000000Z")
             },
             /* 360 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHugE6eRhqB9_AZQh4DDbIw",
               Url = "https://www.youtube.com/channel/UCHugE6eRhqB9_AZQh4DDbIw",
               Name = "Jupiter Broadcasting",
@@ -11619,7 +11619,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T10:00:22.0000000Z")
             },
             /* 361 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHvUTfxL_9bNQgqzekPWHtg",
               Url = "https://www.youtube.com/channel/UCHvUTfxL_9bNQgqzekPWHtg",
               Name = "SSTec Tutorials",
@@ -11632,7 +11632,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T09:12:38.0000000Z")
             },
             /* 362 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCHXn1QCWDeb2qNGtMFWEmaw",
               Url = "https://www.youtube.com/channel/UCHXn1QCWDeb2qNGtMFWEmaw",
               Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
@@ -11642,7 +11642,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:08.5250000Z")
             },
             /* 363 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCh-YXgnF0tmBxCsh4w_4svw",
               Url = "https://www.youtube.com/channel/UCh-YXgnF0tmBxCsh4w_4svw",
               Name = "Suris",
@@ -11655,7 +11655,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T15:00:09.0000000Z")
             },
             /* 364 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi0TZmFfgS4oQPcRQ6-KRXg",
               Url = "https://www.youtube.com/channel/UCi0TZmFfgS4oQPcRQ6-KRXg",
               Name = "The Planetary Society",
@@ -11668,7 +11668,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T18:53:21.0000000Z")
             },
             /* 365 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi-6mxpmAHS1uARlX1grObQ",
               Url = "https://www.youtube.com/channel/UCi-6mxpmAHS1uARlX1grObQ",
               Name = "Prince of Queens",
@@ -11680,7 +11680,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:25.2530000Z")
             },
             /* 366 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCI9pm8WplvpIN8uKpoxcXaQ",
               Url = "https://www.youtube.com/channel/UCI9pm8WplvpIN8uKpoxcXaQ",
               Name = "Hilary Hahn",
@@ -11693,7 +11693,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-12-18T18:00:09.0000000Z")
             },
             /* 367 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCialsmUlTRABKPw31VDx1eQ",
               Url = "https://www.youtube.com/channel/UCialsmUlTRABKPw31VDx1eQ",
               Name = "Foundation for Economic Education",
@@ -11706,7 +11706,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-07T15:43:12.0000000Z")
             },
             /* 368 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIbBCEj2Zrc5KkyzLEQMZCw",
               Url = "https://www.youtube.com/channel/UCIbBCEj2Zrc5KkyzLEQMZCw",
               Name = "AntiCitizenX",
@@ -11719,7 +11719,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-09-26T20:50:22.0000000Z")
             },
             /* 369 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiBdZjk2xAXlSeDSYqTaR2A",
               Url = "https://www.youtube.com/channel/UCiBdZjk2xAXlSeDSYqTaR2A",
               Name = "Jenna Bowyer",
@@ -11731,7 +11731,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-22T15:29:00.0000000Z")
             },
             /* 370 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIbslwukNCyVp-XMz_2-gmw",
               Url = "https://www.youtube.com/channel/UCIbslwukNCyVp-XMz_2-gmw",
               Name = "Investing With Rose",
@@ -11744,7 +11744,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T03:17:53.0000000Z")
             },
             /* 371 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCICMrU9Jv7dmwzeT7438XRg",
               Url = "https://www.youtube.com/channel/UCICMrU9Jv7dmwzeT7438XRg",
               Name = "High Quality Gaming",
@@ -11757,7 +11757,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T16:37:08.0000000Z")
             },
             /* 372 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCidRD01KNkG4fb9dpvqBmlQ",
               Url = "https://www.youtube.com/channel/UCidRD01KNkG4fb9dpvqBmlQ",
               Name = "Queeny",
@@ -11770,7 +11770,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-24T02:34:32.0000000Z")
             },
             /* 373 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIFtADcWrOApqrsinzPoOfA",
               Url = "https://www.youtube.com/channel/UCIFtADcWrOApqrsinzPoOfA",
               Name = "Destiny",
@@ -11783,7 +11783,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-12T17:00:06.0000000Z")
             },
             /* 374 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIibK0GTXCaQCAamJAepm1g",
               Url = "https://www.youtube.com/channel/UCIibK0GTXCaQCAamJAepm1g",
               Name = "ramzpaul",
@@ -11796,7 +11796,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T13:18:49.0000000Z")
             },
             /* 375 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIjuLiLHdFxYtFmWlbTGQRQ",
               Url = "https://www.youtube.com/channel/UCIjuLiLHdFxYtFmWlbTGQRQ",
               Name = "Peter Schiff",
@@ -11809,7 +11809,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-16T02:34:06.0000000Z")
             },
             /* 376 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCINeoE-0pcNh-Q3MR-y5Z-w",
               Url = "https://www.youtube.com/channel/UCINeoE-0pcNh-Q3MR-y5Z-w",
               Name = "Westward Thought",
@@ -11821,7 +11821,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:17.6470000Z")
             },
             /* 377 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCInnWzBrSzi5V5zPxEe75TA",
               Url = "https://www.youtube.com/channel/UCInnWzBrSzi5V5zPxEe75TA",
               Name = "Mir Mirw",
@@ -11832,7 +11832,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:55:41.8460000Z")
             },
             /* 378 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCi-nUi67HVFEtpaFsjRj_NA",
               Url = "https://www.youtube.com/channel/UCi-nUi67HVFEtpaFsjRj_NA",
               Name = "The Age & Sydney Morning Herald",
@@ -11845,7 +11845,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T12:31:25.0000000Z")
             },
             /* 379 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIOEiCUe61w47MzBfMHlziQ",
               Url = "https://www.youtube.com/channel/UCIOEiCUe61w47MzBfMHlziQ",
               Name = "Sydney Symphony Orchestra",
@@ -11858,7 +11858,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T09:00:16.0000000Z")
             },
             /* 380 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCioZY1p0bZ4Xt-yodw8_cBQ",
               Url = "https://www.youtube.com/channel/UCioZY1p0bZ4Xt-yodw8_cBQ",
               Name = "How To Drink",
@@ -11871,7 +11871,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T17:32:40.0000000Z")
             },
             /* 381 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiPYZkZeNbYTQZKNMlB0Gsw",
               Url = "https://www.youtube.com/channel/UCiPYZkZeNbYTQZKNMlB0Gsw",
               Name = "France Musique",
@@ -11884,7 +11884,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:00:35.0000000Z")
             },
             /* 382 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiQ2pjcoPI-Jpo1GER7-iUA",
               Url = "https://www.youtube.com/channel/UCiQ2pjcoPI-Jpo1GER7-iUA",
               Name = "King Crocoduck",
@@ -11897,7 +11897,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T17:00:11.0000000Z")
             },
             /* 383 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCIS4cWaXgWpznjwovFYQBJQ",
               Url = "https://www.youtube.com/channel/UCIS4cWaXgWpznjwovFYQBJQ",
               Name = "Paulogia",
@@ -11910,7 +11910,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T13:30:13.0000000Z")
             },
             /* 384 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCItlpUIsfPld3E0QQ20oNsA",
               Url = "https://www.youtube.com/channel/UCItlpUIsfPld3E0QQ20oNsA",
               Name = "SatisFactory TV",
@@ -11922,7 +11922,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:02.9260000Z")
             },
             /* 385 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCittVh8imKanO_5KohzDbpg",
               Url = "https://www.youtube.com/channel/UCittVh8imKanO_5KohzDbpg",
               Name = "Paul Joseph Watson",
@@ -11935,7 +11935,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-04T21:10:59.0000000Z")
             },
             /* 386 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCitU2-w3XE8ujvUZjcAnhIg",
               Url = "https://www.youtube.com/channel/UCitU2-w3XE8ujvUZjcAnhIg",
               Name = "Akkad Daily",
@@ -11948,7 +11948,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-02-21T00:18:11.0000000Z")
             },
             /* 387 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCiyuYC0D4-AO0AonCfMifPQ",
               Url = "https://www.youtube.com/channel/UCiyuYC0D4-AO0AonCfMifPQ",
               Name = "hr-Sinfonieorchester – Frankfurt Radio Symphony",
@@ -11961,7 +11961,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T13:00:26.0000000Z")
             },
             /* 388 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ_bsH6ZZZ5xL0S7n7TQO4Q",
               Url = "https://www.youtube.com/channel/UCJ_bsH6ZZZ5xL0S7n7TQO4Q",
               Name = "Space Monkey",
@@ -11972,7 +11972,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:04.9730000Z")
             },
             /* 389 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ0yBou72Lz9fqeMXh9mkog",
               Url = "https://www.youtube.com/channel/UCJ0yBou72Lz9fqeMXh9mkog",
               Name = "Physics Videos by Eugene Khutoryansky",
@@ -11985,7 +11985,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-09T15:34:39.0000000Z")
             },
             /* 390 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ2yCFYUDiBJajga4tXRdNA",
               Url = "https://www.youtube.com/channel/UCJ2yCFYUDiBJajga4tXRdNA",
               Name = "marinashutup",
@@ -11997,7 +11997,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:19.7920000Z")
             },
             /* 391 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJ2ZDzMRgSrxmwphstrm8Ww",
               Url = "https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww",
               Name = "Smosh Games",
@@ -12010,7 +12010,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T16:00:14.0000000Z")
             },
             /* 392 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCj6F_9NkjVp-rGvIoY5Acdw",
               Url = "https://www.youtube.com/channel/UCj6F_9NkjVp-rGvIoY5Acdw",
               Name = "Yobyaxes The Anti-MGTOW",
@@ -12021,7 +12021,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:39.0010000Z")
             },
             /* 393 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCj8orMezFWVcoN-4S545Wtw",
               Url = "https://www.youtube.com/channel/UCj8orMezFWVcoN-4S545Wtw",
               Name = "Max Derrat",
@@ -12034,7 +12034,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T20:00:32.0000000Z")
             },
             /* 394 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJb97OZlSX8rFRm9C4zWYzQ",
               Url = "https://www.youtube.com/channel/UCJb97OZlSX8rFRm9C4zWYzQ",
               Name = "Jeremy Green",
@@ -12047,7 +12047,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-15T17:00:14.0000000Z")
             },
             /* 395 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjbgKUcTjpxmuW-8U0LR80Q",
               Url = "https://www.youtube.com/channel/UCjbgKUcTjpxmuW-8U0LR80Q",
               Name = "Independent Man",
@@ -12060,7 +12060,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-28T03:11:48.0000000Z")
             },
             /* 396 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJbPGzawDH1njbqV-D5HqKw",
               Url = "https://www.youtube.com/channel/UCJbPGzawDH1njbqV-D5HqKw",
               Name = "thenewboston",
@@ -12073,7 +12073,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-13T22:18:40.0000000Z")
             },
             /* 397 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjBR-WwNgkb6fwpx9gvLBfw",
               Url = "https://www.youtube.com/channel/UCjBR-WwNgkb6fwpx9gvLBfw",
               Name = "The fella formerly known as Fifn",
@@ -12085,7 +12085,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-24T15:16:42.0000000Z")
             },
             /* 398 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJdKr0Bgd_5saZYqLCa9mng",
               Url = "https://www.youtube.com/channel/UCJdKr0Bgd_5saZYqLCa9mng",
               Name = "The Rubin Report",
@@ -12098,7 +12098,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T18:59:26.0000000Z")
             },
             /* 399 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjHz5SVHeMT0AViCYZvsGDA",
               Url = "https://www.youtube.com/channel/UCjHz5SVHeMT0AViCYZvsGDA",
               Name = "NOVA PBS Official",
@@ -12111,7 +12111,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:46:19.0000000Z")
             },
             /* 400 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjjjJ462XehUUKDXR7gRPoA",
               Url = "https://www.youtube.com/channel/UCjjjJ462XehUUKDXR7gRPoA",
               Name = "SJW meltdowns",
@@ -12122,7 +12122,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:21.4490000Z")
             },
             /* 401 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-jjYbFILVe9B6ab-RGOxpw",
               Url = "https://www.youtube.com/channel/UC-jjYbFILVe9B6ab-RGOxpw",
               Name = "Ann Lieven",
@@ -12133,7 +12133,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:56:53.2040000Z")
             },
             /* 402 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-jlxuVAVEl2PXTaGno7gSA",
               Url = "https://www.youtube.com/channel/UC-jlxuVAVEl2PXTaGno7gSA",
               Name = "SJWCentral",
@@ -12146,7 +12146,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T18:09:21.0000000Z")
             },
             /* 403 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJm2TgUqtK1_NLBrjNQ1P-w",
               Url = "https://www.youtube.com/channel/UCJm2TgUqtK1_NLBrjNQ1P-w",
               Name = "Second Thought",
@@ -12159,7 +12159,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-18T15:00:07.0000000Z")
             },
             /* 404 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJm5yR1KFcysl_0I3x-iReg",
               Url = "https://www.youtube.com/channel/UCJm5yR1KFcysl_0I3x-iReg",
               Name = "lacigreen",
@@ -12172,7 +12172,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-14T19:49:23.0000000Z")
             },
             /* 405 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCJNcAH2yzV3VAMYIGxCZ8_w",
               Url = "https://www.youtube.com/channel/UCJNcAH2yzV3VAMYIGxCZ8_w",
               Name = "Gutsick Gibbon",
@@ -12185,7 +12185,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T16:00:02.0000000Z")
             },
             /* 406 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjNxszyFPasDdRoD9J6X-sw",
               Url = "https://www.youtube.com/channel/UCjNxszyFPasDdRoD9J6X-sw",
               Name = "Amazing Atheist",
@@ -12198,7 +12198,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-25T20:15:10.0000000Z")
             },
             /* 407 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjOl2AUblVmg2rA_cRgZkFg",
               Url = "https://www.youtube.com/channel/UCjOl2AUblVmg2rA_cRgZkFg",
               Name = "Top Gear",
@@ -12213,7 +12213,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 408 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjtUS7-SZTi6pXjUbzGHQCg",
               Url = "https://www.youtube.com/channel/UCjtUS7-SZTi6pXjUbzGHQCg",
               Name = "Undecided with Matt Ferrell",
@@ -12226,7 +12226,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T12:17:10.0000000Z")
             },
             /* 409 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCjVSsc9zYKBsbNsREWegceA",
               Url = "https://www.youtube.com/channel/UCjVSsc9zYKBsbNsREWegceA",
               Name = "Stephanie Speaks",
@@ -12239,7 +12239,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-30T18:26:52.0000000Z")
             },
             /* 410 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK09g6gYGMvU-0x1VCF1hgA",
               Url = "https://www.youtube.com/channel/UCK09g6gYGMvU-0x1VCF1hgA",
               Name = "Military History Visualized",
@@ -12252,7 +12252,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-05T19:00:07.0000000Z")
             },
             /* 411 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK1XzxcKXB_v_dcw_tflC1A",
               Url = "https://www.youtube.com/channel/UCK1XzxcKXB_v_dcw_tflC1A",
               Name = "OBF",
@@ -12267,7 +12267,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 412 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK27j4moB9Nhbadp0PTkydw",
               Url = "https://www.youtube.com/channel/UCK27j4moB9Nhbadp0PTkydw",
               Name = "Sarah's Wildlife Encounters",
@@ -12280,7 +12280,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T19:26:47.0000000Z")
             },
             /* 413 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk2FZi3N0h8APcVBOisQCMQ",
               Url = "https://www.youtube.com/channel/UCk2FZi3N0h8APcVBOisQCMQ",
               Name = "HuffPost Politics",
@@ -12292,7 +12292,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:23.1060000Z")
             },
             /* 414 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk40qSGYnVdFFBNXRjrvdpQ",
               Url = "https://www.youtube.com/channel/UCk40qSGYnVdFFBNXRjrvdpQ",
               Name = "Taylor Davis",
@@ -12305,7 +12305,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-26T18:04:31.0000000Z")
             },
             /* 415 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCk5aCrQAppGZ8atiOpgYZ1A",
               Url = "https://www.youtube.com/channel/UCk5aCrQAppGZ8atiOpgYZ1A",
               Name = "Yo Samdy Sam",
@@ -12318,7 +12318,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-25T17:29:55.0000000Z")
             },
             /* 416 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCK6sIU1Sb0jaIXzNWmcDmnQ",
               Url = "https://www.youtube.com/channel/UCK6sIU1Sb0jaIXzNWmcDmnQ",
               Name = "Syntagma",
@@ -12331,7 +12331,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-29T23:32:06.0000000Z")
             },
             /* 417 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCka_dz0F1gYuvN8LTefNcJQ",
               Url = "https://www.youtube.com/channel/UCka_dz0F1gYuvN8LTefNcJQ",
               Name = "Bunty King",
@@ -12344,7 +12344,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-18T17:19:50.0000000Z")
             },
             /* 418 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkb3FEKaByibEx0n_ReXLUA",
               Url = "https://www.youtube.com/channel/UCkb3FEKaByibEx0n_ReXLUA",
               Name = "NoneOfTheAbove",
@@ -12356,7 +12356,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:11.5670000Z")
             },
             /* 419 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKCR6qdqH2u2-DLULL6L6pg",
               Url = "https://www.youtube.com/channel/UCKCR6qdqH2u2-DLULL6L6pg",
               Name = "Katie Ionita",
@@ -12369,7 +12369,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-02T17:00:04.0000000Z")
             },
             /* 420 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKEt1xKVBLuL175dkk8rqLg",
               Url = "https://www.youtube.com/channel/UCKEt1xKVBLuL175dkk8rqLg",
               Name = "Mouthy Buddha",
@@ -12381,7 +12381,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:11.8700000Z")
             },
             /* 421 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKHi7M_11VJmLZSq4WNHSkg",
               Url = "https://www.youtube.com/channel/UCKHi7M_11VJmLZSq4WNHSkg",
               Name = "communitychannel",
@@ -12394,7 +12394,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-02T03:08:51.0000000Z")
             },
             /* 422 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKi52SDIwr5ysHX_ROF7A1g",
               Url = "https://www.youtube.com/channel/UCKi52SDIwr5ysHX_ROF7A1g",
               Name = "OMGitsfirefoxx",
@@ -12406,7 +12406,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.4150000Z")
             },
             /* 423 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkIop2RmHx0WMMRYCUoVBJw",
               Url = "https://www.youtube.com/channel/UCkIop2RmHx0WMMRYCUoVBJw",
               Name = "The Big Stack Podcast",
@@ -12418,7 +12418,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.5580000Z")
             },
             /* 424 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKIXs2YxQoS3e7Sdkrnqz_w",
               Url = "https://www.youtube.com/channel/UCKIXs2YxQoS3e7Sdkrnqz_w",
               Name = "Rachel Edwards",
@@ -12429,7 +12429,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:25.9420000Z")
             },
             /* 425 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkK9UDm_ZNrq_rIXCz3xCGA",
               Url = "https://www.youtube.com/channel/UCkK9UDm_ZNrq_rIXCz3xCGA",
               Name = "Bryan Lunduke",
@@ -12442,7 +12442,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-31T13:46:06.0000000Z")
             },
             /* 426 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKpBmnEfSy20al-Fk_2YzVA",
               Url = "https://www.youtube.com/channel/UCKpBmnEfSy20al-Fk_2YzVA",
               Name = "Alanah Pearce",
@@ -12455,7 +12455,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T16:00:14.0000000Z")
             },
             /* 427 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkrgMThbHZ3pzthqLnnEhKA",
               Url = "https://www.youtube.com/channel/UCkrgMThbHZ3pzthqLnnEhKA",
               Name = "Detroit Symphony Orchestra",
@@ -12468,7 +12468,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-23T20:39:55.0000000Z")
             },
             /* 428 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkur3mn9-0n1ForYl5bJaGA",
               Url = "https://www.youtube.com/channel/UCkur3mn9-0n1ForYl5bJaGA",
               Name = "Noel Hand Grenade",
@@ -12480,7 +12480,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-18T00:12:02.0000000Z")
             },
             /* 429 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKw8kdkYfmuNSVehGoDw8Mg",
               Url = "https://www.youtube.com/channel/UCKw8kdkYfmuNSVehGoDw8Mg",
               Name = "TYT's The Conversation",
@@ -12493,7 +12493,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T20:30:01.0000000Z")
             },
             /* 430 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCkxctb0jr8vwa4Do6c6su0Q",
               Url = "https://www.youtube.com/channel/UCkxctb0jr8vwa4Do6c6su0Q",
               Name = "LetsPlay",
@@ -12510,7 +12510,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-29T18:00:27.0000000Z")
             },
             /* 431 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCKzx92ZqX1PKYTC-FC-CZRQ",
               Url = "https://www.youtube.com/channel/UCKzx92ZqX1PKYTC-FC-CZRQ",
               Name = "Philharmonia Orchestra (London, UK)",
@@ -12523,7 +12523,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-17T16:33:15.0000000Z")
             },
             /* 432 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl_dlV_7ofr4qeP1drJQ-qg",
               Url = "https://www.youtube.com/channel/UCl_dlV_7ofr4qeP1drJQ-qg",
               Name = "Tantacrul",
@@ -12536,7 +12536,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-08T13:00:01.0000000Z")
             },
             /* 433 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL_f53ZEJxp8TtlOkHwMV9Q",
               Url = "https://www.youtube.com/channel/UCL_f53ZEJxp8TtlOkHwMV9Q",
               Name = "Jordan B Peterson",
@@ -12548,7 +12548,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:26.1280000Z")
             },
             /* 434 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl2mFZoRqjw_ELax4Yisf6w",
               Url = "https://www.youtube.com/channel/UCl2mFZoRqjw_ELax4Yisf6w",
               Name = "Louis Rossmann",
@@ -12561,7 +12561,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T10:34:06.0000000Z")
             },
             /* 435 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl3RCEtooHD5bhPCHJw3btA",
               Url = "https://www.youtube.com/channel/UCl3RCEtooHD5bhPCHJw3btA",
               Name = "Tree Of Logic",
@@ -12574,7 +12574,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:43:53.0000000Z")
             },
             /* 436 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl48e7KB5tVmQZ3avTixaNw",
               Url = "https://www.youtube.com/channel/UCl48e7KB5tVmQZ3avTixaNw",
               Name = "Kilmers Garage",
@@ -12587,7 +12587,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-27T22:46:24.0000000Z")
             },
             /* 437 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL8w_A8p8P1HWI3k6PR5Z6w",
               Url = "https://www.youtube.com/channel/UCL8w_A8p8P1HWI3k6PR5Z6w",
               Name = "Two Cents",
@@ -12600,7 +12600,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T14:57:17.0000000Z")
             },
             /* 438 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl9roQQwv4o4OuBj3FhQdDQ",
               Url = "https://www.youtube.com/channel/UCl9roQQwv4o4OuBj3FhQdDQ",
               Name = "The Damage Report",
@@ -12613,7 +12613,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T21:45:00.0000000Z")
             },
             /* 439 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl9s0VpZwQuvTCyZj_VtCwg",
               Url = "https://www.youtube.com/channel/UCl9s0VpZwQuvTCyZj_VtCwg",
               Name = "Sinatra_Says",
@@ -12626,7 +12626,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T13:22:09.0000000Z")
             },
             /* 440 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLA_DiR1FfKNvjuUpBHmylQ",
               Url = "https://www.youtube.com/channel/UCLA_DiR1FfKNvjuUpBHmylQ",
               Name = "NASA",
@@ -12639,7 +12639,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-15T01:11:27.0000000Z")
             },
             /* 441 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCla6APLHX6W3FeNLc8PYuvg",
               Url = "https://www.youtube.com/channel/UCla6APLHX6W3FeNLc8PYuvg",
               Name = "Lauren Southern",
@@ -12651,7 +12651,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T19:18:01.0000000Z")
             },
             /* 442 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLbyMUSR3-V6D3tXU4i4uug",
               Url = "https://www.youtube.com/channel/UCLbyMUSR3-V6D3tXU4i4uug",
               Name = "ScienceNET",
@@ -12662,7 +12662,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:44.3790000Z")
             },
             /* 443 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClcE-kVhqyiHCcjYwcpfj9w",
               Url = "https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w",
               Name = "LiveOverflow",
@@ -12675,7 +12675,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-12T18:54:33.0000000Z")
             },
             /* 444 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCldfgbzNILYZA4dmDt4Cd6A",
               Url = "https://www.youtube.com/channel/UCldfgbzNILYZA4dmDt4Cd6A",
               Name = "Secular Talk",
@@ -12692,7 +12692,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-21T22:01:30.0000000Z")
             },
             /* 445 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLDpkehb2IRq_0F_EXyqhPA",
               Url = "https://www.youtube.com/channel/UCLDpkehb2IRq_0F_EXyqhPA",
               Name = "Sushi Mom",
@@ -12705,7 +12705,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-15T23:35:46.0000000Z")
             },
             /* 446 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClfEht64_NrzHf8Y0slKEjw",
               Url = "https://www.youtube.com/channel/UClfEht64_NrzHf8Y0slKEjw",
               Name = "AlternateHistoryHub",
@@ -12718,7 +12718,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T16:44:54.0000000Z")
             },
             /* 447 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLfhh63n0fWn0gXXKQ5NWvw",
               Url = "https://www.youtube.com/channel/UCLfhh63n0fWn0gXXKQ5NWvw",
               Name = "Millennial Woes",
@@ -12730,7 +12730,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:28.9040000Z")
             },
             /* 448 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClFLXO6ecX-ucJp9gGJYiDw",
               Url = "https://www.youtube.com/channel/UClFLXO6ecX-ucJp9gGJYiDw",
               Name = "Counter Arguments",
@@ -12742,7 +12742,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:57:50.3810000Z")
             },
             /* 449 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClfqxOGWFlOMQWpIhbhzL2w",
               Url = "https://www.youtube.com/channel/UClfqxOGWFlOMQWpIhbhzL2w",
               Name = "bane666au",
@@ -12754,7 +12754,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-06-06T13:00:14.0000000Z")
             },
             /* 450 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClFSU9_bUb4Rc6OYfTt5SPw",
               Url = "https://www.youtube.com/channel/UClFSU9_bUb4Rc6OYfTt5SPw",
               Name = "Philip DeFranco",
@@ -12767,7 +12767,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T21:56:43.0000000Z")
             },
             /* 451 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL-gBPCqCZQnoaj8TEVrQ_w",
               Url = "https://www.youtube.com/channel/UCL-gBPCqCZQnoaj8TEVrQ_w",
               Name = "VIOLIN PART of Orchestra Pieces",
@@ -12779,7 +12779,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-01T05:58:53.0000000Z")
             },
             /* 452 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClGh7QkXnUikoRUo6RSVlMA",
               Url = "https://www.youtube.com/channel/UClGh7QkXnUikoRUo6RSVlMA",
               Name = "Social Justice Fails",
@@ -12792,7 +12792,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-20T17:36:14.0000000Z")
             },
             /* 453 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLGRZ0xSaBMIUmtn8wkPP3w",
               Url = "https://www.youtube.com/channel/UCLGRZ0xSaBMIUmtn8wkPP3w",
               Name = "Brittany Venti",
@@ -12805,7 +12805,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-14T11:00:10.0000000Z")
             },
             /* 454 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLH7qUqM0PLieCVaHA7RegA",
               Url = "https://www.youtube.com/channel/UCLH7qUqM0PLieCVaHA7RegA",
               Name = "Gad Saad",
@@ -12818,7 +12818,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T18:32:45.0000000Z")
             },
             /* 455 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
               Url = "https://www.youtube.com/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw",
               Name = "PewDiePie",
@@ -12831,7 +12831,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T17:27:38.0000000Z")
             },
             /* 456 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClHofEiTcGYPMA9jqaFbmGA",
               Url = "https://www.youtube.com/channel/UClHofEiTcGYPMA9jqaFbmGA",
               Name = "TehMimi",
@@ -12844,7 +12844,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-07T17:00:17.0000000Z")
             },
             /* 457 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLhtZqdkjshgq8TqwIjMdCQ",
               Url = "https://www.youtube.com/channel/UCLhtZqdkjshgq8TqwIjMdCQ",
               Name = "DarkMatter2525",
@@ -12857,7 +12857,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T20:36:06.0000000Z")
             },
             /* 458 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLIgnE32n3IYRyY5vtu2_dQ",
               Url = "https://www.youtube.com/channel/UCLIgnE32n3IYRyY5vtu2_dQ",
               Name = "Atheism-is-Unstoppable-3",
@@ -12868,7 +12868,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:43.1700000Z")
             },
             /* 459 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCljE1ODdSF7LS9xx9eWq0GQ",
               Url = "https://www.youtube.com/channel/UCljE1ODdSF7LS9xx9eWq0GQ",
               Name = "potholer54",
@@ -12881,7 +12881,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-19T08:10:00.0000000Z")
             },
             /* 460 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLjfw7KwVA2GpBbgE3oMJlg",
               Url = "https://www.youtube.com/channel/UCLjfw7KwVA2GpBbgE3oMJlg",
               Name = "Mariatozzz",
@@ -12892,7 +12892,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:43.6970000Z")
             },
             /* 461 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCL-KWzX_hw7yfVR7WPQxIeA",
               Url = "https://www.youtube.com/channel/UCL-KWzX_hw7yfVR7WPQxIeA",
               Name = "Neuroposter",
@@ -12905,7 +12905,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-16T09:37:11.0000000Z")
             },
             /* 462 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLLxyaKSNav9f9Vqvp99npQ",
               Url = "https://www.youtube.com/channel/UCLLxyaKSNav9f9Vqvp99npQ",
               Name = "The Online Piano & Violin Tutor",
@@ -12918,7 +12918,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T15:00:03.0000000Z")
             },
             /* 463 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClMLaP99_AGVcJ-E9lvW5kw",
               Url = "https://www.youtube.com/channel/UClMLaP99_AGVcJ-E9lvW5kw",
               Name = "Little Miss Anonymous",
@@ -12931,7 +12931,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-08-03T22:41:38.0000000Z")
             },
             /* 464 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLMSv1UJp9sfoHyo-9s6sdw",
               Url = "https://www.youtube.com/channel/UCLMSv1UJp9sfoHyo-9s6sdw",
               Name = "SCNR",
@@ -12944,7 +12944,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-12-24T21:00:10.0000000Z")
             },
             /* 465 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClMWnUHbxJKJLUgloN1mPUA",
               Url = "https://www.youtube.com/channel/UClMWnUHbxJKJLUgloN1mPUA",
               Name = "Faith J Goldy",
@@ -12956,7 +12956,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:31.8870000Z")
             },
             /* 466 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClnDI2sdehVm1zm_LmUHsjQ",
               Url = "https://www.youtube.com/channel/UClnDI2sdehVm1zm_LmUHsjQ",
               Name = "Biographics",
@@ -12969,7 +12969,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:31.0000000Z")
             },
             /* 467 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClNfsm91UCJ55KIJ9zHCvhA",
               Url = "https://www.youtube.com/channel/UClNfsm91UCJ55KIJ9zHCvhA",
               Name = "Soi Girl",
@@ -12980,7 +12980,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:45.5400000Z")
             },
             /* 468 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLozp2Y1hFXSA-fHpsFv23A",
               Url = "https://www.youtube.com/channel/UCLozp2Y1hFXSA-fHpsFv23A",
               Name = "Becoming Autism",
@@ -12993,7 +12993,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-23T11:20:12.0000000Z")
             },
             /* 469 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLPMbl6z7UiLFTXNvoXShEg",
               Url = "https://www.youtube.com/channel/UCLPMbl6z7UiLFTXNvoXShEg",
               Name = "CivilizationEx",
@@ -13006,7 +13006,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T15:00:38.0000000Z")
             },
             /* 470 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLQus_O2x7asBrH_EqI36vw",
               Url = "https://www.youtube.com/channel/UCLQus_O2x7asBrH_EqI36vw",
               Name = "Robin Gething",
@@ -13018,7 +13018,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:58:52.9060000Z")
             },
             /* 471 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLrVxw4H4ZJ3LovpdbzF7bw",
               Url = "https://www.youtube.com/channel/UCLrVxw4H4ZJ3LovpdbzF7bw",
               Name = "The Fallen State",
@@ -13031,7 +13031,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T12:00:27.0000000Z")
             },
             /* 472 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLUrVTVTA3PnUFpYvpfMcpg",
               Url = "https://www.youtube.com/channel/UCLUrVTVTA3PnUFpYvpfMcpg",
               Name = "Lauren Chen",
@@ -13044,7 +13044,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-11-26T14:00:06.0000000Z")
             },
             /* 473 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClVOcdn1LNV8A98yZHYIDhQ",
               Url = "https://www.youtube.com/channel/UClVOcdn1LNV8A98yZHYIDhQ",
               Name = "The TreeHouse News",
@@ -13057,7 +13057,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T22:53:25.0000000Z")
             },
             /* 474 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLXI4EiN5EoKb61Gg2KjIZQ",
               Url = "https://www.youtube.com/channel/UCLXI4EiN5EoKb61Gg2KjIZQ",
               Name = "CinemaForCynics",
@@ -13070,7 +13070,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T22:00:11.0000000Z")
             },
             /* 475 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UClY3NEKINpC_fwJks2ZNItQ",
               Url = "https://www.youtube.com/channel/UClY3NEKINpC_fwJks2ZNItQ",
               Name = "51-49 with James Li",
@@ -13085,7 +13085,7 @@ namespace OPMF.Tests.TestData
               NotFound = false
             },
             /* 476 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLYcOeMcoFI5LYPfqR2PW8g",
               Url = "https://www.youtube.com/channel/UCLYcOeMcoFI5LYPfqR2PW8g",
               Name = "Morally Gray",
@@ -13098,7 +13098,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T11:55:07.0000000Z")
             },
             /* 477 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCLyGS26tPDRfgxRL_0ilwKQ",
               Url = "https://www.youtube.com/channel/UCLyGS26tPDRfgxRL_0ilwKQ",
               Name = "Bruce Greene",
@@ -13111,7 +13111,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T20:00:30.0000000Z")
             },
             /* 478 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCl-Zrl0QhF66lu1aGXaTbfw",
               Url = "https://www.youtube.com/channel/UCl-Zrl0QhF66lu1aGXaTbfw",
               Name = "Neil Patel",
@@ -13124,7 +13124,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:00:03.0000000Z")
             },
             /* 479 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm045YWibxYLuNU1cz6rrrQ",
               Url = "https://www.youtube.com/channel/UCm045YWibxYLuNU1cz6rrrQ",
               Name = "black chad",
@@ -13137,7 +13137,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-01-21T19:34:19.0000000Z")
             },
             /* 480 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm0VjekR-4a-sUftCHzAAvg",
               Url = "https://www.youtube.com/channel/UCm0VjekR-4a-sUftCHzAAvg",
               Name = "Prophet of Zod",
@@ -13150,7 +13150,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T20:00:11.0000000Z")
             },
             /* 481 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCM3b1Egf3PNvAE_ut3d-Ngw",
               Url = "https://www.youtube.com/channel/UCM3b1Egf3PNvAE_ut3d-Ngw",
               Name = "YYviola",
@@ -13162,7 +13162,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:59:37.8090000Z")
             },
             /* 482 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm4WlDrdOOSbht-NKQ0uTeg",
               Url = "https://www.youtube.com/channel/UCm4WlDrdOOSbht-NKQ0uTeg",
               Name = "RabidRetrospectGames",
@@ -13175,7 +13175,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-28T14:00:09.0000000Z")
             },
             /* 483 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCm9bKnREObr96Uf3iv7mWXQ",
               Url = "https://www.youtube.com/channel/UCm9bKnREObr96Uf3iv7mWXQ",
               Name = "The Bible and Other Fairy Tales",
@@ -13187,7 +13187,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T02:59:39.0610000Z")
             },
             /* 484 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMA0sXXIo64FvnOq9Iho16A",
               Url = "https://www.youtube.com/channel/UCMA0sXXIo64FvnOq9Iho16A",
               Name = "Winding Road Racing",
@@ -13200,7 +13200,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-21T17:14:01.0000000Z")
             },
             /* 485 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmb8hO2ilV9vRa8cilis88A",
               Url = "https://www.youtube.com/channel/UCmb8hO2ilV9vRa8cilis88A",
               Name = "Thunderf00t",
@@ -13213,7 +13213,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T08:50:56.0000000Z")
             },
             /* 486 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMc7w9VO8VKsEc98q_kndMA",
               Url = "https://www.youtube.com/channel/UCMc7w9VO8VKsEc98q_kndMA",
               Name = "Sᴜɪᴛ Yᴏᴜʀsᴇʟғ",
@@ -13224,7 +13224,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:25.4720000Z")
             },
             /* 487 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMCxBLg9Y8oA-EINGyFtwVQ",
               Url = "https://www.youtube.com/channel/UCMCxBLg9Y8oA-EINGyFtwVQ",
               Name = "Purple Dan",
@@ -13237,7 +13237,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-21T21:18:41.0000000Z")
             },
             /* 488 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMd0eMqGcfhtT4bYnaXeygQ",
               Url = "https://www.youtube.com/channel/UCMd0eMqGcfhtT4bYnaXeygQ",
               Name = "Sactown Violist",
@@ -13249,7 +13249,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:26.7550000Z")
             },
             /* 489 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmE1jdnqM-CUv8tyfaQICFw",
               Url = "https://www.youtube.com/channel/UCmE1jdnqM-CUv8tyfaQICFw",
               Name = "Hsin-Yun Huang, Violist",
@@ -13262,7 +13262,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-07T13:54:26.0000000Z")
             },
             /* 490 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMFSV8Q-T1OK_cK-6nFVtdw",
               Url = "https://www.youtube.com/channel/UCMFSV8Q-T1OK_cK-6nFVtdw",
               Name = "8 Bit Thoughts",
@@ -13274,7 +13274,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:00:51.1090000Z")
             },
             /* 491 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmfUulybEj8go-bXdfUUUxA",
               Url = "https://www.youtube.com/channel/UCmfUulybEj8go-bXdfUUUxA",
               Name = "Dragnauct Sylvas",
@@ -13287,7 +13287,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-03T23:00:20.0000000Z")
             },
             /* 492 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMGf-4TZDqNG97yqY5WPTCA",
               Url = "https://www.youtube.com/channel/UCMGf-4TZDqNG97yqY5WPTCA",
               Name = "Violin Noobie",
@@ -13300,7 +13300,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-10T20:33:38.0000000Z")
             },
             /* 493 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmHm0w-JJfC2Ll1Of_WObAQ",
               Url = "https://www.youtube.com/channel/UCmHm0w-JJfC2Ll1Of_WObAQ",
               Name = "Cooper Academy - Investing",
@@ -13313,7 +13313,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-11-25T03:24:40.0000000Z")
             },
             /* 494 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMhruZ35281kDEuANjXYcpA",
               Url = "https://www.youtube.com/channel/UCMhruZ35281kDEuANjXYcpA",
               Name = "IntrovertedSmiles",
@@ -13326,7 +13326,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T14:24:29.0000000Z")
             },
             /* 495 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMIj-wEiKIcGAcLoBO2ciQQ",
               Url = "https://www.youtube.com/channel/UCMIj-wEiKIcGAcLoBO2ciQQ",
               Name = "TL;DR",
@@ -13339,7 +13339,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-03-06T11:17:35.0000000Z")
             },
             /* 496 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmKPx9XRLx_z_qJeUcbZ5EA",
               Url = "https://www.youtube.com/channel/UCmKPx9XRLx_z_qJeUcbZ5EA",
               Name = "Quant Channel",
@@ -13352,7 +13352,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-04T13:08:25.0000000Z")
             },
             /* 497 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMlORSJPK0zLLGU9EVni-EA",
               Url = "https://www.youtube.com/channel/UCMlORSJPK0zLLGU9EVni-EA",
               Name = "brain4breakfast",
@@ -13363,7 +13363,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:01:30.6840000Z")
             },
             /* 498 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMmaBzfCCwZ2KqaBJjkj0fw",
               Url = "https://www.youtube.com/channel/UCMmaBzfCCwZ2KqaBJjkj0fw",
               Name = "Kings and Generals",
@@ -13376,7 +13376,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T12:59:47.0000000Z")
             },
             /* 499 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmpahmxWXajV0-tuMMzSzAg",
               Url = "https://www.youtube.com/channel/UCmpahmxWXajV0-tuMMzSzAg",
               Name = "Military Aviation History",
@@ -13388,7 +13388,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T18:01:43.0000000Z")
             },
             /* 500 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmRB15NbH71v5LYx7HccO5A",
               Url = "https://www.youtube.com/channel/UCmRB15NbH71v5LYx7HccO5A",
               Name = "Focusbreak Habeeb",
@@ -13399,7 +13399,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:01.0280000Z")
             },
             /* 501 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMRbVkqlh90dMKGLJZEcNZA",
               Url = "https://www.youtube.com/channel/UCMRbVkqlh90dMKGLJZEcNZA",
               Name = "No Idea Animation",
@@ -13412,7 +13412,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-07-13T17:30:11.0000000Z")
             },
             /* 502 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmthjMiFTIQnkGyZvfQKBdA",
               Url = "https://www.youtube.com/channel/UCmthjMiFTIQnkGyZvfQKBdA",
               Name = "Ozymandias Ramses II",
@@ -13424,7 +13424,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:01.6790000Z")
             },
             /* 503 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmtwkpnEQxiym2ueahm5DWw",
               Url = "https://www.youtube.com/channel/UCmtwkpnEQxiym2ueahm5DWw",
               Name = "kelcey lynn",
@@ -13435,7 +13435,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.0130000Z")
             },
             /* 504 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCmuccm2PUMlyIyvD6EOh_qA",
               Url = "https://www.youtube.com/channel/UCmuccm2PUMlyIyvD6EOh_qA",
               Name = "MTV Impact",
@@ -13448,7 +13448,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-15T16:14:27.0000000Z")
             },
             /* 505 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCMWs7S9109tuuq2B4JqCuTg",
               Url = "https://www.youtube.com/channel/UCMWs7S9109tuuq2B4JqCuTg",
               Name = "Perception Check",
@@ -13461,7 +13461,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-09T13:30:33.0000000Z")
             },
             /* 506 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn1bhOC69Z4TplynafVv7ng",
               Url = "https://www.youtube.com/channel/UCn1bhOC69Z4TplynafVv7ng",
               Name = "chrisiousity",
@@ -13473,7 +13473,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:37.8380000Z")
             },
             /* 507 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn28f-SPeRDjx8CDaYgDGsA",
               Url = "https://www.youtube.com/channel/UCn28f-SPeRDjx8CDaYgDGsA",
               Name = "Amy Lee",
@@ -13486,7 +13486,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-10-15T19:53:49.0000000Z")
             },
             /* 508 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCn2GOQq6qctTQWZfFKK2ojg",
               Url = "https://www.youtube.com/channel/UCn2GOQq6qctTQWZfFKK2ojg",
               Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
@@ -13496,7 +13496,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.6680000Z")
             },
             /* 509 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCN429bxOimdpUbDxYcZV7sA",
               Url = "https://www.youtube.com/channel/UCN429bxOimdpUbDxYcZV7sA",
               Name = "Brett 'The Situation' Keane",
@@ -13507,7 +13507,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:02.8440000Z")
             },
             /* 540 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo-1Gt-7Djyj6rUR-ro_FNA",
               Url = "https://www.youtube.com/channel/UCo-1Gt-7Djyj6rUR-ro_FNA",
               Name = "The National Autistic Society",
@@ -13520,7 +13520,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-22T13:38:36.0000000Z")
             },
             /* 541 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo1pShh6dtg-T_ZZkgi_JDQ",
               Url = "https://www.youtube.com/channel/UCo1pShh6dtg-T_ZZkgi_JDQ",
               Name = "RegularCars",
@@ -13533,7 +13533,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-11T11:00:01.0000000Z")
             },
             /* 542 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo1qRcO1OehgkOD_fHsu_uQ",
               Url = "https://www.youtube.com/channel/UCo1qRcO1OehgkOD_fHsu_uQ",
               Name = "Thinking-Ape",
@@ -13546,7 +13546,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-13T11:54:09.0000000Z")
             },
             /* 543 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo3AxjxePfj6DHn03aiIhww",
               Url = "https://www.youtube.com/channel/UCo3AxjxePfj6DHn03aiIhww",
               Name = "Violet Orlandi",
@@ -13559,7 +13559,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-12T17:00:09.0000000Z")
             },
             /* 544 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo-3ThNQmPmQSQL_L6Lx1_w",
               Url = "https://www.youtube.com/channel/UCo-3ThNQmPmQSQL_L6Lx1_w",
               Name = "DeepSkyVideos",
@@ -13572,7 +13572,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T14:08:13.0000000Z")
             },
             /* 545 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo4FIwebygiuJ4wZCrGZYZw",
               Url = "https://www.youtube.com/channel/UCo4FIwebygiuJ4wZCrGZYZw",
               Name = "Stardust",
@@ -13589,7 +13589,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-05-02T17:30:39.0000000Z")
             },
             /* 546 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo4xjfoQy-GNaul-V-oiCJg",
               Url = "https://www.youtube.com/channel/UCo4xjfoQy-GNaul-V-oiCJg",
               Name = "Answers in Insanity",
@@ -13601,7 +13601,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:52.4230000Z")
             },
             /* 547 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO5KTtyzcJK2R4VUhsCVYUQ",
               Url = "https://www.youtube.com/channel/UCO5KTtyzcJK2R4VUhsCVYUQ",
               Name = "ChilledChaos",
@@ -13614,7 +13614,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-10-04T22:30:35.0000000Z")
             },
             /* 548 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO5QSoES5yn2Dw7YixDYT5Q",
               Url = "https://www.youtube.com/channel/UCO5QSoES5yn2Dw7YixDYT5Q",
               Name = "Aperture",
@@ -13627,7 +13627,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-08T16:30:04.0000000Z")
             },
             /* 549 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo6JSNp6SuUKf-yiaBQReNA",
               Url = "https://www.youtube.com/channel/UCo6JSNp6SuUKf-yiaBQReNA",
               Name = "Telltale Podcast",
@@ -13640,7 +13640,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-16T18:00:07.0000000Z")
             },
             /* 550 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO86qQbSvShI9UUhw_WhROg",
               Url = "https://www.youtube.com/channel/UCO86qQbSvShI9UUhw_WhROg",
               Name = "ppgppgppgppg",
@@ -13651,7 +13651,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:53.6100000Z")
             },
             /* 551 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCO8P8L8PufxbpeHE-8UIJ2A",
               Url = "https://www.youtube.com/channel/UCO8P8L8PufxbpeHE-8UIJ2A",
               Name = "DrtyHippiePanda",
@@ -13663,7 +13663,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:57.4920000Z")
             },
             /* 552 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCo9w3M_6cI2QOw1OXUCSspA",
               Url = "https://www.youtube.com/channel/UCo9w3M_6cI2QOw1OXUCSspA",
               Name = "David Worley",
@@ -13676,7 +13676,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-07T13:12:56.0000000Z")
             },
             /* 553 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoa_iR-oFUByUMGSZmTlzSw",
               Url = "https://www.youtube.com/channel/UCoa_iR-oFUByUMGSZmTlzSw",
               Name = "LtMkilla",
@@ -13688,7 +13688,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:02:58.0280000Z")
             },
             /* 554 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoanlfeXEit_vI83VlE709A",
               Url = "https://www.youtube.com/channel/UCoanlfeXEit_vI83VlE709A",
               Name = "Facts in Motion",
@@ -13701,7 +13701,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2020-09-17T22:10:53.0000000Z")
             },
             /* 555 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoCuOwpNQ39uaEU76cy_0qg",
               Url = "https://www.youtube.com/channel/UCoCuOwpNQ39uaEU76cy_0qg",
               Name = "Kronos",
@@ -13713,7 +13713,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:44.5920000Z")
             },
             /* 556 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOdPSXyGEnBSFxE7IEQG7OQ",
               Url = "https://www.youtube.com/channel/UCOdPSXyGEnBSFxE7IEQG7OQ",
               Name = "Your Discovery Science",
@@ -13725,7 +13725,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:03:02.3790000Z")
             },
             /* 557 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOFrldzxeKGG8fTpN5_d75Q",
               Url = "https://www.youtube.com/channel/UCOFrldzxeKGG8fTpN5_d75Q",
               Name = "Esther Abrami",
@@ -13738,7 +13738,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T19:20:23.0000000Z")
             },
             /* 558 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCog751X0-t3NXqCSSIfi1zg",
               Url = "https://www.youtube.com/channel/UCog751X0-t3NXqCSSIfi1zg",
               Name = "Emma Joy",
@@ -13750,7 +13750,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:03:04.8940000Z")
             },
             /* 559 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-oGhTTXFHBydqyG-ENiwTw",
               Url = "https://www.youtube.com/channel/UC-oGhTTXFHBydqyG-ENiwTw",
               Name = "Barbara4u2c",
@@ -13763,7 +13763,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T20:00:11.0000000Z")
             },
             /* 560 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCogrSQkBJn1KF0N9I4oM7eQ",
               Url = "https://www.youtube.com/channel/UCogrSQkBJn1KF0N9I4oM7eQ",
               Name = "Fraser Cain",
@@ -13776,7 +13776,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T01:56:06.0000000Z")
             },
             /* 561 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoHP0dU6w-EoZhZ_zAT7w8w",
               Url = "https://www.youtube.com/channel/UCoHP0dU6w-EoZhZ_zAT7w8w",
               Name = "Hillary Klug",
@@ -13789,7 +13789,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-04-23T15:00:18.0000000Z")
             },
             /* 562 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOiLB3wLux5U30EOYEfng7Q",
               Url = "https://www.youtube.com/channel/UCOiLB3wLux5U30EOYEfng7Q",
               Name = "Mrs. Killjoy",
@@ -13802,7 +13802,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-04T08:41:17.0000000Z")
             },
             /* 563 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoJTOwZxbvq8Al8Qat2zgTA",
               Url = "https://www.youtube.com/channel/UCoJTOwZxbvq8Al8Qat2zgTA",
               Name = "Kim Iversen",
@@ -13815,7 +13815,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-02-24T06:21:48.0000000Z")
             },
             /* 564 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOKKRcJey93Ms-dL630UNIQ",
               Url = "https://www.youtube.com/channel/UCOKKRcJey93Ms-dL630UNIQ",
               Name = "The Aspie World",
@@ -13828,7 +13828,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2021-08-05T18:30:02.0000000Z")
             },
             /* 565 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoNGo02Aai6VQotn-MNnbpw",
               Url = "https://www.youtube.com/channel/UCoNGo02Aai6VQotn-MNnbpw",
               Name = "Michael Davila Jr",
@@ -13839,7 +13839,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:46.0670000Z")
             },
             /* 566 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCooo-KuxDq74YmvGQi1YdIg",
               Url = "https://www.youtube.com/channel/UCooo-KuxDq74YmvGQi1YdIg",
               Name = "corners cz",
@@ -13852,7 +13852,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-08T09:26:28.0000000Z")
             },
             /* 567 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UC-oPgEuX6iwJucvVGEmQL7Q",
               Url = "https://www.youtube.com/channel/UC-oPgEuX6iwJucvVGEmQL7Q",
               Name = "Ray Chen",
@@ -13865,7 +13865,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-06-29T14:53:17.0000000Z")
             },
             /* 568 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOrpD6svgE3L3CCnWk52JSg",
               Url = "https://www.youtube.com/channel/UCOrpD6svgE3L3CCnWk52JSg",
               Name = "80HD Reviews",
@@ -13877,7 +13877,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:46.3770000Z")
             },
             /* 569 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOTftYhMX1IihjOt2jefMCQ",
               Url = "https://www.youtube.com/channel/UCOTftYhMX1IihjOt2jefMCQ",
               Name = "Violin Express",
@@ -13890,7 +13890,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-03-29T15:49:40.0000000Z")
             },
             /* 570 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOTgNyfQG4vVP5sCXrJaS4g",
               Url = "https://www.youtube.com/channel/UCOTgNyfQG4vVP5sCXrJaS4g",
               Name = "Economics Explained 2",
@@ -13903,7 +13903,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-14T17:33:11.0000000Z")
             },
             /* 571 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCOtyT1XyjGi_9wxMALvqZdA",
               Url = "https://www.youtube.com/channel/UCOtyT1XyjGi_9wxMALvqZdA",
               Name = "The Masterclass Media Foundation",
@@ -13915,7 +13915,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2022-07-15T03:03:10.4830000Z")
             },
             /* 572 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoU7xxMfMAZmB7THNylLZ4g",
               Url = "https://www.youtube.com/channel/UCoU7xxMfMAZmB7THNylLZ4g",
               Name = "Carnegie Hall",
@@ -13928,7 +13928,7 @@ namespace OPMF.Tests.TestData
               LastActivityDate = DateTime.Parse("2022-07-13T23:03:20.0000000Z")
             },
             /* 573 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCowcNKm1w2GGw5U_XQeduhg",
               Url = "https://www.youtube.com/channel/UCowcNKm1w2GGw5U_XQeduhg",
               Name = "Jean-Francois Gariépy",
@@ -13940,7 +13940,7 @@ namespace OPMF.Tests.TestData
               LastCheckedOut = DateTime.Parse("2020-09-16T08:15:47.0200000Z")
             },
             /* 574 */
-            new YoutubeChannel {
+            new Channel {
               SiteId = "UCoxcjq-8xIDTYp3uz647V5A",
               Url = "https://www.youtube.com/channel/UCoxcjq-8xIDTYp3uz647V5A",
               Name = "Numberphile",

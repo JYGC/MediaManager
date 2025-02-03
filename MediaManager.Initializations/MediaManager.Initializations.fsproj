@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="DatabaseContextComposition.fs" />
+    <Compile Include="ChannelServicesComposition.fs" />
+    <Compile Include="MetadataServicesComposition.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MediaManager.Database\MediaManager.Database.fsproj" />
+    <ProjectReference Include="..\MediaManager.Definitions\MediaManager.Definitions.fsproj" />
+    <ProjectReference Include="..\MediaManager.Services\MediaManager.Services.fsproj" />
+    <ProjectReference Include="..\OPMF.Settings\OPMF.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -78,7 +78,16 @@ namespace OPMF.Settings
     {
         public ReadOnlyTestSettings()
         {
-            _appFolderName = string.Join("", _appFolderName, "Test");
+            string candidateAppFolderName;
+            var i = 0;
+            do
+            {
+                candidateAppFolderName = string.Join("", _appFolderName, $"Test{i}");
+                i++;
+            }
+            while (Directory.Exists(candidateAppFolderName));
+            
+            _appFolderName = candidateAppFolderName;
         }
     }
 }

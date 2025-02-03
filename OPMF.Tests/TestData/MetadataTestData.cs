@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OPMF.Tests.TestData
 {
-    public class VideoMetadata
+    public class MetadataTestData
     {
         private static readonly Metadata[] __metadataList1 = new Metadata[]
         {
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=__20HJ5TZaE",
                 SiteId = "__20HJ5TZaE",
@@ -19,7 +19,7 @@ namespace OPMF.Tests.TestData
                 ChannelSiteId = "UCpmu4uEZ8XcPjHdHh7_zFOg",
                 Status = MetadataStatus.ToDownload
             },
-            new YoutubeMetadata {
+            new Metadata {
                 Url = "https://www.youtube.com/watch?v=__aFwrR702U",
                 SiteId = "__aFwrR702U",
                 Title = "The Biggest Ideas in the Universe | 23. Criticality and Complexity",
@@ -28,7 +28,7 @@ namespace OPMF.Tests.TestData
                 ChannelSiteId = "UCRhV1rWIpm_pU19bBm_2RXw",
                 Status = MetadataStatus.New
             },
-            new YoutubeMetadata {
+            new Metadata {
                 Url = "https://www.youtube.com/watch?v=__AiqV1gYWY",
                 SiteId = "__AiqV1gYWY",
                 Title = "How To Deal With INSANE Political Family Members",
@@ -37,7 +37,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = new DateTime(2021, 05, 27, 20, 30, 05),
                 ChannelSiteId = "UCldfgbzNILYZA4dmDt4Cd6A"
             },
-            new YoutubeMetadata {
+            new Metadata {
                 Url = "https://www.youtube.com/watch?v=__bJssWUPt0",
                 SiteId = "__bJssWUPt0",
                 Title = "Facebook gives WhatsApp users an ultimatum",
@@ -46,7 +46,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = new DateTime(2021, 01, 09, 13, 30, 10),
                 ChannelSiteId = "UC8RJExf7iNpV6tp6hvNtwww"
             },
-            new YoutubeMetadata {
+            new Metadata {
                 Url = "https://www.youtube.com/watch?v=__JLYfWooX8",
                 SiteId = "__JLYfWooX8",
                 Title = "How To Diagnose AUTISM Complete Step By Step Guide (ESSENTIAL)",
@@ -55,7 +55,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = new DateTime(2021, 07, 02, 18, 30, 32),
                 ChannelSiteId = "UCOKKRcJey93Ms-dL630UNIQ"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6wOt9jpMnk",
                 SiteId = "_6wOt9jpMnk",
@@ -65,7 +65,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-02-10T17:25:22.0000000Z"),
                 ChannelSiteId = "UCICMrU9Jv7dmwzeT7438XRg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6_6SjgBmrg",
                 SiteId = "_6_6SjgBmrg",
@@ -75,7 +75,7 @@ namespace OPMF.Tests.TestData
                 ChannelSiteId = "UCq6VFHwMzcMXbuKyG7SQYIg",
                 Status = MetadataStatus.Wait
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6B4lgGCnX4",
                 SiteId = "_6B4lgGCnX4",
@@ -92,7 +92,7 @@ namespace OPMF.Tests.TestData
 
         private static readonly Metadata[] metadataList2 = new Metadata[]
         {
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_5q10ps34dg",
                 SiteId = "_5q10ps34dg",
@@ -102,7 +102,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-09-11T09:00:08.0000000Z"),
                 ChannelSiteId = "UCiPYZkZeNbYTQZKNMlB0Gsw"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_5vktplZ6yA",
                 SiteId = "_5vktplZ6yA",
@@ -112,7 +112,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-10-28T20:37:44.0000000Z"),
                 ChannelSiteId = "UC1bwliGvJogr7cWK0nT2Eag"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_5yaoc_mGD0",
                 SiteId = "_5yaoc_mGD0",
@@ -122,7 +122,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-05-09T12:35:45.0000000Z"),
                 ChannelSiteId = "UC5YKivGUTTQmhSuaXbxfZSg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_5zcTF9qe7Q",
                 SiteId = "_5zcTF9qe7Q",
@@ -132,7 +132,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-03-20T01:01:00.0000000Z"),
                 ChannelSiteId = "UCgUzZAhJkUtYDFGbPowrR0w"
             },
-            new YoutubeMetadata {
+            new Metadata {
                 Url = "https://www.youtube.com/watch?v=_5Znj06-3_s",
                 SiteId = "_5Znj06-3_s",
                 Title = "Nancy Drew: Curse of Blackmoor Manor [1]",
@@ -141,7 +141,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-04-22T15:00:13.0000000Z"),
                 ChannelSiteId = "UCYLHs-NR2le96KKqXofUOXg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6_6SjgBmrg",
                 SiteId = "_6_6SjgBmrg",
@@ -151,7 +151,7 @@ namespace OPMF.Tests.TestData
                 ChannelSiteId = "UCq6VFHwMzcMXbuKyG7SQYIg",
                 Status = MetadataStatus.Downloaded
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_62xQ4AHGvo",
                 SiteId = "_62xQ4AHGvo",
@@ -161,7 +161,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-01-23T07:33:42.0000000Z"),
                 ChannelSiteId = "UCICMrU9Jv7dmwzeT7438XRg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=-_6978boAQ8",
                 SiteId = "-_6978boAQ8",
@@ -171,7 +171,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-08-14T23:26:53.0000000Z"),
                 ChannelSiteId = "UCX6b17PVsYBQ0ip5gyeme-Q"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_69F0RtmPjE",
                 SiteId = "_69F0RtmPjE",
@@ -181,7 +181,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-02-12T16:01:44.0000000Z"),
                 ChannelSiteId = "UCICMrU9Jv7dmwzeT7438XRg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6alrrZH53c",
                 SiteId = "_6alrrZH53c",
@@ -191,7 +191,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-05-09T17:34:24.0000000Z"),
                 ChannelSiteId = "UCcrXOqPJU1uaXJLlH2ZYvtQ"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6B4lgGCnX4",
                 SiteId = "_6B4lgGCnX4",
@@ -201,7 +201,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2019-10-19T00:18:48.0000000Z"),
                 ChannelSiteId = "UC4w_tMnHl6sw5VD93tVymGw"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6Cgkb6ecRo",
                 SiteId = "_6Cgkb6ecRo",
@@ -211,7 +211,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-12-13T19:59:51.0000000Z"),
                 ChannelSiteId = "UCgIi12EA6BQ8HKL8QUccsOQ"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6Keh1NbjL0",
                 SiteId = "_6Keh1NbjL0",
@@ -221,7 +221,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-03-31T21:00:35.0000000Z"),
                 ChannelSiteId = "UCJNcAH2yzV3VAMYIGxCZ8_w"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6lFFGLDapA",
                 SiteId = "_6lFFGLDapA",
@@ -231,7 +231,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-03-22T16:52:50.0000000Z"),
                 ChannelSiteId = "UCSKu9aPj4bcwbGL73ILOlwg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6myE3Egrjg",
                 SiteId = "_6myE3Egrjg",
@@ -241,7 +241,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-10-26T21:00:11.0000000Z"),
                 ChannelSiteId = "UCZYTClx2T1of7BRZ86-8fow"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6nEoB-rAXw",
                 SiteId = "_6nEoB-rAXw",
@@ -251,7 +251,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-06-22T19:30:01.0000000Z"),
                 ChannelSiteId = "UCldfgbzNILYZA4dmDt4Cd6A"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6QEFXOZAOc",
                 SiteId = "_6QEFXOZAOc",
@@ -261,7 +261,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-04-22T23:14:44.0000000Z"),
                 ChannelSiteId = "UC6ZFN9Tx6xh-skXCuRHCDpQ"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6qyqbA6EeU",
                 SiteId = "_6qyqbA6EeU",
@@ -271,7 +271,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2021-06-30T21:22:14.0000000Z"),
                 ChannelSiteId = "UCz5VqyDGGTKG_49rU4n7_tw"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6vnYvXxfhQ",
                 SiteId = "_6vnYvXxfhQ",
@@ -281,7 +281,7 @@ namespace OPMF.Tests.TestData
                 PublishedAt = DateTime.Parse("2020-10-11T05:10:36.0000000Z"),
                 ChannelSiteId = "UCICMrU9Jv7dmwzeT7438XRg"
             },
-            new YoutubeMetadata
+            new Metadata
             {
                 Url = "https://www.youtube.com/watch?v=_6wOt9jpMnk",
                 SiteId = "_6wOt9jpMnk",
