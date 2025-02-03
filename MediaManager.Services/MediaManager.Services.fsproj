@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="LogServices.fs" />
+    <Compile Include="MetadataServices.fs" />
+    <Compile Include="ChannelServices.fs" />
+    <Compile Include="ChannelMetadataServices.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MediaManager.Types\MediaManager.Types.fsproj" />
+    <ProjectReference Include="..\OPMF.Entities\OPMF.Entities.csproj" />
+    <ProjectReference Include="..\OPMF.SiteAdapter.Youtube\OPMF.SiteAdapter.Youtube.csproj" />
+    <ProjectReference Include="..\OPMF.SiteAdapter\OPMF.SiteAdapter.csproj" />
+  </ItemGroup>
+
+</Project>
