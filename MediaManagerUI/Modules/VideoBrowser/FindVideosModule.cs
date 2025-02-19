@@ -27,21 +27,27 @@ namespace MediaManagerUI.Modules.VideoBrowser
             List<ChannelMetadata>? resultsChuck = null;
 
             IsLoading = true;
-            await Task.Run(() =>
+            try
             {
-                do
+                await Task.Run(() =>
                 {
-                    resultsChuck = string.IsNullOrWhiteSpace(SearchChannelName)
-                        ? _channelMetadataServices.GetByTitleContainingWord(SearchVideoTitle, _skip, _pageSize)
-                        : _channelMetadataServices.GetByChannelAndTitleContainingWord(SearchChannelName, SearchVideoTitle,
-                            _skip, _pageSize);
-                    Results.AddRange(resultsChuck);
-                    _skip += _pageSize;
-                }
-                while (resultsChuck != null && resultsChuck.Count() == _pageSize);
-                _metadataIdResultsMap = Results.ToDictionary(cm => cm.Metadata.Id, cm => cm.Metadata);
-            });
-            IsLoading = false;
+                    do
+                    {
+                        resultsChuck = string.IsNullOrWhiteSpace(SearchChannelName)
+                            ? _channelMetadataServices.GetByTitleContainingWord(SearchVideoTitle, _skip, _pageSize)
+                            : _channelMetadataServices.GetByChannelAndTitleContainingWord(SearchChannelName, SearchVideoTitle,
+                                _skip, _pageSize);
+                        Results.AddRange(resultsChuck);
+                        _skip += _pageSize;
+                    }
+                    while (resultsChuck != null && resultsChuck.Count() == _pageSize);
+                    _metadataIdResultsMap = Results.ToDictionary(cm => cm.Metadata.Id, cm => cm.Metadata);
+                });
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }
