@@ -19,19 +19,24 @@ namespace MediaManagerUI.Modules.VideoBrowser
             List<ChannelMetadata>? resultsChuck = null;
 
             IsLoading = true;
-            await Task.Run(() =>
+            try
             {
-                do
+                await Task.Run(() =>
                 {
-                    resultsChuck = _channelMetadataServices.GetNew(_skip, _pageSize);
-                    Results.AddRange(resultsChuck);
-                    _skip += _pageSize;
-                }
-                while (resultsChuck != null && resultsChuck.Count() == _pageSize);
-                _metadataIdResultsMap = Results.ToDictionary(cm => cm.Metadata.Id, cm => cm.Metadata);
-            });
-
-            IsLoading = false;
+                    do
+                    {
+                        resultsChuck = _channelMetadataServices.GetNew(_skip, _pageSize);
+                        Results.AddRange(resultsChuck);
+                        _skip += _pageSize;
+                    }
+                    while (resultsChuck != null && resultsChuck.Count() == _pageSize);
+                    _metadataIdResultsMap = Results.ToDictionary(cm => cm.Metadata.Id, cm => cm.Metadata);
+                });
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }

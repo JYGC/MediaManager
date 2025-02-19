@@ -20,12 +20,17 @@ namespace MediaManagerUI.Modules.ChannelBrowser
             Results = [];
 
             IsLoading = true;
-            await Task.Run(() =>
+            try
             {
-                Results = _channelServices.GetAll();
-            });
-
-            IsLoading = false;
+                await Task.Run(() =>
+                {
+                    Results = _channelServices.GetAll();
+                });
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         public AllChannelsModule(IChannelServices channelServices)

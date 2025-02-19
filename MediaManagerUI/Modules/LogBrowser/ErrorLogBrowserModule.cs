@@ -9,12 +9,17 @@ namespace MediaManagerUI.Modules.LogBrowser
             Results = [];
 
             IsLoading = true;
-            await Task.Run(() =>
+            try
             {
-                Results = _logServices.GetErrors(startDateTime, endDateTime);
-            });
-
-            IsLoading = false;
+                await Task.Run(() =>
+                {
+                    Results = _logServices.GetErrors(startDateTime, endDateTime);
+                });
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }
