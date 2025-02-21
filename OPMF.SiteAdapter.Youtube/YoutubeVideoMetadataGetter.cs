@@ -47,7 +47,7 @@ namespace OPMF.SiteAdapter.Youtube
             VideosResource.ListRequest videoRequest = __youtubeService.Videos.List(__videoInfoParts);
             videoRequest.Id = siteId;
             VideoListResponse videoResponse = videoRequest.Execute();
-            if (videoResponse.Items == null)
+            if (videoResponse.Items == null || videoResponse.Items.Count == 0)
             {
                 return (null, null);
             }

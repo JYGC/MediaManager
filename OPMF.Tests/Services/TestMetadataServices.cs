@@ -5,7 +5,6 @@ using Xunit;
 
 using ChannelServices = MediaManager.Initializations.ChannelServicesComposition;
 using MetadataServices = MediaManager.Initializations.MetadataServicesComposition;
-using MediaManager.Types;
 using System;
 
 namespace OPMF.Tests.Services

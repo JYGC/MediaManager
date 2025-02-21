@@ -7,42 +7,10 @@ using ChannelServices = MediaManager.Initializations.ChannelServicesComposition;
 using System.Linq;
 using OPMF.Entities;
 using System.Collections.Generic;
+using OPMF.Tests.Helpers;
 
 namespace OPMF.Tests.Services
 {
-    public class TestChannelServiceHelper
-    {
-        public static void AssertChannelIsEqual(Channel expectedChannel, Channel actualChannel)
-        {
-            Assert.Equal(expectedChannel.Name, actualChannel.Name);
-            if (!string.IsNullOrWhiteSpace(expectedChannel.Description))
-            {
-                Assert.Equal(expectedChannel.Description, actualChannel.Description);
-            }
-            Assert.Equal(expectedChannel.IsAddedBySingleVideo, actualChannel.IsAddedBySingleVideo);
-            Assert.Equal(expectedChannel.Blacklisted, actualChannel.Blacklisted);
-            Assert.Equal(expectedChannel.LastActivityDate, actualChannel.LastActivityDate);
-            Assert.Equal(expectedChannel.LastCheckedOut, actualChannel.LastCheckedOut);
-            Assert.Equal(expectedChannel.NotFound, actualChannel.NotFound);
-            Assert.Equal(expectedChannel.Url, actualChannel.Url);
-            Assert.Equal(JsonSerializer.Serialize(expectedChannel.Thumbnail), JsonSerializer.Serialize(actualChannel.Thumbnail));
-        }
-
-        public static void ModifyChannel(Channel channel, int i)
-        {
-            channel.Name = $"{channel.Name}{from number in Enumerable.Range(0, i * i) select Math.Pow(i, i)}";
-            channel.Description = $"{channel.Description}{from number in Enumerable.Range(0, i * i) select Math.Pow(i, i)}";
-            //channel.IsAddedBySingleVideo = !channel.IsAddedBySingleVideo;
-            //channel.BlackListed = !channel.BlackListed;
-            //channel.LastActivityDate = channel.LastActivityDate.HasValue ? channel.LastActivityDate.Value.AddDays(i) : DateTime.UtcNow;
-            //channel.LastCheckedOut = channel.LastCheckedOut.HasValue ? channel.LastCheckedOut.Value.AddDays(i) : DateTime.UtcNow;
-            //channel.NotFound = !channel.NotFound;
-            channel.Url = $"{channel.Url}{from number in Enumerable.Range(0, i * i) select Math.Pow(i, i)}";
-            channel.Thumbnail.Width = 2 * i;
-            channel.Thumbnail.Height = 3 * i * i;
-        }
-    }
-
     [TestCaseOrderer(ordererTypeName: "OPMF.Tests.PriorityOrderer", ordererAssemblyName: "OPMF.Tests")]
     public class TestChannelServicesInsertOrUpdate : IClassFixture<AppFolderFixture>
     {
@@ -60,7 +28,7 @@ namespace OPMF.Tests.Services
             Assert.All(channel45List, c =>
             {
                 Assert.Contains(c.SiteId, (IDictionary<string, Channel>)siteIdToChannelsFromDb);
-                TestChannelServiceHelper.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
+                TestChannelServiceHelpers.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
             });
         }
 
@@ -72,7 +40,7 @@ namespace OPMF.Tests.Services
             for (int i = 0; i < channel23List.Count; i++)
             {
                 var copiedChannel = JsonSerializer.Deserialize<Channel>(JsonSerializer.Serialize(channel23List[i]));
-                TestChannelServiceHelper.ModifyChannel(copiedChannel, i);
+                TestChannelServiceHelpers.ModifyChannel(copiedChannel, i);
                 modifiedChannels.Add(copiedChannel);
             }
 
@@ -86,7 +54,7 @@ namespace OPMF.Tests.Services
             Assert.All(modifiedChannels, c =>
             {
                 Assert.Contains(c.SiteId, (IDictionary<string, Channel>)siteIdToChannelsFromDb);
-                TestChannelServiceHelper.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
+                TestChannelServiceHelpers.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
             });
         }
 
@@ -105,7 +73,7 @@ namespace OPMF.Tests.Services
             Assert.All(ChannelTestData.ChannelList1, c =>
             {
                 Assert.Contains(c.SiteId, (IDictionary<string, Channel>)siteIdToChannelsFromDb);
-                TestChannelServiceHelper.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
+                TestChannelServiceHelpers.AssertChannelIsEqual(c, siteIdToChannelsFromDb[c.SiteId]);
             });
         }
     }
@@ -139,7 +107,7 @@ namespace OPMF.Tests.Services
             var channelList2Channel = ChannelTestData.ChannelList2[channelList2Index];
             var result = ChannelServices.GetBySiteId(channelList2Channel.SiteId);
             Assert.True(result.IsOk);
-            TestChannelServiceHelper.AssertChannelIsEqual(channelList2Channel, result.ResultValue.Value);
+            TestChannelServiceHelpers.AssertChannelIsEqual(channelList2Channel, result.ResultValue.Value);
         }
 
         [Fact]
@@ -199,7 +167,7 @@ namespace OPMF.Tests.Services
             var siteIdToChannelMap = ChannelServices.GetAll().ResultValue
                 .ToDictionary(c => c.SiteId, c => c);
             Assert.All(updatedChannels, expectedChannel =>
-                TestChannelServiceHelper.AssertChannelIsEqual(
+                TestChannelServiceHelpers.AssertChannelIsEqual(
                     expectedChannel, siteIdToChannelMap[expectedChannel.SiteId]));
         }
 
@@ -217,7 +185,7 @@ namespace OPMF.Tests.Services
             var siteIdToChannelMap = ChannelServices.GetAll().ResultValue
                 .ToDictionary(c => c.SiteId, c => c);
             Assert.All(updatedChannels, expectedChannel =>
-                TestChannelServiceHelper.AssertChannelIsEqual(
+                TestChannelServiceHelpers.AssertChannelIsEqual(
                     expectedChannel, siteIdToChannelMap[expectedChannel.SiteId]));
         }
     }
