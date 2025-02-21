@@ -3,7 +3,7 @@
 open System
 open System.Collections.Generic
 open OPMF.Entities
-open MediaManager.Definitions.DatabaseContextDefinitions
+open MediaManager.Types.DatabaseContextTypes
 
 module ChannelServices =
     let getAll
@@ -20,12 +20,15 @@ module ChannelServices =
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (siteId: string)
-      : Result<Channel, exn> =
+      : Result<Channel option, exn> =
         match getDbConnection() with
         | Ok dbConnection ->
             try
-                Ok (getChannelCollection(dbConnection).Query().Where(fun m ->
-                    m.SiteId = siteId).First())
+                let channels = getChannelCollection(dbConnection).Query().Where(fun m ->
+                    m.SiteId = siteId).ToList()
+                match channels with
+                | value when value.Count = 0 -> Ok None
+                | _ -> Ok (Some channels[0])
             with e -> Error e
         | Error ex -> Error ex
 

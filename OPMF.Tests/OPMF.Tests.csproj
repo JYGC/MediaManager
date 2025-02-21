@@ -27,8 +27,4 @@
     <ProjectReference Include="..\OPMF.SiteAdapter.Youtube\OPMF.SiteAdapter.Youtube.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Tests\" />
-  </ItemGroup>
-
 </Project>

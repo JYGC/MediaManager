@@ -5,6 +5,8 @@ using Xunit;
 
 using ChannelServices = MediaManager.Initializations.ChannelServicesComposition;
 using MetadataServices = MediaManager.Initializations.MetadataServicesComposition;
+using MediaManager.Types;
+using System;
 
 namespace OPMF.Tests.Services
 {
@@ -71,6 +73,15 @@ namespace OPMF.Tests.Services
             var titlesContainingWordAndHasChannelSiteIds = MetadataServices.GetAll().ResultValue
                 .Where(m => m.Title.Contains(wordInTitle) && channelSiteIds.Contains(m.ChannelSiteId)).ToList();
             Assert.Equal(titlesContainingWordAndHasChannelSiteIds.Count, result.ResultValue.Count);
+        }
+
+        [Fact]
+        public void TestGetNonExistentSiteId()
+        {
+            var siteId = "DoesNotExist";
+            var result = MetadataServices.GetBySiteId(siteId);
+            Assert.True(result.IsOk);
+            Assert.Throws<NullReferenceException>(() => result.ResultValue.Value);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿namespace MediaManager.Definitions
+﻿namespace MediaManager.Types
 
 open LiteDB
 open OPMF.Entities
 
-module DatabaseContextDefinitions =
+module DatabaseContextTypes =
     type TDatabaseConnection = LiteDatabase
     type TChannelCollection = ILiteCollection<Channel>
     type TMetadataCollection = ILiteCollection<Metadata>

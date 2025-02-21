@@ -3,7 +3,7 @@
 open LiteDB
 
 open OPMF.Entities
-open MediaManager.Definitions.DatabaseContextDefinitions
+open MediaManager.Types.DatabaseContextTypes
 
 module DatabaseContext =
     let getDatabaseConnection databasePath connectionType : Result<TDatabaseConnection, exn> =

@@ -11,7 +11,7 @@ module ChannelServicesComposition =
                 DatabaseContextComposition.getChannelCollection
     let GetAll() = getAll()
 
-    let getBySiteId: string -> Result<Channel, exn> =
+    let getBySiteId: string -> Result<Channel option, exn> =
         ChannelServices.getBySiteId
             DatabaseContextComposition.getDatabaseConnection
             DatabaseContextComposition.getChannelCollection

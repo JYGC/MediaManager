@@ -139,14 +139,15 @@ namespace OPMF.Tests.Services
             var channelList2Channel = ChannelTestData.ChannelList2[channelList2Index];
             var result = ChannelServices.GetBySiteId(channelList2Channel.SiteId);
             Assert.True(result.IsOk);
-            TestChannelServiceHelper.AssertChannelIsEqual(channelList2Channel, result.ResultValue);
+            TestChannelServiceHelper.AssertChannelIsEqual(channelList2Channel, result.ResultValue.Value);
         }
 
         [Fact]
         public void TestGetNonExistingBySiteId()
         {
             var result = ChannelServices.GetBySiteId("sg dghds ghdsdsf");
-            Assert.True(result.IsError);
+            Assert.True(result.IsOk);
+            Assert.Throws<NullReferenceException>(() => result.ResultValue.Value);
         }
 
         [Fact]

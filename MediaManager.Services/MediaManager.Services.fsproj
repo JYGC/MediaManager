@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MediaManager.Definitions\MediaManager.Definitions.fsproj" />
+    <ProjectReference Include="..\MediaManager.Types\MediaManager.Types.fsproj" />
     <ProjectReference Include="..\OPMF.Entities\OPMF.Entities.csproj" />
     <ProjectReference Include="..\OPMF.SiteAdapter.Youtube\OPMF.SiteAdapter.Youtube.csproj" />
     <ProjectReference Include="..\OPMF.SiteAdapter\OPMF.SiteAdapter.csproj" />

@@ -11,7 +11,7 @@ module MetadataServicesComposition =
                 DatabaseContextComposition.getMetadataCollection
     let GetAll() = getAll()
 
-    let getBySiteId: string -> Result<Metadata, exn> =
+    let getBySiteId: string -> Result<Metadata option, exn> =
         MetadataServices.getBySiteId
             DatabaseContextComposition.getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection

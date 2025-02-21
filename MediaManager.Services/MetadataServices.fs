@@ -3,7 +3,8 @@
 open System.Collections.Generic
 
 open OPMF.Entities
-open MediaManager.Definitions.DatabaseContextDefinitions
+open MediaManager.Types.DatabaseContextTypes
+open MediaManager.Types.ExceptionTypes
 
 module MetadataServices =
     let getAll
@@ -20,12 +21,15 @@ module MetadataServices =
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       (siteId: string)
-      : Result<Metadata, exn> =
+      : Result<Metadata option, exn> =
         match getDbConnection() with
         | Ok dbConnection ->
             try
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
-                    m.SiteId = siteId).First())
+                let metadatas = getMetadataCollection(dbConnection).Query().Where(fun m ->
+                    m.SiteId = siteId).ToList()
+                match metadatas with
+                | value when value.Count = 0 -> Ok None
+                | _ -> Ok (Some metadatas[0])
             with e -> Error e
         | Error ex -> Error ex
 

@@ -1,7 +1,7 @@
 ﻿namespace MediaManager.Initializations
 
 open OPMF.Settings
-open MediaManager.Definitions.DatabaseContextDefinitions
+open MediaManager.Types.DatabaseContextTypes
 open MediaManager.Database
 
 module DatabaseContextComposition =
