@@ -1,58 +1,91 @@
 ﻿namespace MediaManager.Initializations
 
-open OPMF.Entities
 open MediaManager.Services
 
 module MetadataServicesComposition =
-    let getAll: unit -> Result<ResizeArray<Metadata>, exn> =
-        fun _ ->
-            MetadataServices.getAll
-                DatabaseContextComposition.getDatabaseConnection
-                DatabaseContextComposition.getMetadataCollection
+    let getAll() =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
+        MetadataServices.getAll
+            getDatabaseConnection
+            DatabaseContextComposition.getMetadataCollection
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetAll() = getAll()
 
-    let getBySiteId: string -> Result<Metadata option, exn> =
+    let getBySiteId siteId =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.getBySiteId
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            siteId
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetBySiteId siteId = getBySiteId siteId
 
-    let getToDownload: unit -> Result<ResizeArray<Metadata>, exn> =
-        fun _ ->
-            MetadataServices.getToDownload
-                DatabaseContextComposition.getDatabaseConnection
-                DatabaseContextComposition.getMetadataCollection
+    let getToDownload() =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
+        MetadataServices.getToDownload
+            getDatabaseConnection
+            DatabaseContextComposition.getMetadataCollection
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetToDownload() = getToDownload()
 
-    let getToDownloadAndWait: int -> int -> Result<ResizeArray<Metadata>, exn> =
+    let getToDownloadAndWait skip pageSize =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.getToDownloadAndWait
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            skip
+            pageSize
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetToDownloadAndWait skip pageSize = getToDownloadAndWait skip pageSize
 
-    let getNew: int -> int -> Result<ResizeArray<Metadata>, exn> =
+    let getNew skip pageSize =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.getNew
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            skip
+            pageSize
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetNew skip pageSize = getNew skip pageSize
 
-    let getManyByWordInTitle: string -> int -> int -> Result<ResizeArray<Metadata>, exn> =
+    let getManyByWordInTitle wordInMetadataTitle skip pageSize =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.getManyByWordInTitle
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            wordInMetadataTitle
+            skip
+            pageSize
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetManyByWordInTitle wordInMetadataTitle skip pageSize =
         getManyByWordInTitle wordInMetadataTitle skip pageSize
 
-    let getManyByChannelSiteIdAndWordInTitle
-      : string seq -> string -> int -> int -> Result<ResizeArray<Metadata>, exn> =
+    let getManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.getManyByChannelSiteIdAndWordInTitle
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            channelSiteIds
+            wordInMetadataTitle
+            skip
+            pageSize
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let GetManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize =
         getManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize
 
-    let insertNew: Metadata seq -> Result<int, exn> =
+    let insertNew newMetadatas =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         MetadataServices.insertNew
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getMetadataCollection
+            newMetadatas
+        |> LogServicesComposition.passResultLogError
+            getDatabaseConnection
     let InsertNew newMetadatas = insertNew newMetadatas

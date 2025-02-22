@@ -1,49 +1,65 @@
 ﻿namespace MediaManager.Initializations
 
-open OPMF.Entities
 open MediaManager.Services
 
 module ChannelServicesComposition =
-    let getAll: unit -> Result<ResizeArray<Channel>, exn> =
-        fun _ ->
-            ChannelServices.getAll
-                DatabaseContextComposition.getDatabaseConnection
-                DatabaseContextComposition.getChannelCollection
+    let getAll() =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
+        ChannelServices.getAll
+            getDatabaseConnection
+            DatabaseContextComposition.getChannelCollection
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let GetAll() = getAll()
 
-    let getBySiteId: string -> Result<Channel option, exn> =
+    let getBySiteId siteId =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         ChannelServices.getBySiteId
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
+            siteId
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let GetBySiteId siteId = getBySiteId siteId
 
-    let getNotBacklisted: unit -> Result<ResizeArray<Channel>, exn> =
-        fun _ ->
-            ChannelServices.getNotBacklisted
-                DatabaseContextComposition.getDatabaseConnection
-                DatabaseContextComposition.getChannelCollection
+    let getNotBacklisted() =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
+        ChannelServices.getNotBacklisted
+            getDatabaseConnection
+            DatabaseContextComposition.getChannelCollection
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let GetNotBacklisted() = getNotBacklisted()
 
-    let getManyByWordInName: string -> Result<ResizeArray<Channel>, exn> =
+    let getManyByWordInName wordInChannelName =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         ChannelServices.getManyByWordInName
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
+            wordInChannelName
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let GetManyByWordInName wordInChannelName = getManyByWordInName wordInChannelName
 
-    let insertOrUpdate: Channel seq -> Result<int * int, exn> =
+    let insertOrUpdate channels =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         ChannelServices.insertOrUpdate
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
+            channels
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let InsertOrUpdate channels = insertOrUpdate channels
 
-    let updateLastCheckedOutAndActivity: Channel seq -> Result<int, exn> =
+    let updateLastCheckedOutAndActivity channels =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         ChannelServices.updateLastCheckedOutAndActivity
-            DatabaseContextComposition.getDatabaseConnection
+            getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
+            channels
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let UpdateLastCheckedOutAndActivity channels = updateLastCheckedOutAndActivity channels
 
-    let updateBlackListStatus: Channel seq -> Result<int, exn> =
+    let updateBlackListStatus channels =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
         ChannelServices.updateBlackListStatus
-            DatabaseContextComposition.getDatabaseConnection
+            (DatabaseContextComposition.createGetDatabaseConnection())
             DatabaseContextComposition.getChannelCollection
+            channels
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
     let UpdateBlackListStatus channels = updateBlackListStatus channels

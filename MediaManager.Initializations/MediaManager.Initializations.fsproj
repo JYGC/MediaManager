@@ -6,13 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="TextLogComposition.fs" />
     <Compile Include="DatabaseContextComposition.fs" />
+    <Compile Include="LogServicesComposition.fs" />
     <Compile Include="ChannelServicesComposition.fs" />
     <Compile Include="MetadataServicesComposition.fs" />
     <Compile Include="ChannelMetadataServicesComposition.fs" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MediaManager.Logging\MediaManager.Logging.fsproj" />
     <ProjectReference Include="..\MediaManager.Types\MediaManager.Types.fsproj" />
     <ProjectReference Include="..\MediaManager.Database\MediaManager.Database.fsproj" />
     <ProjectReference Include="..\MediaManager.Services\MediaManager.Services.fsproj" />
