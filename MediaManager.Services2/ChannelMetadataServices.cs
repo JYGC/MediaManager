@@ -22,7 +22,7 @@ namespace MediaManager.Services2
             string wordInMetadataTitle, int skip, int pageSize)
         {
             List<ChannelMetadata> metadataChannels = new List<ChannelMetadata>() { };
-            OPMF.Database.DatabaseAdapter.AccessDbAdapter(dbAdapter =>
+            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
             {
                 Dictionary<string, Channel> channelsWithSiteId = dbAdapter.YoutubeChannelDbCollection.GetManyByWordInName(
                     wordInChannelName).ToDictionary(c => c.SiteId, c => c);

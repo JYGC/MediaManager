@@ -1,7 +1,6 @@
 ﻿namespace MediaManager.Services
 
 open System
-open System.Collections.Generic
 open OPMF.Entities
 open MediaManager.Types.DatabaseContextTypes
 
@@ -29,6 +28,21 @@ module ChannelServices =
                 match channels with
                 | value when value.Count = 0 -> Ok None
                 | _ -> Ok (Some channels[0])
+            with e -> Error e
+        | Error ex -> Error ex
+
+    let getManyBySiteIds
+      (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
+      (getChannelCollection: TDatabaseConnection -> TChannelCollection)
+      (siteIds: string seq)
+      : Result<ResizeArray<Channel>, exn> =
+        match getDbConnection() with
+        | Ok dbConnection ->
+            try
+                let siteIdList = siteIds |> ResizeArray
+                getChannelCollection(dbConnection).Query().Where(fun m ->
+                    siteIdList.Contains(m.SiteId)).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -61,10 +75,10 @@ module ChannelServices =
       (updateFunction: Channel -> Channel -> unit)
       (channelCollection: TChannelCollection)
       (inboundChannels: Channel seq)
-      : List<Channel> * int =
+      : ResizeArray<Channel> * int =
         let siteIdChannelFromUiMap =
             inboundChannels |> Seq.map(fun c -> (c.SiteId, c)) |> Map.ofSeq
-        let channelsFromUiSiteIds: List<string> = siteIdChannelFromUiMap |> Map.keys |> ResizeArray
+        let channelsFromUiSiteIds = siteIdChannelFromUiMap |> Map.keys |> ResizeArray
         let channelsToUpdate = channelCollection.Query().Where(fun c ->
             channelsFromUiSiteIds.Contains(c.SiteId)).ToList()
         channelsToUpdate
@@ -80,7 +94,7 @@ module ChannelServices =
         (Channel -> Channel -> unit)
         -> TChannelCollection
         -> Channel seq
-        -> List<Channel> * int)
+        -> ResizeArray<Channel> * int)
       (inboundChannels: Channel seq)
       : int * int =
         let updateFunction (channelFromDb: Channel) (inboundChannel: Channel): unit =
@@ -98,11 +112,11 @@ module ChannelServices =
                 channelCollection
                 inboundChannels
 
-        let inboundChannelsSiteIds: List<string> =
+        let inboundChannelsSiteIds =
             inboundChannels |> Seq.map(fun c -> c.SiteId) |> ResizeArray
-        let channelsToUpdateSiteIds: List<string> =
+        let channelsToUpdateSiteIds =
             channelsToUpdate |> Seq.map(fun c -> c.SiteId) |> ResizeArray
-        let newChannelSiteIds: List<string> =
+        let newChannelSiteIds =
             List.except channelsToUpdateSiteIds (inboundChannelsSiteIds |> Seq.toList)
             |> ResizeArray
         let newChannels =
@@ -138,7 +152,7 @@ module ChannelServices =
         (Channel -> Channel -> unit)
         -> TChannelCollection
         -> Channel seq
-        -> List<Channel> * int)
+        -> ResizeArray<Channel> * int)
       (inboundChannels: Channel seq)
       : int =
         let updateFunction (channelFromDb: Channel) (inboundChannel: Channel): unit =
@@ -180,7 +194,7 @@ module ChannelServices =
         (Channel -> Channel -> unit)
         -> TChannelCollection
         -> Channel seq
-        -> List<Channel> * int)
+        -> ResizeArray<Channel> * int)
       (inboundChannels: Channel seq)
       : int =
         let updateFunction (channelFromDb: Channel) (inboundChannel: Channel): unit =
