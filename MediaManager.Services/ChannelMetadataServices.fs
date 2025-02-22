@@ -28,13 +28,13 @@ module ChannelMetadataServices =
                 | Error ec -> raise ec)
                 |> Seq.map(fun c -> (c.SiteId, c))
                 |> dict
-            (match getManyMetadataByChannelSiteIdAndWordInTitle
+            match getManyMetadataByChannelSiteIdAndWordInTitle
                 siteIdsToChannelsMap.Keys
                 wordInMetadataTitle
                 skip
                 pageSize with
             | Ok metadatas -> metadatas
-            | Error et -> raise et)
+            | Error et -> raise et
             |> Seq.map(fun m -> _createChannelMetadata siteIdsToChannelsMap[m.ChannelSiteId] m)
             |> ResizeArray
             |> Ok
@@ -52,9 +52,9 @@ module ChannelMetadataServices =
                 |> Seq.distinct
                 |> ResizeArray
             let siteIdsToChannelsMap =
-                (match getManyChannelsBySiteIds channelSiteIds with
+                match getManyChannelsBySiteIds channelSiteIds with
                 | Ok channels -> channels
-                | Error ec -> raise ec)
+                | Error ec -> raise ec
                 |> Seq.map(fun c -> (c.SiteId, c))
                 |> dict
             metadatas

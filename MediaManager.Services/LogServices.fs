@@ -16,11 +16,12 @@ module LogServices =
       : Result<ResizeArray<OPMFLog>, exn> =
         match getDbConnection() with
         | Ok dbConnection ->
-            try Ok (
+            try
                 getLogCollection(dbConnection).Query().Where(fun i ->
                     i.Type = logType &&
                     i.DateCreated > startDateTime &&
-                    i.DateCreated < endDateTime).ToList())
+                    i.DateCreated < endDateTime).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 

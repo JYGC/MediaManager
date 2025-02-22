@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ExceptionTypes.fs" />
     <Compile Include="DatabaseContextTypes.fs" />
   </ItemGroup>
 

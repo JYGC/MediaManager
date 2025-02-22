@@ -4,7 +4,6 @@ open System.Collections.Generic
 
 open OPMF.Entities
 open MediaManager.Types.DatabaseContextTypes
-open MediaManager.Types.ExceptionTypes
 
 module MetadataServices =
     let getAll
@@ -13,7 +12,7 @@ module MetadataServices =
       : Result<ResizeArray<Metadata>, exn> =
         match getDbConnection() with
         | Ok dbConnection ->
-            try Ok (getMetadataCollection(dbConnection).FindAll() |> ResizeArray<Metadata>)
+            try getMetadataCollection(dbConnection).FindAll() |> ResizeArray<Metadata> |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -28,8 +27,9 @@ module MetadataServices =
                 let metadatas = getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.SiteId = siteId).ToList()
                 match metadatas with
-                | value when value.Count = 0 -> Ok None
-                | _ -> Ok (Some metadatas[0])
+                | value when value.Count = 0 -> None
+                | _ -> Some metadatas[0]
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -40,8 +40,9 @@ module MetadataServices =
         match getDbConnection() with
         | Ok dbConnection ->
             try
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
-                    m.Status = MetadataStatus.ToDownload).ToList())
+                getMetadataCollection(dbConnection).Query().Where(fun m ->
+                    m.Status = MetadataStatus.ToDownload).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -56,9 +57,10 @@ module MetadataServices =
             try
                 let waitToDownloadMetadatas =
                     [MetadataStatus.ToDownload; MetadataStatus.Wait] |> List<MetadataStatus>
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
+                getMetadataCollection(dbConnection).Query().Where(fun m ->
                     waitToDownloadMetadatas.Contains(m.Status)
-                ).Skip(skip).Limit(pageSize).ToList())
+                ).Skip(skip).Limit(pageSize).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -71,8 +73,9 @@ module MetadataServices =
         match getDbConnection() with
         | Ok dbConnection ->
             try
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
-                    m.Status = MetadataStatus.New).Skip(skip).Limit(pageSize).ToList())
+                getMetadataCollection(dbConnection).Query().Where(fun m ->
+                    m.Status = MetadataStatus.New).Skip(skip).Limit(pageSize).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -86,9 +89,10 @@ module MetadataServices =
         match getDbConnection() with
         | Ok dbConnection ->
             try
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
+                getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.Title.Contains(wordInMetadataTitle)
-                ).OrderByDescending(fun i -> i.PublishedAt).Skip(skip).Limit(pageSize).ToList())
+                ).OrderByDescending(fun i -> i.PublishedAt).Skip(skip).Limit(pageSize).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -104,9 +108,10 @@ module MetadataServices =
         | Ok dbConnection ->
             try
                 let channelSiteIdList = channelSiteIds |> ResizeArray |> List<string>
-                Ok (getMetadataCollection(dbConnection).Query().Where(fun m ->
+                getMetadataCollection(dbConnection).Query().Where(fun m ->
                     channelSiteIdList.Contains(m.ChannelSiteId)
-                    && m.Title.Contains(wordInMetadataTitle)).Skip(skip).Limit(pageSize).ToList())
+                    && m.Title.Contains(wordInMetadataTitle)).Skip(skip).Limit(pageSize).ToList()
+                |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -130,7 +135,7 @@ module MetadataServices =
                     newMetadataSiteIds.Contains(m.SiteId))
                 let insertNumber = metadataCollection.InsertBulk(newMetadata)
                 dbConnection.Commit() |> ignore
-                Ok (insertNumber)
+                Ok insertNumber
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
