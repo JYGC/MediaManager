@@ -77,4 +77,3 @@ module ChannelMetadataServicesComposition =
             (new YoutubeVideoMetadataGetter())
             videoUrl
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let GetVideoByUrl videoUrl = getVideoByUrl videoUrl

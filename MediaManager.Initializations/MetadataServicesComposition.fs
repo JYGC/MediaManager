@@ -10,7 +10,6 @@ module MetadataServicesComposition =
             DatabaseContextComposition.getMetadataCollection
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetAll() = getAll()
 
     let getBySiteId siteId =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -20,7 +19,6 @@ module MetadataServicesComposition =
             siteId
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetBySiteId siteId = getBySiteId siteId
 
     let getToDownload() =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -29,7 +27,6 @@ module MetadataServicesComposition =
             DatabaseContextComposition.getMetadataCollection
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetToDownload() = getToDownload()
 
     let getToDownloadAndWait skip pageSize =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -40,7 +37,6 @@ module MetadataServicesComposition =
             pageSize
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetToDownloadAndWait skip pageSize = getToDownloadAndWait skip pageSize
 
     let getNew skip pageSize =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -51,7 +47,6 @@ module MetadataServicesComposition =
             pageSize
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetNew skip pageSize = getNew skip pageSize
 
     let getManyByWordInTitle wordInMetadataTitle skip pageSize =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -63,8 +58,6 @@ module MetadataServicesComposition =
             pageSize
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetManyByWordInTitle wordInMetadataTitle skip pageSize =
-        getManyByWordInTitle wordInMetadataTitle skip pageSize
 
     let getManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -77,8 +70,6 @@ module MetadataServicesComposition =
             pageSize
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let GetManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize =
-        getManyByChannelSiteIdAndWordInTitle channelSiteIds wordInMetadataTitle skip pageSize
 
     let insertNew newMetadatas =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -88,4 +79,3 @@ module MetadataServicesComposition =
             newMetadatas
         |> LogServicesComposition.passResultLogError
             getDatabaseConnection
-    let InsertNew newMetadatas = insertNew newMetadatas

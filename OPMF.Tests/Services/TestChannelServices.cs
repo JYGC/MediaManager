@@ -18,12 +18,12 @@ namespace OPMF.Tests.Services
         public void Test1InsertNew()
         {
             var channel45List = ChannelTestData.ChannelList1.Take(ChannelTestData.ChannelList1.Length * 4 / 5).ToList();
-            var result = ChannelServices.InsertOrUpdate(channel45List);
+            var result = ChannelServices.insertOrUpdate(channel45List);
             Assert.True(result.IsOk);
             var (insertNumber, updateNumber) = result.ResultValue;
             Assert.Equal(channel45List.Count, insertNumber);
             Assert.Equal(0, updateNumber);
-            var siteIdToChannelsFromDb = ChannelServices.GetAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
+            var siteIdToChannelsFromDb = ChannelServices.getAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
 
             Assert.All(channel45List, c =>
             {
@@ -44,12 +44,12 @@ namespace OPMF.Tests.Services
                 modifiedChannels.Add(copiedChannel);
             }
 
-            var result = ChannelServices.InsertOrUpdate(modifiedChannels);
+            var result = ChannelServices.insertOrUpdate(modifiedChannels);
             Assert.True(result.IsOk);
             var (insertNumber, updateNumber) = result.ResultValue;
             Assert.Equal(0, insertNumber);
             Assert.Equal(modifiedChannels.Count, updateNumber);
-            var siteIdToChannelsFromDb = ChannelServices.GetAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
+            var siteIdToChannelsFromDb = ChannelServices.getAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
 
             Assert.All(modifiedChannels, c =>
             {
@@ -61,14 +61,14 @@ namespace OPMF.Tests.Services
         [Fact, TestPriority(3)]
         public void Test3InsertAndUpdate()
         {
-            var result = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList1);
+            var result = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList1);
             Assert.True(result.IsOk);
             var (insertNumber, updateNumber) = result.ResultValue;
             var channelListCount = ChannelTestData.ChannelList1.Length;
             var channel45ListCount = ChannelTestData.ChannelList1.Take(channelListCount * 4 / 5).Count();
             Assert.Equal(channelListCount - channel45ListCount, insertNumber);
             Assert.Equal(channel45ListCount, updateNumber);
-            var siteIdToChannelsFromDb = ChannelServices.GetAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
+            var siteIdToChannelsFromDb = ChannelServices.getAll().ResultValue.ToDictionary(c => c.SiteId, c => c);
 
             Assert.All(ChannelTestData.ChannelList1, c =>
             {
@@ -83,11 +83,11 @@ namespace OPMF.Tests.Services
         [Fact]
         public void Test1InsertDuplicate()
         {
-            var result = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList2);
+            var result = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList2);
             Assert.True(result.IsError);
             Assert.IsType<LiteDB.LiteException>(result.ErrorValue);
             Assert.Contains("Cannot insert duplicate key in unique index", result.ErrorValue.Message);
-            var channelsFromDb = ChannelServices.GetAll().ResultValue;
+            var channelsFromDb = ChannelServices.getAll().ResultValue;
             Assert.Empty(channelsFromDb);
         }
     }
@@ -96,8 +96,8 @@ namespace OPMF.Tests.Services
     {
         public TestChannelServicesGetResults()
         {
-            _ = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList1);
-            _ = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList2);
+            _ = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList1);
+            _ = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList2);
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace OPMF.Tests.Services
         {
             var channelList2Index = ChannelTestData.ChannelList2.Length - 8;
             var channelList2Channel = ChannelTestData.ChannelList2[channelList2Index];
-            var result = ChannelServices.GetBySiteId(channelList2Channel.SiteId);
+            var result = ChannelServices.getBySiteId(channelList2Channel.SiteId);
             Assert.True(result.IsOk);
             TestChannelServiceHelpers.AssertChannelIsEqual(channelList2Channel, result.ResultValue.Value);
         }
@@ -113,18 +113,27 @@ namespace OPMF.Tests.Services
         [Fact]
         public void TestGetNonExistingBySiteId()
         {
-            var result = ChannelServices.GetBySiteId("sg dghds ghdsdsf");
+            var result = ChannelServices.getBySiteId("sg dghds ghdsdsf");
             Assert.True(result.IsOk);
             Assert.Throws<NullReferenceException>(() => result.ResultValue.Value);
         }
 
         [Fact]
+        public void TestGetManyBySiteIds()
+        {
+            var channelSiteIds = ChannelTestData.ChannelList1.Select(c => c.SiteId).Distinct().ToList();
+            var result = ChannelServices.getManyBySiteIds(channelSiteIds);
+            Assert.True(result.IsOk);
+            Assert.Equal(channelSiteIds.Count, result.ResultValue.Count);
+        }
+
+        [Fact]
         public void TestGetNotBacklisted()
         {
-            var result = ChannelServices.GetNotBacklisted();
+            var result = ChannelServices.getNotBacklisted();
             Assert.True(result.IsOk);
             Assert.All(result.ResultValue, c => Assert.False(c.Blacklisted));
-            var allNotBlacklist = ChannelServices.GetAll().ResultValue.Where(c => !c.Blacklisted).ToList();
+            var allNotBlacklist = ChannelServices.getAll().ResultValue.Where(c => !c.Blacklisted).ToList();
             Assert.Equal(allNotBlacklist.Count, result.ResultValue.Count);
         }
 
@@ -132,10 +141,10 @@ namespace OPMF.Tests.Services
         public void TestGetManyByWordInName()
         {
             var wordInChannelName = "LetsPlay";
-            var result = ChannelServices.GetManyByWordInName(wordInChannelName);
+            var result = ChannelServices.getManyByWordInName(wordInChannelName);
             Assert.True(result.IsOk);
             Assert.All(result.ResultValue, c => Assert.Contains(wordInChannelName, c.Name));
-            var allResultsWithWordInChannelName = ChannelServices.GetAll().ResultValue
+            var allResultsWithWordInChannelName = ChannelServices.getAll().ResultValue
                 .Where(c => c.Name != null && c.Name.Contains(wordInChannelName)).ToList();
             Assert.Equal(allResultsWithWordInChannelName.Count, result.ResultValue.Count);
         }
@@ -146,8 +155,8 @@ namespace OPMF.Tests.Services
     {
         public TestChannelServicesUpdates()
         {
-            _ = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList1);
-            _ = ChannelServices.InsertOrUpdate(ChannelTestData.ChannelList2);
+            _ = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList1);
+            _ = ChannelServices.insertOrUpdate(ChannelTestData.ChannelList2);
         }
 
         [Fact, TestPriority(1)]
@@ -161,10 +170,10 @@ namespace OPMF.Tests.Services
                     DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
                 return c;
             }).ToList();
-            var result = ChannelServices.UpdateLastCheckedOutAndActivity(updatedChannels);
+            var result = ChannelServices.updateLastCheckedOutAndActivity(updatedChannels);
             Assert.True(result.IsOk);
             Assert.Equal(updatedChannels.Count, result.ResultValue);
-            var siteIdToChannelMap = ChannelServices.GetAll().ResultValue
+            var siteIdToChannelMap = ChannelServices.getAll().ResultValue
                 .ToDictionary(c => c.SiteId, c => c);
             Assert.All(updatedChannels, expectedChannel =>
                 TestChannelServiceHelpers.AssertChannelIsEqual(
@@ -179,10 +188,10 @@ namespace OPMF.Tests.Services
                 c.Blacklisted = true;
                 return c;
             }).ToList();
-            var result = ChannelServices.UpdateBlackListStatus(updatedChannels);
+            var result = ChannelServices.updateBlackListStatus(updatedChannels);
             Assert.True(result.IsOk);
             Assert.Equal(updatedChannels.Count, result.ResultValue);
-            var siteIdToChannelMap = ChannelServices.GetAll().ResultValue
+            var siteIdToChannelMap = ChannelServices.getAll().ResultValue
                 .ToDictionary(c => c.SiteId, c => c);
             Assert.All(updatedChannels, expectedChannel =>
                 TestChannelServiceHelpers.AssertChannelIsEqual(

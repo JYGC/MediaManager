@@ -13951,6 +13951,110 @@ namespace OPMF.Tests.TestData
               NotFound = false,
               LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
               LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 575 */
+            new Channel {
+              SiteId = "UCRhV1rWIpm_pU19bBm_2RXw",
+              Url = "https://www.youtube.com/channel/UCRhV1rWIpm_pU19bBm_2RXw",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 576 */
+            new Channel {
+              SiteId = "UCSKu9aPj4bcwbGL73ILOlwg",
+              Url = "https://www.youtube.com/channel/UCSKu9aPj4bcwbGL73ILOlwg",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 577 */
+            new Channel {
+              SiteId = "UCX6b17PVsYBQ0ip5gyeme-Q",
+              Url = "https://www.youtube.com/channel/UCX6b17PVsYBQ0ip5gyeme-Q",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 578 */
+            new Channel {
+              SiteId = "UCYLHs-NR2le96KKqXofUOXg",
+              Url = "https://www.youtube.com/channel/UCYLHs-NR2le96KKqXofUOXg",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 579 */
+            new Channel {
+              SiteId = "UCz5VqyDGGTKG_49rU4n7_tw",
+              Url = "https://www.youtube.com/channel/UCz5VqyDGGTKG_49rU4n7_tw",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 579 */
+            new Channel {
+              SiteId = "UCpmu4uEZ8XcPjHdHh7_zFOg",
+              Url = "https://www.youtube.com/channel/UCpmu4uEZ8XcPjHdHh7_zFOg",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 579 */
+            new Channel {
+              SiteId = "UCq6VFHwMzcMXbuKyG7SQYIg",
+              Url = "https://www.youtube.com/channel/UCq6VFHwMzcMXbuKyG7SQYIg",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
+            },
+            /* 579 */
+            new Channel {
+              SiteId = "UCZYTClx2T1of7BRZ86-8fow",
+              Url = "https://www.youtube.com/channel/UCZYTClx2T1of7BRZ86-8fow",
+              Name = "Sean Carroll",
+              Thumbnail = new EntityThumbnail { Url = null, Width = 0, Height = 0 },
+              Description = "Sean Carroll",
+              Blacklisted = false,
+              IsAddedBySingleVideo = false,
+              NotFound = false,
+              LastCheckedOut = DateTime.Parse("2022-07-15T03:03:12.2550000Z"),
+              LastActivityDate = DateTime.Parse("2022-06-28T15:46:52.0000000Z")
             }
         };
 

@@ -11,7 +11,7 @@ module ChannelServices =
       : Result<ResizeArray<Channel>, exn> =
         match getDbConnection() with
         | Ok dbConnection ->
-            try getChannelCollection(dbConnection).FindAll() |> ResizeArray<Channel> |> Ok
+            try getChannelCollection(dbConnection).Query().ToList() |> Ok
             with e -> Error e
         | Error ex -> Error ex
 
@@ -55,7 +55,7 @@ module ChannelServices =
         | Ok dbConnection ->
             try
                 getChannelCollection(dbConnection).Query().Where(fun c ->
-                    c.Blacklisted = false).ToList() |> ResizeArray<Channel>
+                    c.Blacklisted = false).ToList()
                 |> Ok
             with e -> Error e
         | Error ex -> Error ex
@@ -69,7 +69,7 @@ module ChannelServices =
         | Ok dbConnection ->
             try
                 getChannelCollection(dbConnection).Query().Where(fun c ->
-                    c.Name.Contains(wordInChannelName)).ToList() |> ResizeArray<Channel>
+                    c.Name.Contains(wordInChannelName)).ToList()
                 |> Ok
             with e -> Error e
         | Error ex -> Error ex

@@ -109,8 +109,8 @@ module MetadataServices =
             try
                 let channelSiteIdList = channelSiteIds |> ResizeArray |> List<string>
                 getMetadataCollection(dbConnection).Query().Where(fun m ->
-                    channelSiteIdList.Contains(m.ChannelSiteId)
-                    && m.Title.Contains(wordInMetadataTitle)).Skip(skip).Limit(pageSize).ToList()
+                    channelSiteIdList.Contains(m.ChannelSiteId) &&
+                    m.Title.Contains(wordInMetadataTitle)).Skip(skip).Limit(pageSize).ToList()
                 |> Ok
             with e -> Error e
         | Error ex -> Error ex

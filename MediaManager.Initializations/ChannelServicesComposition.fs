@@ -9,7 +9,6 @@ module ChannelServicesComposition =
             getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let GetAll() = getAll()
 
     let getBySiteId siteId =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -18,7 +17,14 @@ module ChannelServicesComposition =
             DatabaseContextComposition.getChannelCollection
             siteId
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let GetBySiteId siteId = getBySiteId siteId
+
+    let getManyBySiteIds siteIds =
+        let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
+        ChannelServices.getManyBySiteIds
+            getDatabaseConnection
+            DatabaseContextComposition.getChannelCollection
+            siteIds
+        |> LogServicesComposition.passResultLogError getDatabaseConnection
 
     let getNotBacklisted() =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -26,7 +32,6 @@ module ChannelServicesComposition =
             getDatabaseConnection
             DatabaseContextComposition.getChannelCollection
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let GetNotBacklisted() = getNotBacklisted()
 
     let getManyByWordInName wordInChannelName =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -35,7 +40,6 @@ module ChannelServicesComposition =
             DatabaseContextComposition.getChannelCollection
             wordInChannelName
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let GetManyByWordInName wordInChannelName = getManyByWordInName wordInChannelName
 
     let insertOrUpdate channels =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -44,7 +48,6 @@ module ChannelServicesComposition =
             DatabaseContextComposition.getChannelCollection
             channels
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let InsertOrUpdate channels = insertOrUpdate channels
 
     let updateLastCheckedOutAndActivity channels =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -53,7 +56,6 @@ module ChannelServicesComposition =
             DatabaseContextComposition.getChannelCollection
             channels
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let UpdateLastCheckedOutAndActivity channels = updateLastCheckedOutAndActivity channels
 
     let updateBlackListStatus channels =
         let getDatabaseConnection = DatabaseContextComposition.createGetDatabaseConnection()
@@ -62,4 +64,3 @@ module ChannelServicesComposition =
             DatabaseContextComposition.getChannelCollection
             channels
         |> LogServicesComposition.passResultLogError getDatabaseConnection
-    let UpdateBlackListStatus channels = updateBlackListStatus channels
