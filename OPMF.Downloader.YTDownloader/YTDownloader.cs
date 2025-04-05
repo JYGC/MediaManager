@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using NYoutubeDL;
 
@@ -107,7 +108,8 @@ namespace OPMF.Downloader.YTDownloader
                 try
                 {
                     __youtubeDL.Download(metadata.Url);
-                    if (string.IsNullOrEmpty(__downloadError))
+                    if (string.IsNullOrEmpty(__downloadError) ||
+                        Settings.ConfigHelper.Config.YoutubeDL.SafeMessages.Contains(__downloadError.Trim()))
                     {
                         metadata.Status = Entities.MetadataStatus.Downloaded;
                     }
