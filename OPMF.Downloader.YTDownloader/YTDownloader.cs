@@ -109,7 +109,7 @@ namespace OPMF.Downloader.YTDownloader
                 {
                     __youtubeDL.Download(metadata.Url);
                     if (string.IsNullOrEmpty(__downloadError) ||
-                        Settings.ConfigHelper.Config.YoutubeDL.SafeMessages.Contains(__downloadError.Trim()))
+                        Settings.ConfigHelper.Config.YoutubeDL.FalseErrorMessages.Contains(__downloadError.Trim()))
                     {
                         metadata.Status = Entities.MetadataStatus.Downloaded;
                     }
