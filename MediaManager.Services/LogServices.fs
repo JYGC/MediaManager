@@ -14,8 +14,8 @@ module LogServices =
       (endDateTime: DateTime)
       (logType: OPMFLogType)
       : Result<ResizeArray<OPMFLog>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getLogCollection(dbConnection).Query().Where(fun i ->
                     i.Type = logType &&
@@ -23,7 +23,7 @@ module LogServices =
                     i.DateCreated < endDateTime).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let private _makeNewLog
       (logType: OPMFLogType)

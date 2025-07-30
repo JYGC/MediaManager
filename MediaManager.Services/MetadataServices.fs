@@ -10,19 +10,19 @@ module MetadataServices =
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try getMetadataCollection(dbConnection).FindAll() |> ResizeArray<Metadata> |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getBySiteId
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       (siteId: string)
       : Result<Metadata option, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let metadatas = getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.SiteId = siteId).ToList()
@@ -31,20 +31,20 @@ module MetadataServices =
                 | _ -> Some metadatas[0]
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getToDownload
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.Status = MetadataStatus.ToDownload).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getToDownloadAndWait
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
@@ -52,8 +52,8 @@ module MetadataServices =
       (skip: int)
       (pageSize: int)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let waitToDownloadMetadatas =
                     [MetadataStatus.ToDownload; MetadataStatus.Wait] |> List<MetadataStatus>
@@ -62,7 +62,7 @@ module MetadataServices =
                 ).Skip(skip).Limit(pageSize).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getNew
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
@@ -70,14 +70,14 @@ module MetadataServices =
       (skip: int)
       (pageSize: int)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.Status = MetadataStatus.New).Skip(skip).Limit(pageSize).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getManyByWordInTitle
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
@@ -86,15 +86,15 @@ module MetadataServices =
       (skip: int)
       (pageSize: int)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getMetadataCollection(dbConnection).Query().Where(fun m ->
                     m.Title.Contains(wordInMetadataTitle)
                 ).OrderByDescending(fun i -> i.PublishedAt).Skip(skip).Limit(pageSize).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getManyByChannelSiteIdAndWordInTitle
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
@@ -104,8 +104,8 @@ module MetadataServices =
       (skip: int)
       (pageSize: int)
       : Result<ResizeArray<Metadata>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let channelSiteIdList = channelSiteIds |> ResizeArray |> List<string>
                 getMetadataCollection(dbConnection).Query().Where(fun m ->
@@ -113,15 +113,15 @@ module MetadataServices =
                     m.Title.Contains(wordInMetadataTitle)).Skip(skip).Limit(pageSize).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let insertNew
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       (inboundMetadata: Metadata seq)
       : Result<int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let inboundMetadataSiteIds =
                     inboundMetadata |> Seq.map(fun m -> m.SiteId) |> List<string>
@@ -139,7 +139,7 @@ module MetadataServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )
 
     let private _updateExistingMetadatasAndReturnThem
       (updateFunction: Metadata -> Metadata -> unit)
@@ -183,8 +183,8 @@ module MetadataServices =
       (getMetadataCollection: TDatabaseConnection -> TMetadataCollection)
       (inboundMetadata: Metadata seq)
       : Result<int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let metadataCollection = getMetadataCollection(dbConnection)
                 let updateNumber =
@@ -197,7 +197,7 @@ module MetadataServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )
 
     let _updateIsBeingProcessed
       (metadataCollection: TMetadataCollection)
@@ -229,8 +229,8 @@ module MetadataServices =
       (inboundMetadata: Metadata seq)
       (isBeingProcessed: bool option)
       : Result<int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let metadataCollection = getMetadataCollection(dbConnection)
                 let updateNumber =
@@ -244,4 +244,4 @@ module MetadataServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )

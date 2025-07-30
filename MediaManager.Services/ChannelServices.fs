@@ -9,19 +9,19 @@ module ChannelServices =
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       : Result<ResizeArray<Channel>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try getChannelCollection(dbConnection).Query().ToList() |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getBySiteId
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (siteId: string)
       : Result<Channel option, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let channels = getChannelCollection(dbConnection).Query().Where(fun m ->
                     m.SiteId = siteId).ToList()
@@ -30,49 +30,49 @@ module ChannelServices =
                 | _ -> Some channels[0]
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getManyBySiteIds
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (siteIds: string seq)
       : Result<ResizeArray<Channel>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let siteIdList = siteIds |> ResizeArray
                 getChannelCollection(dbConnection).Query().Where(fun m ->
                     siteIdList.Contains(m.SiteId)).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getNotBacklisted
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       : Result<ResizeArray<Channel>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getChannelCollection(dbConnection).Query().Where(fun c ->
                     c.Blacklisted = false).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let getManyByWordInName
       (getDbConnection: unit -> Result<TDatabaseConnection, exn>)
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (wordInChannelName: string)
       : Result<ResizeArray<Channel>, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 getChannelCollection(dbConnection).Query().Where(fun c ->
                     c.Name.Contains(wordInChannelName)).ToList()
                 |> Ok
             with e -> Error e
-        | Error ex -> Error ex
+        )
 
     let private _updateExistingChannelsAndReturnThem
       (updateFunction: Channel -> Channel -> unit)
@@ -133,8 +133,8 @@ module ChannelServices =
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (inboundChannels: Channel seq)
       : Result<int * int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let channelCollection = getChannelCollection(dbConnection)
                 let (insertNumber, updateNumber) =
@@ -147,7 +147,7 @@ module ChannelServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )
 
     let private _updateLastCheckedOutAndActivity
       (channelCollection: TChannelCollection)
@@ -175,8 +175,8 @@ module ChannelServices =
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (inboundChannels: Channel seq)
       : Result<int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let channelCollection = getChannelCollection(dbConnection)
                 let updateNumber =
@@ -189,7 +189,7 @@ module ChannelServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )
 
     let _updateBlackListStatus
       (channelCollection: TChannelCollection)
@@ -216,8 +216,8 @@ module ChannelServices =
       (getChannelCollection: TDatabaseConnection -> TChannelCollection)
       (inboundChannels: Channel seq)
       : Result<int, exn> =
-        match getDbConnection() with
-        | Ok dbConnection ->
+        getDbConnection()
+        |> Result.bind (fun dbConnection ->
             try
                 let channelCollection = getChannelCollection(dbConnection)
                 let updateNumber =
@@ -230,4 +230,4 @@ module ChannelServices =
             with e ->
                 dbConnection.Rollback() |> ignore
                 Error e
-        | Error ex -> Error ex
+        )
