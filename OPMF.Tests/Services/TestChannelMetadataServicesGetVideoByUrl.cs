@@ -117,7 +117,7 @@ namespace OPMF.Tests.Services
         [Fact, TestPriority(1)]
         public void Test1GetVideoByUrl()
         {
-            var newMetadataSiteId = "IDcuiZznRVM";
+            var newMetadataSiteId = "MWrOozSSdW8";
             var result = ChannelMetadataServices.getVideoByUrl($"https://www.youtube.com/watch?v={newMetadataSiteId}");
             Assert.True(result.IsOk);
             var newMetadata = MetadataServices.getAll().ResultValue.Where(m => m.SiteId == newMetadataSiteId).ToList();
@@ -127,7 +127,8 @@ namespace OPMF.Tests.Services
         [Fact, TestPriority(2)]
         public void Test2GetVideoByUrlExistingVideo()
         {
-            var result = ChannelMetadataServices.getVideoByUrl("https://www.youtube.com/watch?v=IDcuiZznRVM");
+            var newMetadataSiteId = "MWrOozSSdW8";
+            var result = ChannelMetadataServices.getVideoByUrl($"https://www.youtube.com/watch?v={newMetadataSiteId}");
             Assert.True(result.IsOk);
         }
 

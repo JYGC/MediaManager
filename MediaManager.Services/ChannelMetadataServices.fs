@@ -22,45 +22,58 @@ module ChannelMetadataServices =
       (pageSize: int)
       : Result<ResizeArray<ChannelMetadata>, exn> =
         try
-            let siteIdsToChannelsMap =
-                (match getManyChannelsByWordInName wordInChannelName with
-                | Ok channels -> channels
-                | Error ec -> raise ec)
-                |> Seq.map(fun c -> (c.SiteId, c))
-                |> dict
-            match getManyMetadataByChannelSiteIdAndWordInTitle
-                siteIdsToChannelsMap.Keys
-                wordInMetadataTitle
-                skip
-                pageSize with
-            | Ok metadatas -> metadatas
-            | Error et -> raise et
-            |> Seq.map(fun m -> _createChannelMetadata siteIdsToChannelsMap[m.ChannelSiteId] m)
-            |> ResizeArray
-            |> Ok
+            let siteIdsToChannelsMapResult =
+                getManyChannelsByWordInName wordInChannelName
+                |> Result.bind (fun ca ->
+                    ca
+                    |> Seq.map (fun c -> (c.SiteId, c))
+                    |> dict
+                    |> Ok
+                )
+
+            siteIdsToChannelsMapResult
+            |> Result.bind (fun siteIdsToChannelsMap ->
+                getManyMetadataByChannelSiteIdAndWordInTitle
+                    siteIdsToChannelsMap.Keys
+                    wordInMetadataTitle
+                    skip
+                    pageSize
+                |> Result.bind (fun metadatas ->
+                    Ok (metadatas, siteIdsToChannelsMap)
+                )
+            )
+            |> Result.bind (fun (metadatas, siteIdsToChannelsMap) ->
+                metadatas
+                |> Seq.map(fun m -> _createChannelMetadata siteIdsToChannelsMap[m.ChannelSiteId] m)
+                |> ResizeArray
+                |> Ok
+            )
         with ex -> Error ex
 
     let private _getChannelMetadataFromMetadata
       (getManyChannelsBySiteIds: ResizeArray<string> -> Result<ResizeArray<Channel>, exn>)
-      (getMetadatasResult: Result<ResizeArray<Metadata>, exn>)
-      : ResizeArray<ChannelMetadata> =
-        match getMetadatasResult with
-        | Ok metadatas ->
-            let channelSiteIds =
-                metadatas
-                |> Seq.map(fun m -> m.ChannelSiteId)
-                |> Seq.distinct
-                |> ResizeArray
-            let siteIdsToChannelsMap =
-                match getManyChannelsBySiteIds channelSiteIds with
-                | Ok channels -> channels
-                | Error ec -> raise ec
-                |> Seq.map(fun c -> (c.SiteId, c))
-                |> dict
+      (metadatas: ResizeArray<Metadata>)
+      : Result<ResizeArray<ChannelMetadata>, exn> =
+        let channelSiteIds =
             metadatas
-            |> Seq.map(fun m -> _createChannelMetadata siteIdsToChannelsMap[m.ChannelSiteId] m)
+            |> Seq.map (fun m -> m.ChannelSiteId)
+            |> Seq.distinct
             |> ResizeArray
-        | Error em -> raise em
+        let siteIdsToChannelsMapResult =
+            getManyChannelsBySiteIds channelSiteIds
+            |> Result.bind (fun channels ->
+                channels
+                |> Seq.map (fun c -> (c.SiteId, c))
+                |> dict
+                |> Ok
+            )
+        siteIdsToChannelsMapResult
+        |> Result.bind (fun siteIdsToChannelsMap ->
+            metadatas
+            |> Seq.map (fun m -> _createChannelMetadata siteIdsToChannelsMap[m.ChannelSiteId] m)
+            |> ResizeArray
+            |> Ok
+        )
 
     let getByTitleContainingWord
       (getManyMetadatasByWordInTitle: string -> int -> int -> Result<ResizeArray<Metadata>, exn>)
@@ -71,8 +84,7 @@ module ChannelMetadataServices =
       : Result<ResizeArray<ChannelMetadata>, exn> =
         try
             getManyMetadatasByWordInTitle wordInMetadataTitle skip pageSize
-            |> _getChannelMetadataFromMetadata getManyChannelsBySiteIds
-            |> Ok
+            |> Result.bind (_getChannelMetadataFromMetadata getManyChannelsBySiteIds)
         with ex -> Error ex
 
     let getNew
@@ -83,8 +95,7 @@ module ChannelMetadataServices =
       : Result<ResizeArray<ChannelMetadata>, exn> =
         try
             getNewMetadatas skip pageSize
-            |> _getChannelMetadataFromMetadata getManyChannelsBySiteIds
-            |> Ok
+            |> Result.bind (_getChannelMetadataFromMetadata getManyChannelsBySiteIds)
         with ex -> Error ex
 
     let getToDownloadAndWait
@@ -95,8 +106,7 @@ module ChannelMetadataServices =
       : Result<ResizeArray<ChannelMetadata>, exn> =
         try
             getToDownloadAndWaitMetadatas skip pageSize
-            |> _getChannelMetadataFromMetadata getManyChannelsBySiteIds
-            |> Ok
+            |> Result.bind (_getChannelMetadataFromMetadata getManyChannelsBySiteIds)
         with ex -> Error ex
 
     let getVideoByUrl
@@ -114,20 +124,19 @@ module ChannelMetadataServices =
                 match getChannelBySiteId metadata.ChannelSiteId with
                 | Ok (Some channel) ->
                     [_createChannelMetadata channel metadata] |> ResizeArray |> Ok
-                | Ok (None) -> raise (
-                    new Exception($"Cannot find channel with id: {metadata.ChannelSiteId}"))
+                | Ok None ->
+                    Error (new Exception($"Cannot find channel with id: {metadata.ChannelSiteId}"))
                 | Error es -> Error es
             | Ok None ->
                 let struct (metadataFromProvider, channelFromProvider) =
                     mediaProvider.GetVideoByURL siteId
-                match insertOrUpdateNewChannel [channelFromProvider] with
-                | Ok _ -> ()
-                | Error eiuc -> raise eiuc
-                match insertNewMetadata [metadataFromProvider] with
-                | Ok _ -> ()
-                | Error eim -> raise eim
-                [_createChannelMetadata channelFromProvider metadataFromProvider]
-                |> ResizeArray
-                |> Ok
+
+                insertOrUpdateNewChannel [channelFromProvider]
+                |> Result.bind (fun _ -> insertNewMetadata [metadataFromProvider])
+                |> Result.bind (fun _ ->
+                    [_createChannelMetadata channelFromProvider metadataFromProvider]
+                    |> ResizeArray
+                    |> Ok
+                )
             | Error es -> Error es
         with ex -> Error ex
