@@ -8,7 +8,7 @@ Project-specific details — what this repository is, its architecture, layer ma
 
 > This approach is based on [Kiro's spec methodology](https://kiro.dev/docs/specs/). The [Requirements-First workflow](https://kiro.dev/docs/specs/feature-specs/requirements-first/) is the standard used here: specify system behaviour before making architectural decisions.
 
-Non-trivial features and bug fixes are tracked as a **change** — a folder at `.claude/changes/<change-name>/` containing up to three spec files. Use specs for anything complex, costly to get wrong, or requiring iterative design. Skip specs for exploratory/prototype work.
+Non-trivial features and bug fixes are tracked as a **change** — a folder at `docs/changes/<change-name>/` containing up to three spec files. Use specs for anything complex, costly to get wrong, or requiring iterative design. Skip specs for exploratory/prototype work.
 
 ### Spec files
 
@@ -60,7 +60,7 @@ The "Unchanged Behavior" section is the key addition — explicitly locking down
 2. Create `design.md` including root cause analysis.
 3. Create and execute `tasks.md`, including tests for fix and regression prevention.
 
-Before starting any non-trivial feature, refactor, or bug fix, check `.claude/changes/` for an existing change folder. If none exists, create one and start with `requirements.md` (feature) or `bugfix.md` (bug).
+Before starting any non-trivial feature, refactor, or bug fix, check `docs/changes/` for an existing change folder. If none exists, create one and start with `requirements.md` (feature) or `bugfix.md` (bug).
 
 ## Layered Architecture
 
