@@ -95,6 +95,13 @@ Optional: **Domain** (pure entities and value objects, no dependencies), **DTO/S
 - Always read a file before editing it.
 - No speculative abstractions — only build what is needed now.
 
+## Self-documenting code
+
+- Names of variables, parameters, fields, properties, methods, classes, interfaces, and tests must state exactly what they hold or do, so the code reads without explanation.
+- Names may be up to 200 words long. Prefer a long, precise name over a short, ambiguous one.
+- Structure the code so it explains itself: pull intermediate values, conditions, and steps out into well-named variables and methods instead of describing them in comments.
+- Refrain from comments where possible. Use one only when the code itself cannot carry the information, such as why a non-obvious decision was made.
+
 ## Testing
 
 ### Mandate
