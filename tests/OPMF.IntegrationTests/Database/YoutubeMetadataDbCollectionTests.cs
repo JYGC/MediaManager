@@ -11,7 +11,9 @@ namespace OPMF.IntegrationTests.Database
 {
     public class YoutubeMetadataDbCollectionInsertTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeMetadataDbCollectionInsertTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeMetadataDbCollectionInsertTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void InsertNew_PersistsAllItems()
@@ -24,7 +26,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_v3"),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
                 foreach (var item in items)
@@ -46,7 +48,7 @@ namespace OPMF.IntegrationTests.Database
             var original = Metadata(prefix + "_dup", title: "Original", status: MetadataStatus.New);
             var duplicate = Metadata(prefix + "_dup", title: "Should Not Win", status: MetadataStatus.Ignore);
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(new[] { original });
                 db.YoutubeMetadataDbCollection.InsertNew(new[] { duplicate });
@@ -60,7 +62,9 @@ namespace OPMF.IntegrationTests.Database
 
     public class YoutubeMetadataDbCollectionUpdateStatusTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeMetadataDbCollectionUpdateStatusTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeMetadataDbCollectionUpdateStatusTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void UpdateStatus_AppliesToStoredRows()
@@ -69,7 +73,7 @@ namespace OPMF.IntegrationTests.Database
             var a = Metadata(prefix + "_a", status: MetadataStatus.New);
             var b = Metadata(prefix + "_b", status: MetadataStatus.New);
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(new[] { a, b });
 
@@ -90,7 +94,9 @@ namespace OPMF.IntegrationTests.Database
 
     public class YoutubeMetadataDbCollectionUpdateIsBeingProcessedTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeMetadataDbCollectionUpdateIsBeingProcessedTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeMetadataDbCollectionUpdateIsBeingProcessedTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void UpdateIsBeingProcessed_TrueAndFalse_RoundTrip()
@@ -98,7 +104,7 @@ namespace OPMF.IntegrationTests.Database
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var item = Metadata(prefix + "_i");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(new[] { item });
 
@@ -117,7 +123,7 @@ namespace OPMF.IntegrationTests.Database
             var item = Metadata(prefix + "_nf");
             item.IsBeingDownloaded = true;
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(new[] { item });
                 db.YoutubeMetadataDbCollection.UpdateIsBeingProcessed(new[] { item });
@@ -128,7 +134,9 @@ namespace OPMF.IntegrationTests.Database
 
     public class YoutubeMetadataDbCollectionQueryTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeMetadataDbCollectionQueryTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeMetadataDbCollectionQueryTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void GetToDownload_ReturnsOnlyToDownload()
@@ -144,7 +152,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_d", status: MetadataStatus.Downloaded),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
                 var got = db.YoutubeMetadataDbCollection.GetToDownload()
@@ -168,7 +176,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_td", status: MetadataStatus.ToDownload),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
 
@@ -191,7 +199,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_d", status: MetadataStatus.Downloaded),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
                 var got = db.YoutubeMetadataDbCollection.GetToDownloadAndWait(0, int.MaxValue)
@@ -214,7 +222,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_c", title: "no match", publishedAt: new DateTime(2025, 1, 1)),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
                 var got = db.YoutubeMetadataDbCollection.GetManyByWordInTitle(keyword, 0, int.MaxValue).ToList();
@@ -237,7 +245,7 @@ namespace OPMF.IntegrationTests.Database
                 Metadata(prefix + "_b1", channelSiteId: chanB, title: "alpha"),
             };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeMetadataDbCollection.InsertNew(items);
 

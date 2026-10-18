@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:blazor="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf"
-        xmlns:local="clr-namespace:MediaManagerUI"
+        xmlns:componentLibrary="clr-namespace:MediaManagerUI;assembly=MediaManagerUI.Components"
         mc:Ignorable="d"
         Title="MainWindow" Height="680" Width="700">
     <Grid>
         <blazor:BlazorWebView HostPage="wwwroot\index.html" Services="{DynamicResource services}">
             <blazor:BlazorWebView.RootComponents>
-                <blazor:RootComponent Selector="#app" ComponentType="{x:Type local:Routes}" />
+                <blazor:RootComponent Selector="#app" ComponentType="{x:Type componentLibrary:Routes}" />
             </blazor:BlazorWebView.RootComponents>
         </blazor:BlazorWebView>
     </Grid>

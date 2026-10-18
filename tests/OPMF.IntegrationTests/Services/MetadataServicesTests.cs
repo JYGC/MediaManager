@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using MediaManager.Dtos.Services;
+using MediaManager.Repositories;
 using MediaManager.Services2;
-using OPMF.Database;
 using OPMF.Entities;
 using OPMF.IntegrationTests.Support;
 using Xunit;
@@ -11,61 +12,75 @@ namespace OPMF.IntegrationTests.Services
 {
     public class MetadataServicesTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public MetadataServicesTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public MetadataServicesTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         private class FakeTaskRunner : ITaskRunnerServices
         {
-            public readonly List<Metadata> Calls = new();
-            public void DownloadOneVideo(Metadata metadata) => Calls.Add(metadata);
+            public readonly List<string> VideoSiteIdsStarted = new();
+            public void StartTaskRunnerProcessThatDownloadsVideoWithSiteId(string videoSiteId) => VideoSiteIdsStarted.Add(videoSiteId);
         }
 
+        private MetadataServices CreateMetadataServices(ITaskRunnerServices taskRunnerServices) =>
+            new MetadataServices(taskRunnerServices, new VideoMetadataRepository(_fixture.DatabaseConnectionOpener));
+
+        private Metadata StoredVideoWithSiteId(string siteId)
+        {
+            Metadata stored = null;
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db => stored = db.YoutubeMetadataDbCollection.GetBySiteId(siteId));
+            return stored;
+        }
+
+        private static ServiceVideoMetadataDto ServiceVideoDtoOf(Metadata video) => new ServiceVideoMetadataDto
+        {
+            SiteId = video.SiteId,
+            Title = video.Title,
+            IsBeingDownloaded = video.IsBeingDownloaded,
+            DownloadStatus = ServiceVideoDownloadStatus.New,
+        };
+
         [Fact]
-        public void UpdateStatus_PersistsThroughService()
+        public void UpdateDownloadStatusOfVideos_PersistsThroughService()
         {
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var item = Metadata(prefix + "_s", status: MetadataStatus.New);
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
 
-            DatabaseAdapter.AccessDbAdapter(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
+            var videoDto = ServiceVideoDtoOf(item);
+            videoDto.DownloadStatus = ServiceVideoDownloadStatus.ToDownload;
+            CreateMetadataServices(new FakeTaskRunner()).UpdateDownloadStatusOfVideos(new[] { videoDto });
 
-            var svc = new MetadataServices(new FakeTaskRunner());
-            Metadata stored = null;
-            DatabaseAdapter.AccessDbAdapter(db =>
-                stored = db.YoutubeMetadataDbCollection.GetBySiteId(item.SiteId));
-            stored.Status = MetadataStatus.ToDownload;
-            svc.UpdateStatus(new[] { stored });
-
-            DatabaseAdapter.AccessDbAdapter(db =>
-                Assert.Equal(MetadataStatus.ToDownload, db.YoutubeMetadataDbCollection.GetBySiteId(item.SiteId).Status));
+            Assert.Equal(MetadataStatus.ToDownload, StoredVideoWithSiteId(item.SiteId).Status);
         }
 
         [Fact]
-        public void UpdateIsBeingProcessed_PersistsThroughService()
+        public void ClearBeingDownloadedFlagOfVideo_PersistsThroughService()
         {
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var item = Metadata(prefix + "_p");
             item.IsBeingDownloaded = true;
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
 
-            DatabaseAdapter.AccessDbAdapter(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
+            var returnedVideo = CreateMetadataServices(new FakeTaskRunner()).ClearBeingDownloadedFlagOfVideo(ServiceVideoDtoOf(item));
 
-            new MetadataServices(new FakeTaskRunner()).UpdateIsBeingProcessed(new[] { item });
-
-            DatabaseAdapter.AccessDbAdapter(db =>
-                Assert.True(db.YoutubeMetadataDbCollection.GetBySiteId(item.SiteId).IsBeingDownloaded));
+            Assert.False(returnedVideo.IsBeingDownloaded);
+            Assert.False(StoredVideoWithSiteId(item.SiteId).IsBeingDownloaded);
         }
 
         [Fact]
-        public void DownloadNow_InvokesTaskRunnerWithMetadata()
+        public void MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt_PersistsTheFlagAndStartsTheTaskRunner()
         {
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var item = Metadata(prefix + "_dn");
-
-            DatabaseAdapter.AccessDbAdapter(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db => db.YoutubeMetadataDbCollection.InsertNew(new[] { item }));
 
             var runner = new FakeTaskRunner();
-            new MetadataServices(runner).DownloadNow(item);
+            var returnedVideo = CreateMetadataServices(runner).MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoDtoOf(item));
 
-            Assert.Single(runner.Calls);
-            Assert.Equal(item.SiteId, runner.Calls[0].SiteId);
+            Assert.True(returnedVideo.IsBeingDownloaded);
+            Assert.True(StoredVideoWithSiteId(item.SiteId).IsBeingDownloaded);
+            Assert.Equal(new[] { item.SiteId }, runner.VideoSiteIdsStarted);
         }
     }
 }

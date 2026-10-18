@@ -1,118 +1,140 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using MediaManager.Services2;
-using OPMF.Entities;
 using Xunit;
 
 namespace OPMF.ContractTests
 {
-    public class IChannelMetadataServicesContractTests
+    public class ServiceContractTests
     {
-        [Fact]
-        public void Implementation_IsRegistered()
+        private static string[] InOrdinalOrder(params string[] signatures)
         {
-            Assert.Contains(typeof(IChannelMetadataServices), typeof(ChannelMetadataServices).GetInterfaces());
+            return signatures.OrderBy(signature => signature, StringComparer.Ordinal).ToArray();
         }
 
-        [Theory]
-        [InlineData(nameof(IChannelMetadataServices.GetByChannelAndTitleContainingWord))]
-        [InlineData(nameof(IChannelMetadataServices.GetByTitleContainingWord))]
-        [InlineData(nameof(IChannelMetadataServices.GetNew))]
-        [InlineData(nameof(IChannelMetadataServices.GetToDownloadAndWait))]
-        [InlineData(nameof(IChannelMetadataServices.GetVideoByUrl))]
-        public void DefinesMethod_ReturningListOfChannelMetadata(string name)
-        {
-            var method = typeof(IChannelMetadataServices).GetMethod(name);
-            Assert.NotNull(method);
-            Assert.Equal(typeof(List<ChannelMetadata>), method.ReturnType);
-        }
-    }
-
-    public class IChannelServicesContractTests
-    {
         [Fact]
-        public void Implementation_IsRegistered()
+        public void IChannelServices_Implementation_IsChannelServices()
         {
             Assert.Contains(typeof(IChannelServices), typeof(ChannelServices).GetInterfaces());
         }
 
         [Fact]
-        public void GetAll_ReturnsChannelList()
+        public void IChannelServices_HasExactlyTheExpectedMethods()
         {
-            var method = typeof(IChannelServices).GetMethod(nameof(IChannelServices.GetAll));
-            Assert.NotNull(method);
-            Assert.Equal(typeof(List<Channel>), method.ReturnType);
-            Assert.Empty(method.GetParameters());
+            Assert.Equal(
+                InOrdinalOrder(
+                    "List<ServiceChannelDto> GetAllChannels()",
+                    "Void UpdateBlacklistFlagOfChannels(IEnumerable<ServiceChannelDto>)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IChannelServices)));
         }
 
         [Fact]
-        public void UpdateBlackListStatus_TakesChannelEnumerable_Void()
+        public void IChannelMetadataServices_Implementation_IsChannelMetadataServices()
         {
-            var method = typeof(IChannelServices).GetMethod(nameof(IChannelServices.UpdateBlackListStatus));
-            Assert.NotNull(method);
-            Assert.Equal(typeof(void), method.ReturnType);
-            Assert.Equal(typeof(IEnumerable<Channel>), method.GetParameters()[0].ParameterType);
+            Assert.Contains(typeof(IChannelMetadataServices), typeof(ChannelMetadataServices).GetInterfaces());
         }
-    }
 
-    public class IMetadataServicesContractTests
-    {
         [Fact]
-        public void Implementation_IsRegistered()
+        public void IChannelMetadataServices_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                InOrdinalOrder(
+                    "List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereChannelNameAndVideoTitleContainWords(String, String, Int32, Int32)",
+                    "List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereVideoTitleContainsWord(String, Int32, Int32)",
+                    "List<ServiceVideoWithChannelDto> GetNewVideosWithChannels(Int32, Int32)",
+                    "List<ServiceVideoWithChannelDto> GetVideosWithChannelsQueuedToDownloadOrWaiting(Int32, Int32)",
+                    "ServiceVideoWithChannelDto GetVideoWithChannelByUrlFetchingFromVideoSiteWhenNotStored(String)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IChannelMetadataServices)));
+        }
+
+        [Fact]
+        public void IMetadataServices_Implementation_IsMetadataServices()
         {
             Assert.Contains(typeof(IMetadataServices), typeof(MetadataServices).GetInterfaces());
         }
 
-        [Theory]
-        [InlineData(nameof(IMetadataServices.UpdateStatus))]
-        [InlineData(nameof(IMetadataServices.UpdateIsBeingProcessed))]
-        [InlineData(nameof(IMetadataServices.DownloadNow))]
-        public void DefinesMethod_Void(string name)
-        {
-            var method = typeof(IMetadataServices).GetMethod(name);
-            Assert.NotNull(method);
-            Assert.Equal(typeof(void), method.ReturnType);
-        }
-    }
-
-    public class ITaskRunnerServicesContractTests
-    {
         [Fact]
-        public void Implementation_IsRegistered()
+        public void IMetadataServices_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                InOrdinalOrder(
+                    "Void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto>)",
+                    "ServiceVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ServiceVideoMetadataDto)",
+                    "ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IMetadataServices)));
+        }
+
+        [Fact]
+        public void ITaskRunnerServices_Implementation_IsTaskRunnerServices()
         {
             Assert.Contains(typeof(ITaskRunnerServices), typeof(TaskRunnerServices).GetInterfaces());
         }
 
         [Fact]
-        public void DownloadOneVideo_TakesMetadata_Void()
+        public void ITaskRunnerServices_HasExactlyTheExpectedMethods()
         {
-            var method = typeof(ITaskRunnerServices).GetMethod(nameof(ITaskRunnerServices.DownloadOneVideo));
-            Assert.NotNull(method);
-            Assert.Equal(typeof(void), method.ReturnType);
-            Assert.Equal(typeof(Metadata), method.GetParameters()[0].ParameterType);
+            Assert.Equal(
+                InOrdinalOrder("Void StartTaskRunnerProcessThatDownloadsVideoWithSiteId(String)"),
+                InterfaceShape.MethodSignaturesOf(typeof(ITaskRunnerServices)));
         }
-    }
 
-    public class ILogServicesContractTests
-    {
         [Fact]
-        public void Implementation_IsRegistered()
+        public void ILogServices_Implementation_IsLogServices()
         {
             Assert.Contains(typeof(ILogServices), typeof(LogServices).GetInterfaces());
         }
 
-        [Theory]
-        [InlineData(nameof(ILogServices.GetWarnings))]
-        [InlineData(nameof(ILogServices.GetErrors))]
-        public void Method_TakesTwoDateTimes_ReturnsLogList(string name)
+        [Fact]
+        public void ILogServices_HasExactlyTheExpectedMethods()
         {
-            var method = typeof(ILogServices).GetMethod(name);
-            Assert.NotNull(method);
-            Assert.Equal(typeof(List<OPMFLog>), method.ReturnType);
-            var args = method.GetParameters();
-            Assert.Equal(2, args.Length);
-            Assert.Equal(typeof(DateTime), args[0].ParameterType);
-            Assert.Equal(typeof(DateTime), args[1].ParameterType);
+            Assert.Equal(
+                InOrdinalOrder(
+                    "List<ServiceLogEntryDto> GetWarningsLoggedBetween(DateTime, DateTime)",
+                    "List<ServiceLogEntryDto> GetErrorsLoggedBetween(DateTime, DateTime)",
+                    "Void RecordError(String, String)"),
+                InterfaceShape.MethodSignaturesOf(typeof(ILogServices)));
+        }
+
+        [Fact]
+        public void INewVideoMetadataFetchServices_Implementation_IsNewVideoMetadataFetchServices()
+        {
+            Assert.Contains(typeof(INewVideoMetadataFetchServices), typeof(NewVideoMetadataFetchServices).GetInterfaces());
+        }
+
+        [Fact]
+        public void INewVideoMetadataFetchServices_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                new[] { "Void FetchAndStoreNewVideoMetadataForEveryChannelThatIsNotBlacklisted()" },
+                InterfaceShape.MethodSignaturesOf(typeof(INewVideoMetadataFetchServices)));
+        }
+
+        [Fact]
+        public void IVideoDownloadServices_Implementation_IsVideoDownloadServices()
+        {
+            Assert.Contains(typeof(IVideoDownloadServices), typeof(VideoDownloadServices).GetInterfaces());
+        }
+
+        [Fact]
+        public void IVideoDownloadServices_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                InOrdinalOrder("Void DownloadEveryVideoQueuedToDownload()", "Void DownloadFirstVideoWhoseSiteIdContains(String)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IVideoDownloadServices)));
+        }
+
+        [Fact]
+        public void IDownloadedVideoFileMover_Implementation_IsDownloadedVideoFileMover()
+        {
+            Assert.Contains(typeof(IDownloadedVideoFileMover), typeof(DownloadedVideoFileMover).GetInterfaces());
+        }
+
+        [Fact]
+        public void IDownloadedVideoFileMover_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                new[] { "Void MoveFilesWithExtensionsFromFolderToFolderSkippingNamesThatAlreadyExist(String, String, IEnumerable<String>)" },
+                InterfaceShape.MethodSignaturesOf(typeof(IDownloadedVideoFileMover)));
         }
     }
 }

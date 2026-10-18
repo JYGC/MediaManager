@@ -1,8 +1,7 @@
 using System;
 using System.Linq;
+using MediaManager.Repositories;
 using MediaManager.Services2;
-using OPMF.Database;
-using OPMF.Entities;
 using OPMF.IntegrationTests.Support;
 using Xunit;
 using static OPMF.IntegrationTests.Support.TestData;
@@ -11,20 +10,24 @@ namespace OPMF.IntegrationTests.Services
 {
     public class ChannelServicesTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public ChannelServicesTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public ChannelServicesTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
+
+        private ChannelServices CreateChannelServices() =>
+            new ChannelServices(new ChannelRepository(_fixture.DatabaseConnectionOpener));
 
         [Fact]
-        public void GetAll_ReturnsAllStoredChannels()
+        public void GetAllChannels_ReturnsAllStoredChannels()
         {
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var a = Channel(prefix + "_a", "A");
             var b = Channel(prefix + "_b", "B");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { a, b }));
 
-            var svc = new ChannelServices();
-            var got = svc.GetAll().Where(c => c.SiteId.StartsWith(prefix)).ToList();
+            var got = CreateChannelServices().GetAllChannels().Where(c => c.SiteId.StartsWith(prefix)).ToList();
 
             Assert.Equal(2, got.Count);
             Assert.Contains(got, c => c.Name == "A");
@@ -32,20 +35,20 @@ namespace OPMF.IntegrationTests.Services
         }
 
         [Fact]
-        public void UpdateBlackListStatus_PersistsThroughService()
+        public void UpdateBlacklistFlagOfChannels_PersistsThroughService()
         {
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var c = Channel(prefix + "_bl", blacklisted: false);
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { c }));
 
-            var svc = new ChannelServices();
-            var fromSvc = svc.GetAll().First(x => x.SiteId == c.SiteId);
-            fromSvc.Blacklisted = true;
-            svc.UpdateBlackListStatus(new[] { fromSvc });
+            var svc = CreateChannelServices();
+            var fromSvc = svc.GetAllChannels().First(x => x.SiteId == c.SiteId);
+            fromSvc.IsBlacklisted = true;
+            svc.UpdateBlacklistFlagOfChannels(new[] { fromSvc });
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 Assert.True(db.YoutubeChannelDbCollection.GetBySiteId(c.SiteId).Blacklisted);
             });

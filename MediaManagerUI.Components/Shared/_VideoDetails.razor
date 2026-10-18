@@ -1,0 +1,96 @@
+﻿@using MediaManager.Dtos.Application
+@using MediaManagerUI.Modules.VideoBrowser
+
+@if (VideoWithChannel != null && VideoWithChannel.Video != null)
+{
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Title: </b></MudText>
+        <MudText>@VideoWithChannel.Video.Title</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Thumbnail: </b></MudText>
+        <MudImage Src="@VideoWithChannel.Video.Thumbnail.Url"
+                    Height="@((int?)VideoWithChannel.Video.Thumbnail.HeightInPixels)"
+                    Width="@((int?)VideoWithChannel.Video.Thumbnail.WidthInPixels)" />
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Channel: </b></MudText>
+        <MudText>@(VideoWithChannel.Channel == null ? "Unknown" : VideoWithChannel.Channel.Name)</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Url: </b></MudText>
+        <MudLink Href="@VideoWithChannel.Video.Url">@VideoWithChannel.Video.Url</MudLink>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Duration: </b></MudText>
+        @if (VideoWithChannel.Video.Duration == TimeSpan.Zero)
+        {
+            <MudText>No data</MudText>
+        }
+        else
+        {
+            <MudText>@VideoWithChannel.Video.Duration</MudText>
+        }
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Description: </b></MudText>
+        <_MultilineTextAsParagraphs Text="@(VideoWithChannel.Video.Description ?? string.Empty)" />
+    </MudPaper>
+    @if (_videoBrowserModule != null)
+    {
+        <MudPaper Class="pa-2 ma-2" Outlined="true">
+            <MudText><b>Actions: </b></MudText>
+            @if (VideoWithChannel.Video.IsBeingDownloaded)
+            {
+                <MudText>Video is being downloaded...</MudText>
+                <MudButton Variant="Variant.Filled" OnClick="@(() => _videoBrowserModule.RemoveIsBeingDownloadedStatus(VideoWithChannel))">
+                    Remove "being downloaded" block
+                </MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled" OnClick="@(() => _videoBrowserModule.DownloadVideoNow(VideoWithChannel))">
+                    Download Now
+                </MudButton>
+            }
+        </MudPaper>
+    }
+}
+
+@code {
+    private IVideoBrowserModule? _videoBrowserModule;
+    [Parameter]
+    public IVideoBrowserModule? VideoBrowserModule
+    {
+        get => _videoBrowserModule;
+        set
+        {
+            if (_videoBrowserModule == value)
+            {
+                return;
+            }
+            _videoBrowserModule = value;
+            VideoBrowserModuleChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<IVideoBrowserModule> VideoBrowserModuleChanged { get; set; }
+
+    private ApplicationVideoWithChannelDto? _videoWithChannel;
+    [Parameter]
+    public ApplicationVideoWithChannelDto? VideoWithChannel
+    {
+        get => _videoWithChannel;
+        set
+        {
+            if (_videoWithChannel == value)
+            {
+                return;
+            }
+            _videoWithChannel = value;
+            VideoWithChannelChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<ApplicationVideoWithChannelDto> VideoWithChannelChanged { get; set; }
+}

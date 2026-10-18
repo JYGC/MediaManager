@@ -24,10 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MediaManager.Services2\MediaManager.Services2.csproj" />
-    <ProjectReference Include="..\OPMF.Entities\OPMF.Entities.csproj" />
-    <ProjectReference Include="..\OPMF.Filesystem\OPMF.Filesystem.csproj" />
-    <ProjectReference Include="..\OPMF.Settings\OPMF.Settings.csproj" />
+    <ProjectReference Include="..\MediaManagerUI.Components\MediaManagerUI.Components.csproj" />
+    <ProjectReference Include="..\MediaManager.Initializations\MediaManager.Initializations.csproj" />
+    <ProjectReference Include="..\OPMF.TextLogging\OPMF.TextLogging.csproj" />
   </ItemGroup>
 
 </Project>

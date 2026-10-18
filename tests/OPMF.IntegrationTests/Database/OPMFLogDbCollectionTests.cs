@@ -9,7 +9,9 @@ namespace OPMF.IntegrationTests.Database
 {
     public class OPMFLogDbCollectionTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public OPMFLogDbCollectionTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public OPMFLogDbCollectionTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void GetWarnings_FiltersByTypeAndDateRange_OrderedDescending()
@@ -20,7 +22,7 @@ namespace OPMF.IntegrationTests.Database
             var outside = new OPMFLog { Message = marker + "-w3", Type = OPMFLogType.Warning, DateCreated = new DateTime(2024, 8, 1) };
             var wrongType = new OPMFLog { Message = marker + "-e", Type = OPMFLogType.Error, DateCreated = new DateTime(2024, 6, 10) };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.OPMFLogDbCollection.InsertBulk(new[] { inside1, inside2, outside, wrongType });
 
@@ -43,7 +45,7 @@ namespace OPMF.IntegrationTests.Database
             var outside = new OPMFLog { Message = marker + "-e2", Type = OPMFLogType.Error, DateCreated = new DateTime(2024, 1, 1) };
             var wrongType = new OPMFLog { Message = marker + "-w", Type = OPMFLogType.Warning, DateCreated = new DateTime(2024, 6, 10) };
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.OPMFLogDbCollection.InsertBulk(new[] { inside, outside, wrongType });
 

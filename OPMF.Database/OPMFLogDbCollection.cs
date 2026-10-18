@@ -12,7 +12,7 @@ namespace OPMF.Database
 
         public List<OPMFLog> GetWarnings(DateTime startDateTime, DateTime endDateTime)
         {
-            return _Collection.Query().Where(i => i.Type == OPMFLogType.Warning
+            return _liteCollection.Query().Where(i => i.Type == OPMFLogType.Warning
                 && i.DateCreated > startDateTime && i.DateCreated < endDateTime)
                     .OrderByDescending(i => i.DateCreated).Select(i => new OPMFLog
                     {
@@ -27,7 +27,7 @@ namespace OPMF.Database
 
         public List<OPMFLog> GetErrors(DateTime startDateTime, DateTime endDateTime)
         {
-            return _Collection.Query().Where(i => i.Type == OPMFLogType.Error
+            return _liteCollection.Query().Where(i => i.Type == OPMFLogType.Error
                 && i.DateCreated > startDateTime && i.DateCreated < endDateTime)
                     .OrderByDescending(i => i.DateCreated).Select(i => new OPMFLog
                     {

@@ -3,63 +3,100 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using NYoutubeDL;
 
 namespace OPMF.Downloader.YTDownloader
 {
     public class YTDownloader : IDownloader
     {
+        private readonly Settings.IReadonlySettings __readonlySettings;
+        private readonly Settings.AppConfig __appConfig;
+        private readonly IVideoDownloaderExecutableRunner __videoDownloaderExecutableRunner;
+        private readonly IInterruptibleDownloadThreadStarter __interruptibleDownloadThreadStarter;
+        private readonly ICurrentThreadWaiter __currentThreadWaiter;
+        private readonly IConsoleRowOverwriter __consoleRowOverwriter;
+        private readonly TimeProvider __timeProvider;
+        private readonly Logging.Logger __logger;
+        private readonly VideoDownloaderExecutableLocation __executableTriedFirstLocation;
+        private readonly VideoDownloaderExecutableLocation __fallbackExecutableLocationOrNull;
+
         private List<DownloadInstance> __downloadInstances;
         public List<Entities.Metadata> DownloadQueue { get; set; }
 
-        public YTDownloader()
+        public YTDownloader(
+            Settings.IReadonlySettings readonlySettings,
+            Settings.AppConfig appConfig,
+            IVideoDownloaderExecutableRunner videoDownloaderExecutableRunner,
+            IMissingVideoDownloaderExecutableDownloader missingVideoDownloaderExecutableDownloader,
+            IInterruptibleDownloadThreadStarter interruptibleDownloadThreadStarter,
+            ICurrentThreadWaiter currentThreadWaiter,
+            IConsoleRowOverwriter consoleRowOverwriter,
+            TimeProvider timeProvider,
+            Logging.Logger logger)
         {
-            // Setup YoutubeDL
-            YTDLSetup.EstablishYoutubeDLExec();
-            YoutubeDL youtubeDL = new YoutubeDL();
-            youtubeDL.Options.GeneralOptions.Update = Settings.ConfigHelper.Config.YoutubeDL.CheckForBinaryUpdates;
+            __readonlySettings = readonlySettings;
+            __appConfig = appConfig;
+            __videoDownloaderExecutableRunner = videoDownloaderExecutableRunner;
+            __interruptibleDownloadThreadStarter = interruptibleDownloadThreadStarter;
+            __currentThreadWaiter = currentThreadWaiter;
+            __consoleRowOverwriter = consoleRowOverwriter;
+            __timeProvider = timeProvider;
+            __logger = logger;
 
-            youtubeDL.StandardOutputEvent += (sender, output) => Console.WriteLine(output);
-            youtubeDL.StandardErrorEvent += (sender, errorOutput) => Console.WriteLine(errorOutput);
+            Settings.VideoDownloaderExecutable executableTriedFirst = appConfig.YoutubeDL.ExecutableTriedFirstToDownloadVideos;
+            Settings.VideoDownloaderExecutable fallbackExecutable = VideoDownloaderExecutableOrderAndLocationRules.GetFallbackExecutable(executableTriedFirst);
+            __executableTriedFirstLocation = VideoDownloaderExecutableOrderAndLocationRules.GetLocationOfExecutable(executableTriedFirst, readonlySettings);
+            VideoDownloaderExecutableLocation fallbackExecutableLocation = VideoDownloaderExecutableOrderAndLocationRules.GetLocationOfExecutable(fallbackExecutable, readonlySettings);
+
+            missingVideoDownloaderExecutableDownloader.DownloadExecutableWhenItIsMissing(__executableTriedFirstLocation);
+            bool fallbackExecutableIsAvailable = missingVideoDownloaderExecutableDownloader.DownloadFallbackExecutableWhenItIsMissingAndReturnWhetherItIsAvailable(fallbackExecutableLocation);
+            __fallbackExecutableLocationOrNull = fallbackExecutableIsAvailable ? fallbackExecutableLocation : null;
         }
 
         public void StartDownloadingQueue()
         {
-            // Create download instance
             __downloadInstances = new List<DownloadInstance>();
             int noOfInstances = (
-                DownloadQueue.Count < Settings.ConfigHelper.Config.YoutubeDL.MaxNoOfParallelDownloads
-            ) ? DownloadQueue.Count : Settings.ConfigHelper.Config.YoutubeDL.MaxNoOfParallelDownloads;
+                DownloadQueue.Count < __appConfig.YoutubeDL.MaxNoOfParallelDownloads
+            ) ? DownloadQueue.Count : __appConfig.YoutubeDL.MaxNoOfParallelDownloads;
             for (int i = 0; i < noOfInstances; i++)
             {
-                __downloadInstances.Add(new DownloadInstance() { ScreenPosition = i });
+                __downloadInstances.Add(new DownloadInstance(
+                    i,
+                    __executableTriedFirstLocation,
+                    __fallbackExecutableLocationOrNull,
+                    __videoDownloaderExecutableRunner,
+                    __appConfig.YoutubeDL,
+                    __readonlySettings.GetDownloadFolderPath(),
+                    __interruptibleDownloadThreadStarter,
+                    __consoleRowOverwriter,
+                    __timeProvider,
+                    __logger));
             }
 
             int currentMetadataIndex = 0;
             while (currentMetadataIndex < DownloadQueue.Count || __downloadInstances.Count > 0)
             {
-                // Needs to decrement as we are removing elements from instances
-                for (int i = __downloadInstances.Count - 1; i >= 0; i--)
+                for (int downloadInstanceIndex = __downloadInstances.Count - 1; downloadInstanceIndex >= 0; downloadInstanceIndex--)
                 {
-                    // Leave instances alone that are still downloading
-                    if (__downloadInstances[i].NotDownloading ||
-                        DateTime.Now.Subtract(__downloadInstances[i].StartDateTime).TotalSeconds > Settings.ConfigHelper.Config.StopDownloadInstanceAfterSeconds)
+                    DownloadInstance downloadInstance = __downloadInstances[downloadInstanceIndex];
+                    bool downloadInstanceIsFreeOrHasRunTooLong = downloadInstance.NotDownloading ||
+                        __timeProvider.GetLocalNow().LocalDateTime.Subtract(downloadInstance.StartDateTime).TotalSeconds > __appConfig.StopDownloadInstanceAfterSeconds;
+                    if (downloadInstanceIsFreeOrHasRunTooLong)
                     {
-                        __downloadInstances[i].StopDownloadThread();
+                        downloadInstance.StopDownloadThread();
                         if (currentMetadataIndex < DownloadQueue.Count)
                         {
-                            __downloadInstances[i].Download(DownloadQueue[currentMetadataIndex]);
+                            downloadInstance.Download(DownloadQueue[currentMetadataIndex]);
                             currentMetadataIndex++;
                         }
                         else
                         {
-                            // When there is no more videos to download, remove instances that are not downloading
-                            __downloadInstances[i].CleanUpInstance();
-                            __downloadInstances.Remove(__downloadInstances[i]);
+                            downloadInstance.CleanUpInstance();
+                            __downloadInstances.RemoveAt(downloadInstanceIndex);
                         }
                     }
                 }
-                Thread.Sleep(5000); // replace this
+                __currentThreadWaiter.WaitOnCurrentThreadFor(TimeSpan.FromSeconds(5));
             }
         }
     }
@@ -68,93 +105,146 @@ namespace OPMF.Downloader.YTDownloader
     {
         private const int TITLE_DISPLAY_LENGTH = 40;
 
-        private Thread __thread;
-        private YoutubeDL __youtubeDL;
-        private string __downloadError;
+        private readonly VideoDownloaderExecutableLocation __executableTriedFirst;
+        private readonly VideoDownloaderExecutableLocation __fallbackExecutableOrNull;
+        private readonly IVideoDownloaderExecutableRunner __videoDownloaderExecutableRunner;
+        private readonly Settings.YoutubeDLConfig __youtubeDLConfig;
+        private readonly string __downloadFolderPath;
+        private readonly IInterruptibleDownloadThreadStarter __interruptibleDownloadThreadStarter;
+        private readonly IConsoleRowOverwriter __consoleRowOverwriter;
+        private readonly TimeProvider __timeProvider;
+        private readonly Logging.Logger __logger;
+
+        private Action __interruptDownloadThread;
+        private CancellationTokenSource __stopCurrentDownload;
         private string __title;
 
-        public DateTime StartDateTime { get; } = DateTime.Now; // Rough fix for frozen DownloadInstance
+        public DateTime StartDateTime { get; }
         public bool NotDownloading { get; set; } = true;
-        public int ScreenPosition { get; set; }
+        public int ScreenPosition { get; }
 
-        public DownloadInstance()
+        public DownloadInstance(
+            int screenPosition,
+            VideoDownloaderExecutableLocation executableTriedFirst,
+            VideoDownloaderExecutableLocation fallbackExecutableOrNull,
+            IVideoDownloaderExecutableRunner videoDownloaderExecutableRunner,
+            Settings.YoutubeDLConfig youtubeDLConfig,
+            string downloadFolderPath,
+            IInterruptibleDownloadThreadStarter interruptibleDownloadThreadStarter,
+            IConsoleRowOverwriter consoleRowOverwriter,
+            TimeProvider timeProvider,
+            Logging.Logger logger)
         {
-            __youtubeDL = new YoutubeDL();
-            __youtubeDL.Options.SubtitleOptions.AllSubs = Settings.ConfigHelper.Config.YoutubeDL.GetSubtitles;
-            __youtubeDL.Options.VideoFormatOptions.Format = NYoutubeDL.Helpers.Enums.VideoFormat.best;
-            __youtubeDL.YoutubeDlPath = Settings.ConfigHelper.ReadonlySettings.GetYoutubeDLPath();
-
-            __youtubeDL.StandardOutputEvent += (sender, output) =>
-            {
-                WriteOnLine(ScreenPosition, output.StartsWith("[download]") ? string.Format("{0} Video: {1}...", output, __TruncateStrIfTooLong(__title)) : output);
-            };
-            __youtubeDL.StandardErrorEvent += (sender, errorOutput) => __downloadError = errorOutput;
+            ScreenPosition = screenPosition;
+            __executableTriedFirst = executableTriedFirst;
+            __fallbackExecutableOrNull = fallbackExecutableOrNull;
+            __videoDownloaderExecutableRunner = videoDownloaderExecutableRunner;
+            __youtubeDLConfig = youtubeDLConfig;
+            __downloadFolderPath = downloadFolderPath;
+            __interruptibleDownloadThreadStarter = interruptibleDownloadThreadStarter;
+            __consoleRowOverwriter = consoleRowOverwriter;
+            __timeProvider = timeProvider;
+            __logger = logger;
+            StartDateTime = Now();
         }
 
         public void CleanUpInstance()
         {
-            WriteOnLine(ScreenPosition, "download instance not needed. removed...");
+            __consoleRowOverwriter.OverwriteConsoleRowWithMessage(ScreenPosition, "download instance not needed. removed...");
         }
 
         public void Download(Entities.Metadata metadata)
         {
             NotDownloading = false;
-            __downloadError = null;
-            __youtubeDL.Options.FilesystemOptions.Output = Path.Join(Settings.ConfigHelper.ReadonlySettings.GetDownloadFolderPath(),
-                                                                     __ItemNameSanitizer(metadata.Title) + "." + Settings.ConfigHelper.Config.YoutubeDL.VideoExtension);
-            __thread = new Thread(() =>
+            string outputFilePath = Path.Join(__downloadFolderPath, __ItemNameSanitizer(metadata.Title) + "." + __youtubeDLConfig.VideoExtension);
+            CancellationTokenSource stopThisDownload = new CancellationTokenSource();
+            __stopCurrentDownload = stopThisDownload;
+            __interruptDownloadThread = __interruptibleDownloadThreadStarter.StartThreadThatRunsAndReturnActionThatInterruptsIt(() =>
             {
                 __title = metadata.Title;
-                try
-                {
-                    __youtubeDL.Download(metadata.Url);
-                    if (string.IsNullOrEmpty(__downloadError) ||
-                        Settings.ConfigHelper.Config.YoutubeDL.FalseErrorMessages.Contains(__downloadError.Trim()))
+                VideoDownloadAttemptOutcome outcome = VideoDownloadAttemptRules.RunExecutableTriedFirstThenFallbackExecutableWhenFirstAttemptFailed(
+                    () => __AttemptToDownload(metadata, __executableTriedFirst, false, outputFilePath, stopThisDownload.Token),
+                    __fallbackExecutableOrNull == null ? null : () =>
                     {
-                        metadata.Status = Entities.MetadataStatus.Downloaded;
-                    }
-                    else
-                    {
-                        Logging.Logger.GetCurrent().LogEntry(new Entities.OPMFLog
-                        {
-                            Message = __downloadError,
-                            Type = Entities.OPMFLogType.Warning,
-                            Variables = new Dictionary<string, object>
-                            {
-                                { "metadata.Title", __title },
-                                { "metadata.Url", metadata.Url }
-                            }
-                        });
-                        WriteOnLine(ScreenPosition, "An error has occured. See error log...");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logging.Logger.GetCurrent().LogEntry(new Entities.OPMFError(ex)
-                    {
-                        Variables = new Dictionary<string, object>
-                        {
-                            { "metadata.Title", __title },
-                            { "metadata.Url", metadata.Url }
-                        }
+                        __consoleRowOverwriter.OverwriteConsoleRowWithMessage(
+                            ScreenPosition, __executableTriedFirst.ExecutableName + " failed, trying " + __fallbackExecutableOrNull.ExecutableName);
+                        return __AttemptToDownload(metadata, __fallbackExecutableOrNull, true, outputFilePath, stopThisDownload.Token);
                     });
+                if (outcome == VideoDownloadAttemptOutcome.Succeeded)
+                {
+                    metadata.Status = Entities.MetadataStatus.Downloaded;
                 }
                 NotDownloading = true;
             });
-            __thread.Start();
-        }
-
-        public void WriteOnLine(int position, string message)
-        {
-            Console.SetCursorPosition(0, position);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, position);
-            Console.WriteLine(message);
         }
 
         public void StopDownloadThread()
         {
-            if (__thread != null) __thread.Interrupt();
+            if (__stopCurrentDownload != null) __stopCurrentDownload.Cancel();
+            if (__interruptDownloadThread != null) __interruptDownloadThread();
+        }
+
+        private VideoDownloadAttemptOutcome __AttemptToDownload(
+            Entities.Metadata metadata,
+            VideoDownloaderExecutableLocation executable,
+            bool tellExecutableNotToResumePartialFiles,
+            string outputFilePath,
+            CancellationToken downloadWasStopped)
+        {
+            try
+            {
+                string downloadError = __videoDownloaderExecutableRunner.RunExecutableToDownloadVideoAndReturnLastErrorOutputLine(
+                    executable.ExecutableFilePath,
+                    tellExecutableNotToResumePartialFiles,
+                    metadata.Url,
+                    outputFilePath,
+                    output => __consoleRowOverwriter.OverwriteConsoleRowWithMessage(
+                        ScreenPosition,
+                        output.StartsWith("[download]") ? string.Format("{0} Video: {1}...", output, __TruncateStrIfTooLong(__title)) : output));
+                if (downloadWasStopped.IsCancellationRequested)
+                {
+                    return VideoDownloadAttemptOutcome.StoppedBecauseDownloadInstanceTimedOut;
+                }
+                if (VideoDownloadAttemptRules.DidDownloadAttemptSucceed(downloadError, __youtubeDLConfig.FalseErrorMessages))
+                {
+                    return VideoDownloadAttemptOutcome.Succeeded;
+                }
+                __logger.LogEntry(new Entities.OPMFLog
+                {
+                    Message = downloadError,
+                    Type = Entities.OPMFLogType.Warning,
+                    DateCreated = Now(),
+                    Variables = new Dictionary<string, object>
+                    {
+                        { "metadata.Title", __title },
+                        { "metadata.Url", metadata.Url },
+                        { "executableName", executable.ExecutableName }
+                    }
+                });
+                __consoleRowOverwriter.OverwriteConsoleRowWithMessage(ScreenPosition, "An error has occured. See error log...");
+                return VideoDownloadAttemptOutcome.Failed;
+            }
+            catch (Exception ex)
+            {
+                __logger.LogEntry(new Entities.OPMFError(ex)
+                {
+                    DateCreated = Now(),
+                    Variables = new Dictionary<string, object>
+                    {
+                        { "metadata.Title", __title },
+                        { "metadata.Url", metadata.Url },
+                        { "executableName", executable.ExecutableName }
+                    }
+                });
+                return downloadWasStopped.IsCancellationRequested
+                    ? VideoDownloadAttemptOutcome.StoppedBecauseDownloadInstanceTimedOut
+                    : VideoDownloadAttemptOutcome.Failed;
+            }
+        }
+
+        private DateTime Now()
+        {
+            return __timeProvider.GetLocalNow().LocalDateTime;
         }
 
         private string __TruncateStrIfTooLong(string str)

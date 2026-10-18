@@ -1,0 +1,49 @@
+@using MediaManager.Dtos.Application
+@using MediaManagerUI.Modules.LogBrowser
+
+@if (Log != null)
+{
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Logged date: </b></MudText>
+        <MudText>@Log.CreatedAt</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Log type: </b></MudText>
+        <MudText>@Log.LogType</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Message: </b></MudText>
+        <MudText>@Log.Message</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Variables: </b></MudText>
+        <_MultilineTextAsParagraphs Text="@Log.VariablesAsIndentedJson" />
+    </MudPaper>
+    @if (!string.IsNullOrWhiteSpace(Log.ExceptionText))
+    {
+        <MudPaper Class="pa-2 ma-2" Outlined="true">
+            <MudText><b>Exception: </b></MudText>
+            <_MultilineTextAsParagraphs Text="@Log.ExceptionText" />
+        </MudPaper>
+    }
+}
+
+@code {
+    private ApplicationLogEntryDto? _log;
+    [Parameter]
+    public ApplicationLogEntryDto? Log
+    {
+        get => _log;
+        set
+        {
+            if (_log == value)
+            {
+                return;
+            }
+            _log = value;
+            LogChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<ApplicationLogEntryDto> LogChanged { get; set; }
+}

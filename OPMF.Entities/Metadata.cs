@@ -20,7 +20,7 @@ namespace OPMF.Entities
         public MetadataStatus Status { get; set; } = MetadataStatus.New;
         public bool IsBeingDownloaded { get; set; } = false;
         public DateTime PublishedAt { get; set; }
-        public TimeSpan Duration { get; set; } // Video extension table
+        public TimeSpan Duration { get; set; }
         public string ChannelSiteId { get; set; }
         public object OriginalResponse { get; set; }
     }

@@ -5,53 +5,30 @@ namespace OPMF.Database
 {
     public class DatabaseAdapter : IDisposable
     {
-        // --- Flags ---
-        private const string __CONNECTION = "shared";
+        private const string SharedConnectionMode = "shared";
 
-        // --- Dynamic objects ---
-        private readonly string __dbPath;
-        private readonly LiteDatabase __db;
+        private readonly LiteDatabase _liteDatabase;
 
         public YoutubeMetadataDbCollection YoutubeMetadataDbCollection { get; } = null;
         public YoutubeChannelDbCollection YoutubeChannelDbCollection { get; } = null;
         public OPMFLogDbCollection OPMFLogDbCollection { get; } = null;
 
-        public DatabaseAdapter(string dbPath)
+        public DatabaseAdapter(string databaseFilePath) : this(new LiteDatabase(string.Format(@"Filename={0};connection={1}", databaseFilePath, SharedConnectionMode)))
         {
-            __dbPath = dbPath;
-            __db = new LiteDatabase(string.Format(@"Filename={0};connection={1}", __dbPath, __CONNECTION));
-
-            YoutubeMetadataDbCollection = new YoutubeMetadataDbCollection(__db);
-            YoutubeChannelDbCollection = new YoutubeChannelDbCollection(__db);
-            OPMFLogDbCollection = new OPMFLogDbCollection(__db);
         }
 
-        public void MigrateData()
+        public DatabaseAdapter(LiteDatabase liteDatabase)
         {
-            DatabaseAdapter newDatabaseAdapter = new DatabaseAdapter(Settings.ConfigHelper.ReadonlySettings.GetDatabasePath() + ".new");
-            newDatabaseAdapter.YoutubeMetadataDbCollection.InsertBulk(YoutubeMetadataDbCollection.GetAll());
-            newDatabaseAdapter.YoutubeChannelDbCollection.InsertBulk(YoutubeChannelDbCollection.GetAll());
-            newDatabaseAdapter.OPMFLogDbCollection.InsertBulk(OPMFLogDbCollection.GetAll());
+            _liteDatabase = liteDatabase;
+
+            YoutubeMetadataDbCollection = new YoutubeMetadataDbCollection(_liteDatabase);
+            YoutubeChannelDbCollection = new YoutubeChannelDbCollection(_liteDatabase);
+            OPMFLogDbCollection = new OPMFLogDbCollection(_liteDatabase);
         }
 
         public void Dispose()
         {
-            __db.Dispose();
-        }
-
-        // --- Static object ---
-        public static void AccessDbAdapter(Action<DatabaseAdapter> DbAction)
-        {
-            try
-            {
-                using DatabaseAdapter databaseAdapter = new DatabaseAdapter(Settings.ConfigHelper.ReadonlySettings.GetDatabasePath());
-                DbAction(databaseAdapter);
-            }
-            catch (Exception e)
-            {
-                TextLogging.TextLog.GetCurrent().LogEntry(e.ToString());
-                throw;
-            }
+            _liteDatabase.Dispose();
         }
     }
 }

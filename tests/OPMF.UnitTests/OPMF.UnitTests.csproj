@@ -10,6 +10,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.6.6" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" Version="8.10.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="bunit" Version="1.40.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,6 +26,20 @@
   <ItemGroup>
     <ProjectReference Include="..\..\OPMF.Entities\OPMF.Entities.csproj" />
     <ProjectReference Include="..\..\OPMF.Settings\OPMF.Settings.csproj" />
+    <ProjectReference Include="..\..\OPMF.Database\OPMF.Database.csproj" />
+    <ProjectReference Include="..\..\OPMF.Filesystem\OPMF.Filesystem.csproj" />
+    <ProjectReference Include="..\..\OPMF.Logging\OPMF.Logging.csproj" />
+    <ProjectReference Include="..\..\OPMF.TextLogging\OPMF.TextLogging.csproj" />
+    <ProjectReference Include="..\..\OPMF.SiteAdapter\OPMF.SiteAdapter.csproj" />
+    <ProjectReference Include="..\..\OPMF.SiteAdapter.Youtube\OPMF.SiteAdapter.Youtube.csproj" />
+    <ProjectReference Include="..\..\OPMF.Downloader\OPMF.Downloader.csproj" />
+    <ProjectReference Include="..\..\OPMF.Downloader.YTDownloader\OPMF.Downloader.YTDownloader.csproj" />
+    <ProjectReference Include="..\..\OffPeakMediaFetcher\OffPeakMediaFetcher.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Services2\MediaManager.Services2.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Dtos\MediaManager.Dtos.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Repositories\MediaManager.Repositories.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Initializations\MediaManager.Initializations.csproj" />
+    <ProjectReference Include="..\..\MediaManagerUI.Components\MediaManagerUI.Components.csproj" />
   </ItemGroup>
 
 </Project>

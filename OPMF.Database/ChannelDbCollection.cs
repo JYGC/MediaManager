@@ -23,44 +23,44 @@ namespace OPMF.Database
 
         public List<TItem> GetManyBySiteIds(IEnumerable<string> ids)
         {
-            return _Collection.Query().Where(c => ids.Contains(c.SiteId)).ToList();
+            return _liteCollection.Query().Where(c => ids.Contains(c.SiteId)).ToList();
         }
 
         public IEnumerable<TItem> GetNotBacklisted()
         {
-            return _Collection.Find(i => i.Blacklisted == false).ToList();
+            return _liteCollection.Find(i => i.Blacklisted == false).ToList();
         }
 
         public IEnumerable<TItem> GetManyByWordInName(string wordInChannelName)
         {
-            return _Collection.Find(Query.Contains("Name", wordInChannelName));
+            return _liteCollection.Find(Query.Contains("Name", wordInChannelName));
         }
 
         public void InsertOrUpdate(IEnumerable<TItem> items)
         {
             try
             {
-                IEnumerable<TItem> dbToUpdate = _UpdateFields(items, (item, dbItem) =>
+                IEnumerable<TItem> storedItemsToUpdate = _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) =>
                 {
-                    dbItem.Name = item.Name;
-                    dbItem.Url = item.Url;
-                    dbItem.Thumbnail.Url = item.Thumbnail.Url;
-                    dbItem.Thumbnail.Width = item.Thumbnail.Width;
-                    dbItem.Thumbnail.Height = item.Thumbnail.Height;
+                    storedItem.Name = item.Name;
+                    storedItem.Url = item.Url;
+                    storedItem.Thumbnail.Url = item.Thumbnail.Url;
+                    storedItem.Thumbnail.Width = item.Thumbnail.Width;
+                    storedItem.Thumbnail.Height = item.Thumbnail.Height;
                     if (item.Description != null)
                     {
-                        dbItem.Description = item.Description;
+                        storedItem.Description = item.Description;
                     }
                 });
 
-                IEnumerable<TItem> toInsert = items.Where(i => !dbToUpdate.Any(j => j.Id == i.Id));
-                _Collection.InsertBulk(toInsert);
+                IEnumerable<TItem> toInsert = items.Where(i => !storedItemsToUpdate.Any(j => j.Id == i.Id));
+                _liteCollection.InsertBulk(toInsert);
 
-                _DB.Commit();
+                _liteDatabase.Commit();
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
                 throw;
             }
         }
@@ -69,17 +69,17 @@ namespace OPMF.Database
         {
             try
             {
-                _UpdateFields(items, (item, dbItem) =>
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) =>
                 {
-                    dbItem.LastCheckedOut = item.LastCheckedOut;
-                    dbItem.LastActivityDate = item.LastActivityDate;
+                    storedItem.LastCheckedOut = item.LastCheckedOut;
+                    storedItem.LastActivityDate = item.LastActivityDate;
                 });
 
-                _DB.Commit();
+                _liteDatabase.Commit();
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
                 throw;
             }
         }
@@ -88,27 +88,27 @@ namespace OPMF.Database
         {
             try
             {
-                _UpdateFields(items, (item, dbItem) => dbItem.Blacklisted = item.Blacklisted);
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) => storedItem.Blacklisted = item.Blacklisted);
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
                 throw;
             }
         }
 
-        protected IEnumerable<TItem> _UpdateFields(IEnumerable<TItem> items, Action<TItem, TItem> UpdateFields)
+        protected IEnumerable<TItem> _updateStoredItemsMatchingTheGivenItems(IEnumerable<TItem> items, Action<TItem, TItem> copyGivenItemOntoStoredItem)
         {
             IEnumerable<string> itemIds = items.Select(i => i.Id);
-            List<TItem> dbToUpdate = _Collection.Find(i => itemIds.Contains(i.SiteId)).ToList(); // dbToUpdate must be list or it won't update in foreach loop
-            foreach (TItem dbItem in dbToUpdate)
+            List<TItem> storedItemsToUpdate = _liteCollection.Find(i => itemIds.Contains(i.SiteId)).ToList(); // storedItemsToUpdate must be list or it won't update in foreach loop
+            foreach (TItem storedItem in storedItemsToUpdate)
             {
-                TItem item = items.First(i => i.Id == dbItem.Id);
-                UpdateFields(item, dbItem);
+                TItem item = items.First(i => i.Id == storedItem.Id);
+                copyGivenItemOntoStoredItem(item, storedItem);
             }
-            _Collection.Update(dbToUpdate);
+            _liteCollection.Update(storedItemsToUpdate);
 
-            return dbToUpdate;
+            return storedItemsToUpdate;
         }
     }
 }

@@ -1,25 +1,29 @@
-﻿namespace MediaManagerUI
+﻿using System.IO;
+using MediaManager.Initializations;
+using Microsoft.Extensions.DependencyInjection;
+using MudBlazor.Services;
+
+namespace MediaManagerUI
 {
     internal class Program
     {
         [STAThread]
         static void Main()
         {
-            try
-            {
-                OPMF.Settings.ConfigHelper.InitReadonlySettings();
-                OPMF.Filesystem.FolderSetup.EstablishFolders();
-                OPMF.Settings.ConfigHelper.EstablishConfig();
+            var services = new ServiceCollection();
+            services.AddSingleton(TimeProvider.System);
+            services.AddSingleton<TextWriter>(Console.Out);
+            services.AddMediaManagerApplicationLayer();
+            services.AddMudServices();
+            services.AddWpfBlazorWebView();
 
-                var app = new App();
+            using ServiceProvider serviceProvider = services.BuildServiceProvider();
+            serviceProvider.GetRequiredService<IApplicationEntryPointUseCase>().RunStartupThenRunApplicationThenRecordAndPrintAnyUnhandledError(() =>
+            {
+                var app = new App(serviceProvider);
                 app.InitializeComponent();
                 app.Run();
-            }
-            catch (Exception e)
-            {
-                OPMF.Logging.Logger.GetCurrent().LogEntry(new OPMF.Entities.OPMFError(e));
-                System.Console.WriteLine(e.Message);
-            }
-}
+            });
+        }
     }
 }

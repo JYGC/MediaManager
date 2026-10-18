@@ -1,39 +1,22 @@
 ﻿using System.Windows;
-using MediaManager.Services2;
 using Microsoft.Extensions.DependencyInjection;
-using MudBlazor.Services;
+using OPMF.TextLogging;
 
 namespace MediaManagerUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(IServiceProvider serviceProvider)
         {
-            try
+            var mainWindowConstructionFailureReporter = new MainWindowConstructionFailureReporter(
+                serviceProvider.GetRequiredService<TextLog>().LogEntry,
+                (text, caption) => MessageBox.Show(text, caption));
+
+            mainWindowConstructionFailureReporter.RunMainWindowConstructionAndReportAnyFailure(() =>
             {
                 InitializeComponent();
-
-                var serviceCollection = new ServiceCollection();
-
-                serviceCollection.AddScoped<ITaskRunnerServices, TaskRunnerServices>();
-                serviceCollection.AddScoped<IChannelServices, ChannelServices>();
-                serviceCollection.AddScoped<IMetadataServices, MetadataServices>();
-                serviceCollection.AddScoped<IChannelMetadataServices, ChannelMetadataServices>();
-                serviceCollection.AddScoped<ILogServices, LogServices>();
-
-                serviceCollection.AddMudServices();
-                serviceCollection.AddWpfBlazorWebView();
-
-                Resources.Add("services", serviceCollection.BuildServiceProvider());
-            }
-            catch (Exception e)
-            {
-                OPMF.TextLogging.TextLog.GetCurrent().LogEntry(e.ToString());
-                MessageBox.Show(e.Message, "Error");
-            }
+                Resources.Add("services", serviceProvider);
+            });
         }
     }
 }

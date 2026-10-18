@@ -12,47 +12,31 @@ namespace OPMF.Database
 
     public class DatabaseCollection<TItem> : IDatabaseCollection<TItem>
     {
-        protected string _KeyName { get; } = "_id";
+        protected string _idFieldName { get; } = "_id";
 
-        private LiteDatabase __db;
+        protected LiteDatabase _liteDatabase { get; }
 
-        private ILiteCollection<TItem> __collection;
+        protected ILiteCollection<TItem> _liteCollection { get; }
 
-        protected LiteDatabase _DB
+        public DatabaseCollection(LiteDatabase liteDatabase, string collectionName)
         {
-            get
-            {
-                return __db;
-            }
-        }
-
-        protected ILiteCollection<TItem> _Collection
-        {
-            get
-            {
-                return __collection;
-            }
-        }
-
-        public DatabaseCollection(LiteDatabase db, string collectionName)
-        {
-            __db = db;
-            __collection = __db.GetCollection<TItem>(collectionName);
+            _liteDatabase = liteDatabase;
+            _liteCollection = _liteDatabase.GetCollection<TItem>(collectionName);
         }
 
         public TItem GetBySiteId(string id)
         {
-            return _Collection.FindOne(Query.Contains("SiteId", id));
+            return _liteCollection.FindOne(Query.Contains("SiteId", id));
         }
 
         public void InsertBulk(IEnumerable<TItem> items)
         {
-            _Collection.InsertBulk(items);
+            _liteCollection.InsertBulk(items);
         }
 
         public IEnumerable<TItem> GetAll()
         {
-            return _Collection.FindAll();
+            return _liteCollection.FindAll();
         }
     }
 }

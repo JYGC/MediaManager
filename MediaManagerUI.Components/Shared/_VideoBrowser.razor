@@ -1,0 +1,147 @@
+﻿@using MediaManager.Dtos.Application
+@using MediaManagerUI.Modules.VideoBrowser
+
+<MudTable T="ApplicationVideoWithChannelDto"
+            Items="_videoBrowserModule?.Results"
+            Breakpoint="Breakpoint.Sm"
+            Loading="@(_videoBrowserModule?.IsLoading ?? false)"
+            Virtualize="true"
+            FixedHeader="true"
+            LoadingProgressColor="Color.Info"
+            Height="80vh">
+    <ToolBarContent>
+        @if (TableToolBarContent != null)
+        {
+            @TableToolBarContent
+        }
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Status</MudTh>
+        <MudTh>Channel</MudTh>
+        <MudTh>Title</MudTh>
+        <MudTh>Duration</MudTh>
+        <MudTh>Published at</MudTh>
+    </HeaderContent>
+    <LoadingContent>
+        <MudText>Loading...</MudText>
+    </LoadingContent>
+    <RowTemplate>
+        <MudTd DataLabel="Status">
+            @if (_videoBrowserModule != null)
+            {
+                @if (context.Video.IsBeingDownloaded)
+                {
+                    <MudText>Video is being downloaded...</MudText>
+                }
+                else
+                {
+                    @foreach (var status in _videoDownloadStatuses)
+                    {
+                        <MudButton Variant="@ComputeStatusButtonVariant(status, context.Video)"
+                                    Color="@((context.Video.DownloadStatus == status) ? Color.Secondary : Color.Default)"
+                                    OnClick="() => _videoBrowserModule.ScheduleMetadataStatusUpdate(status, context.Video)"
+                                    Disabled="_videoBrowserModule.UnselectableMetadataStatuses.Contains(status)"
+                                    Size="Size.Small"
+                                    Class="ml-0 mr-0 pl-2 pr-2">
+                            @status
+                        </MudButton>
+                    }
+                }
+            }
+        </MudTd>
+        <MudTd DataLabel="Channel">
+            <MudButton OnClick="@(() => OpenChannelDetailDialog(context))">@context.Channel?.Name</MudButton>
+        </MudTd>
+        <MudTd DataLabel="Title">
+            <MudButton OnClick="@(() => OpenVideoDetailDialog(context))">@context.Video.Title</MudButton>
+        </MudTd>
+        <MudTd DataLabel="Duration">
+            @if (context.Video.Duration == TimeSpan.Zero)
+            {
+                <MudText>No data</MudText>
+            }
+            else
+            {
+                <MudText>@context.Video.Duration</MudText>
+            }
+        </MudTd>
+        <MudTd DataLabel="PublishedAt">
+            <MudText>@context.Video.PublishedAt</MudText>
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@if (_selectedVideoWithChannel != null)
+{
+    <MudDialog @bind-Visible="_showVideoDetailsDialog"
+                style="overflow: scroll; height: 100vh"
+                Options="_dialogOptions">
+        <DialogContent>
+            <_VideoDetails @bind-VideoBrowserModule="_videoBrowserModule"
+                            @bind-VideoWithChannel="_selectedVideoWithChannel" />
+        </DialogContent>
+    </MudDialog>
+    <MudDialog @bind-Visible="_showChannelDetailsDialog"
+                style="overflow: scroll; height: 100vh"
+                Options="_dialogOptions">
+        <DialogContent>
+            <_ChannelDetails Channel="_selectedVideoWithChannel.Channel" />
+        </DialogContent>
+    </MudDialog>
+}
+
+@code {
+    private IVideoBrowserModule? _videoBrowserModule;
+    [Parameter]
+    public IVideoBrowserModule? VideoBrowserModule
+    {
+        get => _videoBrowserModule;
+        set
+        {
+            if (_videoBrowserModule == value)
+            {
+                return;
+            }
+            _videoBrowserModule = value;
+            VideoBrowserModuleChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<IVideoBrowserModule> VideoBrowserModuleChanged { get; set; }
+
+    [Parameter]
+    public RenderFragment? TableToolBarContent { get; set; }
+
+    private ApplicationVideoDownloadStatus[] _videoDownloadStatuses = Enum.GetValues(typeof(ApplicationVideoDownloadStatus)).Cast<ApplicationVideoDownloadStatus>().ToArray();
+
+    protected override void OnParametersSet()
+    {
+        if (_videoBrowserModule == null)
+        {
+            throw new Exception("Please set GetResults to a method");
+        }
+        base.OnParametersSet();
+    }
+
+    private readonly DialogOptions _dialogOptions = new() { FullScreen = true, CloseButton = true };
+
+    private ApplicationVideoWithChannelDto? _selectedVideoWithChannel = new ApplicationVideoWithChannelDto { Video = new ApplicationVideoMetadataDto(), Channel = new ApplicationChannelDto() };
+    private bool _showVideoDetailsDialog;
+    private void OpenVideoDetailDialog(ApplicationVideoWithChannelDto videoWithChannel)
+    {
+        _selectedVideoWithChannel = videoWithChannel;
+        _showVideoDetailsDialog = true;
+    }
+
+    private bool _showChannelDetailsDialog;
+    private void OpenChannelDetailDialog(ApplicationVideoWithChannelDto videoWithChannel)
+    {
+        _selectedVideoWithChannel = videoWithChannel;
+        _showChannelDetailsDialog = true;
+    }
+
+    private Variant ComputeStatusButtonVariant(ApplicationVideoDownloadStatus status, ApplicationVideoMetadataDto video) =>
+        (_videoBrowserModule != null && !_videoBrowserModule.UnselectableMetadataStatuses.Contains(status)) ? Variant.Filled
+            : (video.DownloadStatus == status) ? Variant.Outlined
+            : Variant.Text;
+}

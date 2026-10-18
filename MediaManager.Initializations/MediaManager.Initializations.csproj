@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MediaManager.Services2\MediaManager.Services2.csproj" />
+    <ProjectReference Include="..\MediaManager.Dtos\MediaManager.Dtos.csproj" />
+    <ProjectReference Include="..\OPMF.Settings\OPMF.Settings.csproj" />
+    <ProjectReference Include="..\OPMF.Filesystem\OPMF.Filesystem.csproj" />
+  </ItemGroup>
+
+</Project>

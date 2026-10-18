@@ -1,27 +1,24 @@
-﻿using OPMF.Entities;
+﻿using OPMF.Database;
+using OPMF.Entities;
 using System.Collections.Generic;
 
 namespace OPMF.Logging
 {
     public class Logger
     {
-        public void LogEntry(OPMFLog oPMFLog)
+        private readonly IDatabaseConnectionOpener _databaseConnectionOpener;
+
+        public Logger(IDatabaseConnectionOpener databaseConnectionOpener)
         {
-            Database.DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                dbAdapter.OPMFLogDbCollection.InsertBulk(new List<OPMFLog> { oPMFLog });
-            });
+            _databaseConnectionOpener = databaseConnectionOpener;
         }
 
-        private static Logger __currentInstance;
-
-        public static Logger GetCurrent()
+        public void LogEntry(OPMFLog logEntry)
         {
-            if (__currentInstance == null)
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(dbAdapter =>
             {
-                __currentInstance = new Logger();
-            }
-            return __currentInstance;
+                dbAdapter.OPMFLogDbCollection.InsertBulk(new List<OPMFLog> { logEntry });
+            });
         }
     }
 }

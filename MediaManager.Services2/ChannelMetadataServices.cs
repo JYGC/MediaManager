@@ -1,116 +1,85 @@
-﻿using OPMF.Database;
-using OPMF.Entities;
-using OPMF.SiteAdapter.Youtube;
+using MediaManager.Dtos.Repositories;
+using MediaManager.Dtos.Services;
+using MediaManager.Repositories;
 
 namespace MediaManager.Services2
 {
     public interface IChannelMetadataServices
     {
-        List<ChannelMetadata> GetByChannelAndTitleContainingWord(
-            string wordInChannelName,
-            string wordInMetadataTitle, int skip, int pageSize);
-        List<ChannelMetadata> GetByTitleContainingWord(string wordInMetadataTitle, int skip, int pageSize);
-        List<ChannelMetadata> GetNew(int skip, int pageSize);
-        List<ChannelMetadata> GetToDownloadAndWait(int skip, int pageSize);
-        List<ChannelMetadata> GetVideoByUrl(string videoUrl, int skip, int pageSize);
+        List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereChannelNameAndVideoTitleContainWords(
+            string wordInChannelName, string wordInVideoTitle, int skip, int pageSize);
+        List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereVideoTitleContainsWord(string wordInVideoTitle, int skip, int pageSize);
+        List<ServiceVideoWithChannelDto> GetNewVideosWithChannels(int skip, int pageSize);
+        List<ServiceVideoWithChannelDto> GetVideosWithChannelsQueuedToDownloadOrWaiting(int skip, int pageSize);
+        ServiceVideoWithChannelDto GetVideoWithChannelByUrlFetchingFromVideoSiteWhenNotStored(string videoUrl);
     }
 
-    public class ChannelMetadataServices : IChannelMetadataServices
+    public class ChannelMetadataServices(
+        IChannelRepository channelRepository,
+        IVideoMetadataRepository videoMetadataRepository,
+        IVideoSiteRepository videoSiteRepository) : IChannelMetadataServices
     {
-        public List<ChannelMetadata> GetByChannelAndTitleContainingWord(
-            string wordInChannelName,
-            string wordInMetadataTitle, int skip, int pageSize)
+        public List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereChannelNameAndVideoTitleContainWords(
+            string wordInChannelName, string wordInVideoTitle, int skip, int pageSize)
         {
-            List<ChannelMetadata> metadataChannels = new List<ChannelMetadata>() { };
-            OPMF.Database.DatabaseAdapter.AccessDbAdapter(dbAdapter =>
+            Dictionary<string, RepositoryChannelDto> channelsWithSiteId = channelRepository
+                .GetChannelsWhoseNameContains(wordInChannelName)
+                .ToDictionary(channel => channel.SiteId, channel => channel);
+
+            List<RepositoryVideoMetadataDto> videos = videoMetadataRepository
+                .GetVideosOfChannelsWhoseTitleContains(channelsWithSiteId.Keys, wordInVideoTitle, skip, pageSize);
+
+            return videos
+                .Select(video => RepositoryDtoAndServiceDtoConverter.ConvertVideoWithChannelToServiceDto(video, channelsWithSiteId[video.ChannelSiteId]))
+                .ToList();
+        }
+
+        public List<ServiceVideoWithChannelDto> GetVideosWithChannelsWhereVideoTitleContainsWord(string wordInVideoTitle, int skip, int pageSize)
+        {
+            return JoinVideosWithTheirChannels(videoMetadataRepository.GetVideosWhoseTitleContains(wordInVideoTitle, skip, pageSize));
+        }
+
+        public List<ServiceVideoWithChannelDto> GetNewVideosWithChannels(int skip, int pageSize)
+        {
+            return JoinVideosWithTheirChannels(videoMetadataRepository.GetNewVideos(skip, pageSize));
+        }
+
+        public List<ServiceVideoWithChannelDto> GetVideosWithChannelsQueuedToDownloadOrWaiting(int skip, int pageSize)
+        {
+            return JoinVideosWithTheirChannels(videoMetadataRepository.GetVideosQueuedToDownloadOrWaiting(skip, pageSize));
+        }
+
+        public ServiceVideoWithChannelDto GetVideoWithChannelByUrlFetchingFromVideoSiteWhenNotStored(string videoUrl)
+        {
+            string videoSiteId = videoSiteRepository.GetVideoSiteIdFromVideoUrl(videoUrl);
+
+            RepositoryVideoMetadataDto? storedVideo = videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(videoSiteId);
+            if (storedVideo != null)
             {
-                Dictionary<string, Channel> channelsWithSiteId = dbAdapter.YoutubeChannelDbCollection.GetManyByWordInName(
-                    wordInChannelName).ToDictionary(c => c.SiteId, c => c);
+                RepositoryChannelDto? channelOfStoredVideo = channelRepository.GetChannelWithSiteId(storedVideo.ChannelSiteId);
+                return RepositoryDtoAndServiceDtoConverter.ConvertVideoWithChannelToServiceDto(storedVideo, channelOfStoredVideo);
+            }
 
-                IEnumerable<Metadata> metadatas = dbAdapter.YoutubeMetadataDbCollection.GetManyByChannelSiteIdAndWordInTitle(
-                    channelsWithSiteId.Keys, wordInMetadataTitle, skip, pageSize);
-
-                foreach (Metadata metadata in metadatas)
-                {
-                    metadataChannels.AddRange(new ChannelMetadata[]
-                    {
-                        new ChannelMetadata
-                        {
-                            Metadata = metadata,
-                            Channel = channelsWithSiteId[metadata.ChannelSiteId]
-                        }
-                    });
-                }
-            });
-            return metadataChannels;
-        }
-
-        public List<ChannelMetadata> GetByTitleContainingWord(string wordInMetadataTitle, int skip, int pageSize)
-        {
-            return __GetChannelMetadatas((metadataDbAdapter) => metadataDbAdapter.GetManyByWordInTitle(wordInMetadataTitle, skip, pageSize));
-        }
-
-        private List<ChannelMetadata> __GetChannelMetadatas(
-            Func<OPMF.Database.IMetadataDbCollection<Metadata>, IEnumerable<Metadata>> metadataDbFunc)
-        {
-            List<ChannelMetadata> metadataChannels = new List<ChannelMetadata>() { };
-
-            OPMF.Database.DatabaseAdapter.AccessDbAdapter(dbAdapter =>
+            RepositoryVideoWithChannelDto fetchedVideoWithChannel = videoSiteRepository.FetchVideoWithItsChannelFromVideoSite(videoSiteId);
+            if (fetchedVideoWithChannel.Channel == null || fetchedVideoWithChannel.Video == null)
             {
-                IEnumerable<Metadata> metadatas = metadataDbFunc(dbAdapter.YoutubeMetadataDbCollection);
-
-                List<string> channelSiteIds = metadatas.Select(s => s.ChannelSiteId).Distinct().ToList();
-                Dictionary<string, Channel> channelsWithSiteIds = dbAdapter.YoutubeChannelDbCollection
-                    .GetManyBySiteIds(channelSiteIds).ToDictionary(c => c.SiteId, c => c);
-
-                foreach (Metadata metadata in metadatas)
-                {
-                    metadataChannels.Add(new ChannelMetadata
-                    {
-                        Metadata = metadata,
-                        Channel = channelsWithSiteIds[metadata.ChannelSiteId]
-                    });
-                }
-            });
-
-            return metadataChannels;
+                throw new Exception("Failed to get video");
+            }
+            videoMetadataRepository.InsertVideosThatAreNotStoredYet([fetchedVideoWithChannel.Video]);
+            channelRepository.InsertNewChannelsAndUpdateNameUrlThumbnailAndDescriptionOfExistingChannels([fetchedVideoWithChannel.Channel]);
+            return RepositoryDtoAndServiceDtoConverter.ConvertVideoWithChannelToServiceDto(fetchedVideoWithChannel.Video, fetchedVideoWithChannel.Channel);
         }
 
-        public List<ChannelMetadata> GetNew(int skip, int pageSize)
+        private List<ServiceVideoWithChannelDto> JoinVideosWithTheirChannels(List<RepositoryVideoMetadataDto> videos)
         {
-            return __GetChannelMetadatas((metadataDbAdapter) => metadataDbAdapter.GetNew(skip, pageSize));
-        }
+            List<string> channelSiteIds = videos.Select(video => video.ChannelSiteId).Distinct().ToList();
+            Dictionary<string, RepositoryChannelDto> channelsWithSiteIds = channelRepository
+                .GetChannelsWithSiteIds(channelSiteIds)
+                .ToDictionary(channel => channel.SiteId, channel => channel);
 
-        public List<ChannelMetadata> GetToDownloadAndWait(int skip, int pageSize)
-        {
-            return __GetChannelMetadatas((metadataDbAdapter) => metadataDbAdapter.GetToDownloadAndWait(skip, pageSize));
-        }
-
-        public List<ChannelMetadata> GetVideoByUrl(string videoUrl, int skip, int pageSize)
-        {
-            var siteVideoGetter = new YoutubeVideoMetadataGetter(); // Replace when adding other platforms
-            var siteId = siteVideoGetter.GetSiteIdFromURL(videoUrl);
-
-            (Metadata? Metadata, Channel? Channel) videoWithChannel = (null, null);
-            DatabaseAdapter.AccessDbAdapter((dbAdapter) =>
-            {
-                videoWithChannel.Metadata = dbAdapter.YoutubeMetadataDbCollection.GetBySiteId(siteId);
-                if (videoWithChannel.Metadata == null)
-                {
-                    videoWithChannel = siteVideoGetter.GetVideoByURL(siteId);
-                    if (videoWithChannel.Channel == null || videoWithChannel.Metadata == null)
-                    {
-                        throw new Exception("Failed to get video");
-                    }
-                    dbAdapter.YoutubeMetadataDbCollection.InsertNew(new List<Metadata> { videoWithChannel.Metadata });
-                    dbAdapter.YoutubeChannelDbCollection.InsertOrUpdate(new List<Channel> { videoWithChannel.Channel });
-                }
-                else
-                {
-                    videoWithChannel.Channel = dbAdapter.YoutubeChannelDbCollection.GetBySiteId(videoWithChannel.Metadata.ChannelSiteId);
-                }
-            });
-            return [ new ChannelMetadata { Channel = videoWithChannel.Channel, Metadata = videoWithChannel.Metadata } ];
+            return videos
+                .Select(video => RepositoryDtoAndServiceDtoConverter.ConvertVideoWithChannelToServiceDto(video, channelsWithSiteIds[video.ChannelSiteId]))
+                .ToList();
         }
     }
 }

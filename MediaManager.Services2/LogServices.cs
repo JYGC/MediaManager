@@ -1,33 +1,30 @@
-﻿using OPMF.Database;
-using OPMF.Entities;
+using MediaManager.Dtos.Repositories;
+using MediaManager.Dtos.Services;
+using MediaManager.Repositories;
 
 namespace MediaManager.Services2
 {
     public interface ILogServices
     {
-        List<OPMFLog> GetWarnings(DateTime startDateTime, DateTime endDateTime);
-        List<OPMFLog> GetErrors(DateTime startDateTime, DateTime endDateTime);
+        List<ServiceLogEntryDto> GetWarningsLoggedBetween(DateTime startDateTime, DateTime endDateTime);
+        List<ServiceLogEntryDto> GetErrorsLoggedBetween(DateTime startDateTime, DateTime endDateTime);
+        void RecordError(string errorMessage, string fullExceptionText);
     }
-    public class LogServices : ILogServices
+    public class LogServices(ILogRepository logRepository) : ILogServices
     {
-        public List<OPMFLog> GetWarnings(DateTime startDateTime, DateTime endDateTime)
+        public List<ServiceLogEntryDto> GetWarningsLoggedBetween(DateTime startDateTime, DateTime endDateTime)
         {
-            List<OPMFLog> logs = [];
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                logs = dbAdapter.OPMFLogDbCollection.GetWarnings(startDateTime, endDateTime).ToList();
-            });
-            return logs;
+            return logRepository.GetWarningsLoggedBetween(startDateTime, endDateTime).Select(RepositoryDtoAndServiceDtoConverter.ConvertLogEntryToServiceDto).ToList();
         }
 
-        public List<OPMFLog> GetErrors(DateTime startDateTime, DateTime endDateTime)
+        public List<ServiceLogEntryDto> GetErrorsLoggedBetween(DateTime startDateTime, DateTime endDateTime)
         {
-            List<OPMFLog> logs = [];
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                logs = dbAdapter.OPMFLogDbCollection.GetErrors(startDateTime, endDateTime).ToList();
-            });
-            return logs;
+            return logRepository.GetErrorsLoggedBetween(startDateTime, endDateTime).Select(RepositoryDtoAndServiceDtoConverter.ConvertLogEntryToServiceDto).ToList();
+        }
+
+        public void RecordError(string errorMessage, string fullExceptionText)
+        {
+            logRepository.RecordErrorLogEntry(new RepositoryErrorLogEntryToRecordDto { Message = errorMessage, ExceptionText = fullExceptionText });
         }
     }
 }
