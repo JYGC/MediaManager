@@ -1,0 +1,38 @@
+﻿@page "/videos/getsingle"
+
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.VideoBrowser
+@using MediaManagerUI.Shared
+
+@inject IVideoBrowsingUseCases _videoBrowsingUseCases
+@inject TimeProvider _timeProvider
+
+<_VideoBrowser @bind-VideoBrowserModule="_getVideoTableModule">
+    <TableToolBarContent>
+        @if (_getVideoTableModule != null && _getVideoTableModuleAsNetSearchable != null)
+        {
+            <MudText Typo="Typo.subtitle1">Get Single Video from Internet</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="_getVideoTableModuleAsNetSearchable.SearchVideoUrl"
+                          Placeholder="Video URL"
+                          Variant="Variant.Text"></MudTextField>
+            <MudButton Variant="Variant.Outlined" OnClick="_getVideoTableModule.GetResultsAsync">Find</MudButton>
+        }
+    </TableToolBarContent>
+</_VideoBrowser>
+
+@code {
+    private IVideoBrowserModule? _getVideoTableModule;
+    private INetSearchableVideoBrowserModule? _getVideoTableModuleAsNetSearchable;
+
+    protected override void OnInitialized()
+    {
+        _getVideoTableModule = new GetSingleModule(_videoBrowsingUseCases, _timeProvider);
+        _getVideoTableModuleAsNetSearchable = (INetSearchableVideoBrowserModule)_getVideoTableModule;
+        if (_getVideoTableModuleAsNetSearchable == null)
+        {
+            throw new Exception("Module is not the correct type or is null");
+        }
+        base.OnInitialized();
+    }
+}

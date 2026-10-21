@@ -16,6 +16,7 @@ namespace OPMF.Database
         IEnumerable<TItem> GetManyByChannelSiteIdAndWordInTitle(IEnumerable<string> channelSiteIds, string wordInMetadataTitle, int skip, int pageSize);
         void InsertNew(IEnumerable<TItem> items);
         void UpdateStatus(IEnumerable<TItem> items);
+        void UpdateDownloadQualityChoiceOverrides(IEnumerable<TItem> items);
         void UpdateIsBeingProcessed(IEnumerable<TItem> items, bool? isProcessedValue = null);
     }
 
@@ -25,22 +26,22 @@ namespace OPMF.Database
 
         public IEnumerable<TItem> GetToDownload()
         {
-            return _Collection.Find(i => i.Status == MetadataStatus.ToDownload);
+            return _liteCollection.Find(i => i.Status == MetadataStatus.ToDownload);
         }
 
         public IEnumerable<TItem> GetToDownloadAndWait(int skip, int pageSize)
         {
-            return _Collection.Find(i => i.Status == MetadataStatus.ToDownload || i.Status == MetadataStatus.Wait, skip, pageSize);
+            return _liteCollection.Find(i => i.Status == MetadataStatus.ToDownload || i.Status == MetadataStatus.Wait, skip, pageSize);
         }
 
         public IEnumerable<TItem> GetNew(int skip, int pageSize)
         {
-            return _Collection.Find(i => i.Status == MetadataStatus.New, skip, pageSize);
+            return _liteCollection.Find(i => i.Status == MetadataStatus.New, skip, pageSize);
         }
 
         public IEnumerable<TItem> GetManyByWordInTitle(string wordInMetadataTitle, int skip, int pageSize)
         {
-            return _Collection.Query().Where(i => i.Title.Contains(wordInMetadataTitle)).OrderByDescending(i => i.PublishedAt).Skip(skip).Limit(pageSize).ToList();
+            return _liteCollection.Query().Where(i => i.Title.Contains(wordInMetadataTitle)).OrderByDescending(i => i.PublishedAt).Skip(skip).Limit(pageSize).ToList();
         }
 
         public IEnumerable<TItem> GetManyByChannelSiteIdAndWordInTitle(IEnumerable<string> channelSiteIds, string wordInMetadataTitle, int skip, int pageSize)
@@ -55,20 +56,20 @@ namespace OPMF.Database
             {
                 whereCause = Query.And(whereCause, Query.Contains("Title", wordInMetadataTitle));
             }
-            return _Collection.Find(whereCause, skip, pageSize);
+            return _liteCollection.Find(whereCause, skip, pageSize);
         }
 
         public void InsertNew(IEnumerable<TItem> items)
         {
             try
             {
-                IEnumerable<TItem> toInsert = items.Where(i => _Collection.FindOne(Query.EQ(_KeyName, i.Id)) == null);
-                _Collection.InsertBulk(toInsert);
-                _DB.Commit();
+                IEnumerable<TItem> toInsert = items.Where(i => _liteCollection.FindOne(Query.EQ(_idFieldName, i.Id)) == null);
+                _liteCollection.InsertBulk(toInsert);
+                _liteDatabase.Commit();
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
                 throw;
             }
         }
@@ -77,12 +78,31 @@ namespace OPMF.Database
         {
             try
             {
-                _UpdateFields(items, (item, dbItem) => dbItem.Status = item.Status);
-                _DB.Commit();
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) => storedItem.Status = item.Status);
+                _liteDatabase.Commit();
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
+                throw;
+            }
+        }
+
+        public void UpdateDownloadQualityChoiceOverrides(IEnumerable<TItem> items)
+        {
+            try
+            {
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) =>
+                {
+                    storedItem.VideoCodecChoiceOverride = item.VideoCodecChoiceOverride;
+                    storedItem.MaximumVideoResolutionChoiceOverride = item.MaximumVideoResolutionChoiceOverride;
+                    storedItem.AudioQualityChoiceOverride = item.AudioQualityChoiceOverride;
+                });
+                _liteDatabase.Commit();
+            }
+            catch (Exception)
+            {
+                _liteDatabase.Rollback();
                 throw;
             }
         }
@@ -91,35 +111,35 @@ namespace OPMF.Database
         {
             try
             {
-                _UpdateFields(items, (item, dbItem) =>
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) =>
                 {
                     if (isProcessedValue.HasValue) // Need to update items as well
                     {
                         item.IsBeingDownloaded = isProcessedValue.Value;
                     }
-                    dbItem.IsBeingDownloaded = item.IsBeingDownloaded;
+                    storedItem.IsBeingDownloaded = item.IsBeingDownloaded;
                 });
-                _DB.Commit();
+                _liteDatabase.Commit();
             }
             catch (Exception)
             {
-                _DB.Rollback();
+                _liteDatabase.Rollback();
                 throw;
             }
         }
 
-        protected IEnumerable<TItem> _UpdateFields(IEnumerable<TItem> items, Action<TItem, TItem> UpdateFields)
+        protected IEnumerable<TItem> _updateStoredItemsMatchingTheGivenItems(IEnumerable<TItem> items, Action<TItem, TItem> copyGivenItemOntoStoredItem)
         {
             IEnumerable<string> itemIds = items.Select(i => i.Id);
-            List<TItem> dbToUpdate = _Collection.Find(i => itemIds.Contains(i.SiteId)).ToList(); // dbToUpdate must be list or it won't update in foreach loop
-            foreach (TItem dbItem in dbToUpdate)
+            List<TItem> storedItemsToUpdate = _liteCollection.Find(i => itemIds.Contains(i.SiteId)).ToList(); // storedItemsToUpdate must be list or it won't update in foreach loop
+            foreach (TItem storedItem in storedItemsToUpdate)
             {
-                TItem item = items.First(i => i.Id == dbItem.Id);
-                UpdateFields(item, dbItem);
+                TItem item = items.First(i => i.Id == storedItem.Id);
+                copyGivenItemOntoStoredItem(item, storedItem);
             }
-            _Collection.Update(dbToUpdate);
+            _liteCollection.Update(storedItemsToUpdate);
 
-            return dbToUpdate;
+            return storedItemsToUpdate;
         }
     }
 }

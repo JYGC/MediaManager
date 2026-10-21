@@ -1,0 +1,55 @@
+﻿@using MediaManager.Dtos.Application
+
+@if (Channel != null)
+{
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Channel Name: </b></MudText>
+        <MudText>@Channel.Name</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Thumbnail: </b></MudText>
+        <MudImage Src="@Channel.Thumbnail.Url"
+                    Height="@((int?)Channel.Thumbnail.HeightInPixels)"
+                    Width="@((int?)Channel.Thumbnail.WidthInPixels)" />
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Url: </b></MudText>
+        <MudLink Href="@Channel.Url">@Channel.Url</MudLink>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Last checked out on: </b></MudText>
+        <MudText>@Channel.LastCheckedForNewVideosAt</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Date of last activity: </b></MudText>
+        <MudText>@Channel.LatestVideoPublishedAt</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Status: </b></MudText>
+        <MudText>@(Channel.IsNotFoundOnVideoSite ? "Channel Not Found" : "Channel Exists")</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Description: </b></MudText>
+        <_MultilineTextAsParagraphs Text="@(Channel.Description ?? string.Empty)" />
+    </MudPaper>
+}
+
+@code {
+    private ApplicationChannelDto? _channel;
+    [Parameter]
+    public ApplicationChannelDto? Channel
+    {
+        get => _channel;
+        set
+        {
+            if (_channel == value)
+            {
+                return;
+            }
+            _channel = value;
+            ChannelChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<ApplicationChannelDto> ChannelChanged { get; set; }
+}

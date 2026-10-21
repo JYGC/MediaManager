@@ -1,0 +1,41 @@
+﻿@page "/videos/find"
+
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.VideoBrowser
+@using MediaManagerUI.Shared
+
+@inject IVideoBrowsingUseCases _videoBrowsingUseCases
+@inject TimeProvider _timeProvider
+
+<_VideoBrowser @bind-VideoBrowserModule="_getVideoTableModule">
+    <TableToolBarContent>
+        @if (_getVideoTableModule != null && _getVideoTableModuleAsDatabaseSearchable != null)
+        {
+            <MudText Typo="Typo.subtitle1">Find Videos from Database</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="_getVideoTableModuleAsDatabaseSearchable.SearchVideoTitle"
+                          Placeholder="Video title"
+                          Variant="Variant.Text"></MudTextField>
+            <MudTextField @bind-Value="_getVideoTableModuleAsDatabaseSearchable.SearchChannelName"
+                          Placeholder="Channel name"
+                          Variant="Variant.Text"></MudTextField>
+            <MudButton Variant="Variant.Outlined" OnClick="_getVideoTableModule.GetResultsAsync">Find</MudButton>
+        }
+    </TableToolBarContent>
+</_VideoBrowser>
+
+@code {
+    private IVideoBrowserModule? _getVideoTableModule;
+    private IDatabaseSearchableVideoBrowserModule? _getVideoTableModuleAsDatabaseSearchable;
+
+    protected override void OnInitialized()
+    {
+        _getVideoTableModule = new FindVideosModule(_videoBrowsingUseCases, _timeProvider);
+        _getVideoTableModuleAsDatabaseSearchable = (IDatabaseSearchableVideoBrowserModule)_getVideoTableModule;
+        if (_getVideoTableModuleAsDatabaseSearchable == null)
+        {
+            throw new Exception("Module is not the correct type or is null");
+        }
+        base.OnInitialized();
+    }
+}

@@ -13,6 +13,7 @@ namespace OPMF.Settings
         string GetDatabasePath();
         string GetBinFolderPath();
         string GetYoutubeDLPath();
+        string GetYtDlpExecutablePath();
         string GetTextLogFile();
     }
 
@@ -58,6 +59,11 @@ namespace OPMF.Settings
         public string GetYoutubeDLPath()
         {
             return Path.Join(GetBinFolderPath(), "youtube-dl.exe");
+        }
+
+        public string GetYtDlpExecutablePath()
+        {
+            return Path.Join(GetBinFolderPath(), "yt-dlp.exe");
         }
 
         public string GetTextLogFile()

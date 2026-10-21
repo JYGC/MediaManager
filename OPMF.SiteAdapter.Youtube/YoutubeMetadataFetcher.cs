@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Services;
-using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
 using Newtonsoft.Json;
@@ -12,39 +10,38 @@ namespace OPMF.SiteAdapter.Youtube
 {
     public class YoutubeMetadataFetcher : IMetadataFetcher<Entities.Channel, Entities.Metadata>
     {
-        private readonly string[] __apiScope = new string[] { YouTubeService.Scope.YoutubeReadonly };
-        private readonly string __videoInfoParts = "snippet,contentDetails";
-        private readonly string __urlSaffolding = "https://www.youtube.com/watch?v={0}";
+        private readonly string __videoUrlFormat = "https://www.youtube.com/watch?v={0}";
 
-        private YouTubeService __youtubeService;
+        private readonly IYoutubeDataApi __youtubeDataApi;
+        private readonly int __newChannelPastVideoDayLimit;
+        private readonly TimeProvider __timeProvider;
+        private readonly Logging.Logger __logger;
+        private readonly TextWriter __standardOutput;
 
-        public YoutubeMetadataFetcher()
+        public YoutubeMetadataFetcher(IYoutubeDataApi youtubeDataApi, int newChannelPastVideoDayLimit, TimeProvider timeProvider, Logging.Logger logger, TextWriter standardOutput)
         {
-            UserCredential credential = GoogleAuthentication.GetCredential(__apiScope);
-            __youtubeService = new YouTubeService(new BaseClientService.Initializer()
-            {
-                ApplicationName = GetType().ToString()
-                , HttpClientInitializer = credential
-            });
+            __youtubeDataApi = youtubeDataApi;
+            __newChannelPastVideoDayLimit = newChannelPastVideoDayLimit;
+            __timeProvider = timeProvider;
+            __logger = logger;
+            __standardOutput = standardOutput;
         }
 
         public List<Entities.Metadata> FetchMetadata(ref List<Entities.Channel> channels)
         {
-            List<Entities.Metadata> vidoeInfos = new List<Entities.Metadata>();
+            List<Entities.Metadata> fetchedVideoMetadatas = new List<Entities.Metadata>();
             foreach (Entities.YoutubeChannel channel in channels)
             {
-                Console.WriteLine("fetching video metadata for youtube channel: " + channel.Name);
-                ActivitiesResource.ListRequest request = __youtubeService.Activities.List(__videoInfoParts);
-                request.ChannelId = channel.SiteId;
-                request.PublishedAfter = channel.LastCheckedOut.HasValue ? channel.LastCheckedOut.Value.AddDays(-2) : DateTime.Now.AddDays(-Settings.ConfigHelper.Config.NewChannelPastVideoDayLimit);
-                bool updateLastCheckedOutAndActivity = true;
+                __standardOutput.WriteLine("fetching video metadata for youtube channel: " + channel.Name);
+                DateTime publishedAfter = channel.LastCheckedOut.HasValue ? channel.LastCheckedOut.Value.AddDays(-2) : Now().AddDays(-__newChannelPastVideoDayLimit);
+                bool channelWasCheckedWithoutAnyActivityFailing = true;
                 DateTime? lastActivityDate = channel.LastActivityDate;
-                DateTime checkOutDatetime;
+                DateTime timeTheLastPageWasFetched;
                 string nextPageToken = null;
                 do
                 {
-                    ActivityListResponse response = request.Execute();
-                    checkOutDatetime = DateTime.Now;
+                    ActivityListResponse response = __youtubeDataApi.ListOnePageOfActivitiesOfChannelPublishedAfter(channel.SiteId, publishedAfter, nextPageToken);
+                    timeTheLastPageWasFetched = Now();
                     IList<Activity> activities = response.Items;
                     foreach (Activity activity in activities)
                     {
@@ -52,16 +49,16 @@ namespace OPMF.SiteAdapter.Youtube
                         {
                             if (activity.ContentDetails.Upload == null)
                             {
-                                Console.WriteLine("no video id detected. skip");
+                                __standardOutput.WriteLine("no video id detected. skip");
                             }
                             else
                             {
                                 DateTime publishedAt = Convert.ToDateTime(activity.Snippet.PublishedAt);
-                                Console.WriteLine("fetched: " + activity.Snippet.Title);
-                                vidoeInfos.Add(new Entities.YoutubeMetadata()
+                                __standardOutput.WriteLine("fetched: " + activity.Snippet.Title);
+                                fetchedVideoMetadatas.Add(new Entities.YoutubeMetadata()
                                 {
                                     SiteId = activity.ContentDetails.Upload.VideoId,
-                                    Url = string.Format(__urlSaffolding, activity.ContentDetails.Upload.VideoId),
+                                    Url = string.Format(__videoUrlFormat, activity.ContentDetails.Upload.VideoId),
                                     Title = activity.Snippet.Title,
                                     Thumbnail = new Entities.EntityThumbnail
                                     {
@@ -79,14 +76,15 @@ namespace OPMF.SiteAdapter.Youtube
                         }
                         catch (Exception e)
                         {
-                            updateLastCheckedOutAndActivity = false;
-                            Console.WriteLine("exception thrown: " + e.Message + "\n" +
+                            channelWasCheckedWithoutAnyActivityFailing = false;
+                            __standardOutput.WriteLine("exception thrown: " + e.Message + "\n" +
                                               "object json:\n" +
                                               JsonConvert.SerializeObject(activity) + "\n" +
                                               "skipping channel");
-                            Logging.Logger.GetCurrent().LogEntry(new Entities.OPMFLog
+                            __logger.LogEntry(new Entities.OPMFLog
                             {
                                 Message = "skipping channel: " + e.Message,
+                                DateCreated = Now(),
                                 Variables = new Dictionary<string, object>
                                 {
                                     { "activity object json", JsonConvert.SerializeObject(activity) },
@@ -97,18 +95,23 @@ namespace OPMF.SiteAdapter.Youtube
                             });
                         }
                     }
-                    nextPageToken = request.PageToken = response.NextPageToken;
+                    nextPageToken = response.NextPageToken;
                 }
                 while (nextPageToken != null);
 
-                if (updateLastCheckedOutAndActivity)
+                if (channelWasCheckedWithoutAnyActivityFailing)
                 {
-                    channel.LastCheckedOut = checkOutDatetime;
+                    channel.LastCheckedOut = timeTheLastPageWasFetched;
                     channel.LastActivityDate = lastActivityDate;
                 }
             }
 
-            return vidoeInfos;
+            return fetchedVideoMetadatas;
+        }
+
+        private DateTime Now()
+        {
+            return __timeProvider.GetLocalNow().LocalDateTime;
         }
     }
 }

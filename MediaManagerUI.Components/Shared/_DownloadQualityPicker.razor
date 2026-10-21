@@ -1,0 +1,43 @@
+@typeparam TChoice where TChoice : struct
+
+<MudSelect T="DownloadQualityPickerEntry<TChoice>"
+           Label="@Label"
+           Variant="Variant.Outlined"
+           FullWidth="true"
+           RelativeWidth="DropdownWidth.Relative"
+           Value="@SelectedEntry"
+           ValueChanged="@OnEntryChosen"
+           ToStringFunc="@(entry => entry?.Label ?? string.Empty)"
+           Error="@(ErrorTextOfFailedSave != null)"
+           ErrorText="@ErrorTextOfFailedSave"
+           Style="@StyleOfThePicker">
+    @foreach (var entry in Entries)
+    {
+        <MudSelectItem Value="@entry">@entry.Label</MudSelectItem>
+    }
+</MudSelect>
+
+@code {
+    private const string StyleOfAPickerThatHoldsAnOverride =
+        "--mud-palette-lines-inputs: var(--mud-palette-primary); --mud-palette-text-secondary: var(--mud-palette-primary)";
+
+    [Parameter, EditorRequired]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter, EditorRequired]
+    public IReadOnlyList<DownloadQualityPickerEntry<TChoice>> Entries { get; set; } = [];
+
+    [Parameter, EditorRequired]
+    public DownloadQualityPickerEntry<TChoice>? SelectedEntry { get; set; }
+
+    [Parameter]
+    public EventCallback<DownloadQualityPickerEntry<TChoice>> OnEntryChosen { get; set; }
+
+    [Parameter]
+    public string? ErrorTextOfFailedSave { get; set; }
+
+    [Parameter]
+    public bool ShowsAnOverride { get; set; }
+
+    private string? StyleOfThePicker => ShowsAnOverride ? StyleOfAPickerThatHoldsAnOverride : null;
+}

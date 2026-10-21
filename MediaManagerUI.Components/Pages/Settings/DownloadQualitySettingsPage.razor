@@ -1,0 +1,102 @@
+@page "/settings"
+
+@using MediaManager.Dtos.Application
+@using MediaManager.Initializations
+@using MediaManagerUI.Shared
+
+@inject IDownloadQualitySettingsUseCases _downloadQualitySettingsUseCases
+
+<MudPaper Class="pa-4 ma-2" Outlined="true">
+    <MudText Typo="Typo.h5">Download quality</MudText>
+    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">Used for every download, unless a video has its own choice.</MudText>
+    <div class="mb-4">
+        <_DownloadQualityPicker TChoice="ApplicationVideoCodecChoice"
+                                Label="Video codec"
+                                Entries="_videoCodecEntries"
+                                SelectedEntry="_selectedVideoCodecEntry"
+                                OnEntryChosen="SaveVideoCodec"
+                                ErrorTextOfFailedSave="@_errorTextOfFailedVideoCodecSave" />
+    </div>
+    <div class="mb-4">
+        <_DownloadQualityPicker TChoice="ApplicationMaximumVideoResolutionChoice"
+                                Label="Maximum resolution"
+                                Entries="_maximumVideoResolutionEntries"
+                                SelectedEntry="_selectedMaximumVideoResolutionEntry"
+                                OnEntryChosen="SaveMaximumVideoResolution"
+                                ErrorTextOfFailedSave="@_errorTextOfFailedMaximumVideoResolutionSave" />
+    </div>
+    <div>
+        <_DownloadQualityPicker TChoice="ApplicationAudioQualityChoice"
+                                Label="Audio"
+                                Entries="_audioQualityEntries"
+                                SelectedEntry="_selectedAudioQualityEntry"
+                                OnEntryChosen="SaveAudioQuality"
+                                ErrorTextOfFailedSave="@_errorTextOfFailedAudioQualitySave" />
+    </div>
+</MudPaper>
+
+@code {
+    private const string StartOfTheErrorTextOfAFailedSave = "Couldn't save to config.json: ";
+
+    private readonly List<DownloadQualityPickerEntry<ApplicationVideoCodecChoice>> _videoCodecEntries = DownloadQualityPickerEntries.ForAppWideVideoCodec();
+    private readonly List<DownloadQualityPickerEntry<ApplicationMaximumVideoResolutionChoice>> _maximumVideoResolutionEntries = DownloadQualityPickerEntries.ForAppWideMaximumVideoResolution();
+    private readonly List<DownloadQualityPickerEntry<ApplicationAudioQualityChoice>> _audioQualityEntries = DownloadQualityPickerEntries.ForAppWideAudioQuality();
+
+    private DownloadQualityPickerEntry<ApplicationVideoCodecChoice>? _selectedVideoCodecEntry;
+    private DownloadQualityPickerEntry<ApplicationMaximumVideoResolutionChoice>? _selectedMaximumVideoResolutionEntry;
+    private DownloadQualityPickerEntry<ApplicationAudioQualityChoice>? _selectedAudioQualityEntry;
+
+    private string? _errorTextOfFailedVideoCodecSave;
+    private string? _errorTextOfFailedMaximumVideoResolutionSave;
+    private string? _errorTextOfFailedAudioQualitySave;
+
+    protected override void OnInitialized()
+    {
+        ApplicationDownloadQualityDto appWideDownloadQuality = _downloadQualitySettingsUseCases.GetAppWideDownloadQuality();
+        _selectedVideoCodecEntry = _videoCodecEntries.Single(entry => entry.Choice == appWideDownloadQuality.VideoCodecToPreferWhenDownloading);
+        _selectedMaximumVideoResolutionEntry = _maximumVideoResolutionEntries.Single(entry => entry.Choice == appWideDownloadQuality.MaximumVideoResolutionOnTheShorterSide);
+        _selectedAudioQualityEntry = _audioQualityEntries.Single(entry => entry.Choice == appWideDownloadQuality.AudioQualityToDownload);
+    }
+
+    private void SaveVideoCodec(DownloadQualityPickerEntry<ApplicationVideoCodecChoice> chosenEntry)
+    {
+        try
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideVideoCodecChoice(chosenEntry.Choice!.Value);
+            _selectedVideoCodecEntry = chosenEntry;
+            _errorTextOfFailedVideoCodecSave = null;
+        }
+        catch (Exception exception)
+        {
+            _errorTextOfFailedVideoCodecSave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+
+    private void SaveMaximumVideoResolution(DownloadQualityPickerEntry<ApplicationMaximumVideoResolutionChoice> chosenEntry)
+    {
+        try
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideMaximumVideoResolutionChoice(chosenEntry.Choice!.Value);
+            _selectedMaximumVideoResolutionEntry = chosenEntry;
+            _errorTextOfFailedMaximumVideoResolutionSave = null;
+        }
+        catch (Exception exception)
+        {
+            _errorTextOfFailedMaximumVideoResolutionSave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+
+    private void SaveAudioQuality(DownloadQualityPickerEntry<ApplicationAudioQualityChoice> chosenEntry)
+    {
+        try
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideAudioQualityChoice(chosenEntry.Choice!.Value);
+            _selectedAudioQualityEntry = chosenEntry;
+            _errorTextOfFailedAudioQualitySave = null;
+        }
+        catch (Exception exception)
+        {
+            _errorTextOfFailedAudioQualitySave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+}

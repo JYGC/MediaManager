@@ -25,7 +25,11 @@
     <ProjectReference Include="..\..\OPMF.Entities\OPMF.Entities.csproj" />
     <ProjectReference Include="..\..\OPMF.Filesystem\OPMF.Filesystem.csproj" />
     <ProjectReference Include="..\..\OPMF.Settings\OPMF.Settings.csproj" />
+    <ProjectReference Include="..\..\OPMF.TextLogging\OPMF.TextLogging.csproj" />
     <ProjectReference Include="..\..\MediaManager.Services2\MediaManager.Services2.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Repositories\MediaManager.Repositories.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Dtos\MediaManager.Dtos.csproj" />
+    <ProjectReference Include="..\..\OPMF.Logging\OPMF.Logging.csproj" />
   </ItemGroup>
 
 </Project>

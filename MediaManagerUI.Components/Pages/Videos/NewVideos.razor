@@ -1,0 +1,34 @@
+﻿@page "/"
+@page "/videos/new"
+
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.VideoBrowser
+@using MediaManagerUI.Shared
+
+@inject IVideoBrowsingUseCases _videoBrowsingUseCases
+@inject TimeProvider _timeProvider
+
+<_VideoBrowser @bind-VideoBrowserModule="_videoBrowserModule">
+    <TableToolBarContent>
+        <MudText Typo="Typo.subtitle1">New Videos</MudText>
+    </TableToolBarContent>
+</_VideoBrowser>
+
+@code {
+    private IVideoBrowserModule? _videoBrowserModule;
+
+    protected override void OnInitialized()
+    {
+        _videoBrowserModule = new NewVideosModule(_videoBrowsingUseCases, _timeProvider);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (_videoBrowserModule != null)
+        {
+            await _videoBrowserModule.GetResultsAsync();
+        }
+        await base.OnParametersSetAsync();
+    }
+}

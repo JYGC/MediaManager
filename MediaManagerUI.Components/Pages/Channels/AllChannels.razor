@@ -1,0 +1,33 @@
+﻿@page "/channels/all"
+
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.ChannelBrowser
+@using MediaManagerUI.Shared
+
+@inject IChannelBrowsingUseCases _channelBrowsingUseCases
+@inject TimeProvider _timeProvider
+
+<_ChannelBrowser @bind-ChannelBrowserModule="_channelBrowserModule">
+    <TableToolBarContent>
+        <MudText Typo="Typo.subtitle1">All Channels</MudText>
+    </TableToolBarContent>
+</_ChannelBrowser>
+
+@code {
+    private IChannelBrowserModule? _channelBrowserModule;
+
+    protected override void OnInitialized()
+    {
+        _channelBrowserModule = new AllChannelsModule(_channelBrowsingUseCases, _timeProvider);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (_channelBrowserModule != null)
+        {
+            await _channelBrowserModule.GetResultsAsync();
+        }
+        await base.OnParametersSetAsync();
+    }
+}

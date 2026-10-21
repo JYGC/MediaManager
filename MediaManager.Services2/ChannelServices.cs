@@ -1,47 +1,23 @@
-﻿using OPMF.Database;
-using OPMF.Entities;
+using MediaManager.Dtos.Services;
+using MediaManager.Repositories;
 
 namespace MediaManager.Services2
 {
     public interface IChannelServices
     {
-        List<Channel> GetAll();
-        void UpdateBlackListStatus(IEnumerable<Channel> items);
+        List<ServiceChannelDto> GetAllChannels();
+        void UpdateBlacklistFlagOfChannels(IEnumerable<ServiceChannelDto> channels);
     }
-    public class ChannelServices : IChannelServices
+    public class ChannelServices(IChannelRepository channelRepository) : IChannelServices
     {
-        public List<Channel> GetAll()
+        public List<ServiceChannelDto> GetAllChannels()
         {
-            List<Channel> channels = [];
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                var channelInterfaces = dbAdapter.YoutubeChannelDbCollection.GetAll();
-                foreach (Channel channelInterface in channelInterfaces)
-                {
-                    channels.Add(new Channel
-                    {
-                        SiteId = channelInterface.SiteId,
-                        Blacklisted = channelInterface.Blacklisted,
-                        Description = channelInterface.Description,
-                        IsAddedBySingleVideo = channelInterface.IsAddedBySingleVideo,
-                        LastActivityDate = channelInterface.LastActivityDate,
-                        LastCheckedOut = channelInterface.LastCheckedOut,
-                        Name = channelInterface.Name,
-                        NotFound = channelInterface.NotFound,
-                        Thumbnail = channelInterface.Thumbnail,
-                        Url = channelInterface.Url,
-                    });
-                }
-            });
-            return channels;
+            return channelRepository.GetAllChannels().Select(RepositoryDtoAndServiceDtoConverter.ConvertChannelToServiceDto).ToList();
         }
 
-        public void UpdateBlackListStatus(IEnumerable<Channel> items)
+        public void UpdateBlacklistFlagOfChannels(IEnumerable<ServiceChannelDto> channels)
         {
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                dbAdapter.YoutubeChannelDbCollection.UpdateBlackListStatus(items);
-            });
+            channelRepository.UpdateBlacklistFlagOfChannels(channels.Select(RepositoryDtoAndServiceDtoConverter.ConvertChannelToRepositoryDto).ToList());
         }
     }
 }

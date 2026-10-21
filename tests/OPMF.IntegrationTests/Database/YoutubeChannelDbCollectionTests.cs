@@ -10,7 +10,9 @@ namespace OPMF.IntegrationTests.Database
 {
     public class YoutubeChannelDbCollectionInsertOrUpdateTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeChannelDbCollectionInsertOrUpdateTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeChannelDbCollectionInsertOrUpdateTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void InsertOrUpdate_InsertsNewChannels()
@@ -19,7 +21,7 @@ namespace OPMF.IntegrationTests.Database
             var c1 = Channel(prefix + "_c1", "Name One");
             var c2 = Channel(prefix + "_c2", "Name Two");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { c1, c2 });
                 Assert.Equal("Name One", db.YoutubeChannelDbCollection.GetBySiteId(c1.SiteId).Name);
@@ -35,7 +37,7 @@ namespace OPMF.IntegrationTests.Database
             var updated = Channel(prefix + "_upd", "Updated Name");
             updated.Description = "new desc";
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { original });
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { updated });
@@ -49,7 +51,9 @@ namespace OPMF.IntegrationTests.Database
 
     public class YoutubeChannelDbCollectionQueryTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeChannelDbCollectionQueryTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeChannelDbCollectionQueryTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void GetNotBacklisted_OmitsBlacklisted()
@@ -58,7 +62,7 @@ namespace OPMF.IntegrationTests.Database
             var keep = Channel(prefix + "_keep", blacklisted: false);
             var skip = Channel(prefix + "_skip", blacklisted: true);
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { keep, skip });
                 var got = db.YoutubeChannelDbCollection.GetNotBacklisted()
@@ -76,7 +80,7 @@ namespace OPMF.IntegrationTests.Database
             var c2 = Channel(prefix + "_g2");
             var c3 = Channel(prefix + "_g3");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { c1, c2, c3 });
                 var got = db.YoutubeChannelDbCollection.GetManyBySiteIds(new[] { c1.SiteId, c3.SiteId });
@@ -94,7 +98,7 @@ namespace OPMF.IntegrationTests.Database
             var hit2 = Channel(prefix + "_h2", "More Sparkle");
             var miss = Channel(prefix + "_m1", "Nothing here");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { hit1, hit2, miss });
                 var got = db.YoutubeChannelDbCollection.GetManyByWordInName("Sparkle")
@@ -106,7 +110,9 @@ namespace OPMF.IntegrationTests.Database
 
     public class YoutubeChannelDbCollectionUpdateTests : IClassFixture<IsolatedAppFolderFixture>
     {
-        public YoutubeChannelDbCollectionUpdateTests(IsolatedAppFolderFixture _) { }
+        private readonly IsolatedAppFolderFixture _fixture;
+
+        public YoutubeChannelDbCollectionUpdateTests(IsolatedAppFolderFixture fixture) { _fixture = fixture; }
 
         [Fact]
         public void UpdateLastCheckedOutAndActivity_PersistsDates()
@@ -114,7 +120,7 @@ namespace OPMF.IntegrationTests.Database
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var c = Channel(prefix + "_t");
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { c });
 
@@ -135,7 +141,7 @@ namespace OPMF.IntegrationTests.Database
             var prefix = Guid.NewGuid().ToString("N")[..6];
             var c = Channel(prefix + "_bl", blacklisted: false);
 
-            DatabaseAdapter.AccessDbAdapter(db =>
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
             {
                 db.YoutubeChannelDbCollection.InsertOrUpdate(new[] { c });
 

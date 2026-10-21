@@ -1,7 +1,4 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Apis.Services;
-using Google.Apis.YouTube.v3;
-using Google.Apis.YouTube.v3.Data;
+﻿using Google.Apis.YouTube.v3.Data;
 using System;
 using System.Linq;
 using System.Xml;
@@ -10,52 +7,41 @@ namespace OPMF.SiteAdapter.Youtube
 {
     public class YoutubeVideoMetadataGetter : ISiteVideoMetadataGetter
     {
-        private const string __videoInfoParts = "snippet,contentDetails";
-        private const string __channelParts = "snippet";
-        private const string __urlSaffolding = "https://www.youtube.com/watch?v={0}";
-        private const string __channelUrlScaffolding = "https://www.youtube.com/channel/{0}";
+        private const string __videoUrlFormat = "https://www.youtube.com/watch?v={0}";
+        private const string __channelUrlFormat = "https://www.youtube.com/channel/{0}";
 
-        private YouTubeService __youtubeService;
-        private readonly string[] __apiScope = new string[] { YouTubeService.Scope.YoutubeReadonly };
-        private readonly string[] __siteIdExtractorSeperator = new string[] { "watch?v=", "&" };
+        private readonly IYoutubeDataApi __youtubeDataApi;
+        private readonly string[] __siteIdSeparators = new string[] { "watch?v=", "&" };
 
-        public YoutubeVideoMetadataGetter()
+        public YoutubeVideoMetadataGetter(IYoutubeDataApi youtubeDataApi)
         {
-            UserCredential credential = GoogleAuthentication.GetCredential(__apiScope);
-            __youtubeService = new YouTubeService(new BaseClientService.Initializer()
-            {
-                ApplicationName = GetType().ToString()
-                ,
-                HttpClientInitializer = credential
-            });
+            __youtubeDataApi = youtubeDataApi;
         }
 
         public string GetSiteIdFromURL(string videoURL)
         {
-            if (__siteIdExtractorSeperator.All(seperator => !videoURL.Contains(seperator)))
+            if (__siteIdSeparators.All(seperator => !videoURL.Contains(seperator)))
             {
                 throw new Exception("URL format is not recognized. Cannot get site ID.");
             }
-            return videoURL.Split(__siteIdExtractorSeperator, StringSplitOptions.None)[1];
+            return videoURL.Split(__siteIdSeparators, StringSplitOptions.None)[1];
         }
 
         public (Entities.Metadata, Entities.Channel) GetVideoByURL(string siteId)
         {
-            Entities.Metadata videoMetaData;
-            Entities.Channel channelMetaData;
+            Entities.Metadata videoMetadata;
+            Entities.Channel channelMetadata;
 
-            VideosResource.ListRequest videoRequest = __youtubeService.Videos.List(__videoInfoParts);
-            videoRequest.Id = siteId;
-            VideoListResponse videoResponse = videoRequest.Execute();
+            VideoListResponse videoResponse = __youtubeDataApi.ListVideoWithSiteId(siteId);
             if (videoResponse.Items == null)
             {
                 return (null, null);
             }
 
-            videoMetaData = new Entities.YoutubeMetadata
+            videoMetadata = new Entities.YoutubeMetadata
             {
                 SiteId = siteId,
-                Url = string.Format(__urlSaffolding, siteId),
+                Url = string.Format(__videoUrlFormat, siteId),
                 Title = videoResponse.Items[0].Snippet.Title,
                 Thumbnail = new Entities.EntityThumbnail
                 {
@@ -70,14 +56,12 @@ namespace OPMF.SiteAdapter.Youtube
                 OriginalResponse = videoResponse,
             };
 
-            ChannelsResource.ListRequest channelRequest = __youtubeService.Channels.List(__channelParts);
-            channelRequest.Id = videoMetaData.ChannelSiteId;
-            ChannelListResponse channelResponse = channelRequest.Execute();
+            ChannelListResponse channelResponse = __youtubeDataApi.ListChannelWithSiteId(videoMetadata.ChannelSiteId);
 
-            channelMetaData = new Entities.YoutubeChannel
+            channelMetadata = new Entities.YoutubeChannel
             {
-                SiteId = videoMetaData.ChannelSiteId,
-                Url = string.Format(__channelUrlScaffolding, videoMetaData.ChannelSiteId),
+                SiteId = videoMetadata.ChannelSiteId,
+                Url = string.Format(__channelUrlFormat, videoMetadata.ChannelSiteId),
                 Name = channelResponse.Items[0].Snippet.Title,
                 Thumbnail = new Entities.EntityThumbnail
                 {
@@ -91,7 +75,7 @@ namespace OPMF.SiteAdapter.Youtube
                 OriginalResponse = channelResponse,
             };
 
-            return (videoMetaData, channelMetaData);
+            return (videoMetadata, channelMetadata);
         }
     }
 }

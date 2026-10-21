@@ -1,0 +1,33 @@
+﻿@page "/videos/todownload"
+
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.VideoBrowser
+@using MediaManagerUI.Shared
+
+@inject IVideoBrowsingUseCases _videoBrowsingUseCases
+@inject TimeProvider _timeProvider
+
+<_VideoBrowser @bind-VideoBrowserModule="_getVideoTableModule">
+    <TableToolBarContent>
+        <MudText Typo="Typo.subtitle1">Download Queue</MudText>
+    </TableToolBarContent>
+</_VideoBrowser>
+
+@code {
+    private IVideoBrowserModule? _getVideoTableModule;
+
+    protected override void OnInitialized()
+    {
+        _getVideoTableModule = new DownloadQueueModule(_videoBrowsingUseCases, _timeProvider);
+        base.OnInitialized();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (_getVideoTableModule != null)
+        {
+            await _getVideoTableModule.GetResultsAsync();
+        }
+        await base.OnParametersSetAsync();
+    }
+}

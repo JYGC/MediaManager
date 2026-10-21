@@ -1,0 +1,209 @@
+﻿@using MediaManager.Dtos.Application
+@using MediaManager.Initializations
+@using MediaManagerUI.Modules.VideoBrowser
+
+@inject IDownloadQualitySettingsUseCases _downloadQualitySettingsUseCases
+
+@if (VideoWithChannel != null && VideoWithChannel.Video != null)
+{
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Title: </b></MudText>
+        <MudText>@VideoWithChannel.Video.Title</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Thumbnail: </b></MudText>
+        <MudImage Src="@VideoWithChannel.Video.Thumbnail.Url"
+                    Height="@((int?)VideoWithChannel.Video.Thumbnail.HeightInPixels)"
+                    Width="@((int?)VideoWithChannel.Video.Thumbnail.WidthInPixels)" />
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Channel: </b></MudText>
+        <MudText>@(VideoWithChannel.Channel == null ? "Unknown" : VideoWithChannel.Channel.Name)</MudText>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Url: </b></MudText>
+        <MudLink Href="@VideoWithChannel.Video.Url">@VideoWithChannel.Video.Url</MudLink>
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Duration: </b></MudText>
+        @if (VideoWithChannel.Video.Duration == TimeSpan.Zero)
+        {
+            <MudText>No data</MudText>
+        }
+        else
+        {
+            <MudText>@VideoWithChannel.Video.Duration</MudText>
+        }
+    </MudPaper>
+    <MudPaper Class="pa-2 ma-2" Outlined="true">
+        <MudText><b>Description: </b></MudText>
+        <_MultilineTextAsParagraphs Text="@(VideoWithChannel.Video.Description ?? string.Empty)" />
+    </MudPaper>
+    @if (_videoBrowserModule != null)
+    {
+        <MudPaper Class="pa-2 ma-2" Outlined="true">
+            <MudText><b>Download quality: </b></MudText>
+            <div class="mt-4">
+                <_DownloadQualityPicker TChoice="ApplicationVideoCodecChoice"
+                                        Label="Video codec"
+                                        Entries="_videoCodecEntries"
+                                        SelectedEntry="_videoCodecEntries.Single(entry => entry.Choice == VideoWithChannel.Video.VideoCodecChoiceOverride)"
+                                        OnEntryChosen="ChooseVideoCodec"
+                                        ErrorTextOfFailedSave="@_errorTextOfFailedVideoCodecSave"
+                                        ShowsAnOverride="VideoWithChannel.Video.VideoCodecChoiceOverride != null" />
+            </div>
+            <div class="mt-4">
+                <_DownloadQualityPicker TChoice="ApplicationMaximumVideoResolutionChoice"
+                                        Label="Maximum resolution"
+                                        Entries="_maximumVideoResolutionEntries"
+                                        SelectedEntry="_maximumVideoResolutionEntries.Single(entry => entry.Choice == VideoWithChannel.Video.MaximumVideoResolutionChoiceOverride)"
+                                        OnEntryChosen="ChooseMaximumVideoResolution"
+                                        ErrorTextOfFailedSave="@_errorTextOfFailedMaximumVideoResolutionSave"
+                                        ShowsAnOverride="VideoWithChannel.Video.MaximumVideoResolutionChoiceOverride != null" />
+            </div>
+            <div class="mt-4">
+                <_DownloadQualityPicker TChoice="ApplicationAudioQualityChoice"
+                                        Label="Audio"
+                                        Entries="_audioQualityEntries"
+                                        SelectedEntry="_audioQualityEntries.Single(entry => entry.Choice == VideoWithChannel.Video.AudioQualityChoiceOverride)"
+                                        OnEntryChosen="ChooseAudioQuality"
+                                        ErrorTextOfFailedSave="@_errorTextOfFailedAudioQualitySave"
+                                        ShowsAnOverride="VideoWithChannel.Video.AudioQualityChoiceOverride != null" />
+            </div>
+        </MudPaper>
+        <MudPaper Class="pa-2 ma-2" Outlined="true">
+            <MudText><b>Actions: </b></MudText>
+            @if (VideoWithChannel.Video.IsBeingDownloaded)
+            {
+                <MudText>Video is being downloaded...</MudText>
+                <MudButton Variant="Variant.Filled" OnClick="@(() => _videoBrowserModule.RemoveIsBeingDownloadedStatus(VideoWithChannel))">
+                    Remove "being downloaded" block
+                </MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled" OnClick="@(() => _videoBrowserModule.DownloadVideoNow(VideoWithChannel))">
+                    Download Now
+                </MudButton>
+            }
+        </MudPaper>
+    }
+}
+
+@code {
+    private IVideoBrowserModule? _videoBrowserModule;
+    [Parameter]
+    public IVideoBrowserModule? VideoBrowserModule
+    {
+        get => _videoBrowserModule;
+        set
+        {
+            if (_videoBrowserModule == value)
+            {
+                return;
+            }
+            _videoBrowserModule = value;
+            VideoBrowserModuleChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<IVideoBrowserModule> VideoBrowserModuleChanged { get; set; }
+
+    private ApplicationVideoWithChannelDto? _videoWithChannel;
+    [Parameter]
+    public ApplicationVideoWithChannelDto? VideoWithChannel
+    {
+        get => _videoWithChannel;
+        set
+        {
+            if (_videoWithChannel == value)
+            {
+                return;
+            }
+            _videoWithChannel = value;
+            VideoWithChannelChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<ApplicationVideoWithChannelDto> VideoWithChannelChanged { get; set; }
+
+    private const string StartOfTheErrorTextOfAFailedSave = "Couldn't save this video's choice: ";
+
+    private ApplicationVideoWithChannelDto? _videoWhoseAppWideChoicesWereRead;
+    private List<DownloadQualityPickerEntry<ApplicationVideoCodecChoice>> _videoCodecEntries = [];
+    private List<DownloadQualityPickerEntry<ApplicationMaximumVideoResolutionChoice>> _maximumVideoResolutionEntries = [];
+    private List<DownloadQualityPickerEntry<ApplicationAudioQualityChoice>> _audioQualityEntries = [];
+
+    private string? _errorTextOfFailedVideoCodecSave;
+    private string? _errorTextOfFailedMaximumVideoResolutionSave;
+    private string? _errorTextOfFailedAudioQualitySave;
+
+    protected override void OnParametersSet()
+    {
+        bool theBoxIsShownForAVideoWhoseSettingsWereNotReadYet =
+            _videoBrowserModule != null && VideoWithChannel?.Video != null && !ReferenceEquals(VideoWithChannel, _videoWhoseAppWideChoicesWereRead);
+        if (!theBoxIsShownForAVideoWhoseSettingsWereNotReadYet)
+        {
+            return;
+        }
+        ApplicationDownloadQualityDto appWideDownloadQuality = _downloadQualitySettingsUseCases.GetAppWideDownloadQuality();
+        _videoCodecEntries = DownloadQualityPickerEntries.ForVideoCodecOverride(appWideDownloadQuality.VideoCodecToPreferWhenDownloading);
+        _maximumVideoResolutionEntries = DownloadQualityPickerEntries.ForMaximumVideoResolutionOverride(appWideDownloadQuality.MaximumVideoResolutionOnTheShorterSide);
+        _audioQualityEntries = DownloadQualityPickerEntries.ForAudioQualityOverride(appWideDownloadQuality.AudioQualityToDownload);
+        _errorTextOfFailedVideoCodecSave = null;
+        _errorTextOfFailedMaximumVideoResolutionSave = null;
+        _errorTextOfFailedAudioQualitySave = null;
+        _videoWhoseAppWideChoicesWereRead = VideoWithChannel;
+    }
+
+    private void ChooseVideoCodec(DownloadQualityPickerEntry<ApplicationVideoCodecChoice> chosenEntry)
+    {
+        ApplicationVideoMetadataDto video = VideoWithChannel!.Video;
+        ApplicationVideoCodecChoice? choiceBeforeTheSave = video.VideoCodecChoiceOverride;
+        video.VideoCodecChoiceOverride = chosenEntry.Choice;
+        try
+        {
+            _videoBrowserModule!.SaveDownloadQualityChoiceOverridesOfVideo(video);
+            _errorTextOfFailedVideoCodecSave = null;
+        }
+        catch (Exception exception)
+        {
+            video.VideoCodecChoiceOverride = choiceBeforeTheSave;
+            _errorTextOfFailedVideoCodecSave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+
+    private void ChooseMaximumVideoResolution(DownloadQualityPickerEntry<ApplicationMaximumVideoResolutionChoice> chosenEntry)
+    {
+        ApplicationVideoMetadataDto video = VideoWithChannel!.Video;
+        ApplicationMaximumVideoResolutionChoice? choiceBeforeTheSave = video.MaximumVideoResolutionChoiceOverride;
+        video.MaximumVideoResolutionChoiceOverride = chosenEntry.Choice;
+        try
+        {
+            _videoBrowserModule!.SaveDownloadQualityChoiceOverridesOfVideo(video);
+            _errorTextOfFailedMaximumVideoResolutionSave = null;
+        }
+        catch (Exception exception)
+        {
+            video.MaximumVideoResolutionChoiceOverride = choiceBeforeTheSave;
+            _errorTextOfFailedMaximumVideoResolutionSave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+
+    private void ChooseAudioQuality(DownloadQualityPickerEntry<ApplicationAudioQualityChoice> chosenEntry)
+    {
+        ApplicationVideoMetadataDto video = VideoWithChannel!.Video;
+        ApplicationAudioQualityChoice? choiceBeforeTheSave = video.AudioQualityChoiceOverride;
+        video.AudioQualityChoiceOverride = chosenEntry.Choice;
+        try
+        {
+            _videoBrowserModule!.SaveDownloadQualityChoiceOverridesOfVideo(video);
+            _errorTextOfFailedAudioQualitySave = null;
+        }
+        catch (Exception exception)
+        {
+            video.AudioQualityChoiceOverride = choiceBeforeTheSave;
+            _errorTextOfFailedAudioQualitySave = StartOfTheErrorTextOfAFailedSave + exception.Message;
+        }
+    }
+}

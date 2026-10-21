@@ -27,6 +27,21 @@
     <ProjectReference Include="..\..\OPMF.Downloader\OPMF.Downloader.csproj" />
     <ProjectReference Include="..\..\OPMF.SiteAdapter\OPMF.SiteAdapter.csproj" />
     <ProjectReference Include="..\..\MediaManager.Services2\MediaManager.Services2.csproj" />
+    <ProjectReference Include="..\..\OPMF.Filesystem\OPMF.Filesystem.csproj" />
+    <ProjectReference Include="..\..\OPMF.Logging\OPMF.Logging.csproj" />
+    <ProjectReference Include="..\..\OPMF.TextLogging\OPMF.TextLogging.csproj" />
+    <ProjectReference Include="..\..\OPMF.SiteAdapter.Youtube\OPMF.SiteAdapter.Youtube.csproj" />
+    <ProjectReference Include="..\..\OPMF.Downloader.YTDownloader\OPMF.Downloader.YTDownloader.csproj" />
+    <ProjectReference Include="..\..\OffPeakMediaFetcher\OffPeakMediaFetcher.csproj" />
+    <ProjectReference Include="..\..\MediaManagerUI\MediaManagerUI.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" />
+    <ProjectReference Include="..\..\MediaManager.Dtos\MediaManager.Dtos.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Repositories\MediaManager.Repositories.csproj" />
+    <ProjectReference Include="..\..\MediaManager.Initializations\MediaManager.Initializations.csproj" />
+    <ProjectReference Include="..\..\MediaManagerUI.Components\MediaManagerUI.Components.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="BuildConfiguration" Value="$(Configuration)" />
   </ItemGroup>
 
 </Project>

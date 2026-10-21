@@ -1,42 +1,53 @@
-﻿using OPMF.Database;
-using OPMF.Entities;
+using MediaManager.Dtos.Services;
+using MediaManager.Repositories;
 
 namespace MediaManager.Services2
 {
     public interface IMetadataServices
     {
-        void UpdateStatus(IEnumerable<Metadata> metadata);
-        void UpdateIsBeingProcessed(IEnumerable<Metadata> metadatas);
-        void DownloadNow(Metadata metadata);
+        void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto> videos);
+        ServiceVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ServiceVideoMetadataDto video);
+        ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto video);
+        void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto video);
     }
-    public class MetadataServices(ITaskRunnerServices taskRunnerServices) : IMetadataServices
+    public class MetadataServices(
+        ITaskRunnerServices taskRunnerServices,
+        IVideoMetadataRepository videoMetadataRepository,
+        ILogRepository logRepository) : IMetadataServices
     {
-        private readonly ITaskRunnerServices _taskRunnerServices = taskRunnerServices;
-
-        public void UpdateStatus(IEnumerable<Metadata> metadatas)
+        public void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto> videos)
         {
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                dbAdapter.YoutubeMetadataDbCollection.UpdateStatus(metadatas);
-            });
+            videoMetadataRepository.UpdateDownloadStatusOfVideos(videos.Select(RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto).ToList());
         }
 
-        public void DownloadNow(Metadata metadata)
+        public ServiceVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ServiceVideoMetadataDto video)
         {
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
-            {
-                dbAdapter.YoutubeMetadataDbCollection.UpdateIsBeingProcessed([metadata]);
-            });
-
-            taskRunnerServices.DownloadOneVideo(metadata);
+            video.IsBeingDownloaded = false;
+            videoMetadataRepository.SetBeingDownloadedFlagOfVideos([RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(video)], false);
+            return video;
         }
 
-        public void UpdateIsBeingProcessed(IEnumerable<Metadata> metadatas)
+        public ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto video)
         {
-            DatabaseAdapter.AccessDbAdapter(dbAdapter =>
+            video.IsBeingDownloaded = true;
+            videoMetadataRepository.SetBeingDownloadedFlagOfVideos([RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(video)], true);
+            taskRunnerServices.StartTaskRunnerProcessThatDownloadsVideoWithSiteId(video.SiteId);
+            return video;
+        }
+
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto video)
+        {
+            try
             {
-                dbAdapter.YoutubeMetadataDbCollection.UpdateIsBeingProcessed(metadatas);
-            });
+                videoMetadataRepository.UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(video));
+            }
+            catch (Exception exception)
+            {
+                logRepository.RecordErrorLogEntry(ErrorLogEntryToRecordCreator.CreateWithVariablesSerializedAsJsonText(
+                    exception,
+                    new Dictionary<string, object?> { { "videoSiteId", video.SiteId }, { "videoTitle", video.Title } }));
+                throw;
+            }
         }
     }
 }

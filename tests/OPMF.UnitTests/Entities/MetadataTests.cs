@@ -61,5 +61,15 @@ namespace OPMF.UnitTests.Entities
             Assert.Contains(MetadataStatus.Downloaded, values);
             Assert.Equal(5, values.Length);
         }
+
+        [Fact]
+        public void ANewMetadataHasNoDownloadQualityChoiceOverrides()
+        {
+            var metadata = new Metadata();
+
+            Assert.Null(metadata.VideoCodecChoiceOverride);
+            Assert.Null(metadata.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(metadata.AudioQualityChoiceOverride);
+        }
     }
 }
