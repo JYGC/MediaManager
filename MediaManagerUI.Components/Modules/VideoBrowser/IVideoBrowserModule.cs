@@ -11,5 +11,6 @@ namespace MediaManagerUI.Modules.VideoBrowser
         void ScheduleMetadataStatusUpdate(ApplicationVideoDownloadStatus newStatus, ApplicationVideoMetadataDto video);
         void RemoveIsBeingDownloadedStatus(ApplicationVideoWithChannelDto videoWithChannel);
         void DownloadVideoNow(ApplicationVideoWithChannelDto videoWithChannel);
+        void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video);
     }
 }

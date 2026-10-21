@@ -73,6 +73,9 @@ public static class RepositoryDtoAndServiceDtoConverter
             PublishedAt = videoDto.PublishedAt,
             Duration = videoDto.Duration,
             ChannelSiteId = videoDto.ChannelSiteId,
+            VideoCodecChoiceOverride = ConvertToServiceVideoCodecChoiceOrNull(videoDto.VideoCodecChoiceOverride),
+            MaximumVideoResolutionChoiceOverride = ConvertToServiceMaximumVideoResolutionChoiceOrNull(videoDto.MaximumVideoResolutionChoiceOverride),
+            AudioQualityChoiceOverride = ConvertToServiceAudioQualityChoiceOrNull(videoDto.AudioQualityChoiceOverride),
         };
     }
 
@@ -90,6 +93,9 @@ public static class RepositoryDtoAndServiceDtoConverter
             PublishedAt = videoDto.PublishedAt,
             Duration = videoDto.Duration,
             ChannelSiteId = videoDto.ChannelSiteId,
+            VideoCodecChoiceOverride = ConvertToRepositoryVideoCodecChoiceOrNull(videoDto.VideoCodecChoiceOverride),
+            MaximumVideoResolutionChoiceOverride = ConvertToRepositoryMaximumVideoResolutionChoiceOrNull(videoDto.MaximumVideoResolutionChoiceOverride),
+            AudioQualityChoiceOverride = ConvertToRepositoryAudioQualityChoiceOrNull(videoDto.AudioQualityChoiceOverride),
         };
     }
 
@@ -125,6 +131,84 @@ public static class RepositoryDtoAndServiceDtoConverter
             ServiceVideoDownloadStatus.Ignore => RepositoryVideoDownloadStatus.Ignore,
             ServiceVideoDownloadStatus.Downloaded => RepositoryVideoDownloadStatus.Downloaded,
             _ => throw new ArgumentOutOfRangeException(nameof(status), status, "No repository video download status matches this service video download status."),
+        };
+    }
+
+    private static ServiceVideoCodecChoice? ConvertToServiceVideoCodecChoiceOrNull(RepositoryVideoCodecChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryVideoCodecChoice.H264 => ServiceVideoCodecChoice.H264,
+            RepositoryVideoCodecChoice.AnyCodec => ServiceVideoCodecChoice.AnyCodec,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No service video codec choice matches this repository video codec choice."),
+        };
+    }
+
+    private static RepositoryVideoCodecChoice? ConvertToRepositoryVideoCodecChoiceOrNull(ServiceVideoCodecChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            ServiceVideoCodecChoice.H264 => RepositoryVideoCodecChoice.H264,
+            ServiceVideoCodecChoice.AnyCodec => RepositoryVideoCodecChoice.AnyCodec,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository video codec choice matches this service video codec choice."),
+        };
+    }
+
+    private static ServiceMaximumVideoResolutionChoice? ConvertToServiceMaximumVideoResolutionChoiceOrNull(RepositoryMaximumVideoResolutionChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryMaximumVideoResolutionChoice.NoLimit => ServiceMaximumVideoResolutionChoice.NoLimit,
+            RepositoryMaximumVideoResolutionChoice.UpTo2160p => ServiceMaximumVideoResolutionChoice.UpTo2160p,
+            RepositoryMaximumVideoResolutionChoice.UpTo1440p => ServiceMaximumVideoResolutionChoice.UpTo1440p,
+            RepositoryMaximumVideoResolutionChoice.UpTo1080p => ServiceMaximumVideoResolutionChoice.UpTo1080p,
+            RepositoryMaximumVideoResolutionChoice.UpTo720p => ServiceMaximumVideoResolutionChoice.UpTo720p,
+            RepositoryMaximumVideoResolutionChoice.UpTo480p => ServiceMaximumVideoResolutionChoice.UpTo480p,
+            RepositoryMaximumVideoResolutionChoice.UpTo360p => ServiceMaximumVideoResolutionChoice.UpTo360p,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No service maximum video resolution choice matches this repository maximum video resolution choice."),
+        };
+    }
+
+    private static RepositoryMaximumVideoResolutionChoice? ConvertToRepositoryMaximumVideoResolutionChoiceOrNull(ServiceMaximumVideoResolutionChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            ServiceMaximumVideoResolutionChoice.NoLimit => RepositoryMaximumVideoResolutionChoice.NoLimit,
+            ServiceMaximumVideoResolutionChoice.UpTo2160p => RepositoryMaximumVideoResolutionChoice.UpTo2160p,
+            ServiceMaximumVideoResolutionChoice.UpTo1440p => RepositoryMaximumVideoResolutionChoice.UpTo1440p,
+            ServiceMaximumVideoResolutionChoice.UpTo1080p => RepositoryMaximumVideoResolutionChoice.UpTo1080p,
+            ServiceMaximumVideoResolutionChoice.UpTo720p => RepositoryMaximumVideoResolutionChoice.UpTo720p,
+            ServiceMaximumVideoResolutionChoice.UpTo480p => RepositoryMaximumVideoResolutionChoice.UpTo480p,
+            ServiceMaximumVideoResolutionChoice.UpTo360p => RepositoryMaximumVideoResolutionChoice.UpTo360p,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository maximum video resolution choice matches this service maximum video resolution choice."),
+        };
+    }
+
+    private static ServiceAudioQualityChoice? ConvertToServiceAudioQualityChoiceOrNull(RepositoryAudioQualityChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryAudioQualityChoice.BestAac => ServiceAudioQualityChoice.BestAac,
+            RepositoryAudioQualityChoice.BestOfAnyCodec => ServiceAudioQualityChoice.BestOfAnyCodec,
+            RepositoryAudioQualityChoice.SmallestAac => ServiceAudioQualityChoice.SmallestAac,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No service audio quality choice matches this repository audio quality choice."),
+        };
+    }
+
+    private static RepositoryAudioQualityChoice? ConvertToRepositoryAudioQualityChoiceOrNull(ServiceAudioQualityChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            ServiceAudioQualityChoice.BestAac => RepositoryAudioQualityChoice.BestAac,
+            ServiceAudioQualityChoice.BestOfAnyCodec => RepositoryAudioQualityChoice.BestOfAnyCodec,
+            ServiceAudioQualityChoice.SmallestAac => RepositoryAudioQualityChoice.SmallestAac,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository audio quality choice matches this service audio quality choice."),
         };
     }
 

@@ -84,6 +84,19 @@ namespace OPMF.UnitTests.Support
             VideosWhoseDownloadStatusWasUpdated.AddRange(videos);
         }
 
+        public List<RepositoryVideoMetadataDto> VideosWhoseDownloadQualityChoiceOverridesWereUpdated { get; } = new List<RepositoryVideoMetadataDto>();
+        public Exception ExceptionToThrowWhenUpdatingDownloadQualityChoiceOverrides { get; set; }
+
+        public void UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryVideoMetadataDto video)
+        {
+            _callRecorder.Calls.Add("UpdateDownloadQualityChoiceOverridesOfVideo");
+            if (ExceptionToThrowWhenUpdatingDownloadQualityChoiceOverrides != null)
+            {
+                throw ExceptionToThrowWhenUpdatingDownloadQualityChoiceOverrides;
+            }
+            VideosWhoseDownloadQualityChoiceOverridesWereUpdated.Add(video);
+        }
+
         public void SetBeingDownloadedFlagOfVideos(IEnumerable<RepositoryVideoMetadataDto> videos, bool isBeingDownloaded)
         {
             _callRecorder.Calls.Add("SetBeingDownloadedFlagOfVideos(" + isBeingDownloaded + ")");

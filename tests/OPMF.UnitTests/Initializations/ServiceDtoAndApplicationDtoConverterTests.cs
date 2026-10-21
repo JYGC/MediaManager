@@ -39,6 +39,93 @@ namespace OPMF.UnitTests.Initializations
             ChannelSiteId = "channel-1",
         };
 
+        [Theory]
+        [InlineData(ServiceVideoCodecChoice.H264, ApplicationVideoCodecChoice.H264)]
+        [InlineData(ServiceVideoCodecChoice.AnyCodec, ApplicationVideoCodecChoice.AnyCodec)]
+        public void EveryVideoCodecChoiceOverrideRoundTripsBetweenTheServiceAndTheApplicationDto(ServiceVideoCodecChoice serviceChoice, ApplicationVideoCodecChoice expectedApplicationChoice)
+        {
+            var serviceVideo = new ServiceVideoMetadataDto { SiteId = "v", VideoCodecChoiceOverride = serviceChoice };
+
+            var applicationVideo = ServiceDtoAndApplicationDtoConverter.ConvertVideoToApplicationDto(serviceVideo);
+            var videoConvertedBack = ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(applicationVideo);
+
+            Assert.Equal(expectedApplicationChoice, applicationVideo.VideoCodecChoiceOverride);
+            Assert.Equal(serviceChoice, videoConvertedBack.VideoCodecChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(ServiceMaximumVideoResolutionChoice.NoLimit, ApplicationMaximumVideoResolutionChoice.NoLimit)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo2160p, ApplicationMaximumVideoResolutionChoice.UpTo2160p)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo1440p, ApplicationMaximumVideoResolutionChoice.UpTo1440p)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo1080p, ApplicationMaximumVideoResolutionChoice.UpTo1080p)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo720p, ApplicationMaximumVideoResolutionChoice.UpTo720p)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo480p, ApplicationMaximumVideoResolutionChoice.UpTo480p)]
+        [InlineData(ServiceMaximumVideoResolutionChoice.UpTo360p, ApplicationMaximumVideoResolutionChoice.UpTo360p)]
+        public void EveryMaximumVideoResolutionChoiceOverrideRoundTripsBetweenTheServiceAndTheApplicationDto(ServiceMaximumVideoResolutionChoice serviceChoice, ApplicationMaximumVideoResolutionChoice expectedApplicationChoice)
+        {
+            var serviceVideo = new ServiceVideoMetadataDto { SiteId = "v", MaximumVideoResolutionChoiceOverride = serviceChoice };
+
+            var applicationVideo = ServiceDtoAndApplicationDtoConverter.ConvertVideoToApplicationDto(serviceVideo);
+            var videoConvertedBack = ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(applicationVideo);
+
+            Assert.Equal(expectedApplicationChoice, applicationVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(serviceChoice, videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(ServiceAudioQualityChoice.BestAac, ApplicationAudioQualityChoice.BestAac)]
+        [InlineData(ServiceAudioQualityChoice.BestOfAnyCodec, ApplicationAudioQualityChoice.BestOfAnyCodec)]
+        [InlineData(ServiceAudioQualityChoice.SmallestAac, ApplicationAudioQualityChoice.SmallestAac)]
+        public void EveryAudioQualityChoiceOverrideRoundTripsBetweenTheServiceAndTheApplicationDto(ServiceAudioQualityChoice serviceChoice, ApplicationAudioQualityChoice expectedApplicationChoice)
+        {
+            var serviceVideo = new ServiceVideoMetadataDto { SiteId = "v", AudioQualityChoiceOverride = serviceChoice };
+
+            var applicationVideo = ServiceDtoAndApplicationDtoConverter.ConvertVideoToApplicationDto(serviceVideo);
+            var videoConvertedBack = ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(applicationVideo);
+
+            Assert.Equal(expectedApplicationChoice, applicationVideo.AudioQualityChoiceOverride);
+            Assert.Equal(serviceChoice, videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void VideoOverridesThatAreNullStayNullInBothDirections()
+        {
+            var applicationVideo = ServiceDtoAndApplicationDtoConverter.ConvertVideoToApplicationDto(new ServiceVideoMetadataDto { SiteId = "v" });
+            var videoConvertedBack = ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(applicationVideo);
+
+            Assert.Null(applicationVideo.VideoCodecChoiceOverride);
+            Assert.Null(applicationVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(applicationVideo.AudioQualityChoiceOverride);
+            Assert.Null(videoConvertedBack.VideoCodecChoiceOverride);
+            Assert.Null(videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void TheAppWideDownloadQualityIsConvertedToAnApplicationDtoWithEveryChoiceMapped()
+        {
+            var serviceDownloadQuality = new ServiceDownloadQualityDto
+            {
+                VideoCodecToPreferWhenDownloading = ServiceVideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionOnTheShorterSide = ServiceMaximumVideoResolutionChoice.UpTo480p,
+                AudioQualityToDownload = ServiceAudioQualityChoice.BestOfAnyCodec,
+            };
+
+            var applicationDownloadQuality = ServiceDtoAndApplicationDtoConverter.ConvertDownloadQualityToApplicationDto(serviceDownloadQuality);
+
+            Assert.Equal(ApplicationVideoCodecChoice.AnyCodec, applicationDownloadQuality.VideoCodecToPreferWhenDownloading);
+            Assert.Equal(ApplicationMaximumVideoResolutionChoice.UpTo480p, applicationDownloadQuality.MaximumVideoResolutionOnTheShorterSide);
+            Assert.Equal(ApplicationAudioQualityChoice.BestOfAnyCodec, applicationDownloadQuality.AudioQualityToDownload);
+        }
+
+        [Fact]
+        public void AnApplicationVideoCodecChoiceWithNoMappingThrowsAnArgumentOutOfRangeException()
+        {
+            var applicationVideo = new ApplicationVideoMetadataDto { SiteId = "v", VideoCodecChoiceOverride = (ApplicationVideoCodecChoice)99 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(applicationVideo));
+        }
+
         [Fact]
         public void AServiceChannelIsConvertedToAnApplicationChannelWithEveryMemberMapped()
         {

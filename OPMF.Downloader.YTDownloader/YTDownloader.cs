@@ -18,6 +18,7 @@ namespace OPMF.Downloader.YTDownloader
         private readonly Logging.Logger __logger;
         private readonly VideoDownloaderExecutableLocation __executableTriedFirstLocation;
         private readonly VideoDownloaderExecutableLocation __fallbackExecutableLocationOrNull;
+        private readonly string __mergeContainer;
 
         private List<DownloadInstance> __downloadInstances;
         public List<Entities.Metadata> DownloadQueue { get; set; }
@@ -27,6 +28,7 @@ namespace OPMF.Downloader.YTDownloader
             Settings.AppConfig appConfig,
             IVideoDownloaderExecutableRunner videoDownloaderExecutableRunner,
             IMissingVideoDownloaderExecutableDownloader missingVideoDownloaderExecutableDownloader,
+            IFfmpegOnPathFinder ffmpegOnPathFinder,
             IInterruptibleDownloadThreadStarter interruptibleDownloadThreadStarter,
             ICurrentThreadWaiter currentThreadWaiter,
             IConsoleRowOverwriter consoleRowOverwriter,
@@ -41,6 +43,13 @@ namespace OPMF.Downloader.YTDownloader
             __consoleRowOverwriter = consoleRowOverwriter;
             __timeProvider = timeProvider;
             __logger = logger;
+
+            __mergeContainer = MergeContainerRules.GetMergeContainerOfVideoExtensionOrThrow(appConfig.YoutubeDL.VideoExtension);
+            if (!ffmpegOnPathFinder.IsFfmpegFoundInAFolderOnPath())
+            {
+                throw new InvalidOperationException(
+                    "ffmpeg.exe was not found in any folder on PATH. It is needed to merge the video and audio of each download into one file. Install ffmpeg and add its folder to PATH, then run again.");
+            }
 
             Settings.VideoDownloaderExecutable executableTriedFirst = appConfig.YoutubeDL.ExecutableTriedFirstToDownloadVideos;
             Settings.VideoDownloaderExecutable fallbackExecutable = VideoDownloaderExecutableOrderAndLocationRules.GetFallbackExecutable(executableTriedFirst);
@@ -66,6 +75,7 @@ namespace OPMF.Downloader.YTDownloader
                     __fallbackExecutableLocationOrNull,
                     __videoDownloaderExecutableRunner,
                     __appConfig.YoutubeDL,
+                    __mergeContainer,
                     __readonlySettings.GetDownloadFolderPath(),
                     __interruptibleDownloadThreadStarter,
                     __consoleRowOverwriter,
@@ -109,6 +119,7 @@ namespace OPMF.Downloader.YTDownloader
         private readonly VideoDownloaderExecutableLocation __fallbackExecutableOrNull;
         private readonly IVideoDownloaderExecutableRunner __videoDownloaderExecutableRunner;
         private readonly Settings.YoutubeDLConfig __youtubeDLConfig;
+        private readonly string __mergeContainer;
         private readonly string __downloadFolderPath;
         private readonly IInterruptibleDownloadThreadStarter __interruptibleDownloadThreadStarter;
         private readonly IConsoleRowOverwriter __consoleRowOverwriter;
@@ -129,6 +140,7 @@ namespace OPMF.Downloader.YTDownloader
             VideoDownloaderExecutableLocation fallbackExecutableOrNull,
             IVideoDownloaderExecutableRunner videoDownloaderExecutableRunner,
             Settings.YoutubeDLConfig youtubeDLConfig,
+            string mergeContainer,
             string downloadFolderPath,
             IInterruptibleDownloadThreadStarter interruptibleDownloadThreadStarter,
             IConsoleRowOverwriter consoleRowOverwriter,
@@ -140,6 +152,7 @@ namespace OPMF.Downloader.YTDownloader
             __fallbackExecutableOrNull = fallbackExecutableOrNull;
             __videoDownloaderExecutableRunner = videoDownloaderExecutableRunner;
             __youtubeDLConfig = youtubeDLConfig;
+            __mergeContainer = mergeContainer;
             __downloadFolderPath = downloadFolderPath;
             __interruptibleDownloadThreadStarter = interruptibleDownloadThreadStarter;
             __consoleRowOverwriter = consoleRowOverwriter;
@@ -156,19 +169,21 @@ namespace OPMF.Downloader.YTDownloader
         public void Download(Entities.Metadata metadata)
         {
             NotDownloading = false;
-            string outputFilePath = Path.Join(__downloadFolderPath, __ItemNameSanitizer(metadata.Title) + "." + __youtubeDLConfig.VideoExtension);
+            string outputFilePath = Path.Join(__downloadFolderPath, VideoFileNameRules.CreateFileNameWithoutExtensionFromTitle(metadata.Title) + "." + __youtubeDLConfig.VideoExtension);
+            string formatSelector = VideoFormatSelectorRules.BuildFormatSelectorThatBothExecutablesUnderstand(
+                DownloadQualityChoiceRules.ChooseDownloadQualityOfVideo(metadata, __youtubeDLConfig));
             CancellationTokenSource stopThisDownload = new CancellationTokenSource();
             __stopCurrentDownload = stopThisDownload;
             __interruptDownloadThread = __interruptibleDownloadThreadStarter.StartThreadThatRunsAndReturnActionThatInterruptsIt(() =>
             {
                 __title = metadata.Title;
                 VideoDownloadAttemptOutcome outcome = VideoDownloadAttemptRules.RunExecutableTriedFirstThenFallbackExecutableWhenFirstAttemptFailed(
-                    () => __AttemptToDownload(metadata, __executableTriedFirst, false, outputFilePath, stopThisDownload.Token),
+                    () => __AttemptToDownload(metadata, __executableTriedFirst, false, outputFilePath, formatSelector, stopThisDownload.Token),
                     __fallbackExecutableOrNull == null ? null : () =>
                     {
                         __consoleRowOverwriter.OverwriteConsoleRowWithMessage(
                             ScreenPosition, __executableTriedFirst.ExecutableName + " failed, trying " + __fallbackExecutableOrNull.ExecutableName);
-                        return __AttemptToDownload(metadata, __fallbackExecutableOrNull, true, outputFilePath, stopThisDownload.Token);
+                        return __AttemptToDownload(metadata, __fallbackExecutableOrNull, true, outputFilePath, formatSelector, stopThisDownload.Token);
                     });
                 if (outcome == VideoDownloadAttemptOutcome.Succeeded)
                 {
@@ -189,15 +204,18 @@ namespace OPMF.Downloader.YTDownloader
             VideoDownloaderExecutableLocation executable,
             bool tellExecutableNotToResumePartialFiles,
             string outputFilePath,
+            string formatSelector,
             CancellationToken downloadWasStopped)
         {
             try
             {
-                string downloadError = __videoDownloaderExecutableRunner.RunExecutableToDownloadVideoAndReturnLastErrorOutputLine(
+                VideoDownloaderExecutableRunOutcome runOutcome = __videoDownloaderExecutableRunner.RunExecutableToDownloadVideoAndReportWhetherTheOutputFileExists(
                     executable.ExecutableFilePath,
                     tellExecutableNotToResumePartialFiles,
                     metadata.Url,
                     outputFilePath,
+                    formatSelector,
+                    __mergeContainer,
                     output => __consoleRowOverwriter.OverwriteConsoleRowWithMessage(
                         ScreenPosition,
                         output.StartsWith("[download]") ? string.Format("{0} Video: {1}...", output, __TruncateStrIfTooLong(__title)) : output));
@@ -205,13 +223,13 @@ namespace OPMF.Downloader.YTDownloader
                 {
                     return VideoDownloadAttemptOutcome.StoppedBecauseDownloadInstanceTimedOut;
                 }
-                if (VideoDownloadAttemptRules.DidDownloadAttemptSucceed(downloadError, __youtubeDLConfig.FalseErrorMessages))
+                if (runOutcome.OutputFileExistsAfterTheRun)
                 {
                     return VideoDownloadAttemptOutcome.Succeeded;
                 }
                 __logger.LogEntry(new Entities.OPMFLog
                 {
-                    Message = downloadError,
+                    Message = VideoDownloadAttemptRules.CreateMessageOfAttemptThatCreatedNoVideoFile(runOutcome.LastErrorOutputLineOrNull, executable.ExecutableName, outputFilePath),
                     Type = Entities.OPMFLogType.Warning,
                     DateCreated = Now(),
                     Variables = new Dictionary<string, object>
@@ -250,15 +268,6 @@ namespace OPMF.Downloader.YTDownloader
         private string __TruncateStrIfTooLong(string str)
         {
             return str.Length <= TITLE_DISPLAY_LENGTH ? str : str.Substring(0, TITLE_DISPLAY_LENGTH);
-        }
-
-        private string __ItemNameSanitizer(string itemName)
-        {
-            string sanitizeredItemName = itemName.Replace("/", "forward slash");
-            sanitizeredItemName = sanitizeredItemName.Replace("\"", "''");
-            sanitizeredItemName = sanitizeredItemName.Replace("%", "percent");
-
-            return sanitizeredItemName;
         }
     }
 }

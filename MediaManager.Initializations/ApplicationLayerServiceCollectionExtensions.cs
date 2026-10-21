@@ -32,6 +32,7 @@ public static class ApplicationLayerServiceCollectionExtensions
         services.AddTransient<ICommandLineTaskUseCases, CommandLineTaskUseCases>();
         services.AddTransient<IChannelBrowsingUseCases, ChannelBrowsingUseCases>();
         services.AddTransient<IVideoBrowsingUseCases, VideoBrowsingUseCases>();
+        services.AddTransient<IDownloadQualitySettingsUseCases, DownloadQualitySettingsUseCases>();
         services.AddTransient<ILogBrowsingUseCases, LogBrowsingUseCases>();
 
         return services.AddMediaManagerServiceLayer();

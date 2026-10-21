@@ -15,6 +15,7 @@ public interface IVideoMetadataRepository
     void InsertVideosThatAreNotStoredYet(IEnumerable<RepositoryVideoMetadataDto> videos);
     void UpdateDownloadStatusOfVideos(IEnumerable<RepositoryVideoMetadataDto> videos);
     void SetBeingDownloadedFlagOfVideos(IEnumerable<RepositoryVideoMetadataDto> videos, bool isBeingDownloaded);
+    void UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryVideoMetadataDto video);
 }
 
 public class VideoMetadataRepository(IDatabaseConnectionOpener databaseConnectionOpener) : IVideoMetadataRepository
@@ -74,6 +75,13 @@ public class VideoMetadataRepository(IDatabaseConnectionOpener databaseConnectio
         List<Metadata> videosToUpdate = ConvertToYoutubeMetadata(videos);
         databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>
             databaseAdapter.YoutubeMetadataDbCollection.UpdateIsBeingProcessed(videosToUpdate, isBeingDownloaded));
+    }
+
+    public void UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryVideoMetadataDto video)
+    {
+        List<Metadata> videosToUpdate = ConvertToYoutubeMetadata([video]);
+        databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>
+            databaseAdapter.YoutubeMetadataDbCollection.UpdateDownloadQualityChoiceOverrides(videosToUpdate));
     }
 
     private List<RepositoryVideoMetadataDto> ReadVideosAsDtos(Func<YoutubeMetadataDbCollection, IEnumerable<Metadata>> readVideos)

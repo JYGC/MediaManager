@@ -201,6 +201,30 @@ namespace OPMF.UnitTests.UiModules
         }
 
         [Fact]
+        public void SavingTheDownloadQualityChoiceOverridesOfAVideoPassesTheVideoOnToTheUseCase()
+        {
+            var module = CreateModuleToBrowseVideos();
+            var video = VideoWithChannel("v1").Video;
+            video.MaximumVideoResolutionChoiceOverride = ApplicationMaximumVideoResolutionChoice.UpTo720p;
+
+            module.SaveDownloadQualityChoiceOverridesOfVideo(video);
+
+            Assert.Equal(new[] { "SaveDownloadQualityChoiceOverridesOfVideo(v1)" }, VideoBrowsingUseCases.CallsMade);
+            Assert.Same(video, Assert.Single(VideoBrowsingUseCases.VideosWhoseDownloadQualityChoiceOverridesWereSaved));
+        }
+
+        [Fact]
+        public void AFailureToSaveTheDownloadQualityChoiceOverridesOfAVideoReachesTheCaller()
+        {
+            var module = CreateModuleToBrowseVideos();
+            VideoBrowsingUseCases.OnSaveDownloadQualityChoiceOverridesOfVideo = _ => throw new InvalidOperationException("the database is locked");
+
+            var exception = Assert.Throws<InvalidOperationException>(() => module.SaveDownloadQualityChoiceOverridesOfVideo(VideoWithChannel("v1").Video));
+
+            Assert.Equal("the database is locked", exception.Message);
+        }
+
+        [Fact]
         public void DownloadingAVideoNowDoesNotShowTheFlagWhenTheUseCaseReturnsItNotSet()
         {
             var module = CreateModuleToBrowseVideos();

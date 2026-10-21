@@ -80,6 +80,9 @@ public static class DatabaseModelAndRepositoryDtoConverter
             Duration = video.Duration,
             ChannelSiteId = video.ChannelSiteId,
             OriginalResponseFromVideoSite = video.OriginalResponse,
+            VideoCodecChoiceOverride = ConvertToRepositoryVideoCodecChoiceOrNull(video.VideoCodecChoiceOverride),
+            MaximumVideoResolutionChoiceOverride = ConvertToRepositoryMaximumVideoResolutionChoiceOrNull(video.MaximumVideoResolutionChoiceOverride),
+            AudioQualityChoiceOverride = ConvertToRepositoryAudioQualityChoiceOrNull(video.AudioQualityChoiceOverride),
         };
     }
 
@@ -98,6 +101,9 @@ public static class DatabaseModelAndRepositoryDtoConverter
             Duration = videoDto.Duration,
             ChannelSiteId = videoDto.ChannelSiteId,
             OriginalResponse = videoDto.OriginalResponseFromVideoSite,
+            VideoCodecChoiceOverride = ConvertToEntityVideoCodecChoiceOrNull(videoDto.VideoCodecChoiceOverride),
+            MaximumVideoResolutionChoiceOverride = ConvertToEntityMaximumVideoResolutionChoiceOrNull(videoDto.MaximumVideoResolutionChoiceOverride),
+            AudioQualityChoiceOverride = ConvertToEntityAudioQualityChoiceOrNull(videoDto.AudioQualityChoiceOverride),
         };
     }
 
@@ -124,6 +130,84 @@ public static class DatabaseModelAndRepositoryDtoConverter
             RepositoryVideoDownloadStatus.Ignore => MetadataStatus.Ignore,
             RepositoryVideoDownloadStatus.Downloaded => MetadataStatus.Downloaded,
             _ => throw new ArgumentOutOfRangeException(nameof(status), status, "No metadata status matches this repository video download status."),
+        };
+    }
+
+    private static RepositoryVideoCodecChoice? ConvertToRepositoryVideoCodecChoiceOrNull(EntityVideoCodecChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            EntityVideoCodecChoice.H264 => RepositoryVideoCodecChoice.H264,
+            EntityVideoCodecChoice.AnyCodec => RepositoryVideoCodecChoice.AnyCodec,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository video codec choice matches this video codec choice."),
+        };
+    }
+
+    private static EntityVideoCodecChoice? ConvertToEntityVideoCodecChoiceOrNull(RepositoryVideoCodecChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryVideoCodecChoice.H264 => EntityVideoCodecChoice.H264,
+            RepositoryVideoCodecChoice.AnyCodec => EntityVideoCodecChoice.AnyCodec,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No video codec choice matches this repository video codec choice."),
+        };
+    }
+
+    private static RepositoryMaximumVideoResolutionChoice? ConvertToRepositoryMaximumVideoResolutionChoiceOrNull(EntityMaximumVideoResolutionChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            EntityMaximumVideoResolutionChoice.NoLimit => RepositoryMaximumVideoResolutionChoice.NoLimit,
+            EntityMaximumVideoResolutionChoice.UpTo2160p => RepositoryMaximumVideoResolutionChoice.UpTo2160p,
+            EntityMaximumVideoResolutionChoice.UpTo1440p => RepositoryMaximumVideoResolutionChoice.UpTo1440p,
+            EntityMaximumVideoResolutionChoice.UpTo1080p => RepositoryMaximumVideoResolutionChoice.UpTo1080p,
+            EntityMaximumVideoResolutionChoice.UpTo720p => RepositoryMaximumVideoResolutionChoice.UpTo720p,
+            EntityMaximumVideoResolutionChoice.UpTo480p => RepositoryMaximumVideoResolutionChoice.UpTo480p,
+            EntityMaximumVideoResolutionChoice.UpTo360p => RepositoryMaximumVideoResolutionChoice.UpTo360p,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository maximum video resolution choice matches this maximum video resolution choice."),
+        };
+    }
+
+    private static EntityMaximumVideoResolutionChoice? ConvertToEntityMaximumVideoResolutionChoiceOrNull(RepositoryMaximumVideoResolutionChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryMaximumVideoResolutionChoice.NoLimit => EntityMaximumVideoResolutionChoice.NoLimit,
+            RepositoryMaximumVideoResolutionChoice.UpTo2160p => EntityMaximumVideoResolutionChoice.UpTo2160p,
+            RepositoryMaximumVideoResolutionChoice.UpTo1440p => EntityMaximumVideoResolutionChoice.UpTo1440p,
+            RepositoryMaximumVideoResolutionChoice.UpTo1080p => EntityMaximumVideoResolutionChoice.UpTo1080p,
+            RepositoryMaximumVideoResolutionChoice.UpTo720p => EntityMaximumVideoResolutionChoice.UpTo720p,
+            RepositoryMaximumVideoResolutionChoice.UpTo480p => EntityMaximumVideoResolutionChoice.UpTo480p,
+            RepositoryMaximumVideoResolutionChoice.UpTo360p => EntityMaximumVideoResolutionChoice.UpTo360p,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No maximum video resolution choice matches this repository maximum video resolution choice."),
+        };
+    }
+
+    private static RepositoryAudioQualityChoice? ConvertToRepositoryAudioQualityChoiceOrNull(EntityAudioQualityChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            EntityAudioQualityChoice.BestAac => RepositoryAudioQualityChoice.BestAac,
+            EntityAudioQualityChoice.BestOfAnyCodec => RepositoryAudioQualityChoice.BestOfAnyCodec,
+            EntityAudioQualityChoice.SmallestAac => RepositoryAudioQualityChoice.SmallestAac,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No repository audio quality choice matches this audio quality choice."),
+        };
+    }
+
+    private static EntityAudioQualityChoice? ConvertToEntityAudioQualityChoiceOrNull(RepositoryAudioQualityChoice? choice)
+    {
+        return choice switch
+        {
+            null => null,
+            RepositoryAudioQualityChoice.BestAac => EntityAudioQualityChoice.BestAac,
+            RepositoryAudioQualityChoice.BestOfAnyCodec => EntityAudioQualityChoice.BestOfAnyCodec,
+            RepositoryAudioQualityChoice.SmallestAac => EntityAudioQualityChoice.SmallestAac,
+            _ => throw new ArgumentOutOfRangeException(nameof(choice), choice, "No audio quality choice matches this repository audio quality choice."),
         };
     }
 

@@ -13,6 +13,7 @@ public interface IVideoBrowsingUseCases
     void UpdateDownloadStatusOfVideos(IEnumerable<ApplicationVideoMetadataDto> videos);
     ApplicationVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ApplicationVideoMetadataDto video);
     ApplicationVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ApplicationVideoMetadataDto video);
+    void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video);
 }
 
 public class VideoBrowsingUseCases(IChannelMetadataServices channelMetadataServices, IMetadataServices metadataServices) : IVideoBrowsingUseCases
@@ -59,6 +60,11 @@ public class VideoBrowsingUseCases(IChannelMetadataServices channelMetadataServi
     {
         return ServiceDtoAndApplicationDtoConverter.ConvertVideoToApplicationDto(
             metadataServices.MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(video)));
+    }
+
+    public void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video)
+    {
+        metadataServices.SaveDownloadQualityChoiceOverridesOfVideo(ServiceDtoAndApplicationDtoConverter.ConvertVideoToServiceDto(video));
     }
 
     private static List<ApplicationVideoWithChannelDto> ConvertToApplicationDtos(List<MediaManager.Dtos.Services.ServiceVideoWithChannelDto> videosWithChannels)

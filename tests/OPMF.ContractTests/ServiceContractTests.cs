@@ -60,8 +60,27 @@ namespace OPMF.ContractTests
                 InOrdinalOrder(
                     "Void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto>)",
                     "ServiceVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ServiceVideoMetadataDto)",
-                    "ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto)"),
+                    "ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto)",
+                    "Void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto)"),
                 InterfaceShape.MethodSignaturesOf(typeof(IMetadataServices)));
+        }
+
+        [Fact]
+        public void IDownloadQualitySettingsServices_Implementation_IsDownloadQualitySettingsServices()
+        {
+            Assert.Contains(typeof(IDownloadQualitySettingsServices), typeof(DownloadQualitySettingsServices).GetInterfaces());
+        }
+
+        [Fact]
+        public void IDownloadQualitySettingsServices_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                InOrdinalOrder(
+                    "ServiceDownloadQualityDto GetAppWideDownloadQualityFromConfigFile()",
+                    "Void SaveAppWideVideoCodecChoice(ServiceVideoCodecChoice)",
+                    "Void SaveAppWideMaximumVideoResolutionChoice(ServiceMaximumVideoResolutionChoice)",
+                    "Void SaveAppWideAudioQualityChoice(ServiceAudioQualityChoice)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IDownloadQualitySettingsServices)));
         }
 
         [Fact]

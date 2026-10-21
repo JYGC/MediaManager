@@ -8,10 +8,12 @@ namespace MediaManager.Services2
         void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto> videos);
         ServiceVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ServiceVideoMetadataDto video);
         ServiceVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ServiceVideoMetadataDto video);
+        void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto video);
     }
     public class MetadataServices(
         ITaskRunnerServices taskRunnerServices,
-        IVideoMetadataRepository videoMetadataRepository) : IMetadataServices
+        IVideoMetadataRepository videoMetadataRepository,
+        ILogRepository logRepository) : IMetadataServices
     {
         public void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto> videos)
         {
@@ -31,6 +33,21 @@ namespace MediaManager.Services2
             videoMetadataRepository.SetBeingDownloadedFlagOfVideos([RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(video)], true);
             taskRunnerServices.StartTaskRunnerProcessThatDownloadsVideoWithSiteId(video.SiteId);
             return video;
+        }
+
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto video)
+        {
+            try
+            {
+                videoMetadataRepository.UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(video));
+            }
+            catch (Exception exception)
+            {
+                logRepository.RecordErrorLogEntry(ErrorLogEntryToRecordCreator.CreateWithVariablesSerializedAsJsonText(
+                    exception,
+                    new Dictionary<string, object?> { { "videoSiteId", video.SiteId }, { "videoTitle", video.Title } }));
+                throw;
+            }
         }
     }
 }

@@ -98,6 +98,78 @@ namespace OPMF.UnitTests.Database
         }
 
         [Fact]
+        public void UpdateDownloadQualityChoiceOverridesCopiesExactlyTheThreeOverridesOntoTheStoredVideo()
+        {
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>
+            {
+                databaseAdapter.YoutubeMetadataDbCollection.InsertNew(new[] { Metadata("q", title: "Stored title", status: MetadataStatus.ToDownload) });
+                var videoWithChangesToEveryField = Metadata("q", title: "Changed title", status: MetadataStatus.Ignore);
+                videoWithChangesToEveryField.IsBeingDownloaded = true;
+                videoWithChangesToEveryField.VideoCodecChoiceOverride = EntityVideoCodecChoice.AnyCodec;
+                videoWithChangesToEveryField.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo720p;
+                videoWithChangesToEveryField.AudioQualityChoiceOverride = EntityAudioQualityChoice.SmallestAac;
+
+                databaseAdapter.YoutubeMetadataDbCollection.UpdateDownloadQualityChoiceOverrides(new[] { videoWithChangesToEveryField });
+
+                var storedVideo = databaseAdapter.YoutubeMetadataDbCollection.GetBySiteId("q");
+                Assert.Equal(EntityVideoCodecChoice.AnyCodec, storedVideo.VideoCodecChoiceOverride);
+                Assert.Equal(EntityMaximumVideoResolutionChoice.UpTo720p, storedVideo.MaximumVideoResolutionChoiceOverride);
+                Assert.Equal(EntityAudioQualityChoice.SmallestAac, storedVideo.AudioQualityChoiceOverride);
+                Assert.Equal("Stored title", storedVideo.Title);
+                Assert.Equal(MetadataStatus.ToDownload, storedVideo.Status);
+                Assert.False(storedVideo.IsBeingDownloaded);
+            });
+        }
+
+        [Fact]
+        public void UpdateDownloadQualityChoiceOverridesWithNullClearsAnOverride()
+        {
+            var videoWithAllOverrides = Metadata("c");
+            videoWithAllOverrides.VideoCodecChoiceOverride = EntityVideoCodecChoice.H264;
+            videoWithAllOverrides.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo480p;
+            videoWithAllOverrides.AudioQualityChoiceOverride = EntityAudioQualityChoice.BestOfAnyCodec;
+
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>
+            {
+                databaseAdapter.YoutubeMetadataDbCollection.InsertNew(new[] { videoWithAllOverrides });
+                var videoWithOneOverrideCleared = databaseAdapter.YoutubeMetadataDbCollection.GetBySiteId("c");
+                videoWithOneOverrideCleared.MaximumVideoResolutionChoiceOverride = null;
+
+                databaseAdapter.YoutubeMetadataDbCollection.UpdateDownloadQualityChoiceOverrides(new[] { videoWithOneOverrideCleared });
+
+                var storedVideo = databaseAdapter.YoutubeMetadataDbCollection.GetBySiteId("c");
+                Assert.Null(storedVideo.MaximumVideoResolutionChoiceOverride);
+                Assert.Equal(EntityVideoCodecChoice.H264, storedVideo.VideoCodecChoiceOverride);
+                Assert.Equal(EntityAudioQualityChoice.BestOfAnyCodec, storedVideo.AudioQualityChoiceOverride);
+            });
+        }
+
+        [Fact]
+        public void UpdateStatusAndUpdateIsBeingProcessedKeepTheDownloadQualityChoiceOverrides()
+        {
+            var videoWithOverrides = Metadata("k");
+            videoWithOverrides.VideoCodecChoiceOverride = EntityVideoCodecChoice.AnyCodec;
+            videoWithOverrides.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo1080p;
+            videoWithOverrides.AudioQualityChoiceOverride = EntityAudioQualityChoice.SmallestAac;
+
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>
+            {
+                databaseAdapter.YoutubeMetadataDbCollection.InsertNew(new[] { videoWithOverrides });
+                var videoWithoutOverridesInMemory = Metadata("k", status: MetadataStatus.Downloaded);
+
+                databaseAdapter.YoutubeMetadataDbCollection.UpdateStatus(new[] { videoWithoutOverridesInMemory });
+                databaseAdapter.YoutubeMetadataDbCollection.UpdateIsBeingProcessed(new[] { videoWithoutOverridesInMemory }, true);
+
+                var storedVideo = databaseAdapter.YoutubeMetadataDbCollection.GetBySiteId("k");
+                Assert.Equal(MetadataStatus.Downloaded, storedVideo.Status);
+                Assert.True(storedVideo.IsBeingDownloaded);
+                Assert.Equal(EntityVideoCodecChoice.AnyCodec, storedVideo.VideoCodecChoiceOverride);
+                Assert.Equal(EntityMaximumVideoResolutionChoice.UpTo1080p, storedVideo.MaximumVideoResolutionChoiceOverride);
+                Assert.Equal(EntityAudioQualityChoice.SmallestAac, storedVideo.AudioQualityChoiceOverride);
+            });
+        }
+
+        [Fact]
         public void GetToDownloadReturnsOnlyVideosWithTheToDownloadStatus()
         {
             _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter =>

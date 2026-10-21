@@ -160,5 +160,45 @@ namespace OPMF.UnitTests.Repositories
             _videoMetadataRepository.SetBeingDownloadedFlagOfVideos(new[] { videoDto }, false);
             Assert.False(StoredVideoWithSiteId("a").IsBeingDownloaded);
         }
+
+        [Fact]
+        public void UpdateDownloadQualityChoiceOverridesOfVideoStoresTheThreeOverridesOfTheGivenVideoOnly()
+        {
+            StoreVideos(Metadata("q", title: "Stored title", status: MetadataStatus.ToDownload), Metadata("other"));
+            var videoDtoWithOverrides = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains("q");
+            videoDtoWithOverrides.Title = "Changed title";
+            videoDtoWithOverrides.VideoCodecChoiceOverride = RepositoryVideoCodecChoice.AnyCodec;
+            videoDtoWithOverrides.MaximumVideoResolutionChoiceOverride = RepositoryMaximumVideoResolutionChoice.UpTo720p;
+            videoDtoWithOverrides.AudioQualityChoiceOverride = RepositoryAudioQualityChoice.SmallestAac;
+
+            _videoMetadataRepository.UpdateDownloadQualityChoiceOverridesOfVideo(videoDtoWithOverrides);
+
+            var storedVideo = StoredVideoWithSiteId("q");
+            Assert.Equal(EntityVideoCodecChoice.AnyCodec, storedVideo.VideoCodecChoiceOverride);
+            Assert.Equal(EntityMaximumVideoResolutionChoice.UpTo720p, storedVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(EntityAudioQualityChoice.SmallestAac, storedVideo.AudioQualityChoiceOverride);
+            Assert.Equal("Stored title", storedVideo.Title);
+            Assert.Null(StoredVideoWithSiteId("other").VideoCodecChoiceOverride);
+        }
+
+        [Fact]
+        public void GetFirstVideoWhoseSiteIdContainsAndGetVideosQueuedToDownloadReturnTheOverrides()
+        {
+            var queuedVideoWithOverrides = Metadata("o", status: MetadataStatus.ToDownload);
+            queuedVideoWithOverrides.VideoCodecChoiceOverride = EntityVideoCodecChoice.H264;
+            queuedVideoWithOverrides.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo480p;
+            queuedVideoWithOverrides.AudioQualityChoiceOverride = EntityAudioQualityChoice.BestOfAnyCodec;
+            StoreVideos(queuedVideoWithOverrides);
+
+            var videoFoundBySiteId = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains("o");
+            var queuedVideo = Assert.Single(_videoMetadataRepository.GetVideosQueuedToDownload());
+
+            Assert.Equal(RepositoryVideoCodecChoice.H264, videoFoundBySiteId.VideoCodecChoiceOverride);
+            Assert.Equal(RepositoryMaximumVideoResolutionChoice.UpTo480p, videoFoundBySiteId.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(RepositoryAudioQualityChoice.BestOfAnyCodec, videoFoundBySiteId.AudioQualityChoiceOverride);
+            Assert.Equal(RepositoryVideoCodecChoice.H264, queuedVideo.VideoCodecChoiceOverride);
+            Assert.Equal(RepositoryMaximumVideoResolutionChoice.UpTo480p, queuedVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(RepositoryAudioQualityChoice.BestOfAnyCodec, queuedVideo.AudioQualityChoiceOverride);
+        }
     }
 }

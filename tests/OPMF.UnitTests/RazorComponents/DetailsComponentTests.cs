@@ -5,6 +5,7 @@ using Bunit;
 using MediaManager.Dtos.Application;
 using MediaManagerUI.Modules.VideoBrowser;
 using MediaManagerUI.Shared;
+using MudBlazor;
 using Microsoft.AspNetCore.Components;
 using OPMF.UnitTests.Support;
 using Xunit;
@@ -168,6 +169,12 @@ namespace OPMF.UnitTests.RazorComponents
     public class VideoDetailsTests : MudBlazorComponentTestContext
     {
         private readonly FakeVideoBrowserModule _fakeVideoBrowserModule = new FakeVideoBrowserModule();
+        private readonly IRenderedComponent<MudPopoverProvider> _popoverProvider;
+
+        public VideoDetailsTests()
+        {
+            _popoverProvider = RenderComponent<MudPopoverProvider>();
+        }
 
         private static ApplicationVideoWithChannelDto VideoWithChannel(bool isBeingDownloaded, TimeSpan duration, ApplicationChannelDto channel = null, string description = "About the video") =>
             new ApplicationVideoWithChannelDto
@@ -304,6 +311,219 @@ namespace OPMF.UnitTests.RazorComponents
 
             Assert.Single(modulesReported);
             Assert.Single(videosReported);
+        }
+
+        private const string AccentStyleOfAPickerThatHoldsAnOverride = "--mud-palette-lines-inputs: var(--mud-palette-primary)";
+
+        private static string[] ValuesShownByThePickers(IRenderedComponent<_VideoDetails> renderedDetails) =>
+            renderedDetails.FindAll("input").Select(input => input.GetAttribute("value")).ToArray();
+
+        private void ChooseEntryOfPicker(IRenderedComponent<_VideoDetails> renderedDetails, int indexOfThePicker, string labelOfTheEntry)
+        {
+            renderedDetails.FindAll(".mud-input-control")[indexOfThePicker].PointerDown();
+            _popoverProvider.WaitForAssertion(() => Assert.Contains(_popoverProvider.FindAll(".mud-list-item"), item => item.TextContent.Trim() == labelOfTheEntry));
+            _popoverProvider.FindAll(".mud-list-item").Single(item => item.TextContent.Trim() == labelOfTheEntry).Click();
+        }
+
+        [Fact]
+        public void TheBoxesAppearInTodaysOrderThenTheDownloadQualityBoxThenTheActions()
+        {
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+
+            var positionsOfTheLabels = new[] { "Title: ", "Thumbnail: ", "Channel: ", "Url: ", "Duration: ", "Description: ", "Download quality: ", "Actions: " }
+                .Select(label => renderedDetails.Markup.IndexOf("<b>" + label + "</b>", StringComparison.Ordinal))
+                .ToList();
+            Assert.All(positionsOfTheLabels, position => Assert.True(position >= 0));
+            Assert.Equal(positionsOfTheLabels.OrderBy(position => position), positionsOfTheLabels);
+        }
+
+        [Fact]
+        public void WithNoModuleNeitherTheDownloadQualityBoxNorTheActionsAppear()
+        {
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)), withModule: false);
+
+            Assert.DoesNotContain("Download quality: ", renderedDetails.Markup);
+            Assert.DoesNotContain("Actions: ", renderedDetails.Markup);
+            Assert.Empty(renderedDetails.FindAll("input"));
+            Assert.DoesNotContain("GetAppWideDownloadQuality", DownloadQualitySettingsUseCases.CallsMade);
+        }
+
+        [Fact]
+        public void TheBoxHasThreePickersLabelledVideoCodecMaximumResolutionAndAudio()
+        {
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+
+            Assert.Equal(new[] { "Video codec", "Maximum resolution", "Audio" }, renderedDetails.FindAll("label").Select(label => label.TextContent));
+        }
+
+        [Fact]
+        public void WithNoOverridesEachPickerShowsSameAsSettingsNamingTheSettingsValueWithNoAccentStyle()
+        {
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+
+            Assert.Equal(new[] { "Same as Settings (H.264)", "Same as Settings (No limit)", "Same as Settings (Best AAC)" }, ValuesShownByThePickers(renderedDetails));
+            Assert.DoesNotContain("--mud-palette-lines-inputs", renderedDetails.Markup);
+        }
+
+        [Fact]
+        public void TheSameAsSettingsLabelsFollowTheValuesOfTheSettings()
+        {
+            DownloadQualitySettingsUseCases.AppWideDownloadQualityToReturn = new ApplicationDownloadQualityDto
+            {
+                VideoCodecToPreferWhenDownloading = ApplicationVideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionOnTheShorterSide = ApplicationMaximumVideoResolutionChoice.UpTo1080p,
+                AudioQualityToDownload = ApplicationAudioQualityChoice.SmallestAac,
+            };
+
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+
+            Assert.Equal(new[] { "Same as Settings (Any codec)", "Same as Settings (1080p)", "Same as Settings (Smallest AAC)" }, ValuesShownByThePickers(renderedDetails));
+        }
+
+        [Fact]
+        public void AVideoWithAnOverrideShowsItAndOnlyThatPickerHasTheAccentStyle()
+        {
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            videoWithChannel.Video.MaximumVideoResolutionChoiceOverride = ApplicationMaximumVideoResolutionChoice.UpTo720p;
+
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            Assert.Equal(new[] { "Same as Settings (H.264)", "720p", "Same as Settings (Best AAC)" }, ValuesShownByThePickers(renderedDetails));
+            var pickersWithTheAccentStyle = renderedDetails.FindAll(".mud-input-control").Where(picker => (picker.GetAttribute("style") ?? string.Empty).Contains(AccentStyleOfAPickerThatHoldsAnOverride)).ToList();
+            var pickerWithTheAccentStyle = Assert.Single(pickersWithTheAccentStyle);
+            Assert.Equal("Maximum resolution", pickerWithTheAccentStyle.QuerySelector("label").TextContent);
+        }
+
+        [Fact]
+        public void ChoosingAnEntrySetsThatFieldOfTheVideoAndSavesThroughTheModuleOnce()
+        {
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            ChooseEntryOfPicker(renderedDetails, 1, "720p");
+
+            renderedDetails.WaitForAssertion(() => Assert.Single(_fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved));
+            Assert.Same(videoWithChannel.Video, _fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved[0]);
+            Assert.Equal(ApplicationMaximumVideoResolutionChoice.UpTo720p, videoWithChannel.Video.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoWithChannel.Video.VideoCodecChoiceOverride);
+            Assert.Null(videoWithChannel.Video.AudioQualityChoiceOverride);
+            renderedDetails.WaitForAssertion(() => Assert.Equal("720p", ValuesShownByThePickers(renderedDetails)[1]));
+        }
+
+        [Fact]
+        public void ChoosingTheCodecAndTheAudioQualitySetsTheirOwnFields()
+        {
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            ChooseEntryOfPicker(renderedDetails, 0, "Any codec (AV1, VP9 or H.264)");
+            renderedDetails.WaitForAssertion(() => Assert.Single(_fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved));
+            ChooseEntryOfPicker(renderedDetails, 2, "Smallest AAC (about 50 kbps)");
+            renderedDetails.WaitForAssertion(() => Assert.Equal(2, _fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved.Count));
+
+            Assert.Equal(ApplicationVideoCodecChoice.AnyCodec, videoWithChannel.Video.VideoCodecChoiceOverride);
+            Assert.Equal(ApplicationAudioQualityChoice.SmallestAac, videoWithChannel.Video.AudioQualityChoiceOverride);
+            Assert.Null(videoWithChannel.Video.MaximumVideoResolutionChoiceOverride);
+        }
+
+        [Fact]
+        public void ChoosingSameAsSettingsRemovesTheOverrideAndSavesIt()
+        {
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            videoWithChannel.Video.MaximumVideoResolutionChoiceOverride = ApplicationMaximumVideoResolutionChoice.UpTo720p;
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            ChooseEntryOfPicker(renderedDetails, 1, "Same as Settings (No limit)");
+
+            renderedDetails.WaitForAssertion(() => Assert.Single(_fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved));
+            Assert.Null(videoWithChannel.Video.MaximumVideoResolutionChoiceOverride);
+            renderedDetails.WaitForAssertion(() => Assert.DoesNotContain("--mud-palette-lines-inputs", renderedDetails.Markup));
+        }
+
+        [Fact]
+        public void ASaveThatFailsSetsTheFieldBackAndShowsTheErrorUnderThatPicker()
+        {
+            _fakeVideoBrowserModule.ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides = new InvalidOperationException("the database is locked");
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            ChooseEntryOfPicker(renderedDetails, 1, "720p");
+
+            renderedDetails.WaitForAssertion(() => Assert.Contains("Couldn't save this video's choice: the database is locked", renderedDetails.Markup));
+            Assert.Null(videoWithChannel.Video.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal("Same as Settings (No limit)", ValuesShownByThePickers(renderedDetails)[1]);
+            Assert.DoesNotContain("--mud-palette-lines-inputs", renderedDetails.Markup);
+        }
+
+        [Fact]
+        public void ASaveThatFailsRestoresAnOverrideTheVideoHadBefore()
+        {
+            _fakeVideoBrowserModule.ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides = new InvalidOperationException("the database is locked");
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0));
+            videoWithChannel.Video.MaximumVideoResolutionChoiceOverride = ApplicationMaximumVideoResolutionChoice.UpTo480p;
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            ChooseEntryOfPicker(renderedDetails, 1, "720p");
+
+            renderedDetails.WaitForAssertion(() => Assert.Contains("Couldn't save this video's choice", renderedDetails.Markup));
+            Assert.Equal(ApplicationMaximumVideoResolutionChoice.UpTo480p, videoWithChannel.Video.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal("480p", ValuesShownByThePickers(renderedDetails)[1]);
+        }
+
+        [Fact]
+        public void ALaterSuccessfulSaveOfThatPickerClearsTheError()
+        {
+            _fakeVideoBrowserModule.ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides = new InvalidOperationException("the database is locked");
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+            ChooseEntryOfPicker(renderedDetails, 1, "720p");
+            renderedDetails.WaitForAssertion(() => Assert.Contains("Couldn't save this video's choice", renderedDetails.Markup));
+            _fakeVideoBrowserModule.ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides = null;
+
+            ChooseEntryOfPicker(renderedDetails, 1, "480p");
+
+            renderedDetails.WaitForAssertion(() => Assert.DoesNotContain("Couldn't save", renderedDetails.Markup));
+            renderedDetails.WaitForAssertion(() => Assert.Equal("480p", ValuesShownByThePickers(renderedDetails)[1]));
+        }
+
+        [Fact]
+        public void WhileTheVideoIsBeingDownloadedThePickersStayEnabledAndCanSave()
+        {
+            var videoWithChannel = VideoWithChannel(isBeingDownloaded: true, new TimeSpan(0, 5, 0));
+            var renderedDetails = RenderDetails(videoWithChannel);
+
+            Assert.Equal(3, renderedDetails.FindAll("input").Count);
+            Assert.Empty(renderedDetails.FindAll(".mud-input-control.mud-disabled"));
+            ChooseEntryOfPicker(renderedDetails, 1, "720p");
+
+            renderedDetails.WaitForAssertion(() => Assert.Single(_fakeVideoBrowserModule.VideosWhoseDownloadQualityChoiceOverridesWereSaved));
+        }
+
+        [Fact]
+        public void TheSettingsAreReadAgainWhenTheDialogGetsADifferentVideo()
+        {
+            var renderedDetails = RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0)));
+            DownloadQualitySettingsUseCases.AppWideDownloadQualityToReturn = new ApplicationDownloadQualityDto
+            {
+                VideoCodecToPreferWhenDownloading = ApplicationVideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionOnTheShorterSide = ApplicationMaximumVideoResolutionChoice.UpTo480p,
+                AudioQualityToDownload = ApplicationAudioQualityChoice.BestOfAnyCodec,
+            };
+
+            renderedDetails.SetParametersAndRender(parameters => parameters
+                .Add(component => component.VideoBrowserModule, _fakeVideoBrowserModule)
+                .Add(component => component.VideoWithChannel, VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0))));
+
+            Assert.Equal(new[] { "Same as Settings (Any codec)", "Same as Settings (480p)", "Same as Settings (Best of any codec)" }, ValuesShownByThePickers(renderedDetails));
+        }
+
+        [Fact]
+        public void AFailureToReadTheSettingsReachesTheErrorBoundaryInsteadOfBeingSwallowed()
+        {
+            DownloadQualitySettingsUseCases.ExceptionToThrowWhenReading = new InvalidOperationException("config.json is not valid JSON");
+
+            var exception = Assert.Throws<InvalidOperationException>(() => RenderDetails(VideoWithChannel(isBeingDownloaded: false, new TimeSpan(0, 5, 0))));
+
+            Assert.Equal("config.json is not valid JSON", exception.Message);
         }
     }
 }

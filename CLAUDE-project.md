@@ -70,12 +70,16 @@ tests/
 ### Composition and testability
 
 - Each layer registers its own services in an `Add…Layer` extension method (`AddMediaManagerApplicationLayer`, `AddMediaManagerServiceLayer`, `AddMediaManagerRepositoryLayer`). The only composition roots are `Program.Main` of the CLI, `Program.Main` and `App` of the UI host, and the `MainWindow` constructor.
-- Nothing outside a composition root or a thin adapter touches the file system, console, network, process, thread or clock directly. Use the seams instead: `TimeProvider`, a `TextWriter` for standard output, `IDatabaseConnectionOpener`, and the downloader interfaces (`IUrlToFileDownloader`, `IVideoDownloaderExecutableRunner`, `IInterruptibleDownloadThreadStarter`, `ICurrentThreadWaiter`, `IConsoleRowOverwriter`), `IYoutubeDataApi`, `IExternalProcessStarter`, `IMissingFolderCreator`.
+- Nothing outside a composition root or a thin adapter touches the file system, console, network, process, thread or clock directly. Use the seams instead: `TimeProvider`, a `TextWriter` for standard output, `IDatabaseConnectionOpener`, and the downloader interfaces (`IUrlToFileDownloader`, `IVideoDownloaderExecutableRunner`, `IInterruptibleDownloadThreadStarter`, `ICurrentThreadWaiter`, `IConsoleRowOverwriter`, `IFfmpegOnPathFinder`), `IYoutubeDataApi`, `IExternalProcessStarter`, `IMissingFolderCreator`, `IConfigFileYoutubeDLKeyWriter`.
 - The thin adapters that only forward to those APIs (`WebClientUrlToFileDownloader`, `NYoutubeDLVideoDownloaderExecutableRunner`, `InterruptibleDownloadThreadStarter`, `ThreadSleepCurrentThreadWaiter`, `ConsoleRowOverwriter`, `GoogleSignIn`, `YoutubeDataApi`, `ExternalProcessStarter`) and the composition roots are exempt from unit tests.
 
 ### Downloader
 
-`YTDownloader` downloads each video with the executable named by `ExecutableTriedFirstToDownloadVideos` in the config file (`youtube-dl` or `yt-dlp`). When that attempt fails, it tries the other executable for the same video (with `--no-continue`) and logs a warning. Both executables are downloaded into the application folder when missing, so nothing has to be on `PATH`.
+`YTDownloader` downloads each video with the executable named by `ExecutableTriedFirstToDownloadVideos` in the config file (`youtube-dl` or `yt-dlp`). When that attempt fails, it tries the other executable for the same video (with `--no-continue`) and logs a warning. Both executables are downloaded into the application folder when missing.
+
+- **Quality.** Each video is downloaded as separate video and audio streams, which ffmpeg merges into one file. The streams come from the three `YoutubeDL` keys `VideoCodecToPreferWhenDownloading`, `MaximumVideoResolutionOnTheShorterSide` and `AudioQualityToDownload`, or from the video's own override (three nullable fields on `Metadata`, set in the video details dialog). `VideoFormatSelectorRules` builds the `-f` selector, `DownloadQualityChoiceRules` picks override-or-config, and `MergeContainerRules` allows only `mp4` or `mkv` as `VideoExtension`. The `/settings` page changes the app-wide keys one at a time through `ConfigFileYoutubeDLKeyWriter`.
+- **ffmpeg.** `ffmpeg.exe` must be in a folder on `PATH`. `YTDownloader` checks this (through `IFfmpegOnPathFinder`) before it downloads anything or marks a video, and the executables find ffmpeg on `PATH` themselves (no `--ffmpeg-location`, because NYoutubeDL cannot pass a path that contains a space).
+- **Success.** An attempt succeeds when the video file exists at the output path. The last error-output line no longer decides the outcome, so yt-dlp's warnings do not fail a download. `VideoFileNameRules` renames `< > : | ? *` to `#`, as the executables do, so the computed path is the real path. Stream files left behind (`<name>.f<id>.<ext>`) are not moved to the output folder.
 
 ## Development rules
 
@@ -148,7 +152,7 @@ dotnet run --project MediaManagerUI                    # launch the WPF + Blazor
 - **Runtime:** .NET 8.0 (`net8.0` for libraries and the CLI, `net8.0-windows` for the WPF UI)
 - **Database:** LiteDB 5.0.15 (embedded, file-backed)
 - **YouTube metadata:** Google.Apis.YouTube.v3 1.58.0.2874
-- **Video download:** NYoutubeDL 0.11.2 (wraps `youtube-dl` and `yt-dlp`, which the app downloads itself when missing)
+- **Video download:** NYoutubeDL 0.11.2 (wraps `youtube-dl` and `yt-dlp`, which the app downloads itself when missing); ffmpeg (on `PATH`) to merge streams
 - **UI:** WPF host + `Microsoft.AspNetCore.Components.WebView.Wpf` 8.0.100 + MudBlazor 8.0.0 (Razor class library `MediaManagerUI.Components`)
 - **Dependency injection:** Microsoft.Extensions.DependencyInjection 8.0
 - **JSON:** Newtonsoft.Json 13.0.2

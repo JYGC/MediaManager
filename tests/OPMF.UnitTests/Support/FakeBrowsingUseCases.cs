@@ -64,6 +64,57 @@ namespace OPMF.UnitTests.Support
             CallsMade.Add($"MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt({video.SiteId})");
             return OnMarkVideoAsBeingDownloaded(video);
         }
+
+        public Action<ApplicationVideoMetadataDto> OnSaveDownloadQualityChoiceOverridesOfVideo { get; set; } = _ => { };
+        public List<ApplicationVideoMetadataDto> VideosWhoseDownloadQualityChoiceOverridesWereSaved { get; } = new List<ApplicationVideoMetadataDto>();
+
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video)
+        {
+            CallsMade.Add($"SaveDownloadQualityChoiceOverridesOfVideo({video.SiteId})");
+            OnSaveDownloadQualityChoiceOverridesOfVideo(video);
+            VideosWhoseDownloadQualityChoiceOverridesWereSaved.Add(video);
+        }
+    }
+
+    public class FakeDownloadQualitySettingsUseCases : IDownloadQualitySettingsUseCases
+    {
+        public ApplicationDownloadQualityDto AppWideDownloadQualityToReturn { get; set; } = new ApplicationDownloadQualityDto
+        {
+            VideoCodecToPreferWhenDownloading = ApplicationVideoCodecChoice.H264,
+            MaximumVideoResolutionOnTheShorterSide = ApplicationMaximumVideoResolutionChoice.NoLimit,
+            AudioQualityToDownload = ApplicationAudioQualityChoice.BestAac,
+        };
+        public Action OnAnySave { get; set; } = () => { };
+        public Exception ExceptionToThrowWhenReading { get; set; }
+        public List<string> CallsMade { get; } = new List<string>();
+
+        public ApplicationDownloadQualityDto GetAppWideDownloadQuality()
+        {
+            CallsMade.Add("GetAppWideDownloadQuality");
+            if (ExceptionToThrowWhenReading != null)
+            {
+                throw ExceptionToThrowWhenReading;
+            }
+            return AppWideDownloadQualityToReturn;
+        }
+
+        public void SaveAppWideVideoCodecChoice(ApplicationVideoCodecChoice videoCodecChoice)
+        {
+            CallsMade.Add($"SaveAppWideVideoCodecChoice({videoCodecChoice})");
+            OnAnySave();
+        }
+
+        public void SaveAppWideMaximumVideoResolutionChoice(ApplicationMaximumVideoResolutionChoice maximumVideoResolutionChoice)
+        {
+            CallsMade.Add($"SaveAppWideMaximumVideoResolutionChoice({maximumVideoResolutionChoice})");
+            OnAnySave();
+        }
+
+        public void SaveAppWideAudioQualityChoice(ApplicationAudioQualityChoice audioQualityChoice)
+        {
+            CallsMade.Add($"SaveAppWideAudioQualityChoice({audioQualityChoice})");
+            OnAnySave();
+        }
     }
 
     public class FakeChannelBrowsingUseCases : IChannelBrowsingUseCases

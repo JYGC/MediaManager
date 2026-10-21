@@ -12,4 +12,7 @@ public class ApplicationVideoMetadataDto
     public DateTime PublishedAt { get; set; }
     public TimeSpan Duration { get; set; }
     public string ChannelSiteId { get; set; } = string.Empty;
+    public ApplicationVideoCodecChoice? VideoCodecChoiceOverride { get; set; }
+    public ApplicationMaximumVideoResolutionChoice? MaximumVideoResolutionChoiceOverride { get; set; }
+    public ApplicationAudioQualityChoice? AudioQualityChoiceOverride { get; set; }
 }

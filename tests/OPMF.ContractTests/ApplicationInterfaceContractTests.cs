@@ -105,8 +105,27 @@ namespace OPMF.ContractTests
                     "ApplicationVideoWithChannelDto GetVideoWithChannelByUrlFetchingFromVideoSiteWhenNotStored(String)",
                     "Void UpdateDownloadStatusOfVideos(IEnumerable<ApplicationVideoMetadataDto>)",
                     "ApplicationVideoMetadataDto ClearBeingDownloadedFlagOfVideo(ApplicationVideoMetadataDto)",
-                    "ApplicationVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ApplicationVideoMetadataDto)"),
+                    "ApplicationVideoMetadataDto MarkVideoAsBeingDownloadedAndStartTaskRunnerProcessThatDownloadsIt(ApplicationVideoMetadataDto)",
+                    "Void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto)"),
                 InterfaceShape.MethodSignaturesOf(typeof(IVideoBrowsingUseCases)));
+        }
+
+        [Fact]
+        public void IDownloadQualitySettingsUseCases_Implementation_IsDownloadQualitySettingsUseCases()
+        {
+            Assert.Contains(typeof(IDownloadQualitySettingsUseCases), typeof(DownloadQualitySettingsUseCases).GetInterfaces());
+        }
+
+        [Fact]
+        public void IDownloadQualitySettingsUseCases_HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                InOrdinalOrder(
+                    "ApplicationDownloadQualityDto GetAppWideDownloadQuality()",
+                    "Void SaveAppWideVideoCodecChoice(ApplicationVideoCodecChoice)",
+                    "Void SaveAppWideMaximumVideoResolutionChoice(ApplicationMaximumVideoResolutionChoice)",
+                    "Void SaveAppWideAudioQualityChoice(ApplicationAudioQualityChoice)"),
+                InterfaceShape.MethodSignaturesOf(typeof(IDownloadQualitySettingsUseCases)));
         }
 
         [Fact]

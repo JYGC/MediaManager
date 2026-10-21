@@ -237,4 +237,89 @@ namespace OPMF.UnitTests.Initializations
             Assert.Equal(ApplicationLogEntryType.Error, error.LogType);
         }
     }
+
+    public class VideoBrowsingUseCasesSavingDownloadQualityChoicesTests
+    {
+        private readonly FakeMetadataServices _fakeMetadataServices = new FakeMetadataServices();
+        private readonly VideoBrowsingUseCases _videoBrowsingUseCases;
+
+        public VideoBrowsingUseCasesSavingDownloadQualityChoicesTests()
+        {
+            _videoBrowsingUseCases = new VideoBrowsingUseCases(new FakeChannelMetadataServices(), _fakeMetadataServices);
+        }
+
+        [Fact]
+        public void SaveDownloadQualityChoiceOverridesOfVideoPassesTheVideoOnToTheServiceWithItsOverrides()
+        {
+            var video = new ApplicationVideoMetadataDto
+            {
+                SiteId = "v1",
+                Title = "The video",
+                VideoCodecChoiceOverride = ApplicationVideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionChoiceOverride = ApplicationMaximumVideoResolutionChoice.UpTo720p,
+                AudioQualityChoiceOverride = null,
+            };
+
+            _videoBrowsingUseCases.SaveDownloadQualityChoiceOverridesOfVideo(video);
+
+            var videoPassedOn = Assert.Single(_fakeMetadataServices.VideosWhoseDownloadQualityChoiceOverridesWereSaved);
+            Assert.Equal("v1", videoPassedOn.SiteId);
+            Assert.Equal(ServiceVideoCodecChoice.AnyCodec, videoPassedOn.VideoCodecChoiceOverride);
+            Assert.Equal(ServiceMaximumVideoResolutionChoice.UpTo720p, videoPassedOn.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoPassedOn.AudioQualityChoiceOverride);
+        }
+    }
+
+    public class DownloadQualitySettingsUseCasesTests
+    {
+        private readonly FakeDownloadQualitySettingsServices _fakeDownloadQualitySettingsServices = new FakeDownloadQualitySettingsServices();
+        private readonly DownloadQualitySettingsUseCases _downloadQualitySettingsUseCases;
+
+        public DownloadQualitySettingsUseCasesTests()
+        {
+            _downloadQualitySettingsUseCases = new DownloadQualitySettingsUseCases(_fakeDownloadQualitySettingsServices);
+        }
+
+        [Fact]
+        public void GetAppWideDownloadQualityConvertsTheServicesResultToAnApplicationDto()
+        {
+            _fakeDownloadQualitySettingsServices.AppWideDownloadQualityToReturn = new ServiceDownloadQualityDto
+            {
+                VideoCodecToPreferWhenDownloading = ServiceVideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionOnTheShorterSide = ServiceMaximumVideoResolutionChoice.UpTo1080p,
+                AudioQualityToDownload = ServiceAudioQualityChoice.SmallestAac,
+            };
+
+            var downloadQuality = _downloadQualitySettingsUseCases.GetAppWideDownloadQuality();
+
+            Assert.Equal(new[] { "GetAppWideDownloadQualityFromConfigFile" }, _fakeDownloadQualitySettingsServices.CallsMade);
+            Assert.Equal(ApplicationVideoCodecChoice.AnyCodec, downloadQuality.VideoCodecToPreferWhenDownloading);
+            Assert.Equal(ApplicationMaximumVideoResolutionChoice.UpTo1080p, downloadQuality.MaximumVideoResolutionOnTheShorterSide);
+            Assert.Equal(ApplicationAudioQualityChoice.SmallestAac, downloadQuality.AudioQualityToDownload);
+        }
+
+        [Fact]
+        public void SaveAppWideVideoCodecChoicePassesTheConvertedChoiceOnToTheService()
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideVideoCodecChoice(ApplicationVideoCodecChoice.AnyCodec);
+
+            Assert.Equal(new[] { "SaveAppWideVideoCodecChoice(AnyCodec)" }, _fakeDownloadQualitySettingsServices.CallsMade);
+        }
+
+        [Fact]
+        public void SaveAppWideMaximumVideoResolutionChoicePassesTheConvertedChoiceOnToTheService()
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideMaximumVideoResolutionChoice(ApplicationMaximumVideoResolutionChoice.UpTo720p);
+
+            Assert.Equal(new[] { "SaveAppWideMaximumVideoResolutionChoice(UpTo720p)" }, _fakeDownloadQualitySettingsServices.CallsMade);
+        }
+
+        [Fact]
+        public void SaveAppWideAudioQualityChoicePassesTheConvertedChoiceOnToTheService()
+        {
+            _downloadQualitySettingsUseCases.SaveAppWideAudioQualityChoice(ApplicationAudioQualityChoice.BestOfAnyCodec);
+
+            Assert.Equal(new[] { "SaveAppWideAudioQualityChoice(BestOfAnyCodec)" }, _fakeDownloadQualitySettingsServices.CallsMade);
+        }
+    }
 }

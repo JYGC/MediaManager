@@ -13,4 +13,7 @@ public class RepositoryVideoMetadataDto
     public TimeSpan Duration { get; set; }
     public string ChannelSiteId { get; set; } = string.Empty;
     public object? OriginalResponseFromVideoSite { get; set; }
+    public RepositoryVideoCodecChoice? VideoCodecChoiceOverride { get; set; }
+    public RepositoryMaximumVideoResolutionChoice? MaximumVideoResolutionChoiceOverride { get; set; }
+    public RepositoryAudioQualityChoice? AudioQualityChoiceOverride { get; set; }
 }

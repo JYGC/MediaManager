@@ -157,5 +157,62 @@ namespace OPMF.IntegrationTests.Repositories
 
             Assert.Equal(marker + "_fullSiteId", video.SiteId);
         }
+
+        [Fact]
+        public void TheDownloadQualityChoiceOverridesOfAVideoRoundTripThroughTheRepository()
+        {
+            var marker = NewMarker();
+            _videoMetadataRepository.InsertVideosThatAreNotStoredYet(new[] { new RepositoryVideoMetadataDto { SiteId = marker + "_v", Title = "With overrides" } });
+            var videoToChange = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(marker + "_v");
+            videoToChange.VideoCodecChoiceOverride = RepositoryVideoCodecChoice.AnyCodec;
+            videoToChange.MaximumVideoResolutionChoiceOverride = RepositoryMaximumVideoResolutionChoice.UpTo720p;
+            videoToChange.AudioQualityChoiceOverride = RepositoryAudioQualityChoice.SmallestAac;
+
+            _videoMetadataRepository.UpdateDownloadQualityChoiceOverridesOfVideo(videoToChange);
+
+            var videoReadBack = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(marker + "_v");
+            Assert.Equal(RepositoryVideoCodecChoice.AnyCodec, videoReadBack.VideoCodecChoiceOverride);
+            Assert.Equal(RepositoryMaximumVideoResolutionChoice.UpTo720p, videoReadBack.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(RepositoryAudioQualityChoice.SmallestAac, videoReadBack.AudioQualityChoiceOverride);
+            var rawDocument = RawDocumentOf("YoutubeMetadata", marker + "_v");
+            Assert.Equal("AnyCodec", rawDocument["VideoCodecChoiceOverride"].AsString);
+            Assert.Equal("UpTo720p", rawDocument["MaximumVideoResolutionChoiceOverride"].AsString);
+            Assert.Equal("SmallestAac", rawDocument["AudioQualityChoiceOverride"].AsString);
+        }
+
+        [Fact]
+        public void AVideoStoredWithoutOverridesReadsAsNullAndItsStoredDocumentHasNoOverrideFields()
+        {
+            var marker = NewMarker();
+            _fixture.DatabaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(db =>
+                db.YoutubeMetadataDbCollection.InsertNew(new[] { Metadata(marker + "_old", title: "Seeded the old way") }));
+
+            var video = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(marker + "_old");
+
+            Assert.Null(video.VideoCodecChoiceOverride);
+            Assert.Null(video.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(video.AudioQualityChoiceOverride);
+            var rawDocument = RawDocumentOf("YoutubeMetadata", marker + "_old");
+            Assert.False(rawDocument.ContainsKey("VideoCodecChoiceOverride"));
+            Assert.False(rawDocument.ContainsKey("MaximumVideoResolutionChoiceOverride"));
+            Assert.False(rawDocument.ContainsKey("AudioQualityChoiceOverride"));
+        }
+
+        [Fact]
+        public void UpdatingTheDownloadStatusOfAVideoKeepsItsDownloadQualityChoiceOverrides()
+        {
+            var marker = NewMarker();
+            _videoMetadataRepository.InsertVideosThatAreNotStoredYet(new[] { new RepositoryVideoMetadataDto { SiteId = marker + "_v", Title = "With overrides" } });
+            var videoWithOverrides = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(marker + "_v");
+            videoWithOverrides.MaximumVideoResolutionChoiceOverride = RepositoryMaximumVideoResolutionChoice.UpTo480p;
+            _videoMetadataRepository.UpdateDownloadQualityChoiceOverridesOfVideo(videoWithOverrides);
+            var videoWithoutOverridesInMemory = new RepositoryVideoMetadataDto { SiteId = marker + "_v", DownloadStatus = RepositoryVideoDownloadStatus.Downloaded };
+
+            _videoMetadataRepository.UpdateDownloadStatusOfVideos(new[] { videoWithoutOverridesInMemory });
+
+            var videoReadBack = _videoMetadataRepository.GetFirstVideoWhoseSiteIdContains(marker + "_v");
+            Assert.Equal(RepositoryVideoDownloadStatus.Downloaded, videoReadBack.DownloadStatus);
+            Assert.Equal(RepositoryMaximumVideoResolutionChoice.UpTo480p, videoReadBack.MaximumVideoResolutionChoiceOverride);
+        }
     }
 }

@@ -6,8 +6,6 @@ namespace OPMF.UnitTests.Downloader
 {
     public class VideoDownloadAttemptRulesTests
     {
-        private static readonly string[] ErrorLinesThatAreNotFailures = { "WARNING: the best pre-merged format" };
-
         private class RecordingAttempt
         {
             private readonly VideoDownloadAttemptOutcome _outcomeToReturn;
@@ -27,27 +25,22 @@ namespace OPMF.UnitTests.Downloader
         }
 
         [Fact]
-        public void NoErrorOutputIsASuccess()
+        public void TheMessageOfAnAttemptThatCreatedNoFileIsTheLastErrorOutputLine()
         {
-            Assert.True(VideoDownloadAttemptRules.DidDownloadAttemptSucceed(null, ErrorLinesThatAreNotFailures));
+            var message = VideoDownloadAttemptRules.CreateMessageOfAttemptThatCreatedNoVideoFile("ERROR: unable to download", "yt-dlp", "DownloadFolder/A title.mp4");
+
+            Assert.Equal("ERROR: unable to download", message);
         }
 
-        [Fact]
-        public void EmptyErrorOutputIsASuccess()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        public void WithNoErrorOutputTheMessageNamesTheExecutableAndTheOutputPath(string lastErrorOutputLine)
         {
-            Assert.True(VideoDownloadAttemptRules.DidDownloadAttemptSucceed("", ErrorLinesThatAreNotFailures));
-        }
+            var message = VideoDownloadAttemptRules.CreateMessageOfAttemptThatCreatedNoVideoFile(lastErrorOutputLine, "yt-dlp", "DownloadFolder/A title.mp4");
 
-        [Fact]
-        public void ALineListedAsNotAFailureIsASuccessAfterTrimming()
-        {
-            Assert.True(VideoDownloadAttemptRules.DidDownloadAttemptSucceed("  WARNING: the best pre-merged format\r\n", ErrorLinesThatAreNotFailures));
-        }
-
-        [Fact]
-        public void AnyOtherErrorLineIsAFailure()
-        {
-            Assert.False(VideoDownloadAttemptRules.DidDownloadAttemptSucceed("ERROR: unable to download", ErrorLinesThatAreNotFailures));
+            Assert.Equal("yt-dlp finished without creating DownloadFolder/A title.mp4", message);
         }
 
         [Fact]

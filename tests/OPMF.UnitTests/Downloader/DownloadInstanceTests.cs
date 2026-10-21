@@ -27,12 +27,18 @@ namespace OPMF.UnitTests.Downloader
 
         public DownloadInstanceTests()
         {
-            _downloadInstance = new DownloadInstance(
+            _downloadInstance = CreateDownloadInstance(_youtubeDLConfig, "mp4");
+        }
+
+        private DownloadInstance CreateDownloadInstance(YoutubeDLConfig youtubeDLConfig, string mergeContainer)
+        {
+            return new DownloadInstance(
                 ConsoleRowOfTheInstance,
                 _youtubeDlLocation,
                 null,
                 _fakeVideoDownloaderExecutableRunner,
-                _youtubeDLConfig,
+                youtubeDLConfig,
+                mergeContainer,
                 DownloadFolderPath,
                 _fakeThreadStarter,
                 _consoleRowOverwriter,
@@ -82,6 +88,83 @@ namespace OPMF.UnitTests.Downloader
 
             var run = Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs);
             Assert.Equal(System.IO.Path.Join(DownloadFolderPath, "aforward slashb ''quoted'' 100percent.mp4"), run.OutputFilePath);
+        }
+
+        [Fact]
+        public void TheOutputPathReplacesTheCharactersThatTheExecutablesRenameWithAHash()
+        {
+            DownloadAndRunTheDownloadThread(VideoTitled("Market show: Buy pork belly?"));
+
+            var run = Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs);
+            Assert.Equal(System.IO.Path.Join(DownloadFolderPath, "Market show# Buy pork belly#.mp4"), run.OutputFilePath);
+        }
+
+        [Fact]
+        public void TheJavaScriptRuntimeWarningOfYtDlpAsTheOnlyErrorOutputDoesNotFailTheDownload()
+        {
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH] to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one");
+            var video = VideoTitled("A plain title");
+
+            DownloadAndRunTheDownloadThread(video);
+
+            Assert.Equal(MetadataStatus.Downloaded, video.Status);
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter => Assert.Empty(databaseAdapter.OPMFLogDbCollection.GetAll()));
+        }
+
+        [Fact]
+        public void TheExecutableIsGivenTheSelectorOfTheDefaultChoicesAndTheMergeContainerOfTheInstance()
+        {
+            DownloadAndRunTheDownloadThread(VideoTitled("A plain title"));
+
+            var run = Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs);
+            Assert.Equal(
+                "(bestvideo[vcodec^=avc1]/bestvideo)+(bestaudio[acodec^=mp4a][format_id!$=-drc]/bestaudio[acodec^=mp4a]/bestaudio[format_id!$=-drc]/bestaudio)/best/(bestvideo[vcodec^=avc1]/bestvideo)",
+                run.FormatSelector);
+            Assert.Equal("mp4", run.MergeContainer);
+        }
+
+        [Fact]
+        public void TheExecutableIsGivenTheMergeContainerPassedToTheInstance()
+        {
+            var downloadInstanceMergingIntoMkv = CreateDownloadInstance(_youtubeDLConfig, "mkv");
+
+            downloadInstanceMergingIntoMkv.Download(VideoTitled("A plain title"));
+            _fakeThreadStarter.RunEveryThreadBodyThatHasNotRunYet();
+
+            Assert.Equal("mkv", Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs).MergeContainer);
+        }
+
+        [Fact]
+        public void TheSelectorFallsBackToTheChoicesOfTheConfigFileForEachChoiceTheVideoDoesNotOverride()
+        {
+            var youtubeDLConfigWithNonDefaultChoices = new YoutubeDLConfig
+            {
+                VideoCodecToPreferWhenDownloading = VideoCodecChoice.AnyCodec,
+                MaximumVideoResolutionOnTheShorterSide = MaximumVideoResolutionChoice.UpTo1080p,
+                AudioQualityToDownload = AudioQualityChoice.BestOfAnyCodec,
+            };
+            var downloadInstance = CreateDownloadInstance(youtubeDLConfigWithNonDefaultChoices, "mp4");
+
+            downloadInstance.Download(VideoTitled("A plain title"));
+            _fakeThreadStarter.RunEveryThreadBodyThatHasNotRunYet();
+
+            var expectedSelector = VideoFormatSelectorRules.BuildFormatSelectorThatBothExecutablesUnderstand(
+                new DownloadQualityChoices(VideoCodecChoice.AnyCodec, MaximumVideoResolutionChoice.UpTo1080p, AudioQualityChoice.BestOfAnyCodec));
+            Assert.Equal(expectedSelector, Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs).FormatSelector);
+        }
+
+        [Fact]
+        public void TheSelectorUsesTheOverridesOfTheVideoBeforeTheChoicesOfTheConfigFile()
+        {
+            var video = VideoTitled("A plain title");
+            video.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo720p;
+            video.AudioQualityChoiceOverride = EntityAudioQualityChoice.SmallestAac;
+
+            DownloadAndRunTheDownloadThread(video);
+
+            var expectedSelector = VideoFormatSelectorRules.BuildFormatSelectorThatBothExecutablesUnderstand(
+                new DownloadQualityChoices(VideoCodecChoice.H264, MaximumVideoResolutionChoice.UpTo720p, AudioQualityChoice.SmallestAac));
+            Assert.Equal(expectedSelector, Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs).FormatSelector);
         }
 
         [Fact]
@@ -149,21 +232,34 @@ namespace OPMF.UnitTests.Downloader
         }
 
         [Fact]
-        public void AnErrorOutputThatIsListedAsNotAFailureMarksTheVideoAsDownloadedAfterTrimming()
+        public void AnErrorLineThatTheConfigFileListsAsNotAFailureDoesNotMakeAnAttemptThatCreatedNoFileSucceed()
         {
-            var errorLineThatIsNotAFailure = _youtubeDLConfig.FalseErrorMessages[0];
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "  " + errorLineThatIsNotAFailure + "\n");
+            var errorLineThatTheConfigFileListsAsNotAFailure = _youtubeDLConfig.FalseErrorMessages[0];
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: errorLineThatTheConfigFileListsAsNotAFailure, outputFileExistsAfterTheRun: false);
+            var video = VideoTitled("A plain title");
+
+            DownloadAndRunTheDownloadThread(video);
+
+            Assert.Equal(MetadataStatus.New, video.Status);
+            Assert.Equal(errorLineThatTheConfigFileListsAsNotAFailure, TheOnlyLoggedEntry().Message);
+        }
+
+        [Fact]
+        public void AnErrorLineThatTheConfigFileDoesNotListDoesNotFailAnAttemptThatCreatedTheFile()
+        {
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "WARNING: something else that yt-dlp complained about", outputFileExistsAfterTheRun: true);
             var video = VideoTitled("A plain title");
 
             DownloadAndRunTheDownloadThread(video);
 
             Assert.Equal(MetadataStatus.Downloaded, video.Status);
+            _databaseConnectionOpener.RunWithDatabaseConnectionOpenForThisCallOnly(databaseAdapter => Assert.Empty(databaseAdapter.OPMFLogDbCollection.GetAll()));
         }
 
         [Fact]
-        public void AnotherErrorOutputLeavesTheVideoNotDownloaded()
+        public void AnErrorOutputWithNoFileCreatedLeavesTheVideoNotDownloaded()
         {
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download");
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download", outputFileExistsAfterTheRun: false);
             var video = VideoTitled("A plain title");
 
             DownloadAndRunTheDownloadThread(video);
@@ -172,9 +268,21 @@ namespace OPMF.UnitTests.Downloader
         }
 
         [Fact]
-        public void AnErrorOutputLogsAWarningWithTheTitleAndUrlOfTheVideo()
+        public void NoFileCreatedAndNoErrorOutputLogsAWarningNamingTheExecutableAndTheOutputPath()
         {
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download");
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(outputFileExistsAfterTheRun: false);
+
+            DownloadAndRunTheDownloadThread(VideoTitled("A plain title"));
+
+            var loggedEntry = TheOnlyLoggedEntry();
+            Assert.Equal(OPMFLogType.Warning, loggedEntry.Type);
+            Assert.Equal("youtube-dl finished without creating " + System.IO.Path.Join(DownloadFolderPath, "A plain title.mp4"), loggedEntry.Message);
+        }
+
+        [Fact]
+        public void NoFileCreatedAndAnErrorOutputLogsThatLastLineAsAWarningWithTheTitleAndUrlOfTheVideo()
+        {
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download", outputFileExistsAfterTheRun: false);
 
             DownloadAndRunTheDownloadThread(VideoTitled("A plain title"));
 
@@ -189,7 +297,7 @@ namespace OPMF.UnitTests.Downloader
         [Fact]
         public void AnErrorOutputWritesAnErrorMessageOnTheInstancesConsoleRow()
         {
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download");
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download", outputFileExistsAfterTheRun: false);
 
             DownloadAndRunTheDownloadThread(VideoTitled("A plain title"));
 

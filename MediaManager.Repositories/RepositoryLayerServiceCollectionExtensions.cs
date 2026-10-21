@@ -59,6 +59,7 @@ public static class RepositoryLayerServiceCollectionExtensions
             appConfig,
             new NYoutubeDLVideoDownloaderExecutableRunner(appConfig.YoutubeDL.GetSubtitles),
             new MissingVideoDownloaderExecutableDownloader(new WebClientUrlToFileDownloader(), logger, serviceProvider.GetRequiredService<TextWriter>()),
+            new FfmpegOnPathFinder(Environment.GetEnvironmentVariable("PATH") ?? string.Empty, File.Exists),
             new InterruptibleDownloadThreadStarter(),
             new ThreadSleepCurrentThreadWaiter(),
             new ConsoleRowOverwriter(),

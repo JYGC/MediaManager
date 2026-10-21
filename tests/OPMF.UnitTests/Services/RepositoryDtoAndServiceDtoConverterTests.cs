@@ -41,6 +41,76 @@ namespace OPMF.UnitTests.Services
             OriginalResponseFromVideoSite = new object(),
         };
 
+        [Theory]
+        [InlineData(RepositoryVideoCodecChoice.H264, ServiceVideoCodecChoice.H264)]
+        [InlineData(RepositoryVideoCodecChoice.AnyCodec, ServiceVideoCodecChoice.AnyCodec)]
+        public void EveryVideoCodecChoiceOverrideRoundTripsBetweenTheRepositoryAndTheServiceDto(RepositoryVideoCodecChoice repositoryChoice, ServiceVideoCodecChoice expectedServiceChoice)
+        {
+            var videoDto = new RepositoryVideoMetadataDto { SiteId = "v", VideoCodecChoiceOverride = repositoryChoice };
+
+            var serviceVideo = RepositoryDtoAndServiceDtoConverter.ConvertVideoToServiceDto(videoDto);
+            var videoConvertedBack = RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(serviceVideo);
+
+            Assert.Equal(expectedServiceChoice, serviceVideo.VideoCodecChoiceOverride);
+            Assert.Equal(repositoryChoice, videoConvertedBack.VideoCodecChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.NoLimit, ServiceMaximumVideoResolutionChoice.NoLimit)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo2160p, ServiceMaximumVideoResolutionChoice.UpTo2160p)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo1440p, ServiceMaximumVideoResolutionChoice.UpTo1440p)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo1080p, ServiceMaximumVideoResolutionChoice.UpTo1080p)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo720p, ServiceMaximumVideoResolutionChoice.UpTo720p)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo480p, ServiceMaximumVideoResolutionChoice.UpTo480p)]
+        [InlineData(RepositoryMaximumVideoResolutionChoice.UpTo360p, ServiceMaximumVideoResolutionChoice.UpTo360p)]
+        public void EveryMaximumVideoResolutionChoiceOverrideRoundTripsBetweenTheRepositoryAndTheServiceDto(RepositoryMaximumVideoResolutionChoice repositoryChoice, ServiceMaximumVideoResolutionChoice expectedServiceChoice)
+        {
+            var videoDto = new RepositoryVideoMetadataDto { SiteId = "v", MaximumVideoResolutionChoiceOverride = repositoryChoice };
+
+            var serviceVideo = RepositoryDtoAndServiceDtoConverter.ConvertVideoToServiceDto(videoDto);
+            var videoConvertedBack = RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(serviceVideo);
+
+            Assert.Equal(expectedServiceChoice, serviceVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(repositoryChoice, videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(RepositoryAudioQualityChoice.BestAac, ServiceAudioQualityChoice.BestAac)]
+        [InlineData(RepositoryAudioQualityChoice.BestOfAnyCodec, ServiceAudioQualityChoice.BestOfAnyCodec)]
+        [InlineData(RepositoryAudioQualityChoice.SmallestAac, ServiceAudioQualityChoice.SmallestAac)]
+        public void EveryAudioQualityChoiceOverrideRoundTripsBetweenTheRepositoryAndTheServiceDto(RepositoryAudioQualityChoice repositoryChoice, ServiceAudioQualityChoice expectedServiceChoice)
+        {
+            var videoDto = new RepositoryVideoMetadataDto { SiteId = "v", AudioQualityChoiceOverride = repositoryChoice };
+
+            var serviceVideo = RepositoryDtoAndServiceDtoConverter.ConvertVideoToServiceDto(videoDto);
+            var videoConvertedBack = RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(serviceVideo);
+
+            Assert.Equal(expectedServiceChoice, serviceVideo.AudioQualityChoiceOverride);
+            Assert.Equal(repositoryChoice, videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void VideoOverridesThatAreNullStayNullInBothDirections()
+        {
+            var serviceVideo = RepositoryDtoAndServiceDtoConverter.ConvertVideoToServiceDto(new RepositoryVideoMetadataDto { SiteId = "v" });
+            var videoConvertedBack = RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(serviceVideo);
+
+            Assert.Null(serviceVideo.VideoCodecChoiceOverride);
+            Assert.Null(serviceVideo.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(serviceVideo.AudioQualityChoiceOverride);
+            Assert.Null(videoConvertedBack.VideoCodecChoiceOverride);
+            Assert.Null(videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void AServiceAudioQualityChoiceWithNoMappingThrowsAnArgumentOutOfRangeException()
+        {
+            var serviceVideo = new ServiceVideoMetadataDto { SiteId = "v", AudioQualityChoiceOverride = (ServiceAudioQualityChoice)99 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => RepositoryDtoAndServiceDtoConverter.ConvertVideoToRepositoryDto(serviceVideo));
+        }
+
         [Fact]
         public void ARepositoryChannelIsConvertedToAServiceChannelWithEveryMemberMapped()
         {

@@ -23,5 +23,8 @@ namespace OPMF.Entities
         public TimeSpan Duration { get; set; }
         public string ChannelSiteId { get; set; }
         public object OriginalResponse { get; set; }
+        public EntityVideoCodecChoice? VideoCodecChoiceOverride { get; set; }
+        public EntityMaximumVideoResolutionChoice? MaximumVideoResolutionChoiceOverride { get; set; }
+        public EntityAudioQualityChoice? AudioQualityChoiceOverride { get; set; }
     }
 }

@@ -30,6 +30,7 @@ namespace OPMF.UnitTests.Services
 
         private readonly CallRecorder _callRecorder = new CallRecorder();
         private readonly FakeVideoMetadataRepository _fakeVideoMetadataRepository;
+        private readonly FakeLogRepository _fakeLogRepository = new FakeLogRepository();
         private readonly RecordingTaskRunnerServices _recordingTaskRunnerServices;
         private readonly MetadataServices _metadataServices;
 
@@ -37,7 +38,7 @@ namespace OPMF.UnitTests.Services
         {
             _fakeVideoMetadataRepository = new FakeVideoMetadataRepository(_callRecorder);
             _recordingTaskRunnerServices = new RecordingTaskRunnerServices(_callRecorder);
-            _metadataServices = new MetadataServices(_recordingTaskRunnerServices, _fakeVideoMetadataRepository);
+            _metadataServices = new MetadataServices(_recordingTaskRunnerServices, _fakeVideoMetadataRepository, _fakeLogRepository);
         }
 
         private static ServiceVideoMetadataDto VideoDto(string siteId, bool isBeingDownloaded = false, ServiceVideoDownloadStatus status = ServiceVideoDownloadStatus.New) =>
@@ -93,6 +94,50 @@ namespace OPMF.UnitTests.Services
 
             Assert.Equal(new[] { "v1" }, _recordingTaskRunnerServices.VideoSiteIdsStarted);
             Assert.Equal(new[] { "SetBeingDownloadedFlagOfVideos(True)", "StartTaskRunnerProcessThatDownloadsVideoWithSiteId" }, _callRecorder.Calls);
+        }
+
+        [Fact]
+        public void SaveDownloadQualityChoiceOverridesOfVideoPassesTheVideoOnToTheRepositoryWithTheSameOverrides()
+        {
+            var video = VideoDto("v1");
+            video.VideoCodecChoiceOverride = ServiceVideoCodecChoice.AnyCodec;
+            video.MaximumVideoResolutionChoiceOverride = ServiceMaximumVideoResolutionChoice.UpTo720p;
+            video.AudioQualityChoiceOverride = ServiceAudioQualityChoice.SmallestAac;
+
+            _metadataServices.SaveDownloadQualityChoiceOverridesOfVideo(video);
+
+            var videoPassedOn = Assert.Single(_fakeVideoMetadataRepository.VideosWhoseDownloadQualityChoiceOverridesWereUpdated);
+            Assert.Equal("v1", videoPassedOn.SiteId);
+            Assert.Equal(MediaManager.Dtos.Repositories.RepositoryVideoCodecChoice.AnyCodec, videoPassedOn.VideoCodecChoiceOverride);
+            Assert.Equal(MediaManager.Dtos.Repositories.RepositoryMaximumVideoResolutionChoice.UpTo720p, videoPassedOn.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(MediaManager.Dtos.Repositories.RepositoryAudioQualityChoice.SmallestAac, videoPassedOn.AudioQualityChoiceOverride);
+            Assert.Empty(_fakeLogRepository.RecordedErrors);
+        }
+
+        [Fact]
+        public void SaveDownloadQualityChoiceOverridesOfVideoPassesOnOverridesThatWereClearedAsNull()
+        {
+            _metadataServices.SaveDownloadQualityChoiceOverridesOfVideo(VideoDto("v1"));
+
+            var videoPassedOn = Assert.Single(_fakeVideoMetadataRepository.VideosWhoseDownloadQualityChoiceOverridesWereUpdated);
+            Assert.Null(videoPassedOn.VideoCodecChoiceOverride);
+            Assert.Null(videoPassedOn.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoPassedOn.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void AFailingRepositoryRecordsAnErrorWithTheSiteIdAndTitleOfTheVideoAndRethrowsTheSameException()
+        {
+            var exceptionOfTheRepository = new InvalidOperationException("the database is locked");
+            _fakeVideoMetadataRepository.ExceptionToThrowWhenUpdatingDownloadQualityChoiceOverrides = exceptionOfTheRepository;
+
+            var exceptionThrown = Assert.Throws<InvalidOperationException>(() => _metadataServices.SaveDownloadQualityChoiceOverridesOfVideo(VideoDto("v1")));
+
+            Assert.Same(exceptionOfTheRepository, exceptionThrown);
+            var recordedError = Assert.Single(_fakeLogRepository.RecordedErrors);
+            Assert.Equal("the database is locked", recordedError.Message);
+            Assert.Equal("\"v1\"", recordedError.VariablesAsJsonText["videoSiteId"]);
+            Assert.Equal("\"Video v1\"", recordedError.VariablesAsJsonText["videoTitle"]);
         }
     }
 }

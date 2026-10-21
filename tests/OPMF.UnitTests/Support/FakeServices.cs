@@ -21,6 +21,9 @@ namespace OPMF.UnitTests.Support
         public List<ServiceVideoMetadataDto> VideosWhoseStatusWasUpdated { get; } = new List<ServiceVideoMetadataDto>();
         public List<ServiceVideoMetadataDto> VideosWhoseFlagWasCleared { get; } = new List<ServiceVideoMetadataDto>();
         public List<ServiceVideoMetadataDto> VideosMarkedAsBeingDownloaded { get; } = new List<ServiceVideoMetadataDto>();
+        public List<ServiceVideoMetadataDto> VideosWhoseDownloadQualityChoiceOverridesWereSaved { get; } = new List<ServiceVideoMetadataDto>();
+
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ServiceVideoMetadataDto video) => VideosWhoseDownloadQualityChoiceOverridesWereSaved.Add(video);
 
         public void UpdateDownloadStatusOfVideos(IEnumerable<ServiceVideoMetadataDto> videos) => VideosWhoseStatusWasUpdated.AddRange(videos);
 
@@ -35,6 +38,25 @@ namespace OPMF.UnitTests.Support
             VideosMarkedAsBeingDownloaded.Add(video);
             return new ServiceVideoMetadataDto { SiteId = video.SiteId, Title = "returned by the service", IsBeingDownloaded = true };
         }
+    }
+
+    public class FakeDownloadQualitySettingsServices : IDownloadQualitySettingsServices
+    {
+        public ServiceDownloadQualityDto AppWideDownloadQualityToReturn { get; set; } = new ServiceDownloadQualityDto();
+        public List<string> CallsMade { get; } = new List<string>();
+
+        public ServiceDownloadQualityDto GetAppWideDownloadQualityFromConfigFile()
+        {
+            CallsMade.Add("GetAppWideDownloadQualityFromConfigFile");
+            return AppWideDownloadQualityToReturn;
+        }
+
+        public void SaveAppWideVideoCodecChoice(ServiceVideoCodecChoice videoCodecChoice) => CallsMade.Add("SaveAppWideVideoCodecChoice(" + videoCodecChoice + ")");
+
+        public void SaveAppWideMaximumVideoResolutionChoice(ServiceMaximumVideoResolutionChoice maximumVideoResolutionChoice) =>
+            CallsMade.Add("SaveAppWideMaximumVideoResolutionChoice(" + maximumVideoResolutionChoice + ")");
+
+        public void SaveAppWideAudioQualityChoice(ServiceAudioQualityChoice audioQualityChoice) => CallsMade.Add("SaveAppWideAudioQualityChoice(" + audioQualityChoice + ")");
     }
 
     public class FakeChannelMetadataServices : IChannelMetadataServices

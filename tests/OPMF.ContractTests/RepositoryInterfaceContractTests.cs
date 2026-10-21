@@ -53,6 +53,7 @@ namespace OPMF.ContractTests
                     "List<RepositoryVideoMetadataDto> GetVideosOfChannelsWhoseTitleContains(IEnumerable<String>, String, Int32, Int32)",
                     "Void InsertVideosThatAreNotStoredYet(IEnumerable<RepositoryVideoMetadataDto>)",
                     "Void UpdateDownloadStatusOfVideos(IEnumerable<RepositoryVideoMetadataDto>)",
+                    "Void UpdateDownloadQualityChoiceOverridesOfVideo(RepositoryVideoMetadataDto)",
                     "Void SetBeingDownloadedFlagOfVideos(IEnumerable<RepositoryVideoMetadataDto>, Boolean)"),
                 InterfaceShape.MethodSignaturesOf(typeof(IVideoMetadataRepository)));
         }

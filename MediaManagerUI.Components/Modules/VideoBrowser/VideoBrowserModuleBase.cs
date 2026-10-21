@@ -41,6 +41,11 @@ namespace MediaManagerUI.Modules.VideoBrowser
             videoWithChannel.Video.IsBeingDownloaded = videoAfterItWasMarkedAsBeingDownloaded.IsBeingDownloaded;
         }
 
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video)
+        {
+            _videoBrowsingUseCases.SaveDownloadQualityChoiceOverridesOfVideo(video);
+        }
+
         private void UpdateVideoDownloadStatuses(object? state)
         {
             if (_videoDownloadStatusUpdateQueue.Count == 0)

@@ -3,6 +3,7 @@ using MediaManager.Repositories;
 using OPMF.Database;
 using OPMF.Downloader.YTDownloader;
 using OPMF.Filesystem;
+using OPMF.Settings;
 using OPMF.SiteAdapter.Youtube;
 using Xunit;
 
@@ -80,8 +81,19 @@ namespace OPMF.ContractTests
         public void HasExactlyTheExpectedMethods()
         {
             Assert.Equal(
-                new[] { "String RunExecutableToDownloadVideoAndReturnLastErrorOutputLine(String, Boolean, String, String, Action<String>)" },
+                new[] { "VideoDownloaderExecutableRunOutcome RunExecutableToDownloadVideoAndReportWhetherTheOutputFileExists(String, Boolean, String, String, String, String, Action<String>)" },
                 InterfaceShape.MethodSignaturesOf(typeof(IVideoDownloaderExecutableRunner)));
+        }
+
+        [Fact]
+        public void TheRunOutcomeHasTheLastErrorOutputLineAndWhetherTheOutputFileExists()
+        {
+            Assert.Equal(
+                new[] { "Boolean OutputFileExistsAfterTheRun", "String LastErrorOutputLineOrNull" },
+                typeof(VideoDownloaderExecutableRunOutcome).GetProperties()
+                    .Where(property => property.Name != "EqualityContract")
+                    .Select(property => property.PropertyType.Name + " " + property.Name)
+                    .OrderBy(declaration => declaration, System.StringComparer.Ordinal));
         }
     }
 
@@ -199,6 +211,40 @@ namespace OPMF.ContractTests
             Assert.Equal(
                 new[] { "Void StartProcessWithExecutableFileNameAndArguments(String, String)" },
                 InterfaceShape.MethodSignaturesOf(typeof(IExternalProcessStarter)));
+        }
+    }
+
+    public class IConfigFileYoutubeDLKeyWriterContractTests
+    {
+        [Fact]
+        public void Implementation_IsConfigFileYoutubeDLKeyWriter()
+        {
+            Assert.Contains(typeof(IConfigFileYoutubeDLKeyWriter), typeof(ConfigFileYoutubeDLKeyWriter).GetInterfaces());
+        }
+
+        [Fact]
+        public void HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                new[] { "Void WriteYoutubeDLKeyKeepingEveryOtherKeyAsItIs(String, String, Object)" },
+                InterfaceShape.MethodSignaturesOf(typeof(IConfigFileYoutubeDLKeyWriter)));
+        }
+    }
+
+    public class IFfmpegOnPathFinderContractTests
+    {
+        [Fact]
+        public void Implementation_IsFfmpegOnPathFinder()
+        {
+            Assert.Contains(typeof(IFfmpegOnPathFinder), typeof(FfmpegOnPathFinder).GetInterfaces());
+        }
+
+        [Fact]
+        public void HasExactlyTheExpectedMethods()
+        {
+            Assert.Equal(
+                new[] { "Boolean IsFfmpegFoundInAFolderOnPath()" },
+                InterfaceShape.MethodSignaturesOf(typeof(IFfmpegOnPathFinder)));
         }
     }
 }

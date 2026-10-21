@@ -24,6 +24,18 @@ namespace OPMF.UnitTests.Support
         public void RemoveIsBeingDownloadedStatus(ApplicationVideoWithChannelDto videoWithChannel) => SiteIdsWhoseBeingDownloadedStatusWasRemoved.Add(videoWithChannel.Video.SiteId);
 
         public void DownloadVideoNow(ApplicationVideoWithChannelDto videoWithChannel) => SiteIdsDownloadedNow.Add(videoWithChannel.Video.SiteId);
+
+        public List<ApplicationVideoMetadataDto> VideosWhoseDownloadQualityChoiceOverridesWereSaved { get; } = new List<ApplicationVideoMetadataDto>();
+        public Exception ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides { get; set; }
+
+        public void SaveDownloadQualityChoiceOverridesOfVideo(ApplicationVideoMetadataDto video)
+        {
+            if (ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides != null)
+            {
+                throw ExceptionToThrowWhenSavingDownloadQualityChoiceOverrides;
+            }
+            VideosWhoseDownloadQualityChoiceOverridesWereSaved.Add(video);
+        }
     }
 
     public class FakeChannelBrowserModule : IChannelBrowserModule

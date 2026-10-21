@@ -16,6 +16,7 @@ namespace OPMF.Database
         IEnumerable<TItem> GetManyByChannelSiteIdAndWordInTitle(IEnumerable<string> channelSiteIds, string wordInMetadataTitle, int skip, int pageSize);
         void InsertNew(IEnumerable<TItem> items);
         void UpdateStatus(IEnumerable<TItem> items);
+        void UpdateDownloadQualityChoiceOverrides(IEnumerable<TItem> items);
         void UpdateIsBeingProcessed(IEnumerable<TItem> items, bool? isProcessedValue = null);
     }
 
@@ -78,6 +79,25 @@ namespace OPMF.Database
             try
             {
                 _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) => storedItem.Status = item.Status);
+                _liteDatabase.Commit();
+            }
+            catch (Exception)
+            {
+                _liteDatabase.Rollback();
+                throw;
+            }
+        }
+
+        public void UpdateDownloadQualityChoiceOverrides(IEnumerable<TItem> items)
+        {
+            try
+            {
+                _updateStoredItemsMatchingTheGivenItems(items, (item, storedItem) =>
+                {
+                    storedItem.VideoCodecChoiceOverride = item.VideoCodecChoiceOverride;
+                    storedItem.MaximumVideoResolutionChoiceOverride = item.MaximumVideoResolutionChoiceOverride;
+                    storedItem.AudioQualityChoiceOverride = item.AudioQualityChoiceOverride;
+                });
                 _liteDatabase.Commit();
             }
             catch (Exception)

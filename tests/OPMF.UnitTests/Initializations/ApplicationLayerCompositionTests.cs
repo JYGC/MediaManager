@@ -20,6 +20,7 @@ namespace OPMF.UnitTests.Initializations
             typeof(IChannelBrowsingUseCases),
             typeof(IVideoBrowsingUseCases),
             typeof(ILogBrowsingUseCases),
+            typeof(IDownloadQualitySettingsUseCases),
         };
 
         private readonly TemporaryFolderForOneTest _temporaryFolder = new TemporaryFolderForOneTest();

@@ -24,6 +24,7 @@ namespace OPMF.UnitTests.Downloader
         private readonly FakeCurrentThreadWaiter _fakeCurrentThreadWaiter;
         private readonly InMemoryDatabaseConnectionOpener _databaseConnectionOpener = new InMemoryDatabaseConnectionOpener();
         private readonly TemporaryFolderReadonlySettings _readonlySettings;
+        private readonly FakeFfmpegOnPathFinder _fakeFfmpegOnPathFinder = new FakeFfmpegOnPathFinder();
         private readonly AppConfig _appConfig = new AppConfig();
 
         public YTDownloaderTests()
@@ -48,6 +49,7 @@ namespace OPMF.UnitTests.Downloader
                 _appConfig,
                 _fakeVideoDownloaderExecutableRunner,
                 _missingVideoDownloaderExecutableDownloader,
+                _fakeFfmpegOnPathFinder,
                 _fakeThreadStarter,
                 _fakeCurrentThreadWaiter,
                 _consoleRowOverwriter,
@@ -132,7 +134,7 @@ namespace OPMF.UnitTests.Downloader
         [Fact]
         public void TheInstancesAreGivenTheFallbackSoAFailedVideoIsRetriedWithIt()
         {
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download");
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download", outputFileExistsAfterTheRun: false);
             var downloader = CreateYTDownloaderToDownload(QueueOfVideosNumbered(1, 1));
 
             downloader.StartDownloadingQueue();
@@ -146,12 +148,52 @@ namespace OPMF.UnitTests.Downloader
         public void WhenTheFallbackIsReportedUnavailableTheInstancesGetNoFallbackSoAFailedVideoIsNotRetried()
         {
             _missingVideoDownloaderExecutableDownloader.FallbackIsAvailable = false;
-            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download");
+            _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: "ERROR: unable to download", outputFileExistsAfterTheRun: false);
             var downloader = CreateYTDownloaderToDownload(QueueOfVideosNumbered(1, 1));
 
             downloader.StartDownloadingQueue();
 
             Assert.Equal(new[] { _readonlySettings.GetYoutubeDLPath() }, _fakeVideoDownloaderExecutableRunner.Runs.Select(run => run.ExecutableFilePath));
+        }
+
+        [Fact]
+        public void WithNoFfmpegOnPathTheConstructorThrowsTheFfmpegMessageAndDownloadsNoExecutable()
+        {
+            _fakeFfmpegOnPathFinder.IsFfmpegFound = false;
+
+            var exception = Assert.Throws<InvalidOperationException>(CreateYTDownloader);
+
+            Assert.Equal(
+                "ffmpeg.exe was not found in any folder on PATH. It is needed to merge the video and audio of each download into one file. Install ffmpeg and add its folder to PATH, then run again.",
+                exception.Message);
+            Assert.Empty(_missingVideoDownloaderExecutableDownloader.LocationsAskedToDownloadWhenMissing);
+            Assert.Empty(_missingVideoDownloaderExecutableDownloader.FallbackLocationsAskedToDownloadWhenMissing);
+        }
+
+        [Fact]
+        public void AVideoExtensionThatCannotBeMergedThrowsBeforeFfmpegIsLookedForAndBeforeAnyExecutableIsDownloaded()
+        {
+            _appConfig.YoutubeDL.VideoExtension = "webm";
+            _fakeFfmpegOnPathFinder.IsFfmpegFound = false;
+
+            var exception = Assert.Throws<InvalidOperationException>(CreateYTDownloader);
+
+            Assert.Equal(
+                "VideoExtension in config.json is \"webm\", but downloads can only be merged into mp4 or mkv. Set VideoExtension under YoutubeDL to mp4 or mkv.",
+                exception.Message);
+            Assert.Equal(0, _fakeFfmpegOnPathFinder.TimesAskedWhetherFfmpegIsFound);
+            Assert.Empty(_missingVideoDownloaderExecutableDownloader.LocationsAskedToDownloadWhenMissing);
+        }
+
+        [Fact]
+        public void TheMergeContainerOfTheConfiguredVideoExtensionReachesTheExecutableRunner()
+        {
+            _appConfig.YoutubeDL.VideoExtension = "mkv";
+            var downloader = CreateYTDownloaderToDownload(QueueOfVideosNumbered(1, 1));
+
+            downloader.StartDownloadingQueue();
+
+            Assert.Equal("mkv", Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs).MergeContainer);
         }
 
         [Fact]

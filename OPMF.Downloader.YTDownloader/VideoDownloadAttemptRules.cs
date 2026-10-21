@@ -13,10 +13,11 @@ namespace OPMF.Downloader.YTDownloader
 
     public static class VideoDownloadAttemptRules
     {
-        public static bool DidDownloadAttemptSucceed(string lastErrorOutputLineOfAttempt, IEnumerable<string> errorOutputLinesThatAreNotFailures)
+        public static string CreateMessageOfAttemptThatCreatedNoVideoFile(string lastErrorOutputLineOrNull, string executableName, string outputFilePath)
         {
-            return string.IsNullOrEmpty(lastErrorOutputLineOfAttempt) ||
-                errorOutputLinesThatAreNotFailures.Contains(lastErrorOutputLineOfAttempt.Trim());
+            return string.IsNullOrWhiteSpace(lastErrorOutputLineOrNull)
+                ? executableName + " finished without creating " + outputFilePath
+                : lastErrorOutputLineOrNull;
         }
 
         public static VideoDownloadAttemptOutcome RunExecutableTriedFirstThenFallbackExecutableWhenFirstAttemptFailed(

@@ -13,7 +13,7 @@ public class DownloadedVideoFileMover : IDownloadedVideoFileMover
 
         foreach (string fileExtension in fileExtensionsToMove)
         {
-            sourceFilePaths = sourceFilePaths.Concat(Directory.GetFiles(sourceFolderPath).Where(filePath => filePath.EndsWith("." + fileExtension)));
+            sourceFilePaths = sourceFilePaths.Concat(Directory.GetFiles(sourceFolderPath).Where(filePath => filePath.EndsWith("." + fileExtension) && !DownloadedFileNameRules.IsNameOfStreamFileLeftBeforeMerging(Path.GetFileName(filePath))));
         }
 
         foreach (string sourceFilePath in sourceFilePaths)

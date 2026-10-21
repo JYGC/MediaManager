@@ -171,6 +171,76 @@ namespace OPMF.UnitTests.Repositories
             Assert.Equal(typeof(YoutubeMetadata), video.GetType());
         }
 
+        [Theory]
+        [InlineData(EntityVideoCodecChoice.H264, RepositoryVideoCodecChoice.H264)]
+        [InlineData(EntityVideoCodecChoice.AnyCodec, RepositoryVideoCodecChoice.AnyCodec)]
+        public void EveryVideoCodecChoiceOverrideRoundTripsBetweenTheVideoAndTheRepositoryDto(EntityVideoCodecChoice entityChoice, RepositoryVideoCodecChoice expectedDtoChoice)
+        {
+            var video = new YoutubeMetadata { SiteId = "v", VideoCodecChoiceOverride = entityChoice };
+
+            var videoDto = DatabaseModelAndRepositoryDtoConverter.ConvertVideoToRepositoryDto(video);
+            var videoConvertedBack = DatabaseModelAndRepositoryDtoConverter.ConvertRepositoryDtoToYoutubeMetadata(videoDto);
+
+            Assert.Equal(expectedDtoChoice, videoDto.VideoCodecChoiceOverride);
+            Assert.Equal(entityChoice, videoConvertedBack.VideoCodecChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(EntityMaximumVideoResolutionChoice.NoLimit, RepositoryMaximumVideoResolutionChoice.NoLimit)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo2160p, RepositoryMaximumVideoResolutionChoice.UpTo2160p)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo1440p, RepositoryMaximumVideoResolutionChoice.UpTo1440p)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo1080p, RepositoryMaximumVideoResolutionChoice.UpTo1080p)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo720p, RepositoryMaximumVideoResolutionChoice.UpTo720p)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo480p, RepositoryMaximumVideoResolutionChoice.UpTo480p)]
+        [InlineData(EntityMaximumVideoResolutionChoice.UpTo360p, RepositoryMaximumVideoResolutionChoice.UpTo360p)]
+        public void EveryMaximumVideoResolutionChoiceOverrideRoundTripsBetweenTheVideoAndTheRepositoryDto(EntityMaximumVideoResolutionChoice entityChoice, RepositoryMaximumVideoResolutionChoice expectedDtoChoice)
+        {
+            var video = new YoutubeMetadata { SiteId = "v", MaximumVideoResolutionChoiceOverride = entityChoice };
+
+            var videoDto = DatabaseModelAndRepositoryDtoConverter.ConvertVideoToRepositoryDto(video);
+            var videoConvertedBack = DatabaseModelAndRepositoryDtoConverter.ConvertRepositoryDtoToYoutubeMetadata(videoDto);
+
+            Assert.Equal(expectedDtoChoice, videoDto.MaximumVideoResolutionChoiceOverride);
+            Assert.Equal(entityChoice, videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+        }
+
+        [Theory]
+        [InlineData(EntityAudioQualityChoice.BestAac, RepositoryAudioQualityChoice.BestAac)]
+        [InlineData(EntityAudioQualityChoice.BestOfAnyCodec, RepositoryAudioQualityChoice.BestOfAnyCodec)]
+        [InlineData(EntityAudioQualityChoice.SmallestAac, RepositoryAudioQualityChoice.SmallestAac)]
+        public void EveryAudioQualityChoiceOverrideRoundTripsBetweenTheVideoAndTheRepositoryDto(EntityAudioQualityChoice entityChoice, RepositoryAudioQualityChoice expectedDtoChoice)
+        {
+            var video = new YoutubeMetadata { SiteId = "v", AudioQualityChoiceOverride = entityChoice };
+
+            var videoDto = DatabaseModelAndRepositoryDtoConverter.ConvertVideoToRepositoryDto(video);
+            var videoConvertedBack = DatabaseModelAndRepositoryDtoConverter.ConvertRepositoryDtoToYoutubeMetadata(videoDto);
+
+            Assert.Equal(expectedDtoChoice, videoDto.AudioQualityChoiceOverride);
+            Assert.Equal(entityChoice, videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void VideoOverridesThatAreNullStayNullInBothDirections()
+        {
+            var videoDto = DatabaseModelAndRepositoryDtoConverter.ConvertVideoToRepositoryDto(new YoutubeMetadata { SiteId = "v" });
+            var videoConvertedBack = DatabaseModelAndRepositoryDtoConverter.ConvertRepositoryDtoToYoutubeMetadata(videoDto);
+
+            Assert.Null(videoDto.VideoCodecChoiceOverride);
+            Assert.Null(videoDto.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoDto.AudioQualityChoiceOverride);
+            Assert.Null(videoConvertedBack.VideoCodecChoiceOverride);
+            Assert.Null(videoConvertedBack.MaximumVideoResolutionChoiceOverride);
+            Assert.Null(videoConvertedBack.AudioQualityChoiceOverride);
+        }
+
+        [Fact]
+        public void ARepositoryVideoCodecChoiceWithNoMappingThrowsAnArgumentOutOfRangeException()
+        {
+            var videoDto = new RepositoryVideoMetadataDto { SiteId = "v", VideoCodecChoiceOverride = (RepositoryVideoCodecChoice)99 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => DatabaseModelAndRepositoryDtoConverter.ConvertRepositoryDtoToYoutubeMetadata(videoDto));
+        }
+
         [Fact]
         public void EveryVideoDownloadStatusRoundTripsThroughTheRepositoryEnum()
         {

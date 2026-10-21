@@ -81,6 +81,22 @@ namespace OPMF.UnitTests.RazorComponents
         }
     }
 
+    public class AppBarMenusTests : MudBlazorComponentTestContext
+    {
+        [Fact]
+        public void TheSettingsItemOfTheSettingsMenuIsEnabledAndLinksToTheSettingsPage()
+        {
+            var renderedPopovers = RenderComponent<MudPopoverProvider>();
+            var renderedMenus = RenderComponent<AppBarMenus>();
+
+            renderedMenus.FindAll("button").Single(button => button.TextContent.Trim() == "Settings").Click();
+
+            var settingsItem = renderedPopovers.FindAll("a.mud-menu-item").Single(item => item.TextContent.Trim() == "Settings");
+            Assert.Equal("/settings", settingsItem.GetAttribute("href"));
+            Assert.DoesNotContain("mud-disabled", settingsItem.ClassList);
+        }
+    }
+
     public class RoutesTests : MudBlazorComponentTestContext
     {
         public RoutesTests()
@@ -101,6 +117,7 @@ namespace OPMF.UnitTests.RazorComponents
         [InlineData("/channels/add", "AddChannels")]
         [InlineData("/logs/errors", "Range")]
         [InlineData("/logs/warnings", "Range")]
+        [InlineData("/settings", "Download quality")]
         public void EveryRouteShowsItsPageInsideTheMainLayoutWithoutTheErrorContent(string route, string textOnThePage)
         {
             var navigationManager = Services.GetRequiredService<FakeNavigationManager>();

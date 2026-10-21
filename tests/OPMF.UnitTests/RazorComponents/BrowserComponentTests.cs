@@ -157,6 +157,7 @@ namespace OPMF.UnitTests.RazorComponents
         public void ClickingTheTitleOpensTheVideoDetailsDialogOfThatRow()
         {
             var dialogProvider = RenderComponent<MudDialogProvider>();
+            RenderComponent<MudPopoverProvider>();
             var renderedBrowser = RenderBrowser(Video("v1"), Video("v2"));
 
             renderedBrowser.FindAll("td[data-label='Title'] button").Single(button => button.TextContent.Trim() == "Title of v2").Click();

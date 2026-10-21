@@ -95,5 +95,18 @@ namespace OPMF.UnitTests.Services
 
             Assert.Empty(FileNamesIn(_destinationFolderPath));
         }
+
+        [Fact]
+        public void AStreamFileLeftBeforeMergingStaysInTheSourceFolderWhileTheMergedFileMoves()
+        {
+            CreateFileInSourceFolder("Title.f137.mp4");
+            CreateFileInSourceFolder("Title.f140.m4a");
+            CreateFileInSourceFolder("Title.mp4");
+
+            _downloadedVideoFileMover.MoveFilesWithExtensionsFromFolderToFolderSkippingNamesThatAlreadyExist(_sourceFolderPath, _destinationFolderPath, new[] { "mp4", "m4a" });
+
+            Assert.Equal(new[] { "Title.mp4" }, FileNamesIn(_destinationFolderPath));
+            Assert.Equal(new[] { "Title.f137.mp4", "Title.f140.m4a" }, FileNamesIn(_sourceFolderPath));
+        }
     }
 }

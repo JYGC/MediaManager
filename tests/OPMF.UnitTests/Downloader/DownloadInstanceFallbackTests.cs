@@ -34,6 +34,7 @@ namespace OPMF.UnitTests.Downloader
                 fallbackExecutable,
                 _fakeVideoDownloaderExecutableRunner,
                 new YoutubeDLConfig(),
+                "mp4",
                 "DownloadFolder",
                 _fakeThreadStarter,
                 _consoleRowOverwriter,
@@ -44,7 +45,7 @@ namespace OPMF.UnitTests.Downloader
         private static Metadata VideoNumbered(int number) =>
             new YoutubeMetadata { SiteId = "video-" + number, Url = "https://www.youtube.com/watch?v=video-" + number, Title = "Video " + number };
 
-        private void ScriptFailureOfTheNextRun() => _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: ErrorLineThatIsAFailure);
+        private void ScriptFailureOfTheNextRun() => _fakeVideoDownloaderExecutableRunner.ScriptNextRun(lastErrorOutputLine: ErrorLineThatIsAFailure, outputFileExistsAfterTheRun: false);
 
         private System.Collections.Generic.List<OPMFLog> AllLoggedEntries()
         {
@@ -89,6 +90,23 @@ namespace OPMF.UnitTests.Downloader
             _fakeThreadStarter.RunEveryThreadBodyThatHasNotRunYet();
 
             Assert.Equal(new[] { false, true }, _fakeVideoDownloaderExecutableRunner.Runs.Select(run => run.TellExecutableNotToResumePartialFiles));
+        }
+
+        [Fact]
+        public void TheFallbackAttemptGetsTheSameSelectorAndMergeContainerAsTheFirstAttempt()
+        {
+            var downloadInstance = CreateDownloadInstanceWithFallback(_ytDlpLocation);
+            ScriptFailureOfTheNextRun();
+            var video = VideoNumbered(1);
+            video.MaximumVideoResolutionChoiceOverride = EntityMaximumVideoResolutionChoice.UpTo480p;
+
+            downloadInstance.Download(video);
+            _fakeThreadStarter.RunEveryThreadBodyThatHasNotRunYet();
+
+            Assert.Equal(2, _fakeVideoDownloaderExecutableRunner.Runs.Count);
+            Assert.Single(_fakeVideoDownloaderExecutableRunner.Runs.Select(run => run.FormatSelector).Distinct());
+            Assert.Contains("[height<=480]", _fakeVideoDownloaderExecutableRunner.Runs[1].FormatSelector);
+            Assert.Equal(new[] { "mp4", "mp4" }, _fakeVideoDownloaderExecutableRunner.Runs.Select(run => run.MergeContainer));
         }
 
         [Fact]

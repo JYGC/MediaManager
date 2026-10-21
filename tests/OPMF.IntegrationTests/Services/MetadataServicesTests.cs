@@ -23,7 +23,10 @@ namespace OPMF.IntegrationTests.Services
         }
 
         private MetadataServices CreateMetadataServices(ITaskRunnerServices taskRunnerServices) =>
-            new MetadataServices(taskRunnerServices, new VideoMetadataRepository(_fixture.DatabaseConnectionOpener));
+            new MetadataServices(
+                taskRunnerServices,
+                new VideoMetadataRepository(_fixture.DatabaseConnectionOpener),
+                new LogRepository(_fixture.DatabaseConnectionOpener, new OPMF.Logging.Logger(_fixture.DatabaseConnectionOpener), TimeProvider.System));
 
         private Metadata StoredVideoWithSiteId(string siteId)
         {
